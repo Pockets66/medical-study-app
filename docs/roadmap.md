@@ -20,7 +20,7 @@ Tracks the status of every note card in `notesData`.
 
 | ID | Title | Status | Notes |
 |----|-------|--------|-------|
-| gyn_1 | Antikonception og abort | `[✓]` | Prescribing workflow + generation comparison thin — minor revision planned |
+| gyn_1 | Antikonception og abort | `[D]` | Expanded to 3 tabs: Antikonception / Abort / Nødprævention. Awaiting medical verification. |
 | gyn_2 | Blødningsforstyrrelser og PCOS | `[✓]` | Blødningsskema + PCOS follow-up (HbA1c, metabolisk syndrom) thin |
 | gyn_3 | Endometriose og godartede tumorer | `[✓]` | Fibrom-subtyper + adenomyose missing — low priority |
 | gyn_4 | Uro-gynækologi | `[✓]` | TVT + prolaps-grading missing |
@@ -89,3 +89,4 @@ Files that would unlock blocked topics:
 | 2026-05-28 | gyn_7 | Rewrote PID note — full ætiologi, 4/5 kriterier, AB-regimer, sequelae med tal, Fitz-Hugh-Curtis |
 | 2026-05-28 | ui | Add sub-tab support to notes renderer — test case: gyn_7 |
 | 2026-05-28 | ui | Add bidirectional case-note linking — noteRef + caseRefs |
+| 2026-05-28 | gyn_1 | Expand antikonception note — generation guide, VTE tal, abort fordele/ulemper, nødprævention |
