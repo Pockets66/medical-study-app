@@ -92,3 +92,4 @@ Files that would unlock blocked topics:
 | 2026-05-28 | ui | Add bidirectional case-note linking — noteRef + caseRefs |
 | 2026-05-28 | gyn_1 | Expand antikonception note — generation guide, VTE tal, abort fordele/ulemper, nødprævention |
 | 2026-05-28 | gyn_7 + gyn_7b | Split infections note — Underlivsinfektion (4 tabs) + STD (6 tabs), slides-sourced |
+| 2026-05-28 | gyn_7b | Patch: remove unverified HPV % + screening ages, remove FHC from klamydia |
