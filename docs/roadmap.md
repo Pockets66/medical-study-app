@@ -26,7 +26,8 @@ Tracks the status of every note card in `notesData`.
 | gyn_4 | Uro-gynækologi | `[✓]` | TVT + prolaps-grading missing |
 | gyn_5 | Tidlige graviditetskomplikationer | `[✓]` | Mola hydatidosa thin |
 | gyn_6 | Gynækologisk cancer | `[✓]` | ⚠️ Ovariecancer næsten ikke dækket — needs forelæsning upload |
-| gyn_7 | Underlivsinfektion og PID | `[D]` | Converted to sub-tabs (PID / Klamydia / Gonore / Bakteriel vaginose / Candida). Awaiting medical verification. |
+| gyn_7  | Underlivsinfektion            | `[D]` | Split from gyn_7b. Tabs: BV / Bartholinitis / PID / TOA. Slides-sourced. Awaiting verification. |
+| gyn_7b | Seksuelt overførte infektioner | `[D]` | New note. Tabs: Herpes / HPV / Klamydia / Gonore / Syfilis / Mycoplasma. Slides-sourced. Awaiting verification. |
 | gyn_8 | Human reproduktion | `[✓]` | AMH mangler — low priority |
 | gyn_9 | Hormonbehandling i postklimakteriet | `[✓]` | ⚠️ Systemisk MHT ikke dækket — needs forelæsning/eksamenssæt upload |
 
@@ -90,3 +91,4 @@ Files that would unlock blocked topics:
 | 2026-05-28 | ui | Add sub-tab support to notes renderer — test case: gyn_7 |
 | 2026-05-28 | ui | Add bidirectional case-note linking — noteRef + caseRefs |
 | 2026-05-28 | gyn_1 | Expand antikonception note — generation guide, VTE tal, abort fordele/ulemper, nødprævention |
+| 2026-05-28 | gyn_7 + gyn_7b | Split infections note — Underlivsinfektion (4 tabs) + STD (6 tabs), slides-sourced |

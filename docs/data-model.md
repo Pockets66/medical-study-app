@@ -11,7 +11,7 @@ Persistence (user progress) is stored in `localStorage` under the key `wm_unifie
 {
   id:    'gyn_1',          // string, unique — spec prefix + number
   spec:  'GYN',            // 'GYN' | 'OBS'
-  num:   1,                // display number (integer)
+  num:   1,                // display label — string or integer (e.g. 7, '7b')
   title: 'Underlivsinfek…',// plain text (shown on card + case header)
   src:   'F24, E23',       // exam sources, plain text
   sub:   '<p>…</p>',       // optional HTML snippet shown below title (definitions / subtypes table)
