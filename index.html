@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K8 OSCE — Studieguide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #F7F5F0; --surface: #FFFFFF; --surface2: #F0EDE6;
+  --border: rgba(0,0,0,0.1); --border-strong: rgba(0,0,0,0.18);
+  --text: #1A1916; --text-2: #5A5750; --text-3: #9B9790;
+  --obs: #1A4E7A; --obs-bg: #E8F2FB;
+  --gyn: #4A2F7A; --gyn-bg: #EFE9FB;
+  --paed: #0F5E3A; --paed-bg: #E4F5EE;
+  --neo: #7A4A0A; --neo-bg: #FBF0E0;
+  --accent: #C8452A; --radius: 10px;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 15px; line-height: 1.6; }
+
+header { background: var(--text); color: #FFF; padding: 48px 40px 36px; position: relative; overflow: hidden; }
+header::before { content:''; position:absolute; top:-60px; right:-60px; width:280px; height:280px; border-radius:50%; background:rgba(255,255,255,0.04); pointer-events:none; }
+.header-kicker { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:10px; }
+header h1 { font-family:'DM Serif Display',serif; font-size:clamp(28px,5vw,44px); font-weight:400; line-height:1.15; margin-bottom:10px; }
+header h1 em { font-style:italic; color:rgba(255,255,255,0.55); }
+.header-meta { font-size:13px; color:rgba(255,255,255,0.45); margin-top:18px; display:flex; gap:20px; flex-wrap:wrap; }
+.dot { width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; }
+
+nav { background:var(--surface); border-bottom:1px solid var(--border); padding:0 40px; display:flex; gap:0; position:sticky; top:0; z-index:100; }
+.tab-btn { padding:14px 20px; font-size:13px; font-weight:500; background:none; border:none; border-bottom:2px solid transparent; color:var(--text-3); cursor:pointer; transition:all .15s; white-space:nowrap; }
+.tab-btn:hover { color:var(--text); }
+.tab-btn.active { color:var(--text); border-bottom-color:var(--text); }
+
+main { max-width:900px; margin:0 auto; padding:40px 24px; }
+.pane { display:none; } .pane.active { display:block; }
+
+.section-label { font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); margin-bottom:12px; }
+.specialty-badge { display:inline-block; font-size:11px; font-weight:500; padding:3px 10px; border-radius:20px; margin-bottom:8px; }
+.badge-gyn { background:var(--gyn-bg); color:var(--gyn); }
+.badge-obs { background:var(--obs-bg); color:var(--obs); }
+
+/* CASE CARDS */
+.case-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px; margin-top:12px; }
+.case-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:20px; cursor:pointer; transition:all .18s; position:relative; }
+.case-card:hover { border-color:var(--border-strong); transform:translateY(-2px); box-shadow:0 4px 16px rgba(0,0,0,0.07); }
+.case-card h3 { font-size:15px; font-weight:500; margin-bottom:6px; }
+.case-card p { font-size:13px; color:var(--text-2); line-height:1.5; }
+.case-meta { display:flex; gap:8px; align-items:center; margin-top:14px; font-size:12px; color:var(--text-3); }
+.difficulty { display:inline-block; width:8px; height:8px; border-radius:50%; }
+.diff-high { background:#2D9E6B; } .diff-mid { background:#E8A020; } .diff-low { background:#C84040; }
+.arrow-icon { position:absolute; bottom:18px; right:18px; font-size:18px; color:var(--text-3); }
+
+/* CASE VIEW */
+#view-case { display:none; }
+.case-header { margin-bottom:32px; }
+.case-header h2 { font-family:'DM Serif Display',serif; font-size:28px; font-weight:400; margin:8px 0 6px; }
+.case-header p { color:var(--text-2); font-size:14px; }
+.back-btn { background:none; border:1px solid var(--border-strong); border-radius:6px; padding:8px 14px; font-size:13px; cursor:pointer; color:var(--text-2); display:inline-flex; align-items:center; gap:6px; transition:all .15s; }
+.back-btn:hover { background:var(--surface2); color:var(--text); }
+
+/* PROGRESS BAR */
+.progress-bar { background:var(--surface2); border-radius:4px; height:6px; margin:0 0 6px; overflow:hidden; }
+.progress-fill { height:100%; border-radius:4px; background:var(--gyn); transition:width .3s; }
+.progress-label { font-size:12px; color:var(--text-3); margin-bottom:24px; }
+
+/* STEP CARDS */
+.step-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:14px; overflow:hidden; transition:all .2s; }
+.step-header { padding:18px 20px; cursor:pointer; display:flex; justify-content:space-between; align-items:flex-start; }
+.step-header:hover { background:var(--surface2); }
+.step-num { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); margin-bottom:4px; }
+.step-q { font-size:15px; font-weight:500; }
+.reveal-indicator { font-size:20px; color:var(--text-3); flex-shrink:0; margin-left:12px; padding-top:16px; transition:transform .2s; }
+.step-answer { display:none; padding:0 20px 20px; border-top:1px solid var(--border); }
+.step-card.revealed .step-answer { display:block; }
+.step-card.revealed .reveal-indicator { transform:rotate(180deg); color:var(--gyn); }
+.answer-body { padding-top:16px; font-size:14px; line-height:1.7; }
+.answer-body ul { padding-left:20px; margin:8px 0; }
+.answer-body li { margin-bottom:6px; }
+.answer-body strong { font-weight:600; }
+.answer-highlight { background:var(--gyn-bg); border-left:3px solid var(--gyn); border-radius:0 6px 6px 0; padding:10px 14px; margin-top:14px; font-size:13px; color:#2A1A5A; }
+.answer-warn { background:#FBF0E0; border-left:3px solid #E8A020; border-radius:0 6px 6px 0; padding:10px 14px; margin-top:14px; font-size:13px; color:#5A3A0A; }
+
+/* BUTTONS */
+.case-nav { display:flex; gap:12px; margin-top:24px; padding-top:24px; border-top:1px solid var(--border); flex-wrap:wrap; }
+.case-nav-btn { padding:10px 18px; border-radius:6px; font-size:14px; cursor:pointer; font-weight:500; transition:all .15s; border:1px solid var(--border-strong); background:var(--surface); color:var(--text-2); }
+.case-nav-btn:hover { background:var(--surface2); color:var(--text); }
+.case-nav-btn.primary { background:var(--text); color:#FFF; border-color:var(--text); }
+.case-nav-btn.primary:hover { background:#333; }
+.reveal-all-btn { padding:10px 18px; border-radius:6px; font-size:14px; cursor:pointer; font-weight:500; background:var(--gyn-bg); color:var(--gyn); border:1px solid rgba(74,47,122,0.2); transition:all .15s; }
+.reveal-all-btn:hover { background:var(--gyn); color:#FFF; }
+
+/* NOTE SUB-TABS */
+.note-tabs { display:flex; gap:0; border-bottom:1px solid var(--border); margin:0 0 20px; }
+.note-tab-btn { padding:9px 16px; font-size:13px; font-weight:500; background:none; border:none; border-bottom:2px solid transparent; color:var(--text-3); cursor:pointer; transition:all .15s; white-space:nowrap; }
+.note-tab-btn:hover { color:var(--text); }
+.note-tab-btn.active { color:var(--text); border-bottom-color:var(--text); }
+.note-tab-panel { display:none; }
+.note-tab-panel.active { display:block; }
+
+/* TIPS */
+.tips-list { display:flex; flex-direction:column; gap:10px; }
+.tip { display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px; }
+.tip-check { width:28px; height:28px; border-radius:6px; background:var(--paed-bg); color:var(--paed); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px; flex-shrink:0; }
+.tip-warn .tip-check { background:var(--neo-bg); color:var(--neo); }
+.tip font-size { font-size:14px; }
+
+/* FREQUENCY TABLE */
+.freq-table { width:100%; border-collapse:collapse; margin-top:12px; background:var(--surface); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border); font-size:14px; }
+.freq-table th { padding:12px 16px; text-align:left; background:var(--surface2); font-size:12px; font-weight:500; text-transform:uppercase; letter-spacing:.06em; color:var(--text-3); }
+.freq-table td { padding:12px 16px; border-top:1px solid var(--border); vertical-align:top; }
+.freq-table tr:hover td { background:var(--surface2); }
+.stars { color:#E8A020; font-size:15px; }
+
+
+.notes-wrap{display:flex;border:0.5px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface);min-height:560px}
+.notes-sb{width:214px;flex-shrink:0;background:var(--surface2);border-right:0.5px solid var(--border);overflow-y:auto}
+.notes-main{flex:1;overflow-y:auto;padding:28px 32px}
+.nsec-lbl{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);padding:14px 14px 4px;display:block}
+.nitem{padding:9px 14px 9px 14px;font-size:13px;cursor:pointer;border-left:2px solid transparent;color:var(--text-2);display:flex;gap:8px;line-height:1.45;transition:background .12s}
+.nitem:hover{background:var(--surface);color:var(--text)}
+.nitem.active{background:var(--surface);color:var(--text);border-left-color:var(--gyn);font-weight:500}
+.nitem.active.obs{border-left-color:var(--obs)}
+.nitem-n{font-size:11px;color:var(--text-3);flex-shrink:0;padding-top:1px}
+.nhd{margin-bottom:20px;padding-bottom:16px;border-bottom:0.5px solid var(--border)}
+.nbadge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px}
+.ntitle{font-family:'DM Serif Display',serif;font-size:23px;font-weight:400;line-height:1.2}
+.ntitle em{font-style:italic;color:var(--text-2)}
+.nsec{margin-bottom:14px}
+.nsec-hdr{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:7px}
+.ng2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.nc{background:var(--surface2);border-radius:8px;padding:11px 13px;font-size:13px;line-height:1.65}
+.nc ul{padding-left:15px;margin:4px 0 0}
+.nc li{margin-bottom:3px}
+.nc strong{font-weight:500}
+.nc-lbl{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--text-3);margin-bottom:5px}
+.nc.full{grid-column:1/-1}
+.nhl{background:var(--gyn-bg);border-left:3px solid var(--gyn);border-radius:0 6px 6px 0;padding:9px 13px;font-size:13px;color:#2A1A5A;margin-top:8px}
+.nhl.obs{background:var(--obs-bg);border-left-color:var(--obs);color:#0A2A4A}
+.nwarn{background:#FBF0E0;border-left:3px solid #BA7517;border-radius:0 6px 6px 0;padding:9px 13px;font-size:13px;color:#4A2A0A;margin-top:8px}
+.nst{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:14px;border:0.5px solid var(--border);border-radius:8px;overflow:hidden}
+.nst th{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--text-3);padding:7px 11px;background:var(--surface2);text-align:left;border-bottom:0.5px solid var(--border)}
+.nst td{padding:9px 11px;border-top:0.5px solid var(--border);vertical-align:top;line-height:1.5}
+.nst tr:first-child td{border-top:none}
+.nst strong{font-weight:500}
+
+footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); border-top:1px solid var(--border); margin-top:60px; }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-kicker">SDU · Kvinde, Mor, Barn</p>
+  <h1>K8 OSCE<br><em>Studieguide</em></h1>
+  <div class="header-meta">
+    <span><span class="dot"></span> &nbsp;Baseret på eksamenssæt F23–F25 + E23–E24</span>
+    <span><span class="dot"></span> &nbsp;Signes noter</span>
+    <span><span class="dot"></span> &nbsp;Målbeskrivelser</span>
+  </div>
+</header>
+
+<nav>
+  <button class="tab-btn active" onclick="showTab('tab-emner',this)">Cases</button>
+  <button class="tab-btn" onclick="showTab('tab-noter',this)">Noter</button>
+  <button class="tab-btn" onclick="showTab('tab-hyppighed',this)">Hyppighed</button>
+  <button class="tab-btn" onclick="showTab('tab-strategi',this)">Studiestrategi</button>
+  <button class="tab-btn" onclick="showTab('tab-tips',this)">Eksamenstips</button>
+</nav>
+
+<div id="view-overview">
+<main>
+
+<!-- TAB: EMNER -->
+<div id="tab-emner" class="pane active">
+
+  <p class="section-label">Obstetrik</p>
+  <div class="case-grid">
+    <div class="case-card" onclick="openCase('praeeklampsi')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Præeklampsi</h3>
+      <p>Diagnostik, HELLP, behandling og langtidsopfølgning</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F23, F24, S2021</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('svangreomsorg')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Svangreomsorg og graviditetsundersøgelse</h3>
+      <p>Indhold af 2. og 3. grav.us., GBS-screening, 8-ugers postpartum</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · V2016, S2018, E23</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('praenatal')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Føtalmedicin og prænatal diagnostik</h3>
+      <p>1. og 2. trimesterskanning, nakkefoldsscreening, CVS, amniocentese, NIPT</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F25, S2017, S2021</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('tvillinger')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Tvillingegraviditet</h3>
+      <p>MCDA vs DCDA, TTTS, truende præterm fødsel, TAPS</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · V2021, V2017</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('vaeksthemning')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Væksthæmning og blødning i graviditet</h3>
+      <p>FGR/placentainsufficiens, placenta prævia, abruptio, DD vaginalblødning</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F25, E24, S2017</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('gdm')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Medicinske sygdomme i graviditeten</h3>
+      <p>Gestationel diabetes (GDM), OGTT, GBS i graviditet, stofskifte</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · S2018, V2020, E23</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('praeterm')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Præterm fødsel</h3>
+      <p>Risikofaktorer, behandling, betapred, umodne organer (RDS, IVH, NEC, ROP)</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · V2022, S2020</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('barsel')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Barselskomplikationer</h3>
+      <p>Endometritis, 8-ugers undersøgelse, amning, RVD, prævention postpartum</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · S2019, S2017, E23</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('virus')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Virussygdomme under graviditet</h3>
+      <p>Parvovirus B19 (lussingesyge), IgM/IgG-algoritme, TORCH-oversigt</p>
+      <div class="case-meta"><span class="difficulty diff-mid"></span> Middel prioritet · F24, S2018</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('asfyksi')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Intrauterin asfyksi</h3>
+      <p>Neonatal genoplivning, Apgar, navlesnors blodprøver, kølebehandling</p>
+      <div class="case-meta"><span class="difficulty diff-mid"></span> Middel prioritet · V2017, neonatal asfyksi</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('kompfodsel')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Komplicerede fødsler</h3>
+      <p>Begrænset dækning — sectio, skulderdystocia, instrumentel forløsning</p>
+      <div class="case-meta"><span class="difficulty diff-low"></span> Lav dækning · Indirekte i eksamenssæt</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('normalfodsel')">
+      <span class="specialty-badge badge-obs">Obstetrik</span>
+      <h3>Den normale fødsel</h3>
+      <p>Begrænset dækning — de 4 håndgreb, CTG-overvågning, GBS-profylakse ved fødsel</p>
+      <div class="case-meta"><span class="difficulty diff-low"></span> Lav dækning · Indirekte i eksamenssæt</div>
+      <span class="arrow-icon">→</span>
+    </div>
+  </div>
+
+  <p class="section-label" style="margin-top:28px">Gynækologi</p>
+  <div class="case-grid">
+    <div class="case-card" onclick="openCase('antikonception')">
+      <span class="specialty-badge badge-gyn">Gynækologi</span>
+      <h3>Antikonception og abort</h3>
+      <p>Præventionsformer, kontraindikationer, medicinsk og kirurgisk abort</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F24, F25, S2021</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('bloedning')">
+      <span class="specialty-badge badge-gyn">Gynækologi</span>
+      <h3>Blødningsforstyrrelser og PCOS</h3>
+      <p>Uregelmæssige blødninger, PCOS-diagnostik, Rotterdam-kriterierne</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F23, F25, V2020</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('endometriose')">
+      <span class="specialty-badge badge-gyn">Gynækologi</span>
+      <h3>Godartede tumorer og endometriose</h3>
+      <p>Endometriose, myomer/fibromer, ovariecyster og infertilitet</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · S2019, S2020</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('urogyn')">
+      <span class="specialty-badge badge-gyn">Gynækologi</span>
+      <h3>Uro-gynækologi</h3>
+      <p>Urininkontinens (urge/stress), prolaps, behandlingsalgoritme</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F23, E24</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('tidliggrav')">
+      <span class="specialty-badge badge-gyn">Gynækologi</span>
+      <h3>Tidlige graviditetskomplikationer</h3>
+      <p>Ekstrauterin graviditet, spontan abort, håndtering og differentialdiagnoser</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · V2022, F24</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('cancer')">
+      <span class="specialty-badge badge-gyn">Gynækologi</span>
+      <h3>Præcancrose og gynækologisk cancer</h3>
+      <p>Postmenopausal blødning, endometriecancer, cancerpakke, cervixcancer</p>
+      <div class="case-meta"><span class="difficulty diff-mid"></span> Middel prioritet · E23</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('underlivsinf')">
+      <span class="specialty-badge badge-gyn">Gynækologi</span>
+      <h3>Underlivsinfektion</h3>
+      <p>PID/salpingitis, diagnosekriterier og behandling</p>
+      <div class="case-meta"><span class="difficulty diff-mid"></span> Middel prioritet · Primært DD</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('humanrep')">
+      <span class="specialty-badge badge-gyn">Gynækologi</span>
+      <h3>Human reproduktion</h3>
+      <p>Menstruationscyklus, ovulation, fertilitet, mandlig infertilitet</p>
+      <div class="case-meta"><span class="difficulty diff-mid"></span> Middel prioritet · E23</div>
+      <span class="arrow-icon">→</span>
+    </div>
+    <div class="case-card" onclick="openCase('hormoner')">
+      <span class="specialty-badge badge-gyn">Gynækologi</span>
+      <h3>Hormonbehandling i postklimakteriet</h3>
+      <p>MHT-indikationer, præparater, risici og kontraindikationer</p>
+      <div class="case-meta"><span class="difficulty diff-low"></span> Lavere prioritet · Mangelfuldt i noter</div>
+      <span class="arrow-icon">→</span>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: HYPPIGHED -->
+<div id="tab-hyppighed" class="pane">
+  <p class="section-label">Hyppighed på eksamen (F23–F25, E23–E24)</p>
+  <table class="freq-table">
+    <thead><tr><th>Emne</th><th>Speciale</th><th>Hyppighed</th><th>Senest set</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Præeklampsi / HELLP</strong></td><td>Obstetrik</td><td><span class="stars">★★★★★</span></td><td>F24, F23</td></tr>
+      <tr><td><strong>Blødningsforstyrrelser / PCOS</strong></td><td>Gynækologi</td><td><span class="stars">★★★★★</span></td><td>F25, F23, V2020</td></tr>
+      <tr><td><strong>Antikonception og abort</strong></td><td>Gynækologi</td><td><span class="stars">★★★★☆</span></td><td>F25, F24</td></tr>
+      <tr><td><strong>Uro-gynækologi</strong></td><td>Gynækologi</td><td><span class="stars">★★★★☆</span></td><td>F23, E24</td></tr>
+      <tr><td><strong>Endometriose / myomer</strong></td><td>Gynækologi</td><td><span class="stars">★★★★☆</span></td><td>S2019, S2020</td></tr>
+      <tr><td><strong>Tidlige graviditetskomplikationer</strong></td><td>Gynækologi</td><td><span class="stars">★★★☆☆</span></td><td>V2022, F24</td></tr>
+      <tr><td><strong>Gynækologisk cancer</strong></td><td>Gynækologi</td><td><span class="stars">★★★☆☆</span></td><td>E23</td></tr>
+      <tr><td>Underlivsinfektion</td><td>Gynækologi</td><td><span class="stars">★★☆☆☆</span></td><td>Differentialdiagnose</td></tr>
+      <tr><td>Hormonbehandling i postklimakteriet</td><td>Gynækologi</td><td><span class="stars">★★☆☆☆</span></td><td>Ikke dedikeret stand</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- TAB: STUDIESTRATEGI -->
+<div id="tab-strategi" class="pane">
+  <p class="section-label">Bedste strategier baseret på rettearks-analyse</p>
+  <div class="tips-list">
+    <div class="tip"><div class="tip-check">1</div><div><strong>Studér rettearkets punktlister direkte</strong> — hvert retteark er en checkliste over, præcis hvad der giver point. Lær disse punktlister udenad for de hyppigste emner.</div></div>
+    <div class="tip"><div class="tip-check">2</div><div><strong>Aktiv recitation med 12-minutters timer</strong> — sæt en timer og lav en komplet stand alene. Simulér pres og tidsbegrænsning.</div></div>
+    <div class="tip"><div class="tip-check">3</div><div><strong>Makker-OSCE</strong> — én spiller læge, én spiller patient fra instruks. Byt roller. Det træner kommunikation og afdækning af "skjulte" patientoplysninger.</div></div>
+    <div class="tip"><div class="tip-check">4</div><div><strong>Prioritér paraklinisk tolkning</strong> — mange stande inkluderer ultralydsbilleder, blodprøver eller vandladningsskemaer. Øv dig i at forklare disse til en ikke-fagperson.</div></div>
+    <div class="tip"><div class="tip-check">5</div><div><strong>Lær "clear fail"-fælderne</strong> — visse fejl medfører automatisk dumpet uanset alt andet (fx manglende cancerpakke ved postmenopausal blødning). Disse er eksplicit angivet i rettearks.</div></div>
+  </div>
+</div>
+
+<!-- TAB: EKSAMENSTIPS -->
+<div id="tab-tips" class="pane">
+  <p class="section-label">Gode råd til selve eksamensdagen</p>
+  <div class="tips-list">
+    <div class="tip"><div class="tip-check">✓</div><div><strong>Gynækologisk undersøgelse hører næsten altid med</strong> — for alle gynækologiske stande forventes du at nævne og demonstrere GU inkl. inspektion, eksploration og evt. transvaginal UL.</div></div>
+    <div class="tip"><div class="tip-check">✓</div><div><strong>Start altid bredt med anamnesen</strong> — blødning, smerter, udflåd, seneste menstruation, graviditeter, prævention, smear. Lad ikke diagnosehypotesen styre for tidligt.</div></div>
+    <div class="tip"><div class="tip-check">✓</div><div><strong>Kommunikér med patienten undervejs</strong> — bedømmerne lytter til, om du forklarer fund i patientvenligt sprog. "Livmoderslimhinden er tykkere end normalt" fremfor medicinske termer.</div></div>
+    <div class="tip"><div class="tip-check">✓</div><div><strong>Anti-D til Rh-negative</strong> — glem ikke dette ved abort, EUG og anden graviditetskomplikation. Det er et fast point i rettearks.</div></div>
+  </div>
+  <p class="section-label" style="margin-top:24px">Klassiske fejl — undgå disse</p>
+  <div class="tips-list">
+    <div class="tip tip-warn"><div class="tip-check" style="background:#FBF0E0;color:#7A4A0A">!</div><div><strong>Cancerpakke kun ved postmenopausal blødning</strong> — IKKE ved perimenopausale forstyrrelser. Forkert henvisning trækker ned.</div></div>
+    <div class="tip tip-warn"><div class="tip-check" style="background:#FBF0E0;color:#7A4A0A">!</div><div><strong>Undgå CA-125 og kønshormoner rutinemæssigt</strong> — relevante ved specifikke indikationer, men ikke som screeningsprøver.</div></div>
+    <div class="tip tip-warn"><div class="tip-check" style="background:#FBF0E0;color:#7A4A0A">!</div><div><strong>Husk PCOS Rotterdam-kriterierne</strong> — mindst 2 af 3 kriterier skal opfyldes. Kun polycystiske ovarier på UL er ikke nok.</div></div>
+  </div>
+</div>
+
+
+<!-- TAB: NOTER -->
+<div id="tab-noter" class="pane">
+  <div class="notes-wrap" id="notesWrap">
+    <div class="notes-sb" id="notesSidebar"></div>
+    <div class="notes-main" id="notesMain"><p style="color:var(--text-3);font-size:14px">Vælg et emne til venstre.</p></div>
+  </div>
+</div>
+
+</main>
+</div><!-- /view-overview -->
+
+<!-- CASE VIEWS -->
+<div id="view-case">
+<main>
+
+<!-- === PRÆEKLAMPSI === -->
+<div id="case-praeeklampsi" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Præeklampsi</h2>
+    <p>Eksamenssæt: F23, F24, S2021 &nbsp;·&nbsp; Mundtlig og skriftlig</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="pe-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="pe-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-pe-1">
+    <div class="step-header" onclick="toggleStep('pe',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Hvad er definitionen på præeklampsi, og hvilke diagnostiske kriterier bruger du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Hypertension:</strong> BT ≥ 140/90 mmHg ved ≥ 2 målinger med mindst 4 timers interval, opstået efter uge 20</li>
+        <li><strong>Proteinuri:</strong> ≥ 0,3 g/døgn (eller 2+ på urinstix) ELLER organpåvirkning uden proteinuri</li>
+        <li>Tidligt debut (&lt; uge 34) = svær, mere komplikationsrisiko</li>
+      </ul>
+      <div class="answer-highlight">Svær PE: BT ≥ 160/110, kramper (eklampsi), trombocytopeni, leverenzymstigning, nyrepåvirkning, lungeødem.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pe-2">
+    <div class="step-header" onclick="toggleStep('pe',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Hvilke anamnestiske oplysninger er vigtigst?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Hovedpine, synsforstyrrelser, øvre abdominalsmerter (leverkapsel), ødemer</li>
+        <li>Fosteraktivitet og vækst</li>
+        <li>Risikofaktorer: første graviditet, tidligere PE, overvægt, diabetes, nyresygdom, flerfoldsgravid, alder &gt; 40</li>
+        <li>Familiehistorie (PE, hjerte-kar-sygdom)</li>
+        <li>Forløb af aktuelle graviditet: BT-målinger, urinstix, ultralydsskanninger</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pe-3">
+    <div class="step-header" onclick="toggleStep('pe',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvad er HELLP-syndromet, og hvordan adskiller det sig?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>H</strong>emolysis – <strong>E</strong>levated <strong>L</strong>iver enzymes – <strong>L</strong>ow <strong>P</strong>latelets</li>
+        <li>Kan forekomme UDEN forhøjet BT eller proteinuri</li>
+        <li>Symptomer: øvre/midterabdominalsmerter, kvalme, opkastning, utilpashed</li>
+        <li>Blodprøver: hæmolyse (LDH forhøjet, haptoglobin lav), ALAT/ASAT forhøjet, trombocytter lav</li>
+      </ul>
+      <div class="answer-warn">Kan forveksles med gastroenteritis eller gallesten — hav altid PE/HELLP i mente hos gravide med mavesmerter.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pe-4">
+    <div class="step-header" onclick="toggleStep('pe',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hvad er behandlingen af præeklampsi og eklampsi?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Eneste kurerende behandling:</strong> Forløsning</li>
+        <li>Antihypertensiv behandling: labetalol IV eller nifedipin peroralt ved BT ≥ 160/110</li>
+        <li><strong>Magnesiumsulfat</strong> IV ved svær PE og eklampsi (profylakse/behandling af kramper)</li>
+        <li>Steroider (betametason) ved præterm forløsning (lungemodning)</li>
+        <li>Eklampsi (kramper): sikr luftveje → ilt → magnesiumsulfat → stabilisér → forløs</li>
+      </ul>
+      <div class="answer-highlight">Husk rækkefølgen ved eklampsi: ABCD → magnesium → forløsning. Forløsning kommer EFTER stabilisering.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pe-5">
+    <div class="step-header" onclick="toggleStep('pe',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Differentialdiagnoser til PE</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>HELLP-syndrom (kan komme uden klassisk PE)</li>
+        <li>Kronisk hypertension med superimponeret PE</li>
+        <li>Gestationel hypertension (uden proteinuri/organpåvirkning)</li>
+        <li>Nyreinsufficiens / akut nyresvigt</li>
+        <li>Akut fedtlever i graviditeten</li>
+        <li>Hepatitis / galdestenssygdom</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pe-6">
+    <div class="step-header" onclick="toggleStep('pe',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Opfølgning og langtidsrisici — hvad skal du fortælle patienten?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Øget risiko for PE i næste graviditet</li>
+        <li><strong>Hjertemagnyl</strong> (acetylsalicylsyre lavdosis) fra uge 12–16 i næste graviditet</li>
+        <li>BT skal være velbehandlet inden ny graviditet</li>
+        <li>Jævnlig BT-kontrol pga. øget risiko for kardiovaskulær sygdom på sigt</li>
+        <li>Øget risiko for type 2-diabetes og nyresygdom på lang sigt</li>
+      </ul>
+      <div class="answer-highlight">Dette kom eksplicit i F23 og F24. Kend langtidsrisiciene.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('pe',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === ANTIKONCEPTION OG ABORT === -->
+<div id="case-antikonception" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-gyn" style="margin-top:16px">Gynækologi</span>
+    <h2>Antikonception og abort</h2>
+    <p>Eksamenssæt: F25 (skriftlig), F24 uønsket graviditet, S2021 provokeret abort &nbsp;·&nbsp; Signes noter</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="anti-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="anti-progress-label">0 / 5 afsløret</p>
+
+  <div class="step-card" id="step-anti-1">
+    <div class="step-header" onclick="toggleStep('anti',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Anamnese ved præventionsrådgivning — hvad skal du altid spørge om?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Tidligere erfaringer med prævention, fast partner, graviditetsplaner</li>
+        <li>Menstruationsmønster: blødningsforstyrrelser, dysmenoré, gynækologiske infektioner</li>
+        <li><strong>Familiær disposition til tromboembolisk sygdom</strong></li>
+        <li>Sygdomme: <strong>migræne med aura</strong>, koagulationssygdom, tidligere DVT/LE, diabetes, brystkræft, hypertension</li>
+        <li>Medicin (fx epilepsimedicin — reducerer p-pillernes effekt), rygning, BMI</li>
+      </ul>
+      <div class="answer-highlight">F25-retteark: BMI og BT er obligatoriske objektive fund ved p-pilleordination.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-anti-2">
+    <div class="step-header" onclick="toggleStep('anti',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Nævn mindst 4 præventionsformer med fordele, ulemper og kontraindikationer</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>P-piller (kombinerede):</strong> Høj effekt, kan udsætte blødning. KI: migræne med aura, VTE/koagulationssygdom, hypertension. Risiko: tromboemboli.</li>
+        <li><strong>Mini-piller (gestagen):</strong> Ingen tromboserisiko (arteriel). KI: aktuel/tidl. VTE, svær nedsat leverfunktion, gestagenafhængig tumor. UL: pletblødninger, amenoré.</li>
+        <li><strong>Hormonspiral (LNG-IUD):</strong> Høj compliance, reducerer blødning og smerter. KI: submukøse fibromer, gentagne PID, gestagenafhængig tumor. Kræver GU ved oplægning.</li>
+        <li><strong>Kobberspiral:</strong> Ingen hormoner, høj compliance. KI: submukøse fibromer, gentagne PID. UL: øget blødning og smerter.</li>
+        <li><strong>P-stav:</strong> Ingen tromboserisiko. UL: uregelmæssig blødning. Kræver indsætning/fjernelse.</li>
+        <li><strong>Barrieremidler (kondom, pessar):</strong> Eneste der beskytter mod kønssygdomme. Compliance-problem.</li>
+      </ul>
+      <div class="answer-highlight">F25: Den studerende skal angive 4 af de nævnte former for at få fuld score.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-anti-3">
+    <div class="step-header" onclick="toggleStep('anti',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvad er proceduren ved uønsket graviditet og anmodning om abort?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Fri abort</strong> til og med gestationsalder 12+0 uger</li>
+        <li>Kvinden underskriver <strong>Blanket A</strong> — obligatorisk, altid</li>
+        <li>GU + transvaginal UL: bekræft intrauterin graviditet og GA</li>
+        <li>Klamydiapodning, blodtype (mhp. Anti-D), urinstix HCG</li>
+        <li>Efter 12+0: ansøgning til abortsamråd — mulig til uge 22</li>
+      </ul>
+      <div class="answer-warn">Blanket A glemmes — dette er "grænsetilfælde" i retteark.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-anti-4">
+    <div class="step-header" onclick="toggleStep('anti',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Medicinsk vs. kirurgisk abort — fordele, ulemper og anbefaling</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Medicinsk:</strong> Oral Mifegyn (mifepriston) + vaginal Cytotec (misoprostol) med 1–2 døgns interval. Ambulant. Fordele: undgår bedøvelse, lav infektionsrisiko (1–2%), ingen perforationsrisiko. Ulemper: tager længere tid, inkomplet abort 5%, kraftig blødning 10–14 dage.</li>
+        <li><strong>Kirurgisk:</strong> Udsugning (vakuumaspiration) i GA. Fordele: hurtigt, bedøvelse, lavere risiko for inkomplet abort. Ulemper: bedøvelse, ventetid, risiko for livmoderperforation (&lt; 0,5%), infektion 3–5%.</li>
+        <li><strong>Anbefaling i 1. trimester:</strong> Medicinsk foretrækkes (lavere risiko)</li>
+      </ul>
+      <div class="answer-highlight">Husk: <strong>Anti-D til Rh-negative kvinder</strong> efter gennemført abort — altid.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-anti-5">
+    <div class="step-header" onclick="toggleStep('anti',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Hvad anbefales til en kvinde, der er blevet gravid på p-piller?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>P-pillerne har ikke givet tilstrækkelig beskyttelse — skift præventionsform</li>
+        <li>Overvej: <strong>hormonspiral, kobberspiral eller p-stav</strong> — høj compliance, ikke afhængig af daglig indtagelse</li>
+        <li>Udeluk klamydia inden spiraloplægning</li>
+        <li>Drøft kontraindikationer for alternativerne (se trin 2)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('anti',5)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === BLØDNINGSFORSTYRRELSER OG PCOS === -->
+<div id="case-bloedning" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-gyn" style="margin-top:16px">Gynækologi</span>
+    <h2>Blødningsforstyrrelser og PCOS</h2>
+    <p>Eksamenssæt: F25 (PCOS), F23 (perimenopausale blødninger), V2020 &nbsp;·&nbsp; Signes noter</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="blod-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="blod-progress-label">0 / 5 afsløret</p>
+
+  <div class="step-card" id="step-blod-1">
+    <div class="step-header" onclick="toggleStep('blod',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Anamnese ved uregelmæssige blødninger — hvad er obligatorisk?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Blødningsmønster: cykluslængde, varighed, styrke (antal bind/tampon, ændring), kontaktblødning, intermenstruel blødning</li>
+        <li>Smerter (dysmenoré, dyspareuni), udflåd (farve, lugt)</li>
+        <li>Prævention, seneste menstruation, graviditetstest</li>
+        <li>Kønssygdomme, tidligere gynækologisk sygdom eller operation</li>
+        <li>Stofskiftesymptomer (TSH!), stress, vægttab/-øgning, motion</li>
+        <li>Medicin, tobak, overvægt (PCOS-risikofaktor)</li>
+      </ul>
+      <div class="answer-highlight">Gravtest, TSH og klamydiapodning hører altid med som paraklinik ved blødningsforstyrrelser.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-blod-2">
+    <div class="step-header" onclick="toggleStep('blod',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Hvad er Rotterdam-kriterierne for PCOS?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p>Mindst <strong>2 af 3</strong> kriterier skal opfyldes:</p>
+      <ul>
+        <li><strong>1. Oligo-anovulation</strong> — uregelmæssige cyklusser, sjælden ægløsning</li>
+        <li><strong>2. Klinisk og/eller biokemisk hyperandrogenisme</strong> — hirsutisme, acne, forhøjet testosteron / SHBG-ratio</li>
+        <li><strong>3. Polycystiske ovarier på UL</strong> — AFC ≥ 20 antrale follikler i mindst ét ovarie</li>
+      </ul>
+      <p style="margin-top:10px">Blodprøver ved PCOS-udredning: kønshormoner (LH, FSH, LH/FSH-ratio), testosteron, SHBG, prolaktin, TSH, østradiol, blodsukker/insulin-profil.</p>
+      <div class="answer-highlight">F25-standen: den studerende skal forklare Rotterdam-kriterierne på patientvenligt sprog til patienten.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-blod-3">
+    <div class="step-header" onclick="toggleStep('blod',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Behandling af PCOS og PCOS-relateret infertilitet</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Livsstilsintervention:</strong> Vægttab er <em>førstevalg</em> — kan genskabe ovulatorisk cyklus og reducere metaboliske komplikationer</li>
+        <li>P-piller reducerer androgeneffekter (hirsutisme, acne) og regulerer blødning</li>
+        <li>Metformin: reducerer insulinresistens, kan genoprette ovulation</li>
+        <li>Letrozol/Clomifen: ovulationsinduktion ved fertilitetsønske</li>
+        <li>Hvis fertilitetsproblemer vedvarer: henvisning til fertilitetsbehandling</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-blod-4">
+    <div class="step-header" onclick="toggleStep('blod',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Perimenopausale blødningsforstyrrelser — hvad adskiller dem fra postmenopausale?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Perimenopausalt</strong> (&gt; 45 år): uregelmæssige, hyppigere eller kraftigere blødninger pga. aftagende corpus luteum-funktion. IKKE cancerpakke.</li>
+        <li><strong>Postmenopausalt</strong> (1 år uden menstruation): enhver blødning er <em>cancerpakke</em> — altid. Endometriebiopsi og transvaginal UL obligatorisk.</li>
+        <li>Differentialdiagnoser perimenopausalt: myom, polyp, fysiologisk årsag, stofskiftelidelse, klamydia</li>
+      </ul>
+      <div class="answer-warn">CA-125 og kønshormoner er IKKE rutineprøver ved perimenopausale blødninger (F23-retteark).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-blod-5">
+    <div class="step-header" onclick="toggleStep('blod',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Behandling af perimenopausale blødningsforstyrrelser</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Hormonspiral (LNG-IUD):</strong> reducerer blødning, god compliance — førstevalg ved uregelmæssige kraftige blødninger</li>
+        <li>Cyklisk gestagen (progesteron) i 2. halvdel af cyklus</li>
+        <li>P-piller (lavdosis kombineret) ved fravær af kontraindikationer</li>
+        <li>Endometrieablation ved svær menoragi og intet graviditetsønske</li>
+        <li>Hysteroskopi + diagnostisk biopsi ved mistanke om polyp eller hyperplasi</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('blod',5)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === ENDOMETRIOSE OG GODARTEDE TUMORER === -->
+<div id="case-endometriose" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-gyn" style="margin-top:16px">Gynækologi</span>
+    <h2>Godartede tumorer og endometriose</h2>
+    <p>Eksamenssæt: S2019 (endometriose), skriftlig fibrom, S2020 (ovariecyste) &nbsp;·&nbsp; Signes noter</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="endo-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="endo-progress-label">0 / 5 afsløret</p>
+
+  <div class="step-card" id="step-endo-1">
+    <div class="step-header" onclick="toggleStep('endo',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Klassisk præsentation og anamnese ved endometriose</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Kroniske bækkensmerter med forværring ved menstruation (dysmenoré)</li>
+        <li><strong>Dyspareuni</strong> (smerter ved samleje), smerter ved afføring, rygsmerte</li>
+        <li>Infertilitet — ofte sen diagnose pga. subtile symptomer</li>
+        <li>GU: fast, øm uterus (fikseret), ømme adnexer, evt. palpabel udfyldning</li>
+        <li>CA-125 kan være let forhøjet men er ikke diagnostisk</li>
+        <li>Transvaginal UL: endometriomer ("chokoladecyster") — rundt, homogent, lavekkoisk</li>
+      </ul>
+      <div class="answer-highlight">Guldstandard for diagnose: laparoskopi. Endometriose bekræftes histologisk.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-endo-2">
+    <div class="step-header" onclick="toggleStep('endo',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Beskriv endometriose for patienten i patientvenligt sprog</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p>En oftest kronisk tilstand, hvor noget der ligner livmoderens slimhinde er vandret ud i bughulen og sat sig fast hhv. på æggestokkene (giver cyster med mørkt indhold — "chokoladecyster") eller som millimeterstykker på bughinden. Det bløder ved menstruation og giver smerter, fordi blod i bughulen irriterer vævet.</p>
+      <ul style="margin-top:10px">
+        <li>Ubehandlet: forværres typisk med tiden</li>
+        <li>Kan sætte ned for mulighederne for at blive gravid</li>
+        <li>Forsvinder oftest efter overgangsalderen</li>
+        <li>God effekt af behandling; gode chancer for graviditet med hjælp</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-endo-3">
+    <div class="step-header" onclick="toggleStep('endo',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Behandling af endometriose</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Smertebehandling:</strong> NSAID-præparater (ibuprofen), paracetamol</li>
+        <li><strong>Hormonbehandling</strong> (nedsætter østrogenproduktion og bløding): p-piller, mini-p-piller, hormonspiral, gestagen depotinjektion, GnRH-analoger</li>
+        <li>Hormonbehandling er <em>ikke mulig</em> hvis graviditet er det primære ønske</li>
+        <li><strong>Kirurgi:</strong> Laparoskopisk fjernelse af endometriomer, ablation af peritoneal endometriose</li>
+        <li>Fertilitetsbehandling (IVF) ved infertilitet</li>
+      </ul>
+      <div class="answer-highlight">Fra Signes noter: Hvis kvinden ønsker graviditet → hormoner er ikke en mulighed → direkte til kirurgi og evt. fertilitetsbehandling.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-endo-4">
+    <div class="step-header" onclick="toggleStep('endo',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Myomer (fibromer) — typer, symptomer og behandling</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Benigne muskelknuder i livmodervæggen. Hyppigste benigne gynækologiske tumor.</li>
+        <li><strong>Submukøse (intrakavitære)</strong> — giver mest symptomer: menoragi (kraftig menstruation), infertilitet</li>
+        <li>Intramurale og subserøse — oftest asymptomatiske</li>
+        <li>Diagnostik: GU (forstørret, uregelmæssig uterus), transvaginal UL, evt. hysteroskopi</li>
+        <li><strong>Behandling:</strong> Hysteroskopisk resektion af submukøst fibrom. Bevarer uterus og fertilitet.</li>
+        <li>Alternativ ved gennemfuldført fødsel: uterusembolisering, myomektomi eller hysterektomi</li>
+      </ul>
+      <div class="answer-highlight">Skriftlig eksamen: intrakavitært fibrom → hysteroskopisk resektion → forventes 60–80% chance for normalisering af menstruation. Histologi altid!</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-endo-5">
+    <div class="step-header" onclick="toggleStep('endo',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Ovariecyste — differentialdiagnoser og håndtering</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Differentialdiagnoser ved unilateral adneksymptom/cyste:</strong> Funktionel cyste (follickel/corpus luteum), endometriom, dermoidcyste, paraovarialcyste, tubarabsces, ovariecancer</li>
+        <li><strong>Akutte DD:</strong> Adnextorsion (pludselige kraftige smerter, kvalme) → kirurgi haste, EUG, appendicitis, PID</li>
+        <li>Undersøgelse: vaginal UL (størrelse, ekko-mønster, septae, vascularisering), CA-125 ved mistanke om malignitet</li>
+        <li>Simpel, enlokulær cyste &lt; 5 cm: ekspektation + kontrol-UL</li>
+        <li>Kompleks/stor/voksende cyste: laparoskopisk fjernelse</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('endo',5)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === URO-GYNÆKOLOGI === -->
+<div id="case-urogyn" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-gyn" style="margin-top:16px">Gynækologi</span>
+    <h2>Uro-gynækologi</h2>
+    <p>Eksamenssæt: F23 (urgeinkontinens), E24 (prolaps/rektocele) &nbsp;·&nbsp; Signes noter</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="uro-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="uro-progress-label">0 / 5 afsløret</p>
+
+  <div class="step-card" id="step-uro-1">
+    <div class="step-header" onclick="toggleStep('uro',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Anamnese ved urininkontinens — hvad adskiller urge fra stress?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Urge-inkontinens:</strong> Kraftig, pludselig vandladningstrang → ufrivilligt lækage. Hyppige, små vandladninger. Sker ved nøgle i låsen, lyden af vand.</li>
+        <li><strong>Stress-inkontinens:</strong> Lækage ved fysisk anstrengelse — hoste, nys, løb, latter. Ingen forudgående trang.</li>
+        <li>Blandet inkontinens: begge komponenter</li>
+        <li>Anamnese: obstetrisk historie (vaginalfødsler!), antal vandladninger/døgn, lækage-episoder, bindforbrug, fysisk arbejde, kronisk hoste, medicin, BMI</li>
+      </ul>
+      <div class="answer-highlight">F23: vandladningsskema er obligatorisk — antal lækager, tidspunkt, mængde, stimuli.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-uro-2">
+    <div class="step-header" onclick="toggleStep('uro',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Objektiv undersøgelse ved inkontinens</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>GU: Inspektion af vulva, vagina, portio — slimhindeforhold, atrofi, prolaps</li>
+        <li>Bed patienten om at hoste/bruge bugpresse: cystocele, rektocel, descensus uteri?</li>
+        <li>Eksploration: udfyldninger, knibekraft (gradering 0–5)</li>
+        <li>Transvaginal UL: udeluk residualurin</li>
+        <li>Vandladningsskema: typisk volumen, hyppighed, lækage-omstændigheder, antal bind</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-uro-3">
+    <div class="step-header" onclick="toggleStep('uro',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Behandling af urge-inkontinens (behandlingsalgoritme)</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ol style="padding-left:20px">
+        <li style="margin-bottom:8px"><strong>1. linje:</strong> Bækkenbundstræning + blæretræning (gradvis øgning af interval)</li>
+        <li style="margin-bottom:8px"><strong>Peri-/postmenopausalt:</strong> Lokalt østradiol (Vagifem 10 µg × 3/uge eller Estring) — behandler atrofi</li>
+        <li style="margin-bottom:8px"><strong>2. linje:</strong> Blæredæmpende medicin (antikolinergika: solifenacin/tolterodin, eller mirabegron Betmiga). Bivirkninger: obstipation, mundtørhed, synsforstyrrelser.</li>
+        <li><strong>3. linje:</strong> Botox® i blæremuskel (cystoskopi) eller PTNS (perkutan tibial nerve stimulation)</li>
+      </ol>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-uro-4">
+    <div class="step-header" onclick="toggleStep('uro',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Genital prolaps — typer, gradering og diagnostik</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Forreste kompartment:</strong> Cystocele (blæreprolaps)</li>
+        <li><strong>Midterste kompartment:</strong> Uterusprolaps, vaginaltop-prolaps</li>
+        <li><strong>Bagerste kompartment:</strong> Rektocele (rektal prolaps bag vaginalvæg)</li>
+        <li>Gradering I–IV: I = inden for vagina, II = til hymen, III = udenfor hymen, IV = komplet</li>
+        <li>Symptomer: tyngdefornemmelse, fremfald, vandladnings- og afføringsproblemer, dyspareuni</li>
+        <li>E24-stand: 68-årig kvinde → rektocele grad II (bagvæg 1 cm udenfor hymen)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-uro-5">
+    <div class="step-header" onclick="toggleStep('uro',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Behandling af prolaps — konservativ vs. kirurgisk</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Ekspektation:</strong> Lokal østrogenbehandling (Vagifem/Estring) + afføringsregulering. Risikofrit.</li>
+        <li><strong>Konservativ:</strong> Støttepessar (ring). Fordele: undgår/udskyder operation. Ulemper: kontrol hos læge/oplæring hver 3. mdr.</li>
+        <li><strong>Kirurgisk:</strong> Vaginal plastik (kolporraphia posterior + evt. perineoplastik ved rektocele). Kræver anæstesi. Risici: dyspareuni, infektion, blødning/hæmatom, skade på naboorganer, sygemelding 4–6 uger.</li>
+      </ul>
+      <div class="answer-highlight">E24: Den studerende skal kende fordele/ulemper ved ALLE tre behandlingsmuligheder og nævne anæstesi ved kirurgi.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('uro',5)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === TIDLIGE GRAVIDITETSKOMPLIKATIONER === -->
+<div id="case-tidliggrav" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-gyn" style="margin-top:16px">Gynækologi</span>
+    <h2>Tidlige graviditetskomplikationer</h2>
+    <p>Eksamenssæt: V2022 (EUG), F24 (uønsket graviditet), S2021 &nbsp;·&nbsp; Signes noter</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="tidlig-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="tidlig-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-tidlig-1">
+    <div class="step-header" onclick="toggleStep('tidlig',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Ekstrauterin graviditet (EUG) — præsentation, anamnese og undersøgelse</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Klassisk triad: <strong>smerter, vaginalblødning, amenoré</strong></li>
+        <li>Kredsløbspåvirkning ved ruptur: bleghed, hypotension, takykardi, klamtsved → akut abdomen</li>
+        <li>Anamnese: smerteanamnese, blødning, seneste menstruation, prævention, tidl. EUG, PID, IVF, salpingitis</li>
+        <li>Paraklinik: urin-HCG (positiv), Hgb (evt. lav ved blødning), vaginal UL: <em>tom uterus</em> + adnekspatologi + evt. fri væske</li>
+      </ul>
+      <div class="answer-warn">Tom uterus + positiv graviditetstest = EUG indtil det modsatte er bevist.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tidlig-2">
+    <div class="step-header" onclick="toggleStep('tidlig',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Behandling af EUG</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Akut laparoskopi</strong> i generel anæstesi → salpingektomi (fjernelse af tuba)</li>
+        <li>Anlæg 1–2 velfungerende PVK + 1 liter isoton NaCl IV</li>
+        <li>BAC-test (blodtype + antistofscreening)</li>
+        <li><strong>Anti-D</strong> til Rh-negative kvinder</li>
+        <li>Stabilt, lille EUG uden ruptur: alternativt medicinsk (methotrexat IM) ved specifikke kriterier</li>
+      </ul>
+      <div class="answer-highlight">Husk altid: vitale værdier, palpation abdomen, GU, vaginal UL — som en ABCD-tilgang.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tidlig-3">
+    <div class="step-header" onclick="toggleStep('tidlig',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Spontan abort — typer og håndtering</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Truende abort:</strong> Blødning + lukkede os + UL viser levende foster. Ekspektation.</li>
+        <li><strong>Missed abortion:</strong> Foster uden hjerteblink, os lukket. Medicinsk eller kirurgisk evakuering.</li>
+        <li><strong>Inkomplet abort:</strong> Delvis udtømt, blødning fortsætter. Kirurgisk evakuering (evacuatio).</li>
+        <li><strong>Komplet abort:</strong> Komplet udtømt, tom uterus på UL.</li>
+        <li>GA &lt; 12+0: fri abort mulig (Blanket A)</li>
+        <li>Anti-D til alle Rh-negative!</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tidlig-4">
+    <div class="step-header" onclick="toggleStep('tidlig',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Differentialdiagnoser til smerter og blødning i 1. trimester</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Ekstrauterin graviditet (EUG)</li>
+        <li>Truende, inkomplet eller missed abortion</li>
+        <li>Ovariecyste (corps luteum-cyste)</li>
+        <li>Appendicitis</li>
+        <li>Urinvejsinfektion (cystitis, pyelonefritis)</li>
+        <li>Underlivsinfektion (PID/salpingitis) — sjælden ved bekræftet graviditet</li>
+        <li>Mola hydatidosa (sjælden, kraftig HCG-stigning)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('tidlig',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === GYNÆKOLOGISK CANCER === -->
+<div id="case-cancer" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-gyn" style="margin-top:16px">Gynækologi</span>
+    <h2>Præcancrose og gynækologisk cancer</h2>
+    <p>Eksamenssæt: E23 (postmenopausal blødning/endometriecancer) &nbsp;·&nbsp; Rettearks</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="canc-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="canc-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-canc-1">
+    <div class="step-header" onclick="toggleStep('canc',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Postmenopausal blødning — anamnese, undersøgelse og cancerpakke</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Blødning, smerter, almensymptomer, vægttab, feber, sygdomsfølelse</li>
+        <li>Seneste menstruation, tidl. gynækologiske sygdomme, smear-status, samliv, dyspareuni</li>
+        <li>Risikofaktorer endometriecancer: overvægt, diabetes, hypertension, nulliparitet, sen menopause</li>
+        <li>Medicin: hormonbehandling (østrogen u. gestagen!), tamoxifen</li>
+        <li><strong>Objektiv:</strong> Palpation abdomen, GU (inspektion + eksploration), rektal eksploration</li>
+        <li><strong>Paraklinik:</strong> Transvaginal UL, endometriesug (→ cancerpakke), urinstix</li>
+      </ul>
+      <div class="answer-highlight">Enhver postmenopausal blødning = cancerpakke. Dette er "clear fail" hvis det glemmes (E23-retteark).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-canc-2">
+    <div class="step-header" onclick="toggleStep('canc',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Differentialdiagnoser til postmenopausal blødning</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Fra uterus:</strong> Endometriepolyp, endometriehyperplasi (med/uden atypi), <strong>endometriecancer</strong></li>
+        <li><strong>Fra urinveje:</strong> Polyp/cancer i blæren (afklar med urinstix hæmaturi)</li>
+        <li><strong>Fra rectum:</strong> Hæmorider, rektal cancer (afklar med rektaleksploration)</li>
+        <li>Vaginal rift ved atrofi (eksklusionsdiagnose)</li>
+        <li>Cervixcancer, vaginalcancer (sjælden)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-canc-3">
+    <div class="step-header" onclick="toggleStep('canc',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Behandling af endometriecancer</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Hysteroskopi + fjernelse af intrakavitær proces/biopsier → histologi (cancerpakke)</li>
+        <li>Hyperplasi med atypi <em>eller</em> endometriecancer: <strong>simpel hysterektomi + bilateral salpingo-ooforektomi (BSO)</strong></li>
+        <li>Højrisikohistologi / mistanke om spredning: billeddiagnostik (PET/CT) <em>inden</em> operation</li>
+        <li><strong>Sentinel node-teknik</strong> anvendes ved BÅDE lavrisko- og højrisikohistologi</li>
+        <li>Generelt god prognose — afhænger af stadium, differentiering og tumortype</li>
+      </ul>
+      <div class="answer-highlight">E23-retteark: sentinel node-teknik nævnes eksplicit som krav for "very good".</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-canc-4">
+    <div class="step-header" onclick="toggleStep('canc',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Cervixcancer og præcancrose — screening og opfølgning</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>HPV (human papillomvirus) årsag til &gt; 99% af cervixcancer</li>
+        <li><strong>Screening:</strong> Cervixcytologi (smear) anbefalet hvert 3. år fra 23 år til 65 år</li>
+        <li>Abnorm cytologi → HPV-test + kolposkopi + biopsi</li>
+        <li>CIN (cervikal intraepitelial neoplasi) 1–3: CIN1 ekspektation, CIN2–3 LEEP/konisation</li>
+        <li>Invasiv cancer: stadiebestemmes (FIGO) → kirurgi, strålebehandling eller kemoterapi</li>
+        <li>HPV-vaccination: drenge og piger tilbydes i vaccinationsprogrammet</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('canc',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === UNDERLIVSINFEKTION === -->
+<div id="case-underlivsinf" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-gyn" style="margin-top:16px">Gynækologi</span>
+    <h2>Underlivsinfektion (PID)</h2>
+    <p>Primært som differentialdiagnose i eksamenssæt — ingen dedikeret stand</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="pid-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="pid-progress-label">0 / 3 afsløret</p>
+
+  <div class="step-card" id="step-pid-1">
+    <div class="step-header" onclick="toggleStep('pid',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Diagnose og symptomer ved PID (salpingitis/endometritis)</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Bækkensmerter (bilaterale), feber, øget udflåd (purulent), dyspareuni</li>
+        <li><strong>Minimumsdiagnostik:</strong> Ømhed over uterus + bilateral adneksømhed ved GU (rokkeømhed ved cervix)</li>
+        <li>Paraklinik: CRP/leukocytter (forhøjet), klamydia- og gonokokpodning (cervikal + rektal), urinstix, graviditetstest (udeluk EUG!)</li>
+        <li>Vaginal UL: evt. tuboovarialabsces (sacto-salpinx/pyosalpinx)</li>
+      </ul>
+      <div class="answer-warn">Udeluk altid EUG (positiv graviditetstest) inden PID-diagnosen stilles.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pid-2">
+    <div class="step-header" onclick="toggleStep('pid',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Behandling af PID</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Ambulant (mild–moderat):</strong> Doxycyklin + metronidazol (± ceftriaxon IM engangsdosis ved mistanke om gonore)</li>
+        <li><strong>Indlæggelse:</strong> Svær PID, tuboovarialabsces, graviditet, manglende respons på peroral behandling, IV cefuroxim + metronidazol</li>
+        <li>Partnervarsling og behandling af partner</li>
+        <li>Klamydiatest og HIV-test anbefales</li>
+        <li>Komplikationer: infertilitet, kroniske bækkensmerter, øget EUG-risiko, tuboovarialabsces</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pid-3">
+    <div class="step-header" onclick="toggleStep('pid',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">PID som differentialdiagnose — hvornår skal du tænke på det?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p>PID optræder hyppigt som DD i eksamenssæt ved:</p>
+      <ul>
+        <li>Bækkensmerter hos ung kvinde med seksuelt aktiv profil</li>
+        <li>Udflåd + feber + smerter</li>
+        <li>Akutte bækkensmerter (se: EUG, appendicitis, adnextorsion, PID)</li>
+        <li>Differentialdiagnose til ovariecyste med komplikation</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('pid',3)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === HUMAN REPRODUKTION === -->
+<div id="case-humanrep" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-gyn" style="margin-top:16px">Gynækologi</span>
+    <h2>Human reproduktion</h2>
+    <p>Eksamenssæt: E23 (mandlig infertilitet), F25 (PCOS/fertilitet) &nbsp;·&nbsp; Målbeskrivelse</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="rep-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="rep-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-rep-1">
+    <div class="step-header" onclick="toggleStep('rep',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Menstruationscyklus og hormoner — oversigt</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Follikulærfase (dag 1–14):</strong> FSH stimulerer follikelvækst → østrogenproduktion stiger → endometrium opbygges</li>
+        <li><strong>Ovulation (dag 14):</strong> LH-surge udløser ægløsning → oocyt frigives</li>
+        <li><strong>Lutealfase (dag 14–28):</strong> Corpus luteum → progesteron → sekretorisk endometrium</li>
+        <li>Ingen befrugtning → corpus luteum atrofierer → østrogen/progesteron falder → menstruation</li>
+        <li>Normal cyklus: 21–35 dage. Ovulation ca. dag 14 (varierer).</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-rep-2">
+    <div class="step-header" onclick="toggleStep('rep',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Infertilitetsudredning — kvinde og mand</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Uhonoreret graviditetsønske &gt; 12 måneder (eller 6 måneder hvis &gt; 35 år) → udredning</li>
+        <li><strong>Kvinden:</strong> Kønshormoner (FSH, LH, AMH, østradiol), transvaginal UL (AFC, ovarievæv), HSG/sonohysterografi (tubapermeabilitet), smear/klamydia</li>
+        <li><strong>Manden:</strong> Sædanalyse × 2 med 3–4 ugers interval. Vurder: koncentration, motilitet, morfologi (WHO-kriterier)</li>
+        <li>E23-stand: mand med varierende sædkvalitet → forundersøgelse → anamnese, genitalia-undersøgelse, hormoner (FSH, LH, testosteron, prolaktin)</li>
+      </ul>
+      <div class="answer-highlight">Fertilitetsbehandling i DK: ret til fuld behandling hvis parret ikke har fælles barn. Grænse: kvinde under 40 år ved behandlingsstart.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-rep-3">
+    <div class="step-header" onclick="toggleStep('rep',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Mandlig infertilitet — årsager og udredning</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Sædanalyse:</strong> Koncentration, total motilitet (a+b), progressiv motilitet (a), morfologi</li>
+        <li><strong>Årsager:</strong> Idiopatisk (50%), varicocele, obstruktion (tidligere vasektomi, klamydia-epididymitis), hormonforstyrrelser (hypogonadisme), genetisk (Klinefelter 47,XXY, Y-deletion)</li>
+        <li>Anamnese: tidl. kønssygdomme, mumps-orchitis, traumer, kryptorkisme, medicin (anabolika!), tobak, alkohol, erhvervseksposition</li>
+        <li>Objektiv: genitalia, testesvolumen (normalværdi 12–25 ml)</li>
+        <li>Hormoner: FSH (forhøjet = spermatogeneseskade), LH, testosteron, prolaktin</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-rep-4">
+    <div class="step-header" onclick="toggleStep('rep',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Fertilitetsbehandlinger — oversigt</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Ovulationsinduktion:</strong> Letrozol/Clomifen ved anovulation (PCOS). Kræver UL-overvågning.</li>
+        <li><strong>IUI (intrauterin insemination):</strong> Vasket sæd sprøjtes op i uterus nær ovulation. Let mandlig faktor eller cervikalt problem.</li>
+        <li><strong>IVF (in vitro fertilisering):</strong> Ægudtagning → befrugtning in vitro → embryotransfer. Standard ved tubaproblemer, svær mandlig faktor.</li>
+        <li><strong>ICSI:</strong> Enkelt sædcelle injiceres direkte i æg. Svær mandlig infertilitet.</li>
+        <li>BMI-krav for offentlig fertilitetsbehandling: BMI &lt; 30–32 (afhænger af afdeling)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('rep',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === HORMONBEHANDLING I POSTKLIMAKTERIET === -->
+<div id="case-hormoner" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-gyn" style="margin-top:16px">Gynækologi</span>
+    <h2>Hormonbehandling i postklimakteriet</h2>
+    <p>Mangelfuldt dækket i projektfilerne — baseret på målbeskrivelse og klinisk grundviden</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="hrt-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="hrt-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-hrt-1">
+    <div class="step-header" onclick="toggleStep('hrt',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Overgangsalder og klimakterielle symptomer</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Gennemsnitlig alder ved menopause: 51 år (definition: 12 måneder uden menstruation)</li>
+        <li><strong>Vasomotoriske symptomer:</strong> Hedeture, nattesved (pga. faldende østrogen)</li>
+        <li>Urogenital atrofi: tørhed, dysuri, dyspareuni, inkontinens</li>
+        <li>Psykiske: søvnbesvær, humørsvingninger, koncentrationsbesvær</li>
+        <li>Knogle: øget osteoporose-risiko (østrogen beskytter knogler)</li>
+        <li>FSH og LH stiger markant (hypergonadotropt)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hrt-2">
+    <div class="step-header" onclick="toggleStep('hrt',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Systemisk MHT — indikationer, præparater og risici</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Indikation:</strong> Generende klimakterielle symptomer (hedeture, nattesved). Profylakse mod osteoporose.</li>
+        <li><strong>Kvinder med uterus:</strong> Kombination af østrogen + gestagen (beskytter endometrium mod hyperplasi/cancer)</li>
+        <li><strong>Kvinder uden uterus (hysterektomi):</strong> Østrogen alene</li>
+        <li>Administrationsformer: tabletter, plaster, gel, vaginalring</li>
+        <li><strong>Risici:</strong> Svagt øget risiko for brystkræft (kombineret MHT &gt; 5 år), DVT/LE (tabletter &gt; plaster/gel), slagtilfælde</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hrt-3">
+    <div class="step-header" onclick="toggleStep('hrt',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Lokal østrogenbehandling — hvornår og hvad?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Indikation: urogenital atrofi (tørhed, dysuri, dyspareuni, urgeinkontinens)</li>
+        <li>Præparater: Vagifem 10 µg vaginalstikpille (3 × ugtl.), Estring vaginalring (udskiftes q 3 mdr.), Estrokad vagitorier</li>
+        <li>Minimal systemisk absorption → kan bruges ved brystkræft i anamnesen (konferér onkolog)</li>
+        <li>Indgår fast i behandlingen af prolaps og inkontinens (E24, F23 eksamenssæt)</li>
+      </ul>
+      <div class="answer-highlight">Lokal østrogen er det eneste punkt om MHT der eksplicit fremgår af eksamenssæt (F23/E24). Kend præparaterne.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hrt-4">
+    <div class="step-header" onclick="toggleStep('hrt',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Kontraindikationer til systemisk MHT</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Aktiv eller nylig brystkræft, endometriecancer</li>
+        <li>Udiagnosticeret vaginalblødning</li>
+        <li>Aktiv venøs tromboembolisme (DVT/LE) — relativt</li>
+        <li>Svær leversygdom</li>
+        <li>Aktiv iskæmisk hjertesygdom, nyligt slagtilfælde</li>
+        <li>Graviditet</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('hrt',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+
+<!-- === SVANGREOMSORG === -->
+<div id="case-svangreomsorg" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Svangreomsorg og graviditetsundersøgelse</h2>
+    <p>Eksamenssæt: V2016 (3. grav.us), S2018 (2. grav.us), E23 (8 ugers postpartum) &nbsp;·&nbsp; Signes noter</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="svang-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="svang-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-svang-1">
+    <div class="step-header" onclick="toggleStep('svang',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Anamnese ved graviditetsundersøgelse — hvad skal altid afdækkes?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Graviditetsgener: kvalme, blødning, træthed, mærke liv, smerter, plukkeveer</li>
+        <li>Arbejde/belastninger — behov for orlov eller aflastning?</li>
+        <li>Præeklampsi-symptomer: <strong>hovedpine, synsforstyrrelser, epigastriesmerter</strong></li>
+        <li>Fosteraktivitet (reducerede bevægelser?)</li>
+        <li>Aktuel medicin — spørg efter vandrejournal</li>
+        <li>Risikofaktorer for GDM: tidl. glucosuri, overvægt (BMI &gt; 27), PCOS, familiær disposition, tidligere barn &gt; 4500 g</li>
+        <li>Bækkengener, vandladningsgener (UVI? — specielt GBS i urin)</li>
+      </ul>
+      <div class="answer-warn">Dumpegrunde: Manglende BT-måling ELLER manglende urinstix (S2018 retteark).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-svang-2">
+    <div class="step-header" onclick="toggleStep('svang',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Objektiv undersøgelsesplan ved svangreundersøgelse</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>BT</strong> (altid — screening for præeklampsi)</li>
+        <li><strong>Urinstix</strong> for glukose og protein (altid)</li>
+        <li>Vægt (med henblik på rådgivning om vægtøgning og kost)</li>
+        <li><strong>SF-mål</strong> (symfyse-fundus mål — fostervækst)</li>
+        <li>Fosterpræsentation (de 4 håndgreb)</li>
+        <li>Fosterets hjertelyd</li>
+        <li>Vurdering af ødemer</li>
+        <li>2. trimester: + urinundersøgelse for asymptomatisk bakteriuri</li>
+        <li>Blodprøve til Rh-negative kvinder (uge 25)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-svang-3">
+    <div class="step-header" onclick="toggleStep('svang',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">GBS (gruppe B streptokokker) fundet i urin — hvad gør du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>GBS i urin (urindyrkning) under graviditet = behandling med penicillin</li>
+        <li>Fund af GBS anføres i vandrejournal og jordemoderjournalen</li>
+        <li><strong>Ved fødslen: IV penicillin under aktiv fødsel</strong> (profylakse mod neonatal GBS-sepsis)</li>
+        <li>Øvrige indikationer for GBS-profylakse under fødsel: tidligere barn med GBS, GA &lt; 35 uger, feber under fødsel, langvarig vandafgang</li>
+      </ul>
+      <div class="answer-highlight">V2016: Fund af GBS i urindyrkning → information om iv penicillin ved fødslen. Dette er et konkret eksamens-testpunkt.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-svang-4">
+    <div class="step-header" onclick="toggleStep('svang',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">8-ugers postpartum undersøgelse — formål og indhold</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>Formål:</strong> Vurdering af moderens fysiske og psykiske tilstand, familiens trivsel og drøftelse af prævention.</p>
+      <ul>
+        <li>Klinisk: knibekraft (alle), gynækologisk us ved behov, cervixcytologi hvis udsat, Hgb</li>
+        <li>Amning: RVD (relativ vægtjusteret dosis) — brugt til at vurdere om medicin er sikkert ved amning. RVD = % af moderens dosis (mg/kg) som barnet tilføres ved 150 ml/kg/døgn modermælk</li>
+        <li>Inkontinens: spørg altid til knibefunktion og vandladningslækage</li>
+        <li>Prævention: drøft egnet metode (mini-piller og hormonspiral foretrækkes ved amning)</li>
+        <li>Smear: er den udsat? Kan tages ved denne konsultation</li>
+        <li>Psykisk trivsel: screening for fødselsdepression, baby blues, søvn, parforhold</li>
+      </ul>
+      <div class="answer-highlight">E23: Standen testede specifikt RVD-begrebet, inkontinens postpartum og præventionsrådgivning under amning.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('svang',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === PRÆNATAL DIAGNOSTIK === -->
+<div id="case-praenatal" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Føtalmedicin og prænatal diagnostik</h2>
+    <p>Eksamenssæt: S2017 (prænatal diagnostik), F25 skriftlig (1. trimesterskanning), S2021 (omphalocele)</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="prae-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="prae-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-prae-1">
+    <div class="step-header" onclick="toggleStep('prae',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">1. trimesterskanning — formål og indhold</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Terminsfastsættelse</strong> (CRL-måling)</li>
+        <li>Antal fostre (flerfoldsgraviditet?)</li>
+        <li><strong>Screening for kromosomafvigelser</strong> (informeret valg — ikke obligatorisk)</li>
+        <li>Risikovurdering for Down syndrom, trisomi 13 og 18: kombinerer nakkefoldstykkelse + blodprøve (PAPP-A, β-HCG) + alder + GA</li>
+        <li>Cut-off for henvisning til invasiv diagnostik: risiko ≥ 1:300</li>
+        <li>Lav PAPP-A: markør for øget risiko for FGR og præeklampsi</li>
+      </ul>
+      <div class="answer-highlight">F25 skriftlig: formål, parametre i sandsynlighedsberegning, og hyppigste kromosomafvigelse (Down syndrom / trisomi 21) er eksplicit testpunkter.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-prae-2">
+    <div class="step-header" onclick="toggleStep('prae',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Ved positiv screening (risiko ≥ 1:300) — hvilke muligheder har den gravide?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>CVS (chorionvillusbiopsi / moderkagebiopsi):</strong> fra ca. uge 10–16. Fosterets DNA fra placentavæv. Abortrisiko &lt; 0,2% (op til 1% accepteres som svar)</li>
+        <li><strong>Amniocentese:</strong> fra uge 16+0. Amnionceller dyrkes. Bruges hvis CVS ikke er muligt. Abortrisiko 0,5–1%</li>
+        <li><strong>NIPT (non-invasiv prænatal test):</strong> blodprøve fra mor. Kun for trisomi 13, 18 og 21. Alternativ til CVS hvis risiko &gt; 1:300 og ingen undtagelseskriterier</li>
+        <li>Afvente spontane forløb (ingen invasiv diagnostik)</li>
+      </ul>
+      <div class="answer-warn">NIPT er kun et alternativ — positiv NIPT kræver bekræftelse med invasiv diagnostik inden abort.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-prae-3">
+    <div class="step-header" onclick="toggleStep('prae',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">2. trimesterskanning og medfødtale misdannelser</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Formål: udelukke alvorlige misdannelser → valg af fødested, forberede forældre, evt. afbryde graviditet</li>
+        <li>Ved fund af misdannelse: tilbyd invasiv prøve <em>eller</em> direkte ansøgning om abort</li>
+        <li><strong>Fri abort:</strong> til GA 12+0. Efter 12+0 til uge 22: ansøgning til abortsamråd</li>
+        <li><strong>Omphalocele (bugvægsbrok):</strong> associeret med kromosomafvigelse — specielt <strong>trisomi 18 (Edwards syndrom)</strong>. Tilbyd moderkagebiopsi med kromosom-mikroarray</li>
+        <li>Betingelse for abort efter 12+0: fare for at barnet vil få en alvorlig legemlig eller sjælelig lidelse (Sundhedslovens §94.1.3)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-prae-4">
+    <div class="step-header" onclick="toggleStep('prae',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Down syndrom — vigtigste fakta til eksamen</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Hyppigste kromosomafvigelse ved levende fødte</li>
+        <li>Trisomi 21 (3 kopier af kromosom 21)</li>
+        <li>Karakteristika: intellektuel funktionsnedsættelse, hypotoni, karakteristisk ansigt (epikantus, flad næserod), medfødt hjertefejl (~50%), øget infektionstendens</li>
+        <li>Risiko stiger markant med maternel alder</li>
+        <li>F25: "Angiv den hyppigste kromosomafvigelse og karakteristika hos det fødte barn" — dette var et konkret spørgsmål</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('prae',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === TVILLINGEGRAVIDITET === -->
+<div id="case-tvillinger" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Tvillingegraviditet</h2>
+    <p>Eksamenssæt: V2021 (MCDA, TTTS), V2017 (MC tvillinger, præterm) &nbsp;·&nbsp; Signes noter</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="tvil-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="tvil-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-tvil-1">
+    <div class="step-header" onclick="toggleStep('tvil',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Klassificering af tvillingegraviditet — hvad afgør risikoen?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Monochoriotisk-diamniotisk (MCDA):</strong> deler moderkage, egne hinder. Høj risiko — TTTS og TAPS mulige. Tæt UL-kontrol hver 2. uge fra uge 16</li>
+        <li><strong>Monochoriotisk-monoamniotisk (MCMA):</strong> deler moderkage og hinder. Størst risiko — navlesnorsforviklinger. Sjælden.</li>
+        <li><strong>Dichoriotisk-diamniotisk (DCDA):</strong> egne moderkager og hinder. Lavest risiko. Kan være enæggede eller toæggede.</li>
+        <li>Chorionicitet bestemmes bedst ved 1. trimesterskanning (lambda-tegn = DCDA, T-tegn = MCDA)</li>
+      </ul>
+      <div class="answer-highlight">Eksamen: "Tvillinger der deler moderkage" = monochoriotiske = høj risiko for TTTS. Patienten MÅ IKKE sendes hjem uden UL af kompetent person (Signes noter).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tvil-2">
+    <div class="step-header" onclick="toggleStep('tvil',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">TTTS (tvillinge-transfusionssyndrom) — hvad er det og hvordan behandles det?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p>Opstår ved MCDA-tvillinger når blod passerer i ulige forhold fra den ene tvilling til den anden via forbundne blodkar i den fælles moderkage.</p>
+      <ul>
+        <li><strong>Donor-tvilling:</strong> giver blod → for lidt fostervand (oligohydramnios), lille, anæmisk</li>
+        <li><strong>Recipient-tvilling:</strong> modtager blod → for meget fostervand (polyhydramnios), stor, risiko for hydrops og hjerteinsufficiens</li>
+        <li><strong>Behandling:</strong> Laserkoagulation af karanastamoser i placenta (primær behandling). Alternativt: cordoklusion/navlesnors-okklusion af den ene tvilling, eller tæt UL-kontrol</li>
+        <li>Diagnose på UL: diskordant fostervandsmængde (et polyhydramnios + et oligohydramnios)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tvil-3">
+    <div class="step-header" onclick="toggleStep('tvil',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Truende præterm fødsel ved tvillingegraviditet — behandling</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Indlæggelse og CTG-overvågning</li>
+        <li><strong>Tractocile</strong> (atosiban) IV: tokolyse — hæmmer kontraktioner</li>
+        <li><strong>Betapred/betametason</strong> IM: lungemodnende behandling ved GA &lt; 34 uger</li>
+        <li><strong>Vaginalt progesteron (Lutinus):</strong> i rolig fase til at forlænge graviditeten</li>
+        <li>Antibiotika hvis infektion mistænkes</li>
+        <li>Cervixlængde på UL: kort cervix (&lt; 25 mm) = øget risiko for præterm fødsel</li>
+        <li>Neonatologisk samtale med forældre ved truende præmaturitet</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tvil-4">
+    <div class="step-header" onclick="toggleStep('tvil',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">TAPS (tvilling-anæmi-polycytæmi-syndrom) og differentialdiagnoser</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>TAPS:</strong> kronisk ubalance i blodoverførsel. En tvilling er bleg (anæmisk) og den anden rødlig (polycytæmisk) efter fødslen</li>
+        <li>Behandling: blodtransfusion til den anæmiske tvilling, evt. delvis transfusion til den polycytæmiske</li>
+        <li><strong>DD ved smerter hos MCDA-gravid:</strong> TTTS, truende præterm fødsel, præeklampsi, cystitis, hydronefrose, cholelithiasis, abruptio, obstipation</li>
+        <li>Paraklinik ved mistanke om PE hos tvillinge-gravid: Hgb, trombocytter, Na, K, kreatinin, ALAT, LDH, urat</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('tvil',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === VÆKSTHÆMNING OG BLØDNING === -->
+<div id="case-vaeksthemning" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Væksthæmning og blødning i graviditet</h2>
+    <p>Eksamenssæt: F25 (FGR), E24 (placenta prævia), S2017/E24 (vaginalblødning DD)</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="vaekst-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="vaekst-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-vaekst-1">
+    <div class="step-header" onclick="toggleStep('vaekst',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">FGR (føtal væksthæmning) — årsager og udredning</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p>Årsager inddeles i 4 grupper (F25 retteark):</p>
+      <ul>
+        <li><strong>Maternel:</strong> medicinske sygdomme (kronisk hypertension, PE, nyre-, thyreoidea- og tarmsygdomme, virusinfektioner), høj alder, rygning, alkohol/stofmisbrug</li>
+        <li><strong>Føtal:</strong> kromosom- eller genafvigelser, misdannelser, flerfold</li>
+        <li><strong>Placentær:</strong> placentaanomalier (prævia, velamentøs navlesnorsinsertion, cirkumvallat placenta, placentær mosaicisme)</li>
+        <li><strong>Ekstern:</strong> lav socioøkonomisk status, høj alder, rygning (overlapper maternel)</li>
+      </ul>
+      <p style="margin-top:10px">Markør i 1. trimester: <strong>lav PAPP-A + øget modstand i a. uterina</strong> → øget risiko FGR og PE.</p>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-vaekst-2">
+    <div class="step-header" onclick="toggleStep('vaekst',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Håndtering af FGR/placentainsufficiens (F25-stand)</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Ingen indlæggelse ved stabile flow og normale bevægelser</li>
+        <li><strong>Tætte ultralydskontroller:</strong> fostervægt, flowmålinger (a. umbilicalis, a. cerebri media, ductus venosus), fostervandsmængde og fosterbevægelser</li>
+        <li>BT og urinstix ved hver kontrol (screening for PE)</li>
+        <li>Overveje <strong>lungemodnende behandling</strong> (betapred) og <strong>magnesiumsulfat</strong> (neuroprotektiv) hvis fødsel før uge 34/32 forventes</li>
+        <li>Præterm forløsning hvis barnet ikke vokser eller der opstår flowpåvirkning</li>
+        <li>Øget risiko for <strong>peripartal asfyksi</strong> og akut sectio</li>
+        <li>FGR øger risiko for metabolisk syndrom og hjertekarsygdom hos barnet på lang sigt</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-vaekst-3">
+    <div class="step-header" onclick="toggleStep('vaekst',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Vaginalblødning i graviditet — differentialdiagnoser</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Tegnblødning</strong> (begyndende fødsel)</li>
+        <li><strong>Placenta prævia:</strong> smertefri frisk blødning, moderkage dækker indre modermunde. <em>Aldrig</em> indvendig undersøgelse før placenta-lokalisation er kendt!</li>
+        <li><strong>Abruptio placentae:</strong> smertefuld blødning, hård uterus ("træ-uterus"), coagulationsforstyrrelse mulig</li>
+        <li><strong>Vasa prævia:</strong> sjælden, fatal blødning ved vandafgang</li>
+        <li>Erytroplakier, hæmorider, cystitis, cervixcancer (S2020: kontaktblødning + CIN 2 i anamnesen)</li>
+        <li>Uterusruptur (ved tidligere sectio)</li>
+      </ul>
+      <div class="answer-warn">CAVE: Undlad GU (eksploration) ved blødning i 3. trimester FØR placenta-lokalisation er bekræftet på UL!</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-vaekst-4">
+    <div class="step-header" onclick="toggleStep('vaekst',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Behandling af placenta prævia (E24-stand)</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Indlæggelse + kontinuerlig CTG-overvågning</li>
+        <li>Ved pågående blødning: Trendelenburg-lejring, ilt på maske, IV væske (→ blod)</li>
+        <li>Overveje <strong>tranexamsyre (Cyklokapron)</strong> ved pågående blødning</li>
+        <li>Lungemodnende behandling (betapred) + magnesiumsulfat ved GA &lt; 34/32 uger</li>
+        <li>Total/marginal placenta prævia: <strong>planlagt sectio GA 37+0</strong>, fødsel på hospital med blodbank og højt beredskab</li>
+        <li>Ophørt/lille blødning: indlæggelse til blødningsfri i 48 timer, derefter aflastning og tæt opfølgning</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('vaekst',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === GDM OG MEDICINSKE SYGDOMME === -->
+<div id="case-gdm" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Medicinske sygdomme i graviditeten</h2>
+    <p>Eksamenssæt: S2018 (GDM), V2020 (GDM), E23 (GDM) &nbsp;·&nbsp; Signes noter</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="gdm-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="gdm-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-gdm-1">
+    <div class="step-header" onclick="toggleStep('gdm',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">GDM — indikationer for OGTT og tolkning</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>OGTT tilbydes:</strong> mindst 2 af følgende risikofaktorer:</p>
+      <ul>
+        <li>Overvægt (BMI ≥ 27 kg/m² før graviditet)</li>
+        <li>PCOS</li>
+        <li>Familiær disposition til diabetes (forældre, bedsteforældre, søskende)</li>
+        <li>Tidligere barn over 4500 g</li>
+        <li>Tidligere glucosuri</li>
+      </ul>
+      <p style="margin-top:10px"><strong>OGTT:</strong> 75 g glukose. Måles kun 2-timers blodglukose (dobbeltbestemmelse).</p>
+      <p><strong>Diagnose GDM:</strong> ≥ 9,0 mmol/l (kapillært fuldblod) eller venøst plasma</p>
+      <div class="answer-warn">Dumpegrund: Manglende OGTT-henvisning ved glucosuri + risikofaktorer (S2018, V2020 retteark).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-gdm-2">
+    <div class="step-header" onclick="toggleStep('gdm',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Hvad betyder GDM for mor og barn — under og efter graviditeten?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>Under graviditeten:</strong></p>
+      <ul>
+        <li>Daglig blodsukkermåling derhjemme (oplæres)</li>
+        <li>Tilvækstskanninger af fosteret</li>
+        <li>Øget risiko for stort barn (makrosomi) og præeklampsi</li>
+        <li>Stiler mod vaginal fødsel — igangsætning senest 1 uge over termin (eller tidligere ved stort barn/komplikationer)</li>
+      </ul>
+      <p style="margin-top:8px"><strong>Barnet:</strong> Øget risiko for hypoglykæmi efter fødslen (hyperinsulinisme) — blodsukkerkontrol 2 timer post partum</p>
+      <p style="margin-top:8px"><strong>Moderen efter fødslen:</strong> OGTT eller fasteblodsukker + HbA1c ca. 3 mdr. efter fødsel. Ca. 40% udvikler type 2-diabetes inden for 10 år → livslang kontrol hos egen læge</p>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-gdm-3">
+    <div class="step-header" onclick="toggleStep('gdm',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Behandling af GDM</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>1. linje:</strong> Kostomlægning (mere fedt- og glukosefattig kost) + motion. Vejledning af diætist</li>
+        <li><strong>2. linje:</strong> Insulinbehandling — hvis blodsukkeret ikke kan kontrolleres med kost og motion</li>
+        <li>Begrænse vægtøgning i graviditeten</li>
+        <li>GDM forsvinder oftest umiddelbart efter fødslen</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-gdm-4">
+    <div class="step-header" onclick="toggleStep('gdm',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Andre medicinske sygdomme i graviditeten — dokumenteret i eksamenssæt</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>Hypothyreose (velreguleret):</strong> nævnt i F25-stand som kendt sygdom hos den gravide. Medicin: Eltroxin (levothyroxin). Vigtigt at TSH holdes velreguleret under graviditet.</p>
+      <p style="margin-top:10px"><strong>GBS i urin under graviditet:</strong> behandles med penicillin. Noteres i vandrejournal. IV penicillin profylakse under aktiv fødsel (se svangreomsorg).</p>
+      <p style="margin-top:10px"><strong>Stofskiftesygdom / Graves (V2022):</strong> Primært dækket i pædiatri-sektionen. Thyrotoksikose i graviditet kan give FGR og præterm fødsel.</p>
+      <div class="answer-highlight">Emnerne astma, epilepsi, kronisk hypertension og hjertesygdom i graviditet er IKKE dokumenteret i de tilgængelige eksamenssæt. Upload forelæsninger for dækning.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('gdm',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === PRÆTERM FØDSEL === -->
+<div id="case-praeterm" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Præterm fødsel</h2>
+    <p>Eksamenssæt: V2022 (præterm fødsel retteark), S2020 (skriftlig) &nbsp;·&nbsp; Signes noter</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="pterm-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="pterm-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-pterm-1">
+    <div class="step-header" onclick="toggleStep('pterm',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Risikofaktorer og diagnostik ved truende præterm fødsel</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>Risikofaktorer (V2022 retteark):</strong></p>
+      <ul>
+        <li>Ukendt årsag (50%)</li>
+        <li>Tidligere spontan præterm fødsel</li>
+        <li>Infektion (bakteriel vaginose, GBS, cystitis, pneumoni, pyelonefritis, appendicitis)</li>
+        <li>Polyhydramnios, flerfoldsgraviditet</li>
+        <li>Cervixinsufficiens, tidligere konisation, bicorn uterus</li>
+      </ul>
+      <p style="margin-top:10px"><strong>Diagnostik:</strong> Anamnese (veer, vandafgang, blødning) → GU: inspektion + eksploration (<em>CAVE PPROM</em>) → UL: abdominal (fosterleje, størrelse, fostervand, placenta) + cervixskanning (længde, funneling) → CTG</p>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pterm-2">
+    <div class="step-header" onclick="toggleStep('pterm',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Behandling af truende præterm fødsel</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Indlæggelse, roligt regime, CTG-overvågning</li>
+        <li><strong>Tractocile (atosiban)</strong> IV: tokolyse (hæmmer kontraktioner)</li>
+        <li><strong>Betapred/betametason</strong> IM: lungemodnende behandling ved GA &lt; 34 uger</li>
+        <li><strong>Magnesiumsulfat</strong> IV: neuroprotektiv effekt ved GA &lt; 32 uger</li>
+        <li>Vaginalt progesteron (Lutinus) i rolig fase</li>
+        <li>Antibiotika ved mistanke om infektion (GBS-profylakse iv penicillin ved aktiv fødsel)</li>
+        <li>Neonatologisk samtale med forældre — forberede om præmaturitetskomplikationer</li>
+        <li>Overveje overflytning til center med neonatalafdeling med rette kapacitet</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pterm-3">
+    <div class="step-header" onclick="toggleStep('pterm',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">RDS (respiratorisk distress-syndrom) — årsag, forebyggelse og behandling</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Årsag:</strong> Umodne lunger med mangel på surfactant → alveolerne kollapser i ekspirationsfasen</li>
+        <li><strong>Forebyggelse:</strong> IM betapred (steroid) til moderen ved truende præterm fødsel GA &lt; 34 uger → stimulerer surfactant-produktion</li>
+        <li><strong>Behandling af barnet:</strong> nCPAP (nasal continuous positive airway pressure) → ved stigende iltbehov: Curosurf (surfactant) intratrakeal → respiratorbehandling</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pterm-4">
+    <div class="step-header" onclick="toggleStep('pterm',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Komplikationer fra umodne organer hos det præmature barn</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p>Fire organsystemer udover lungerne (fra S2020-retteark):</p>
+      <ul>
+        <li><strong>CNS:</strong> IVH (intraventrikulær hæmoragi) grad 1–4, PVL (periventrikulær leukomalaci) → risiko for cerebral parese</li>
+        <li><strong>Hjerte:</strong> DAP (ductus arteriosus persistens) — ductusen lukker sig ikke spontant</li>
+        <li><strong>Tarm:</strong> NEC (nekrotiserende enterocolitis) — alvorlig tarminfektion/iskæmi</li>
+        <li><strong>Øjne:</strong> ROP (retinopati of prematurity) — unormal karvækst i retina → synstab</li>
+      </ul>
+      <div class="answer-highlight">Eksamen: "Nævn 4 organsystemer med komplikationer" — CNS/IVH, hjerte/DAP, tarm/NEC, øjne/ROP. Lær disse 4 par udenad.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('pterm',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === BARSELSKOMPLIKATIONER === -->
+<div id="case-barsel" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Barselskomplikationer</h2>
+    <p>Eksamenssæt: S2019 (endometritis), S2017 (8-ugers us.), E23 (amning/RVD/prævention)</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="bars-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="bars-progress-label">0 / 4 afsløret</p>
+
+  <div class="step-card" id="step-bars-1">
+    <div class="step-header" onclick="toggleStep('bars',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Endometritis efter fødsel — diagnose og behandling</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Symptomer:</strong> Feber, purulent/ildelugtende vaginaludflåd eller øget blødning, efterveer/abdominalsmerter, øm uterus ved palpation</li>
+        <li><strong>Paraklinik:</strong> Infektionstal (CRP, leukocytter), urinstix/urindyrkning (udeluk UVI), podning fra vagina/cervix, UL (retineret placentavæv?)</li>
+        <li><strong>Diagnose:</strong> Endometritis — med eller uden retineret placentavæv</li>
+        <li><strong>Behandling:</strong> Antibiotika (cefuroxim/pondocillin + metronidazol) ± evacuatio</li>
+        <li>Svært påvirket patient: Indlæggelse til IV behandling + evacuatio</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-bars-2">
+    <div class="step-header" onclick="toggleStep('bars',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Øvrige barselskomplikationer — hvad skal du kende?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p>Fra S2019-retteark (angiv andre komplikationer i barselsperioden):</p>
+      <ul>
+        <li>Hæmatom, infektion og blødning fra rifter i vagina/mellemkød</li>
+        <li>Mastitis (brystbetændelse)</li>
+        <li>DVT og lungeemboli</li>
+        <li>Urinvejsinfektion</li>
+        <li>Vandladnings- og afføringsproblemer</li>
+        <li>Baby blues / fødselsdepression</li>
+        <li>Stofskiftesygdom (postpartum thyroiditis)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-bars-3">
+    <div class="step-header" onclick="toggleStep('bars',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">RVD — hvad er det og hvornår bruges det?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>RVD = Relativ Vægtjusteret Dosis</strong></p>
+      <p>Den procentdel (i mg/kg) af moderens dosis som barnet tilføres via modermælk — beregnet ved et forventet ammeindtag på <strong>150 ml/kg/døgn</strong>.</p>
+      <ul>
+        <li>RVD &lt; 10%: generelt acceptabelt/sikkert under amning</li>
+        <li>Paracetamol RVD = 1–6% → sikkert ved amning</li>
+        <li>Bruges til at rådgive ammende mødre om medicin</li>
+        <li>Slå altid op på pro.medicin.dk — angiv dette til patienten</li>
+      </ul>
+      <div class="answer-highlight">E23: RVD-begrebet var eksplicit testpunkt — kend definitionen og kunne udregne barnets dosis.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-bars-4">
+    <div class="step-header" onclick="toggleStep('bars',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Prævention og inkontinens ved postpartum konsultation</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>Prævention under amning:</strong></p>
+      <ul>
+        <li>P-piller (kombinerede): <em>undgå</em> de første måneder under amning (kan reducere mælkeproduktion)</li>
+        <li><strong>Mini-piller</strong> (gestagen): sikkert under amning — foretrukket hormonel metode</li>
+        <li><strong>Hormonspiral</strong>: kan oplægges fra 4–6 uger postpartum — god mulighed</li>
+        <li>Kobberspiral: sikkert, ingen hormonpåvirkning, kan oplægges 4–6 uger postpartum</li>
+      </ul>
+      <p style="margin-top:10px"><strong>Inkontinens postpartum:</strong> Hyppigt efter vaginal fødsel. Spørg om lækage ved hoste/løb. Bækkenbundstræning er førstevalg. Henvis hvis ikke bedring inden 3–6 mdr.</p>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('bars',4)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === VIRUSSYGDOMME === -->
+<div id="case-virus" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Virussygdomme under graviditet</h2>
+    <p>Eksamenssæt: F24 (parvovirus stand — Hanne 35 år), S2018 (parvovirus skriftlig)</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="vir-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="vir-progress-label">0 / 3 afsløret</p>
+
+  <div class="step-card" id="step-vir-1">
+    <div class="step-header" onclick="toggleStep('vir',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Parvovirus B19 (lussingesyge) — symptomer, smitte og udredning</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Andet navn: <strong>Den femte børnesygdom / erythema infectiosum</strong></li>
+        <li><strong>Symptomer:</strong> Inkubation 1–2 uger → uspecifikke symptomer (feber, kataralia, hovedpine) / ingen symptomer → efter ca. 5 dage: udslæt ("røde kinder") eller ledgener. Smitsom FØR udslæt.</li>
+        <li><strong>Smittemåde:</strong> dråbesmitte. Størst risiko i hjemmet, stigende risiko med antal børn</li>
+        <li><strong>Udredning:</strong> Blodprøve til parvovirus IgM og IgG</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-vir-2">
+    <div class="step-header" onclick="toggleStep('vir',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Parvovirus IgM/IgG — tolkning af alle 4 kombinationer</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>IgM neg / IgG pos:</strong> Tidligere inficeret = immun → kan afsluttes</li>
+        <li><strong>IgM neg / IgG neg:</strong> Ubeskyttet, formentlig ikke smittet → ny serologi om 2–3 uger</li>
+        <li><strong>IgM pos / IgG neg:</strong> Nylig smittet gravid → mulighed for inficeret foster → UL + ny serologi om 2–3 uger. Ved serokonvertering: UL-kontrol i 12 uger</li>
+        <li><strong>IgM pos / IgG pos:</strong> Nyere smittet/serokonverteret → mulighed for inficeret foster → UL-kontrol i 12 uger fra serokonvertering</li>
+      </ul>
+      <div class="answer-highlight">F24-stand: alle 4 kombinationer er på retteark. Lær alle 4 svar udenad — de kan komme som selvstændigt spørgsmål.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-vir-3">
+    <div class="step-header" onclick="toggleStep('vir',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Risici, behandling og TORCH</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>Parvovirus — risici for foster:</strong></p>
+      <ul>
+        <li>Risiko størst ved GA &lt; 20 uger</li>
+        <li>Lille risiko for abort og fosterdød</li>
+        <li>Føtalanæmi → <strong>hydrops foetalis</strong> (væskeophobning)</li>
+        <li><strong>Misdannelser ses IKKE</strong> ved parvovirus</li>
+        <li>Behandling: <strong>ingen medicin eller vaccine</strong>. Ved føtalanæmi: intrauterin blodtransfusion</li>
+        <li>Opfølgning: UL mindst hver 2. uge i 12 uger (hyppigere ved mistanke om anæmi — MCA PSV)</li>
+      </ul>
+      <p style="margin-top:10px"><strong>TORCH:</strong> ramme for transplacentære infektioner (fra F24-retteark):</p>
+      <ul>
+        <li><strong>T</strong>oxoplasmose &nbsp;·&nbsp; <strong>O</strong>ther &nbsp;·&nbsp; <strong>R</strong>ubella &nbsp;·&nbsp; <strong>C</strong>ytomegalovirus &nbsp;·&nbsp; <strong>H</strong>erpes simplex</li>
+      </ul>
+      <div class="answer-warn">CMV, rubella, varicella, HIV, hepatitis B er IKKE detaljeret dækket i de tilgængelige projektfiler. Upload forelæsninger for fuld dækning.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('vir',3)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === ASFYKSI === -->
+<div id="case-asfyksi" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Intrauterin asfyksi og neonatal genoplivning</h2>
+    <p>Neonatal asfyksi dokumenteret i noter &nbsp;·&nbsp; V2017 intrauterin asfyksi (ingen svar i Signes noter)</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="asf-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="asf-progress-label">0 / 3 afsløret</p>
+
+  <div class="step-card" id="step-asf-1">
+    <div class="step-header" onclick="toggleStep('asf',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Neonatal genoplivning — protokol fra undervisningen</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ol style="padding-left:20px; line-height:1.9">
+        <li>Fødsel → <strong>start uret</strong></li>
+        <li>Tør (stimulér) barnet, oprethold normal temperatur</li>
+        <li>Vurder vejrtrækning og hjerteaktion</li>
+        <li>Gisp eller ingen vejrtrækning → frie luftveje + <strong>5 ventilationer</strong></li>
+        <li>Ingen thoraxbevægelser → revurdér hovedposition, frie luftveje → <strong>gentag 5 ventilationer</strong></li>
+        <li>Ingen hjerteaktion eller &lt; 60/min → <strong>start hjertemassage: 3:1 (kompression:ventilation)</strong></li>
+        <li>Vurder hjerteaktion efter hver 30 sekunder</li>
+        <li>Fortsat &lt; 60/min → overvej IV adgang + medicin + volumen</li>
+      </ol>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-asf-2">
+    <div class="step-header" onclick="toggleStep('asf',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Neonatal asfyksi — Apgar, navlesnors blodprøver og kølebehandling</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Apgar-score:</strong> Svær asfyksi &lt; 4 ved 1 minut. Moderat asfyksi &lt; 8 ved 1 minut.</li>
+        <li><strong>Navlesnors blodprøver:</strong> Metabolisk (laktat) acidose bekræfter intrauterin asfyksi</li>
+        <li><strong>Diagnose:</strong> Svær neonatal asfyksi</li>
+        <li><strong>Behandling:</strong> Indlæggelse på neonatalafdeling + <strong>kølebehandling (33,5°C i 72 timer)</strong> — reducerer hjerneskade</li>
+        <li>CFM (cerebral funktionsovervågning): overvågning for kramper</li>
+        <li>MR cerebrum (dag 4–7) med henblik på skadesvurdering</li>
+        <li>Vigtige kliniske tegn: kramper, sutterefleks, tonus</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-asf-3">
+    <div class="step-header" onclick="toggleStep('asf',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvad er IKKE dokumenteret — vigtigt at vide</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p>V2017-standen om intrauterin asfyksi under fødsel har <strong>ingen svar i Signes noter</strong>. Det følgende er derfor ikke dækket af eksamensmateriale:</p>
+      <ul>
+        <li>CTG-mønstres der indikerer intrauterin asfyksi (decelerationer, basislinje)</li>
+        <li>Skalatuba/fosterblodprøve (STAN/ST-analyse)</li>
+        <li>Håndtering af asfyksi under selve forløbningen</li>
+      </ul>
+      <div class="answer-warn">Upload forelæsninger om CTG-tolkning og intrauterin asfyksi for fuld dækning af dette emne.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('asf',3)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === KOMPLICEREDE FØDSLER === -->
+<div id="case-kompfodsel" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Komplicerede fødsler</h2>
+    <p>Begrænset dækning — kun indirekte nævnt i eksamenssæt. Ingen dedikeret stand.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="komp-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="komp-progress-label">0 / 2 afsløret</p>
+
+  <div class="step-card" id="step-komp-1">
+    <div class="step-header" onclick="toggleStep('komp',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Kejsersnit og instrumentel forløsning — hvad er dokumenteret?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Sectio (kejsersnit):</strong> nævnt som fødselsmåde i E24 (tidl. underkropspræsentation), E23 (tidl. sectio), tvillingestande, placenta prævia (planlagt GA 37+0)</li>
+        <li><strong>Cup (vakuumekstraktion):</strong> nævnt som mulig instrumentel fødselsmåde ved skulderdystocia og fødselsprogression (S2018 obstetrisk anamnese — "cup eller kejsersnit?")</li>
+        <li><strong>Skulderdystocia:</strong> nævnt kortvarigt i GDM-kontekst (stort barn ved GDM = risiko). Ingen detaljeret håndtering dokumenteret.</li>
+        <li><strong>Uterusruptur:</strong> nævnt som DD ved vaginalblødning hos kvinde med tidligere sectio</li>
+      </ul>
+      <div class="answer-warn">Detaljer om indikationer, teknik og komplikationer ved sectio, cup og tang er IKKE dokumenteret i de tilgængelige projektfiler.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-komp-2">
+    <div class="step-header" onclick="toggleStep('komp',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Postpartum hæmoragi — hvad er dokumenteret?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p>Postpartum blødning nævnes indirekte som barselskomplikation (S2019 retteark):</p>
+      <ul>
+        <li>Hæmatom, infektion og blødning fra rifter i vagina/mellemkød</li>
+        <li>Retineret placentavæv → endometritis + blødning</li>
+      </ul>
+      <div class="answer-warn">Definitionen af PPH, oxytocin, misoprostol, uterustampade og kirurgisk håndtering er ikke dokumenteret i projektfilerne. Upload forelæsninger for dækning.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('komp',2)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === DEN NORMALE FØDSEL === -->
+<div id="case-normalfodsel" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-obs" style="margin-top:16px">Obstetrik</span>
+    <h2>Den normale fødsel</h2>
+    <p>Begrænset dækning — kun indirekte nævnt i eksamenssæt. Ingen dedikeret stand.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="norm-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="norm-progress-label">0 / 2 afsløret</p>
+
+  <div class="step-card" id="step-norm-1">
+    <div class="step-header" onclick="toggleStep('norm',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">De 4 håndgreb og CTG — hvad er dokumenteret?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>De 4 håndgreb</strong> nævnes konsekvent ved objektiv undersøgelse i næsten alle obstetriske stande:</p>
+      <ul>
+        <li>Bruges til vurdering af: fosterleje (hoved/sæde), engagement, fosterstørrelse, kontraktioner</li>
+        <li>Nævnes specifikt i V2021, V2017, V2022, F25, E24</li>
+      </ul>
+      <p style="margin-top:10px"><strong>CTG (kardiotokografi)</strong> nævnes som obligatorisk ved alle akutte obstetriske situationer. Normal reaktiv CTG = normalfund.</p>
+      <div class="answer-warn">Tolkning af patologisk CTG (decelerationer, basislinje, variabilitet) er ikke dækket i de tilgængelige projektfiler. Upload forelæsninger.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-norm-2">
+    <div class="step-header" onclick="toggleStep('norm',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">GBS-profylakse under fødsel og igangsætning</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>Igangsætning:</strong> Nævnt i GDM-kontekst (senest 1 uge over termin) og FGR-kontekst. Detaljer om metoder (prostaglandiner, oxytocin) ikke dokumenteret.</p>
+      <p style="margin-top:10px"><strong>GBS-profylakse under fødsel (dokumenteret fra V2016 og V2020):</strong></p>
+      <ul>
+        <li>Indikationer: GBS i urin i aktuelle graviditet, tidligere barn med GBS, GA &lt; 35 uger, feber under fødsel, langvarig vandafgang</li>
+        <li>Behandling: <strong>IV penicillin</strong> ved aktiv fødsel</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('norm',2)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+</main>
+</div><!-- /view-case -->
+
+<footer>K8 OSCE Studieguide · Kvinde, Mor, Barn · SDU · Baseret på eksamenssæt F23–F25 + E23–E24</footer>
+
+<script>
+var totalSteps = { pe:6, anti:5, blod:5, endo:5, uro:5, tidlig:4, canc:4, pid:3, rep:4, hrt:4, svang:4, prae:4, tvil:4, vaekst:4, gdm:4, pterm:4, bars:4, vir:3, asf:3, komp:2, norm:2 };
+var revealed = {};
+for (var k in totalSteps) revealed[k] = {};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.pane').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function openCase(id) {
+  document.querySelectorAll('.case-pane').forEach(function(p){ p.style.display='none'; });
+  document.getElementById('view-overview').style.display = 'none';
+  document.getElementById('view-case').style.display = 'block';
+  document.getElementById('case-' + id).style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function closeCase() {
+  document.getElementById('view-case').style.display = 'none';
+  document.getElementById('view-overview').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function toggleStep(caseId, num) {
+  var card = document.getElementById('step-' + caseId + '-' + num);
+  if (!card) return;
+  if (card.classList.contains('revealed')) {
+    var ans = card.querySelector('.step-answer');
+    ans.style.display = ans.style.display === 'none' ? '' : 'none';
+  } else {
+    card.classList.add('revealed');
+    revealed[caseId][num] = true;
+    updateProgress(caseId);
+  }
+}
+
+function revealAll(caseId, total) {
+  for (var i = 1; i <= total; i++) {
+    var card = document.getElementById('step-' + caseId + '-' + i);
+    if (card && !card.classList.contains('revealed')) {
+      card.classList.add('revealed');
+      revealed[caseId][i] = true;
+    }
+  }
+  updateProgress(caseId);
+}
+
+function updateProgress(caseId) {
+  var count = Object.keys(revealed[caseId]).length;
+  var total = totalSteps[caseId];
+  var pct = Math.round((count / total) * 100);
+  var fill = document.getElementById(caseId + '-progress');
+  var label = document.getElementById(caseId + '-progress-label');
+  if (fill) fill.style.width = pct + '%';
+  if (label) label.textContent = count + ' / ' + total + ' afsløret';
+}
+
+var notesData = [
+
+// ─── GYN ───────────────────────────────────────────────────────────────────
+
+{ id:'gyn_1', spec:'GYN', num:1, title:'Antikonception <em>og abort</em>',
+  src:'F24, F25, S2021',
+  sub:'<table class="nst"><thead><tr><th>Metode</th><th>Fordel</th><th>Kontraindikation</th></tr></thead><tbody><tr><td><strong>P-piller (kombinerede)</strong></td><td>Høj effekt, kan udsætte blødning</td><td>Migræne med aura, VTE, hypertension</td></tr><tr><td><strong>Mini-piller (gestagen)</strong></td><td>Ingen arteriel tromboserisiko</td><td>Aktuel/tidl. VTE, svær leversygdom</td></tr><tr><td><strong>Hormonspiral</strong></td><td>Høj compliance, reducerer blødning</td><td>Submukøse fibromer, gentagne PID</td></tr><tr><td><strong>Kobberspiral</strong></td><td>Ingen hormoner, høj compliance</td><td>Submukøse fibromer, gentagne PID</td></tr><tr><td><strong>P-stav</strong></td><td>Ingen tromboserisiko, compliance</td><td>Gestagenafhængig tumor</td></tr><tr><td><strong>Kondom/pessar</strong></td><td>Beskytter mod kønssygdomme</td><td>Ingen</td></tr></tbody></table>',
+  grid:[
+    {l:'Ætiologi / RF', c:'<ul><li>Uønsket graviditet</li><li>RF for VTE ved kombinerede p-piller: migræne med aura, tidl. DVT/LE, koagulationssygdom, hypertension, rygning, overvægt</li><li>Epilepsimedicin reducerer p-pillernes effekt</li></ul>'},
+    {l:'Udredning', c:'<ul><li>Urin-HCG (ved graviditetsmistanke)</li><li>BMI og BT (obligatorisk ved p-pilleordination)</li><li>Klamydiapodning inden spiraloplægning</li><li>Transvaginal UL: intrauterin graviditet? GA? CRL-mål</li><li>Blodtype og BAC-test (mhp. Anti-D)</li></ul>', full:true},
+    {l:'Behandling — abort', c:'<ul><li>Fri abort til GA 12+0 — <strong>Blanket A er obligatorisk</strong></li><li>Medicinsk: Mifegyn (mifepriston) po + Cytotec (misoprostol) vag. med 1-2 døgns interval</li><li>Kirurgisk: vakuumaspiration i GA (bedøvelse)</li><li><strong>Anti-D til alle Rh-negative kvinder</strong></li><li>Efter 12+0 til uge 22: ansøgning til abortsamråd</li></ul>', full:true},
+    {l:'Eksamen-fælder', c:'<ul><li>Blanket A glemt = grænsetilfælde på retteark</li><li>Anti-D glemt = trækker ned</li><li>Klamydiapodn glemt inden spiraloplægning</li></ul>', full:true, warn:true}
+  ]
+},
+
+{ id:'gyn_2', spec:'GYN', num:2, title:'Blødningsforstyrrelser <em>og PCOS</em>',
+  src:'F23, F25, V2020',
+  sub:'<table class="nst"><thead><tr><th>Term</th><th>Definition</th><th>Vigtigste tanke</th></tr></thead><tbody><tr><td><strong>Menoragi</strong></td><td>Kraftige, regelmæssige blødninger (&gt;80 ml)</td><td>Fibrom, polyp, ustabil progesteron</td></tr><tr><td><strong>Metroragi</strong></td><td>Acyklisk / uregelmæssig blødning</td><td>Bred udredning, udeluk infektion + graviditet</td></tr><tr><td><strong>Kontaktblødning</strong></td><td>Blødning ved samleje</td><td>OBS cervixcancer → cancerpakke!</td></tr><tr><td><strong>Postmenopausal blødning</strong></td><td>&gt;1 år efter menopause</td><td>Altid udredning — 10% er cancer</td></tr><tr><td><strong>PCOS (Rotterdam)</strong></td><td>≥2 af: oligo-anovulation, hyperandrogenisme, polycystiske ovarier</td><td>AFC ≥20 i mindst ét ovarie</td></tr></tbody></table>',
+  grid:[
+    {l:'Ætiologi — PCOS', c:'<ul><li>Insulinresistens → hyperinsulinæmi → øget androgens fra ovarier</li><li>Risikofaktorer: overvægt, familiær disposition</li></ul>'},
+    {l:'DDX ved blødningsforstyrrelser', c:'<ul><li>Stofskiftelidelse (TSH!)</li><li>Klamydia/infektion</li><li>Graviditet (urin-HCG!)</li><li>Fibrom, polyp, endometriehyperplasi</li><li>Endometriose</li><li>Mini-piller (utilstrækkelig blødningskontrol)</li></ul>'},
+    {l:'Symptomer — PCOS', c:'<ul><li>Oligomenoré eller amenoré</li><li>Hirsutisme (øget kønsbehåring)</li><li>Acne, fedtet hår</li><li>Overvægt (ikke altid)</li><li>Infertilitet (anovulation)</li></ul>'},
+    {l:'Udredning', c:'<ul><li>Urin-HCG, TSH, Hgb, klamydiapodning</li><li>PCOS-blodprøver: LH, FSH, testosteron, SHBG (LH/FSH-ratio, testosteron/SHBG), prolaktin, østradiol</li><li>Transvaginal UL: AFC (≥20 = polycystisk), endometrietykkelse</li></ul>'},
+    {l:'Behandling', c:'<ul><li>PCOS: Vægttab er <strong>1. valg</strong> (genskaber ovulation)</li><li>P-piller (reducerer androgeneffekter)</li><li>Metformin (insulinresistens)</li><li>Ovulationsinduktion: letrozol/clomifen ved fertilitetsønske</li><li>Perimenopausalt: hormonspiral (1. valg), cyklisk gestagen</li><li>CAVE: CA-125 og kønshormoner er IKKE rutineprøver ved perimenopausale forstyrrelser</li></ul>', full:true},
+    {l:'Eksamen-fælder', c:'<ul><li>CA-125 og kønshormoner ved perimenopausale blødninger = trækker ned (F23)</li><li>Cancerpakke ved perimenopausale blødninger = forkert. Kun postmenopausalt!</li><li>TSH og urin-HCG skal altid bestilles</li></ul>', full:true, warn:true}
+  ]
+},
+
+{ id:'gyn_3', spec:'GYN', num:3, title:'Endometriose <em>og godartede tumorer</em>',
+  src:'S2019, skriftlig fibrom, S2020',
+  sub:'<table class="nst"><thead><tr><th>Subtype</th><th>Definition</th><th>Nøglefund</th></tr></thead><tbody><tr><td><strong>Endometriose</strong></td><td>Ektopisk endometrievæv i bughulen</td><td>Laparoskopi = guld; CA-125 let forhøjet</td></tr><tr><td><strong>Endometriom</strong></td><td>Endometriosecyste på ovariet</td><td>"Chokoladecyste" — homogent lavekkoisk på UL</td></tr><tr><td><strong>Submukøst fibrom</strong></td><td>Bening muskelknude i uteruskaviteten</td><td>Hysteroskopisk resektion — bevarer fertilitet</td></tr><tr><td><strong>Ovariecyste</strong></td><td>Væskefyldt struktur på ovariet</td><td>&lt;5 cm enlokulær: ekspektation</td></tr></tbody></table>',
+  grid:[
+    {l:'Ætiologi', c:'<ul><li>Endometriose: retrograd menstruation (fremherskende teori)</li><li>Fibrom: østrogenafhængig benign tumor; hyppigste benigne gyn. tumor</li><li>Ovariecyste: funktionel (corpus luteum), endometriom, dermoid, paraovarialt</li></ul>'},
+    {l:'DDX ved bækkensmerter', c:'<ul><li>EUG (ALTID udeluk med urin-HCG)</li><li>PID/underlivsinfektion</li><li>Appendicitis</li><li>Adnextorsion (akutte smerter + kvalme)</li><li>IBS, divertikulit, galdesten</li></ul>'},
+    {l:'Symptomer — endometriose', c:'<ul><li>Dysmenoré (menstruationssmerter)</li><li>Dyspareuni (smerter ved samleje)</li><li>Smerter ved afføring</li><li>Infertilitet</li><li>Kroniske bækkensmerter</li></ul>'},
+    {l:'Udredning', c:'<ul><li>GU: fast, øm, fikseret uterus; palpabel udfyldning adnex</li><li>Transvaginal UL: endometriomer, fibromer (submukøst = intrakavitært på hysteroskopi), ovariecyster</li><li>CA-125 (let forhøjet ved endometriose — ikke diagnostisk)</li><li>Urin-HCG (udeluk graviditet)</li><li>Laparoskopi: guldstandard for endometriose-diagnose</li></ul>', full:true},
+    {l:'Behandling', c:'<ul><li>Endometriose: NSAID + paracetamol; Hormon (p-piller, mini-p, hormonspiral, gestagen) — <strong>ikke ved graviditetsønske</strong>; Laparoskopi + cystefjernelse; Fertilitetsbehandling</li><li>Submukøst fibrom: hysteroskopisk resektion (60-80% chance for normaliseret menstruation). Histologi altid.</li><li>Ovariecyste &lt;5 cm: ekspektation + kontrol-UL. Kompleks/stor: laparoskopi.</li></ul>', full:true}
+  ]
+},
+
+{ id:'gyn_4', spec:'GYN', num:4, title:'Uro-gynækologi',
+  src:'F23 (inkontinens), E24 (prolaps)',
+  sub:'<table class="nst"><thead><tr><th>Subtype</th><th>Definition</th><th>Nøglefund</th></tr></thead><tbody><tr><td><strong>Urge-inkontinens</strong></td><td>Lækage ved kraftig pludselig vandladningstrang</td><td>Mange hyppige vandladninger, nøgle-i-låsen-fænomen</td></tr><tr><td><strong>Stress-inkontinens</strong></td><td>Lækage ved fysisk anstrengelse</td><td>Hoste, nys, løb — ingen forudgående trang</td></tr><tr><td><strong>Rektocele</strong></td><td>Bagvægsprolaps (rektum)</td><td>Tyngdefornemmelse, afføringsproblemer</td></tr><tr><td><strong>Cystocele</strong></td><td>Forvægsprolaps (blære)</td><td>Tyngdefornemmelse, vandladningsbesvær</td></tr></tbody></table>',
+  grid:[
+    {l:'Ætiologi', c:'<ul><li>Vaginalfødsel (bækkenbundsskade)</li><li>Postmenopausal atrofi (østrogendefekt)</li><li>Overvægt, kronisk hoste, forstoppelse</li><li>Hårdt fysisk arbejde</li></ul>'},
+    {l:'Udredning', c:'<ul><li>GU: inspektion (atrofi, prolaps, grad), valsalva/hosteprovokation</li><li>Eksploration: knibekraft (grad 0-5), udfyldninger</li><li>Transvaginal UL: residualurin</li><li>Vandladningsskema: hyppighed, volumen, antal lækager, bindforbrug, udløsende faktorer</li></ul>'},
+    {l:'Behandling — urge', c:'<ul><li>1. linje: Bækkenbundstræning + blæretræning</li><li>Peri-/postmenopausalt: Lokal østrogen (Vagifem 10µg ×3/uge eller Estring)</li><li>2. linje: Antikolinergika (solifenacin/tolterodin) eller mirabegron (Betmiga)</li><li>3. linje: Botox i blæren eller PTNS</li></ul>'},
+    {l:'Behandling — prolaps', c:'<ul><li>Ekspektation: Lokal østrogen + afføringsregulering</li><li>Konservativ: Støttepessar (ring) — tilses/skiftes q3 mdr</li><li>Kirurgisk: Kolporraphia posterior (rektocele) ± perineoplastik. Anæstesi. Risici: dyspareuni, infektion, blødning, sygemelding 4-6 uger</li></ul>'},
+    {l:'Eksamen-fælder', c:'<ul><li>F23: vandladningsskema er obligatorisk — nævn og gennemgå det!</li><li>E24: Kend alle 3 behandlingsmuligheder for prolaps incl. fordele/ulemper og nævn anæstesi</li></ul>', full:true, warn:true}
+  ]
+},
+
+{ id:'gyn_5', spec:'GYN', num:5, title:'Tidlige <em>graviditetskomplikationer</em>',
+  src:'V2022 (EUG), F24 (uønsket grav.)',
+  sub:'<table class="nst"><thead><tr><th>Tilstand</th><th>Definition</th><th>Kritisk fund</th></tr></thead><tbody><tr><td><strong>EUG</strong></td><td>Graviditet uden for uterus (oftest tuba)</td><td>Tom uterus + positiv HCG = EUG indtil det modsatte er bevist</td></tr><tr><td><strong>Truende abort</strong></td><td>Blødning + levende foster + lukket os</td><td>Ekspektation — kan vende sig</td></tr><tr><td><strong>Missed abortion</strong></td><td>Foster uden hjerteblink, os lukket</td><td>Medicinsk eller kirurgisk evakuering</td></tr><tr><td><strong>Inkomplet abort</strong></td><td>Delvist udtømt, blødning fortsætter</td><td>Kirurgisk evacuatio</td></tr></tbody></table>',
+  grid:[
+    {l:'Ætiologi — EUG', c:'<ul><li>Tidl. salpingitis/PID</li><li>Tidl. EUG</li><li>IVF-behandling</li><li>Tidl. tubeoperation</li></ul>'},
+    {l:'DDX', c:'<ul><li>Ovariecyste (corpus luteum-cyste)</li><li>Appendicitis</li><li>UVI / pyelonefritis</li><li>PID/endometritis</li><li>Mola hydatidosa</li></ul>'},
+    {l:'Symptomer — EUG', c:'<ul><li>Klassisk triad: <strong>smerter + vaginalblødning + amenoré</strong></li><li>Kredsløbspåvirkning ved ruptur: hypotension, takykardi, bleghed, klamtsved</li><li>Akut abdomen ved ruptur</li></ul>'},
+    {l:'Udredning', c:'<ul><li>Urin-HCG (positiv), Hgb</li><li>Transvaginal UL: <strong>tom uterus</strong> + adnekspatologi + fri væske</li><li>Blodtype + BAC-test</li><li>ABC: BT, puls, saturation</li></ul>'},
+    {l:'Behandling', c:'<ul><li>EUG: IV NaCl, akut laparoskopi, salpingektomi, <strong>Anti-D til Rh-negative</strong></li><li>Abort: Medicinsk (Mifegyn+Cytotec) eller kirurgisk (evacuatio). Anti-D til Rh-negative.</li><li>Fri abort til GA 12+0 — Blanket A obligatorisk</li></ul>', full:true}
+  ]
+},
+
+{ id:'gyn_6', spec:'GYN', num:6, title:'Gynækologisk <em>cancer</em>',
+  src:'E23 (endometriecancer), S2020 (cervixcancer)',
+  sub:'<table class="nst"><thead><tr><th>Subtype</th><th>Typisk præsentation</th><th>Primær aktion</th></tr></thead><tbody><tr><td><strong>Endometriecancer</strong></td><td>Postmenopausal blødning</td><td>Cancerpakke! Transvaginal UL + endometriesug</td></tr><tr><td><strong>Cervixcancer</strong></td><td>Kontaktblødning, abnorm smear</td><td>Kolposkopi + biopsi</td></tr><tr><td><strong>Endometriehyperplasi</strong></td><td>Uregelmæssig blødning (postmeno)</td><td>Biopsi — atypi? → behandling</td></tr><tr><td><strong>CIN (præcancrose)</strong></td><td>Ingen symptomer — fundet ved smear</td><td>CIN1: ekspektation; CIN2-3: konisation/LEEP</td></tr></tbody></table>',
+  grid:[
+    {l:'Ætiologi — endometriecancer', c:'<ul><li>Ueksponeret østrogen (overvægt, nulliparitet, sen menopause, HRT u. gestagen, tamoxifen)</li><li>Overvægt, diabetes, hypertension (metabolisk syndrom)</li></ul>'},
+    {l:'Ætiologi — cervixcancer', c:'<ul><li>HPV (&gt;99%) — specielt type 16 og 18</li><li>Mange seksualpartnere, tidlig seksuel debut, rygning, immunosuppression</li><li>HPV-vaccination (tilbydes begge køn i vaccinationsprogrammet)</li></ul>'},
+    {l:'DDX — postmenopausal blødning', c:'<ul><li>Endometriecancer / hyperplasi / polyp</li><li>Vaginalatrofi (eksklusionsdiagnose)</li><li>Hæmaturi fra urinveje (udeluk med urinstix)</li><li>Rektal blødning (udeluk med rektaleksploration)</li></ul>'},
+    {l:'Udredning', c:'<ul><li>Transvaginal UL (endometrietykkelse)</li><li>Endometriesug → cancerpakke (histologi)</li><li>GU: inspektion portio, palpation uterus+adnexer, rektaleksploration</li><li>Urinstix (hæmaturi?)</li><li>Cervix: smear → HPV-test → kolposkopi + biopsi</li></ul>'},
+    {l:'Behandling', c:'<ul><li>Endometriecancer: hysterektomi + bilateral salpingo-ooforektomi (BSO) + sentinel node</li><li>Højrisikohistologi: PET/CT inden operation</li><li>Cervixcancer: stadium-afhængig — konisation → operation → kemo+stråle</li></ul>', full:true},
+    {l:'Eksamen-fælder', c:'<ul><li>Postmenopausal blødning = <strong>ALTID cancerpakke</strong> — dette er "clear fail" hvis glemt (E23)</li><li>Sentinel node-teknik ved endometriecancer er eksplicit krav for "very good" (E23)</li></ul>', full:true, warn:true}
+  ]
+},
+
+{ id:'gyn_7', spec:'GYN', num:7, title:'Underlivsinfektion <em>og PID</em>',
+  src:'Signe noter — infektioner, PID, klamydia, bakteriel vaginose',
+  sub:'<table class="nst"><thead><tr><th>Entitet</th><th>Ætiologi</th><th>Nøglefund</th></tr></thead><tbody><tr><td><strong>PID</strong></td><td>Klamydia (hyppigst), mycoplasma, gonokokker, blandingsflora</td><td>Rokkeømhed + 4/5 kriterier</td></tr><tr><td><strong>Klamydia</strong></td><td>Chlamydia trachomatis (intracellulær)</td><td>Oftest asymptomatisk — podning cervix + uretra</td></tr><tr><td><strong>Gonore</strong></td><td>Neisseria gonorrhoeae (gram neg. diplokok)</td><td>Sjælden i DK — anmeldelsespligtig</td></tr><tr><td><strong>Bakteriel vaginose</strong></td><td>Gardnerella vaginalis m.fl. — flora-ubalance</td><td>Fiskelugtende udflåd, pH &gt;4,5 — ingen inflammation</td></tr><tr><td><strong>Candida</strong></td><td>Candida albicans</td><td>Kløe + hvidligt udflåd — fluconazol 150 mg engangsdosis</td></tr></tbody></table>',
+  tabs:[
+    { label:'PID', grid:[
+      {l:'Ætiologi og disponerende faktorer', c:'<ul><li><strong>Chlamydia trachomatis</strong> — hyppigst</li><li>Mycoplasma genitalium / hominis</li><li>Neisseria gonorrhoeae (sjælden i DK)</li><li>Blandingsflora: E. coli, anaerobe, Actinomyces israelii (særligt ved IUD — giver sværere sequelae, AB i 1 år)</li></ul><p style="margin-top:8px"><strong>Disponerende faktorer</strong> (brudt cervikalbarriere): IUD-oplægning, kirurgisk abort, udskrabning, kontrastundersøgelse af tubae, ovulation/menstruation</p>'},
+      {l:'Diagnostiske kriterier (4 af 5)', c:'<ol style="padding-left:16px;line-height:1.9"><li>Smerter i lille bækken</li><li>Bilateral ømhed, <strong>rokkeømhed</strong> og/eller udfyldning ved GU</li><li>Temperatur &gt;38 °C</li><li>Purulent udflåd og/eller positiv klamydiatest</li><li>Forhøjet CRP, leukocytter eller SR</li></ol>'},
+      {l:'DDX', c:'<ul><li><strong>EUG</strong> — udeluk ALTID med urin-HCG!</li><li>Appendicitis</li><li>Adnextorsion</li><li>UVI / pyelonefritis</li><li>Endometriose</li><li>Tarminfektion</li><li>Tubo-ovariel absces</li></ul>'},
+      {l:'Udredning', c:'<ul><li>Urin-HCG (EUG!), urinstix</li><li>CRP, leukocytter; bloddyrkning ved septisk præg</li><li>GU: rokkeømhed, byldeømhed, udflådskarakter</li><li>Podning: klamydia + gonokokker fra <strong>cervix og uretra</strong> (gonore: 4 steder inkl. rectum og tonsiller)</li><li>Transvaginal UL: tuboovarialabsces? fri væske?</li><li>IUD: fjernes ikke altid — individuel vurdering</li></ul>'},
+      {l:'Behandling — ambulant', c:'<ul><li>Doxycyklin 100 mg × 2 + metronidazol 500 mg × 3 i 10 dage</li><li>Eller: Tetracyklin 300 mg × 2 i 10 dage</li><li><strong>Partnerbehandling obligatorisk</strong></li></ul>'},
+      {l:'Behandling — indlæggelse', c:'<ul><li><strong>Indikationer:</strong> svær PID, tuboovarialabsces, graviditet, manglende ambulant respons</li><li>IV: cefuroxim + metronidazol (± ampicillin ved puerperium)</li><li>3-stofs regime ved sepsis</li><li>UL-vejledt drænage ved absces</li><li>Laparoskopi ved DDX-tvivl eller recidiv</li></ul>'},
+      {l:'Sequelae — husk tallene', c:'<ul><li><strong>Infertilitet:</strong> 1 episode → 11% · 2 episoder → 23% · 3+ episoder → 54%</li><li>Øget risiko for EUG</li><li>Kroniske bækkensmerter: 15–20%</li><li>Tubo-ovariel absces</li><li>Adhærencer i bækkenet</li></ul>', full:true, hl:true},
+      {l:'Fitz-Hugh-Curtis syndrom', c:'Perihepatitis som komplikation til PID. Ascenderende infektion → inflammation på leverkapsel og omgivende peritoneum. <strong>Symptom: højresidede øvre abdominalsmerter</strong> — kan forveksles med kolecystitis. Fund ved laparoskopi: violinstreng-adhærencer mellem lever og forreste bugvæg.', full:true},
+      {l:'CAVE', c:'EUG skal udelukkes INDEN PID-diagnosen stilles. Positiv graviditetstest = EUG til det modsatte er bevist. Smitteopsporing er obligatorisk. Gonore er anmeldelsespligtig (anonymt).', full:true, warn:true}
+    ]},
+    { label:'Klamydia', grid:[
+      {l:'Ætiologi', c:'Chlamydia trachomatis — intracellulær bakterie. Seksuelt overført. Hyppigste bakterielle kønssygdom i DK.'},
+      {l:'Symptomer', c:'<ul><li><strong>Oftest asymptomatisk</strong> (kvinder særligt)</li><li>Svie ved vandladning</li><li>Øget uklart udflåd</li><li>Pletblødning</li><li>Hos nyfødte: ensidig konjunktivitis eller pneumoni</li></ul>'},
+      {l:'Udredning', c:'<ul><li>PCR-podning fra cervix og uretra (vatpodepind grundigt)</li><li>Urinprøve kun egnet til mænd</li><li>Methylblå farvning: ingen bakterier, mange polymorfonukleære leukocytter</li></ul>'},
+      {l:'Behandling', c:'<ul><li>Ukompliceret: Azithromycin (Zithromax) 1 g engangsdosis</li><li>Kompliceret (PID): Doxycyklin 100 mg × 2 i 10 dage</li><li><strong>Partnerbehandling obligatorisk</strong> — med eller uden forudgående diagnostik</li></ul>'},
+      {l:'Komplikationer', c:'<ul><li>Salpingitis → infertilitet og EUG-risiko</li><li>PID</li><li>Fitz-Hugh-Curtis (perihepatitis)</li></ul>', full:true, warn:true}
+    ]},
+    { label:'Gonore', grid:[
+      {l:'Ætiologi', c:'Neisseria gonorrhoeae — gram-negativ diplokok. Seksuelt overført. Sjælden i DK, hyppigst hos mænd der har sex med mænd. <strong>Anmeldelsespligtig (anonymt).</strong>'},
+      {l:'Symptomer', c:'<ul><li>Asymptomatisk: 20% mænd, 70% kvinder</li><li>Purulent udflåd, svie ved vandladning</li><li>Hos nyfødte: bilateral purulent konjunktivitis (ophthalmia neonatorum)</li></ul>'},
+      {l:'Udredning', c:'<ul><li>Podning med kulpodepind fra <strong>4 steder</strong>: cervix, uretra, rectum, tonsiller</li><li>Mikroskopi + dyrkning</li><li>Kontrolpodning tidligst 3 dage efter behandlingsophør</li></ul>'},
+      {l:'Behandling', c:'<ul><li>Ceftriaxon 250 mg i.m. engangsdosis</li><li><strong>Partnerbehandling obligatorisk</strong></li></ul>'},
+      {l:'Komplikationer', c:'<ul><li>Bartholinitis</li><li>Salpingitis → EUG-risiko og infertilitet</li><li>Septisk artrit, sepsis</li></ul>', full:true, warn:true}
+    ]},
+    { label:'Bakteriel vaginose', grid:[
+      {l:'Ætiologi', c:'Flora-ubalance: reduktion af Lactobacillus → overvækst af Gardnerella vaginalis og anaerobe. <strong>Ikke seksuelt overført som sådan, men associeret med skift af partner.</strong> Vaginalslimhinden er normal — ingen egentlig inflammation.'},
+      {l:'Symptomer', c:'<ul><li>Fiskelugtende, gråligt, homogent udflåd</li><li>Lugt forværres ved samleje (sæd forhøjer pH)</li><li>Oftest ingen kløe eller svie</li></ul>'},
+      {l:'Udredning — Amsel-kriterier (3 af 4)', c:'<ol style="padding-left:16px;line-height:1.9"><li>Homogent gråt udflåd</li><li>pH &gt; 4,5</li><li>Positiv whiff-test (fiskelugt ved tilsætning af KOH)</li><li>Clue cells ved mikroskopi</li></ol>'},
+      {l:'Behandling', c:'<ul><li>Metronidazol 400–500 mg × 2 i 7 dage (po)</li><li>Eller: Metronidazol vaginalgel / clindamycin vaginalcreme</li><li>Partnerbehandling ikke nødvendig</li></ul>'},
+      {l:'Klinisk relevans', c:'Øget risiko for præterm fødsel og PID. Screen og behandl ved graviditet og inden gynækologiske indgreb.', full:true, hl:true}
+    ]},
+    { label:'Candida', grid:[
+      {l:'Ætiologi', c:'Candida albicans — svamp. Ikke seksuelt overført. Disponerende faktorer: DM, graviditet, immunsuppression (kortikosteroider), antibiotika-behandling.'},
+      {l:'Symptomer', c:'<ul><li>Intens kløe og svie</li><li>Hvidligt, ostelignende udflåd (ikke ildelugtende)</li><li>Rødme og hævelse af vulva/vagina</li><li>Hvide plaques og punktblødning ved fjernelse</li></ul>'},
+      {l:'Udredning', c:'<ul><li>Klinisk diagnose (klassisk præsentation)</li><li>Fasekontrastmikroskopi: pseudohyfer og sporer</li><li>Dyrkning ved recidiverende tilfælde</li></ul>'},
+      {l:'Behandling', c:'<ul><li>Fluconazol 150 mg oralt engangsdosis (1. valg)</li><li>Alternativ: clotrimazol vaginalovula</li><li>Obs: kløe vedvarer de første 3–4 dage af behandling — informer patienten</li><li>Partnerbehandling ikke nødvendig (medmindre recidiverende)</li></ul>'},
+      {l:'CAVE', c:'Recidiverende candida (&gt;4 episoder/år) → udeluk DM, immundefekt. Overvej profylaktisk fluconazol 150 mg ugentligt i 6 måneder.', full:true, warn:true}
+    ]}
+  ]
+},
+
+{ id:'gyn_8', spec:'GYN', num:8, title:'Human <em>reproduktion</em>',
+  src:'E23 (mandlig infertilitet), F25 (PCOS/fertilitet)',
+  sub:'<table class="nst"><thead><tr><th>Fase</th><th>Hormon</th><th>Effekt</th></tr></thead><tbody><tr><td>Follikulær (dag 1-14)</td><td>FSH</td><td>Follikelvækst, østrogenproduktion, opbygning af endometrium</td></tr><tr><td>Ovulation (dag 14)</td><td>LH-surge</td><td>Ægløsning</td></tr><tr><td>Luteal (dag 14-28)</td><td>Progesteron (corpus luteum)</td><td>Sekretorisk endometrium</td></tr></tbody></table>',
+  grid:[
+    {l:'Definition infertilitet', c:'Uhonoreret graviditetsønske &gt;12 måneder (eller &gt;6 mdr. hvis kvinde &gt;35 år)'},
+    {l:'DDX / årsager', c:'<ul><li>PCOS (anovulation) — hyppigst hos kvinden</li><li>Tubafaktor (tidl. PID)</li><li>Endometriose</li><li>Mandlig faktor: nedsat sædkvalitet (koncentration, motilitet, morfologi)</li><li>Uterusfaktor: fibromer</li></ul>'},
+    {l:'Udredning — kvinde', c:'<ul><li>Kønshormoner: LH, FSH, AMH, østradiol</li><li>Transvaginal UL: AFC, ovarievæv</li><li>TSH, prolaktin</li><li>Klamydia + smear</li></ul>'},
+    {l:'Udredning — mand', c:'<ul><li>Sædanalyse ×2 med 3-4 ugers interval</li><li>Vurdér: koncentration, total motilitet, progressiv motilitet, morfologi</li><li>FSH, LH, testosteron, prolaktin ved azoospermi</li></ul>'},
+    {l:'Behandling', c:'<ul><li>PCOS/anovulation: Vægttab (1. valg), letrozol/clomifen (ovulationsinduktion)</li><li>IUI: vasket sæd instilleres nær ovulation</li><li>IVF: ægudtagning + befrugtning in vitro + embryotransfer</li><li>ICSI: enkelt sædcelle injiceres i æg (svær mandlig faktor)</li><li>Offentlig behandling: kvinde under 40 år, parret har ikke fælles barn, BMI &lt;30-32</li></ul>', full:true}
+  ]
+},
+
+{ id:'gyn_9', spec:'GYN', num:9, title:'Hormonbehandling <em>i postklimakteriet</em>',
+  src:'F23/E24 (lokal østrogen), målbeskrivelse',
+  sub:null,
+  grid:[
+    {l:'Definition / fysiologi', c:'Menopause = 1 år uden menstruation (gns. 51 år). FSH og LH stiger markant (hypergonadotropt). Østrogendefekt → klimakterielle symptomer.'},
+    {l:'Symptomer', c:'<ul><li>Vasomotoriske: hedeture, nattesved</li><li>Urogenital atrofi: vaginal tørhed, dysuri, dyspareuni, inkontinens</li><li>Psykiske: søvnbesvær, humørsvingninger</li><li>Osteoporose-risiko</li></ul>'},
+    {l:'MHT — indikationer og præparater', c:'<ul><li>Intakt uterus: <strong>østrogen + gestagen</strong> (beskytter endometrium)</li><li>Hysterektomeret: østrogen alene</li><li>Former: tabletter, plaster, gel, vaginalring</li><li>Risici: svagt øget brystkræftrisiko (&gt;5 år kombineret), DVT/LE (tabletter &gt; plaster)</li></ul>'},
+    {l:'Lokal østrogen', c:'<ul><li>Indikation: urogenital atrofi (tørhed, dysuri, dyspareuni, urge-inkontinens)</li><li>Præparater: <strong>Vagifem 10 µg ×3/uge</strong> eller <strong>Estring</strong> (vaginalring, skiftes q3 mdr.)</li><li>Minimal systemisk absorption</li><li>Nævnes eksplicit i F23 og E24 eksamenssæt</li></ul>'},
+    {l:'Kontraindikationer', c:'<ul><li>Aktiv/nylig brystkræft, endometriecancer</li><li>Udiagnosticeret vaginalblødning</li><li>Aktiv DVT/LE</li><li>Svær leversygdom</li><li>Aktiv iskæmisk hjertesygdom / nyligt slagtilfælde</li></ul>'},
+    {l:'Dækning', c:'Lokal østrogen er det eneste MHT-aspekt med konkret eksamensdækning. Systemisk MHT (indikationer, risici, regimer) er IKKE dækket i de tilgængelige eksamenssæt. Upload forelæsninger for fuld dækning.', full:true, warn:true}
+  ]
+},
+
+// ─── OBS ───────────────────────────────────────────────────────────────────
+
+{ id:'obs_1', spec:'OBS', num:1, title:'Præeklampsi <em>/ HELLP</em>',
+  src:'F23, F24, F25, S2021, V2016',
+  sub:'<table class="nst"><thead><tr><th>Tilstand</th><th>Definition</th><th>Nøglefund</th></tr></thead><tbody><tr><td><strong>Præeklampsi</strong></td><td>BT ≥140/90 + proteinuri ≥0,3 g/døgn, &gt;GA 20</td><td>Altid forløsning som eneste kur</td></tr><tr><td><strong>Svær PE</strong></td><td>BT ≥160/110 + organpåvirkning</td><td>MgSO4 + overvej forløsning nu</td></tr><tr><td><strong>Eklampsi</strong></td><td>Tonisk-kloniske kramper ved svær PE</td><td>ABCD → MgSO4 → stabilisér → forløs</td></tr><tr><td><strong>HELLP</strong></td><td>Hæmolyse + forhøjede leverenzymer + lave trombocytter</td><td>Kan opstå UDEN klassisk PE</td></tr></tbody></table>',
+  grid:[
+    {l:'Ætiologi / RF', c:'<ul><li>Placentær dysfunktion (primær årsag)</li><li>Nulliparitet, tidl. PE, flerfold</li><li>Overvægt, diabetes, nyresygdom</li><li>Alder &gt;40, familiær disposition</li><li>Markører: lav PAPP-A + øget a.uterina-modstand i 1. trimester</li></ul>'},
+    {l:'DDX', c:'<ul><li>Kronisk hypertension (BT forhøjet FØR uge 20)</li><li>Gestationel hypertension (uden proteinuri/organpåvirkning)</li><li>HELLP uden klassisk PE</li><li>Nyreinsufficiens, akut fedtlever</li><li>Hepatitis, galdestenssygdom (HELLP-DD)</li></ul>'},
+    {l:'Symptomer', c:'<ul><li>Hovedpine (frontalt), synsforstyrrelser</li><li>Epigastriesmerter / trykken for brystet</li><li>Ødemer, tiltagende vægtøgning</li><li>Kvalme, opkastning</li><li>HELLP: diffuse mavesmerter, utilpashed</li></ul>'},
+    {l:'Udredning', c:'<ul><li>BT ×2 med ≥4 timers interval</li><li>Urinstix (protein) + 24-timers urin</li><li>Blodprøver: trombocytter, LDH, haptoglobin, ALAT, urat, kreatinin, Hgb</li><li>CTG (fosterovervågning)</li><li>UL: fostervægt, fostervand, flow</li></ul>'},
+    {l:'Behandling', c:'<ul><li>Eneste kur: <strong>forløsning</strong></li><li>Antihypertensiv: labetalol IV, methyldopa po, nifedipin po (mål BT &lt;160/110)</li><li>MgSO4 IV: krampe-profylakse/behandling ved svær PE og eklampsi</li><li>Betapred IM ved præmaturitet (&lt;34 uger)</li><li>Overveje overflytning til center med neonatalafdeling</li></ul>', full:true},
+    {l:'Langtid + næste graviditet', c:'<ul><li>Øget risiko for PE i næste graviditet</li><li><strong>Hjertemagnyl (ASA lavdosis)</strong> fra uge 12-16 i næste graviditet</li><li>BT velbehandlet inden næste graviditet</li><li>Øget livstidsrisiko for kardiovaskulær sygdom — jævnlig BT-kontrol anbefales</li></ul>', full:true, hl:true, obs:true}
+  ]
+},
+
+{ id:'obs_2', spec:'OBS', num:2, title:'Svangreomsorg <em>og graviditetsundersøgelse</em>',
+  src:'V2016, S2018, E23',
+  sub:null,
+  grid:[
+    {l:'Obligatorisk ved ALLE undersøgelser', c:'<ul><li><strong>BT</strong> (præeklampsi-screening)</li><li><strong>Urinstix</strong> for glukose (GDM-screening) og protein (PE-screening)</li><li>SF-mål (fostervækst)</li><li>Fosterets hjertelyd og præsentation</li><li>Vurdering af fosteraktivitet</li></ul>'},
+    {l:'Anamnese — altid afdæk', c:'<ul><li>Præeklampsi-symptomer (hovedpine, syn, epigastriesmerter)</li><li>Fosteraktivitet (reduceret?)</li><li>Graviditetsgener, bækkengener, plukkeveer</li><li>GDM-risikofaktorer: BMI&gt;27, PCOS, familiær disp., tidl. barn &gt;4500g</li><li>Aktuel medicin — spørg efter vandrejournal</li></ul>'},
+    {l:'GBS-håndtering', c:'<ul><li>GBS i urin: behandl med penicillin + noter i vandrejournal</li><li>IV penicillin under aktiv fødsel ved: GBS i urin, tidl. barn med GBS, GA&lt;35, feber under fødsel, langvarig vandafgang</li></ul>'},
+    {l:'8-ugers postpartum', c:'<ul><li>Formål: fysisk + psykisk tilstand, familiens trivsel, prævention</li><li>Knibekraft (alle kvinder), GU ved behov, cervixcytologi hvis udsat</li><li>RVD: % af moderens dosis (mg/kg) der gives til barn via 150 ml/kg/døgn mælk</li><li>Prævention under amning: mini-piller eller hormonspiral (kombinerede p-piller undgås)</li></ul>'},
+    {l:'Dumpegrunde', c:'Manglende BT-måling ELLER manglende urinstix ved svangreundersøgelse = dumpegrund (S2018 retteark)', full:true, warn:true}
+  ]
+},
+
+{ id:'obs_3', spec:'OBS', num:3, title:'Føtalmedicin <em>og prænatal diagnostik</em>',
+  src:'F25 skriftlig, S2017, S2021 (omphalocele)',
+  sub:'<table class="nst"><thead><tr><th>Undersøgelse</th><th>Tidspunkt</th><th>Formål</th></tr></thead><tbody><tr><td><strong>1. trimesterskanning</strong></td><td>GA 11-14</td><td>Terminsfastsættelse, antal fostre, nakkefoldsscreening</td></tr><tr><td><strong>2. trimesterskanning</strong></td><td>GA 18-20</td><td>Misdannelsesskanning</td></tr><tr><td><strong>CVS (moderkagebiopsi)</strong></td><td>Fra uge 10-16</td><td>Fosterets karyotype. Abortrisiko &lt;0,2%</td></tr><tr><td><strong>Amniocentese</strong></td><td>Fra uge 16+0</td><td>Amnionceller dyrkes. Abortrisiko 0,5-1%</td></tr><tr><td><strong>NIPT</strong></td><td>Fra uge 10</td><td>Blodprøve fra mor. Trisomi 13, 18, 21. Alternativ til CVS ved risiko &gt;1:300</td></tr></tbody></table>',
+  grid:[
+    {l:'Sandsynlighedsberegning (1. trimester)', c:'<ul><li>Nakkefoldstykkelse + PAPP-A + β-HCG + moderens alder + GA</li><li>Cut-off for invasiv diagnostik: risiko ≥1:300</li><li>Lav PAPP-A = øget risiko FGR og PE</li></ul>'},
+    {l:'Down syndrom (trisomi 21)', c:'<ul><li>Hyppigste kromosomafvigelse ved levende fødte</li><li>Risiko stiger med maternel alder</li><li>Karakteristika: intellektuel funktionsnedsættelse, hypotoni, karakteristisk ansigt, medfødt hjertefejl (~50%)</li></ul>'},
+    {l:'Misdannelse fundet på UL', c:'<ul><li>Tilbyd invasiv prøve eller direkte ansøgning om abort</li><li>Omphalocele: associeret med trisomi 18 (Edwards syndrom) → tilbyd CVS med mikroarray</li><li>Fri abort til GA 12+0; Abortsamråd til GA 22 uger</li></ul>'},
+    {l:'Abort-lovgivning (fra retteark)', c:'<ul><li>Fri abort: GA ≤12+0 uger (Sundhedslovens §94)</li><li>Abortsamråd (jurist, gynækolog, psykolog): til GA 22 uger</li><li>Betingelse: fare for at barnet får alvorlig legemlig eller sjælelig lidelse (§94.1.3)</li></ul>'}
+  ]
+},
+
+{ id:'obs_4', spec:'OBS', num:4, title:'Tvillingegraviditet',
+  src:'V2021 (MCDA/TTTS), V2017',
+  sub:'<table class="nst"><thead><tr><th>Type</th><th>Definition</th><th>Risiko</th></tr></thead><tbody><tr><td><strong>MCDA</strong></td><td>Monochoriotisk-diamniotisk: deler moderkage, egne hinder</td><td>Høj — TTTS og TAPS mulige</td></tr><tr><td><strong>DCDA</strong></td><td>Dichoriotisk-diamniotisk: egne moderkager og hinder</td><td>Lavest</td></tr><tr><td><strong>TTTS</strong></td><td>Tvillinge-transfusionssyndrom: ulige blodoverførsel via placentakar</td><td>Donor: lille + oligohydramnios. Recipient: stor + polyhydramnios</td></tr><tr><td><strong>TAPS</strong></td><td>Tvilling-anæmi-polycytæmi: en bleg + en rødlig tvilling</td><td>Blodtransfusion til anæmisk tvilling</td></tr></tbody></table>',
+  grid:[
+    {l:'Diagnostik chorionicitet', c:'Bestemmes bedst ved 1. trimesterskanning: lambda-tegn = DCDA (to moderkager); T-tegn = MCDA (fælles moderkage)'},
+    {l:'DDX ved akutte smerter (MCDA)', c:'<ul><li>TTTS</li><li>Truende præterm fødsel</li><li>Præeklampsi</li><li>Cystitis, hydronefrose</li><li>Abruptio</li><li>Cholelithiasis, obstipation</li></ul>'},
+    {l:'Udredning', c:'<ul><li>UL: diskordant fostervandsmængde, fostervægte, flow, hjerteblik</li><li>PE-blodprøver: Hgb, trombocytter, Na, K, kreatinin, ALAT, LDH, urat</li><li>CTG</li><li>Cervixskanning</li></ul>'},
+    {l:'Behandling', c:'<ul><li>TTTS: laserkoagulation af placentakar (primær). Alternativt cordoklusion eller tæt kontrol.</li><li>Truende præterm: tractocile, betapred, magnesiumsulfat, Lutinus, antibiotika ved infektion</li><li>TAPS: blodtransfusion til anæmisk tvilling</li></ul>', full:true},
+    {l:'Kritisk regel', c:'MCDA-gravid med smerter MÅ IKKE sendes hjem uden UL af kompetent person (Signes noter, V2021)', full:true, warn:true}
+  ]
+},
+
+{ id:'obs_5', spec:'OBS', num:5, title:'Væksthæmning <em>og blødning</em>',
+  src:'F25 (FGR), E24 (placenta prævia), S2017',
+  sub:'<table class="nst"><thead><tr><th>Tilstand</th><th>Præsentation</th><th>Cave</th></tr></thead><tbody><tr><td><strong>FGR</strong></td><td>Fostervægt &lt;10. percentil, påvirkede flow</td><td>Ingen GU ved blødning FØR placenta er lokaliseret</td></tr><tr><td><strong>Placenta prævia</strong></td><td>Smertefri, frisk vaginalblødning</td><td>ALDRIG eksploration FØR UL-bekræftelse</td></tr><tr><td><strong>Abruptio placentae</strong></td><td>Smertefuld blødning, hård uterus</td><td>Risiko for DIC — Hb, koag. akut</td></tr></tbody></table>',
+  grid:[
+    {l:'FGR — årsager (4 grupper)', c:'<ul><li><strong>Maternel:</strong> PE, hypertension, nyresygdom, thyroidea, rygning, alder</li><li><strong>Føtal:</strong> kromosomfejl, misdannelser, flerfold</li><li><strong>Placentær:</strong> prævia, velamentøs navlesnorsinsertion</li><li><strong>Ekstern:</strong> rygning, alkohol, lav SES</li></ul>'},
+    {l:'DDX — vaginalblødning', c:'<ul><li>Tegnblødning (begyndende fødsel)</li><li>Placenta prævia</li><li>Abruptio placentae</li><li>Vasa prævia (sjælden, fatal)</li><li>Erytroplakier, hæmorider</li><li>Cervixcancer</li><li>Uterusruptur (tidl. sectio)</li></ul>'},
+    {l:'FGR — udredning + opfølgning', c:'<ul><li>Lav PAPP-A + øget a.uterina-modstand = markører fra 1. trimester</li><li>UL: flow i a.umbilicalis, a.cerebri media, ductus venosus; fostervægt, fostervand</li><li>BT + urinstix ved hver kontrol (PE-screening)</li><li>CTG</li></ul>'},
+    {l:'Behandling', c:'<ul><li>FGR: tætte UL-kontroller; betapred + MgSO4 ved præterm forløsning; akut sectio ved truet foster</li><li>Placenta prævia: <strong>ALDRIG eksploration</strong>; Trendelenburg + ilt + IV; Tranexamsyre (Cyklokapron); Betapred; Planlagt sectio GA 37+0</li><li>Abruptio: akut forløsning ved truet foster</li></ul>', full:true}
+  ]
+},
+
+{ id:'obs_6', spec:'OBS', num:6, title:'GDM <em>og medicinske sygdomme</em>',
+  src:'S2018, V2020, E23 (GDM)',
+  sub:null,
+  grid:[
+    {l:'Definition GDM', c:'Gestationel diabetes mellitus = glukoseintolerans opstået i graviditeten. Diagnose: 75g OGTT, 2-timers blodglukose ≥9,0 mmol/l (kapillært fuldblod).'},
+    {l:'RF for GDM (OGTT-indikation)', c:'<ul><li>BMI ≥27 kg/m² før graviditet</li><li>PCOS</li><li>Familiær disposition til diabetes</li><li>Tidligere barn &gt;4500 g</li><li>Tidligere glucosuri</li><li>OGTT ved ≥2 risikofaktorer (GA 14-20 og 24-28)</li></ul>'},
+    {l:'Konsekvenser for mor og barn', c:'<ul><li>Makrosomi (stort barn), øget risiko for PE</li><li>Barnet: hypoglykæmi post partum (hyperinsulinisme) → blodsukkerkontrol 2 timer post partum</li><li>Mor post partum: OGTT 3 mdr. efter fødsel; ~40% udvikler T2DM inden 10 år → livslang kontrol</li></ul>'},
+    {l:'Behandling GDM', c:'<ul><li>1. linje: kostomlægning (fedt- og glukosefattig) + motion. Diætist-vejledning.</li><li>2. linje: insulin (hvis kost/motion utilstrækkeligt)</li><li>Igangsætning: senest 1 uge over termin (eller tidligere ved makrosomi/komplikationer)</li></ul>'},
+    {l:'Andre medicinske sygdomme (dokumenteret)', c:'<ul><li>Hypothyreose: Eltroxin (levothyroxin) — TSH skal holdes velreguleret. Nævnt i F25.</li><li>GBS i urin: penicillin-kur + IV penicillin under fødsel</li><li>Astma, epilepsi, hjertesygdom: IKKE dækket i tilgængelige eksamenssæt</li></ul>', full:true},
+    {l:'Dumpegrund', c:'Manglende OGTT-henvisning ved glucosuri + risikofaktorer = dumpegrund (S2018, V2020 retteark)', full:true, warn:true}
+  ]
+},
+
+{ id:'obs_7', spec:'OBS', num:7, title:'Præterm <em>fødsel</em>',
+  src:'V2022, S2020',
+  sub:null,
+  grid:[
+    {l:'Definition', c:'Fødsel &lt;GA 37+0. Meget præmatur: &lt;GA 32+0. Ekstremt præmatur: &lt;GA 28+0.'},
+    {l:'Risikofaktorer', c:'<ul><li>Idiopatisk (50%)</li><li>Infektion (GBS, BV, cystitis, pyelonefritis, appendicitis)</li><li>Tidl. spontan præterm fødsel</li><li>Cervixinsufficiens, tidl. konisation</li><li>Flerfold, polyhydramnios</li><li>Bicorn uterus</li></ul>'},
+    {l:'Diagnostik', c:'<ul><li>GU: inspektion + eksploration (CAVE PPROM)</li><li>UL: cervixlængde (funneling), fosterleje, fostervægt, fostervand, placenta</li><li>CTG</li><li>Infektionstal, urindyrkning</li></ul>'},
+    {l:'Behandling', c:'<ul><li>Tractocile (atosiban) IV: tokolyse</li><li>Betapred IM &lt;34 uger: lungemodning</li><li>MgSO4 IV &lt;32 uger: neuroprotektiv</li><li>Lutinus (vaginalt progesteron): rolig fase</li><li>Penicillin: GBS-profylakse ved aktiv fødsel</li><li>Neonatologisk samtale med forældre</li></ul>'},
+    {l:'RDS og umodne organer', c:'<ul><li>RDS (respiratorisk distres-syndrom): surfactantmangel → nCPAP → Curosurf → respirator</li><li><strong>CNS</strong>: IVH grad 1-4, PVL</li><li><strong>Hjerte</strong>: DAP (ductus arteriosus persistens)</li><li><strong>Tarm</strong>: NEC (nekrotiserende enterocolitis)</li><li><strong>Øjne</strong>: ROP (retinopati of prematurity)</li></ul>', full:true},
+    {l:'Husk', c:'CNS/IVH — Hjerte/DAP — Tarm/NEC — Øjne/ROP. Lær disse 4 par udenad (eksplicit eksamenskrav, S2020)', full:true, hl:true, obs:true}
+  ]
+},
+
+{ id:'obs_8', spec:'OBS', num:8, title:'Barselskomplikationer',
+  src:'S2019 (endometritis), S2017 (postpartum us.), E23',
+  sub:'<table class="nst"><thead><tr><th>Komplikation</th><th>Nøglesymptom</th><th>Behandling</th></tr></thead><tbody><tr><td><strong>Endometritis</strong></td><td>Feber + purulent udflåd + øm uterus</td><td>Cefuroxim + metronidazol ± evacuatio</td></tr><tr><td><strong>DVT/LE</strong></td><td>Hævelse UE, dyspnø, brystsmerter</td><td>LMWH (lavmolekylær heparin)</td></tr><tr><td><strong>Mastitis</strong></td><td>Rødme + ømhed bryster + feber</td><td>Penicillin; fortsæt amning</td></tr><tr><td><strong>Fødselsdepression</strong></td><td>Nedtrykthed &gt;2 uger, funktionsnedsættelse</td><td>Psykologisk støtte, evt. SSRI</td></tr></tbody></table>',
+  grid:[
+    {l:'Endometritis — udredning', c:'<ul><li>Infektionstal (CRP, leukocytter)</li><li>Transvaginal UL: retineret placentavæv?</li><li>Podning fra vagina/cervix</li><li>Urinstix / urindyrkning (udeluk UVI)</li><li>Palpation af uterus (størrelse, kontraktionsgrad)</li></ul>'},
+    {l:'Barselskomplikationer — liste', c:'<ul><li>Hæmatom/blødning fra rifter i vagina/mellemkød</li><li>Mastitis</li><li>DVT og lungeemboli</li><li>UVI</li><li>Vandladnings- og afføringsproblemer</li><li>Baby blues / fødselsdepression</li><li>Postpartum thyroiditis</li></ul>'},
+    {l:'RVD og amning', c:'<ul><li><strong>RVD</strong> = Relativ Vægtjusteret Dosis = % af moderens dosis (mg/kg) som barnet tilføres ved 150 ml/kg/døgn</li><li>RVD &lt;10% = generelt sikkert under amning</li><li>Paracetamol RVD = 1-6% → sikkert</li><li>Slå altid op på pro.medicin.dk</li></ul>'},
+    {l:'Prævention postpartum', c:'<ul><li>Mini-piller: foretrukket hormonelt ved amning</li><li>Hormonspiral: kan oplægges fra 4-6 uger postpartum</li><li>Kobberspiral: ingen hormonpåvirkning, fra 4-6 uger</li><li>Kombinerede p-piller: undgå de første mdr. ved amning</li></ul>'}
+  ]
+},
+
+{ id:'obs_9', spec:'OBS', num:9, title:'Virussygdomme <em>under graviditet</em>',
+  src:'F24 (parvovirus stand), S2018',
+  sub:null,
+  grid:[
+    {l:'Parvovirus B19 — fakta', c:'<ul><li>Alias: lussingesyge / den femte børnesygdom / erythema infectiosum</li><li>Smitte: dråbesmitte. Smitsom FØR udslæt. Størst risiko hjemme ved syge børn.</li><li>Symptomer: feber, kataralia → røde kinder, udslæt, evt. ledgener. Oftest asymptomatisk gravid.</li></ul>'},
+    {l:'IgM/IgG — alle 4 kombinationer', c:'<ul><li><strong>IgM neg / IgG pos:</strong> Immun (tidl. infektion) → afsluttes</li><li><strong>IgM neg / IgG neg:</strong> Ubeskyttet, ikke smittet → ny serologi om 2-3 uger</li><li><strong>IgM pos / IgG neg:</strong> Nysmittet → UL + ny serologi 2-3 uger. Serokonvertering: UL i 12 uger</li><li><strong>IgM pos / IgG pos:</strong> Serokonverteret → UL-kontrol i 12 uger fra serokonvertering</li></ul>'},
+    {l:'Risici for foster', c:'<ul><li>Risiko størst &lt;GA 20</li><li>Føtalanæmi → <strong>hydrops foetalis</strong></li><li>Misdannelser ses IKKE</li><li>Lille risiko for abort og fosterdød</li></ul>'},
+    {l:'Behandling og opfølgning', c:'<ul><li>Ingen vaccine eller specifik medicin mod parvovirus</li><li>UL ×2/uge i 12 uger (MCA PSV = føtal anæmi-markør)</li><li>Føtalanæmi: intrauterin blodtransfusion</li></ul>'},
+    {l:'TORCH', c:'<strong>T</strong>oxoplasmose · <strong>O</strong>ther (parvovirus, HIV, syfilis, hepatitis B) · <strong>R</strong>ubella · <strong>C</strong>ytomegalovirus · <strong>H</strong>erpes simplex — ramme for transplacentære infektioner (F24-retteark)', full:true, hl:true, obs:true},
+    {l:'Dækning', c:'CMV, rubella, varicella, HIV og hepatitis B er IKKE detaljeret dækket i de tilgængelige projektfiler. Upload forelæsninger for fuld dækning.', full:true, warn:true}
+  ]
+},
+
+{ id:'obs_10', spec:'OBS', num:10, title:'Asfyksi <em>og neonatal genoplivning</em>',
+  src:'Neonatal asfyksi dokumenteret i noter · V2017 (ingen svar)',
+  sub:null,
+  grid:[
+    {l:'Neonatal genoplivning — protokol', c:'<ol style="padding-left:16px;line-height:1.9"><li>Fødsel → <strong>start uret</strong></li><li>Tør + stimulér barnet, oprethold normal temperatur</li><li>Vurder vejrtrækning og hjerteaktion</li><li>Gisp/ingen vejrtrækning → frie luftveje + <strong>5 ventilationer</strong></li><li>Ingen thoraxbevægelse → ny position + gentag 5 ventilationer</li><li>Puls &lt;60/min → <strong>hjertemassage 3:1</strong> (kompression:ventilation)</li><li>Vurdér q30 sek. Fortsat &lt;60 → IV adgang + medicin + volumen</li></ol>', full:true},
+    {l:'Apgar + navlesnors blodprøver', c:'<ul><li>Svær asfyksi: Apgar &lt;4 ved 1 minut</li><li>Moderat asfyksi: Apgar &lt;8 ved 1 minut</li><li>Navlesnors blodprøver: metabolisk (laktat) acidose bekræfter intrauterin asfyksi</li></ul>'},
+    {l:'Kølebehandling', c:'<ul><li>Indikation: svær neonatal asfyksi</li><li>Temperatur: <strong>33,5°C i 72 timer</strong></li><li>Reducerer hjerneskade</li><li>CFM-overvågning for kramper</li><li>MR cerebrum dag 4-7</li></ul>'},
+    {l:'Hvad mangler', c:'Intrauterin asfyksi UNDER fødsel: CTG-mønstre (decelerationer, variabilitet), ST-analyse/STAN og håndtering intrapartalt er IKKE dækket i tilgængelige projektfiler. Upload forelæsninger.', full:true, warn:true}
+  ]
+}
+
+];
+
+
+// ── NOTES ─────────────────────────────────────────────────────────────────
+
+function buildNotesSidebar() {
+  var sb = document.getElementById('notesSidebar');
+  if (!sb) return;
+  var specs = [{k:'GYN', label:'Gynækologi'}, {k:'OBS', label:'Obstetrik'}];
+  var out = '';
+  specs.forEach(function(sp) {
+    out += '<span class="nsec-lbl">' + sp.label + '</span>';
+    notesData.filter(function(n){ return n.spec === sp.k; }).forEach(function(n) {
+      var obs = n.spec === 'OBS' ? ' obs' : '';
+      out += '<div class="nitem' + obs + '" id="ni_' + n.id + '" onclick="showNote(\'' + n.id + '\')">';
+      out += '<span class="nitem-n">' + (n.num < 10 ? '0' + n.num : n.num) + '</span>';
+      out += '<span>' + n.title.replace(/<em>|<\/em>/g,'') + '</span></div>';
+    });
+  });
+  sb.innerHTML = out;
+}
+
+function switchNoteTab(noteId, idx) {
+  var panels = document.querySelectorAll('#notesMain .note-tab-panel');
+  var btns   = document.querySelectorAll('#notesMain .note-tab-btn');
+  panels.forEach(function(p){ p.classList.remove('active'); });
+  btns.forEach(function(b){ b.classList.remove('active'); });
+  var p = document.getElementById('ntab-' + noteId + '-' + idx);
+  var b = document.getElementById('ntabbtn-' + noteId + '-' + idx);
+  if (p) p.classList.add('active');
+  if (b) b.classList.add('active');
+}
+
+function showNote(id) {
+  document.querySelectorAll('.nitem').forEach(function(el){ el.classList.remove('active'); });
+  var ni = document.getElementById('ni_' + id);
+  if (ni) ni.classList.add('active');
+  var n = notesData.find(function(x){ return x.id === id; });
+  if (!n) return;
+  var spec = n.spec;
+  var badgeStyle = spec === 'GYN'
+    ? 'background:var(--gyn-bg);color:var(--gyn)'
+    : 'background:var(--obs-bg);color:var(--obs)';
+  var html = '<div class="nhd">';
+  html += '<span class="nbadge" style="' + badgeStyle + '">' + spec + ' ' + (n.num < 10 ? '0' : '') + n.num + '</span>';
+  html += '<div class="ntitle">' + n.title + '</div>';
+  if (n.src) html += '<div style="font-size:12px;color:var(--text-3);margin-top:6px">Kilde: ' + n.src + '</div>';
+  html += '</div>';
+  if (n.sub) {
+    html += '<div class="nsec"><div class="nsec-hdr">Definitioner / subtyper</div>' + n.sub + '</div>';
+  }
+  if (n.tabs && n.tabs.length) {
+    html += '<div class="note-tabs">';
+    n.tabs.forEach(function(t, i) {
+      html += '<button class="note-tab-btn' + (i === 0 ? ' active' : '') + '"'
+            + ' id="ntabbtn-' + n.id + '-' + i + '"'
+            + ' onclick="switchNoteTab(\'' + n.id + '\',' + i + ')">'
+            + t.label + '</button>';
+    });
+    html += '</div>';
+    n.tabs.forEach(function(t, i) {
+      html += '<div class="note-tab-panel' + (i === 0 ? ' active' : '') + '"'
+            + ' id="ntab-' + n.id + '-' + i + '">';
+      html += '<div class="ng2">';
+      t.grid.forEach(function(g) {
+        var extra = g.warn ? ' style="background:#FBF0E0;border-left:3px solid #BA7517;border-radius:0 8px 8px 0"'
+                   : (g.hl ? ' style="background:var(--' + (g.obs ? 'obs-bg' : 'gyn-bg') + ');border-left:3px solid var(--' + (g.obs ? 'obs' : 'gyn') + ')"' : '');
+        var cls = 'nc' + (g.full ? ' full' : '');
+        var lblCol = g.warn ? 'color:#854F0B' : (g.hl ? 'color:var(--' + (g.obs ? 'obs' : 'gyn') + ')' : '');
+        html += '<div class="' + cls + '"' + extra + '>';
+        html += '<div class="nc-lbl" style="' + lblCol + '">' + g.l + '</div>';
+        html += '<div>' + g.c + '</div>';
+        html += '</div>';
+      });
+      html += '</div></div>';
+    });
+  } else if (n.grid && n.grid.length) {
+    html += '<div class="ng2">';
+    n.grid.forEach(function(g) {
+      var extra = g.warn ? ' style="background:#FBF0E0;border-left:3px solid #BA7517;border-radius:0 8px 8px 0"'
+                 : (g.hl ? ' style="background:var(--' + (g.obs ? 'obs-bg' : 'gyn-bg') + ');border-left:3px solid var(--' + (g.obs ? 'obs' : 'gyn') + ')"' : '');
+      var cls = 'nc' + (g.full ? ' full' : '');
+      var lblCol = g.warn ? 'color:#854F0B' : (g.hl ? 'color:var(--' + (g.obs ? 'obs' : 'gyn') + ')' : '');
+      html += '<div class="' + cls + '"' + extra + '>';
+      html += '<div class="nc-lbl" style="' + lblCol + '">' + g.l + '</div>';
+      html += '<div>' + g.c + '</div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+  document.getElementById('notesMain').innerHTML = html;
+}
+
+buildNotesSidebar();
+
+</script>
+</body>
+</html>
