@@ -59,8 +59,15 @@ Persistence (user progress) is stored in `localStorage` under the key `wm_unifie
       label: 'PID',        // tab button text
       grid:  [ ... ]       // same grid-item structure as flat grid[]
     }
-  ]
+  ],
+  caseRefs: ['underlivsinf'] // optional string[] — IDs of related cases (openCase keys).
+                             // Rendered as a link bar at the bottom of the note view.
 }
+```
+
+Case HTML elements carry the complementary link bar as injected static HTML before
+`<div class="case-nav">`. The case id used in `openCase('id')` is the bare key
+(e.g. `praeeklampsi`, `underlivsinf`) — not prefixed with `case-`.
 ```
 
 ---

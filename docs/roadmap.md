@@ -88,3 +88,4 @@ Files that would unlock blocked topics:
 |------|----|--------|
 | 2026-05-28 | gyn_7 | Rewrote PID note — full ætiologi, 4/5 kriterier, AB-regimer, sequelae med tal, Fitz-Hugh-Curtis |
 | 2026-05-28 | ui | Add sub-tab support to notes renderer — test case: gyn_7 |
+| 2026-05-28 | ui | Add bidirectional case-note linking — noteRef + caseRefs |

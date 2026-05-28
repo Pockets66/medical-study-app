@@ -92,6 +92,12 @@ main { max-width:900px; margin:0 auto; padding:40px 24px; }
 .reveal-all-btn { padding:10px 18px; border-radius:6px; font-size:14px; cursor:pointer; font-weight:500; background:var(--gyn-bg); color:var(--gyn); border:1px solid rgba(74,47,122,0.2); transition:all .15s; }
 .reveal-all-btn:hover { background:var(--gyn); color:#FFF; }
 
+/* CROSS-LINKS */
+.xlink-bar { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; padding-top:20px; border-top:1px solid var(--border); align-items:center; }
+.xlink-label { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); margin-right:4px; }
+.xlink-btn { padding:6px 12px; border-radius:6px; border:1px solid var(--border-strong); background:var(--surface); color:var(--text-2); font-size:13px; cursor:pointer; transition:all .15s; }
+.xlink-btn:hover { background:var(--surface2); color:var(--text); }
+
 /* NOTE SUB-TABS */
 .note-tabs { display:flex; gap:0; border-bottom:1px solid var(--border); margin:0 0 20px; }
 .note-tab-btn { padding:9px 16px; font-size:13px; font-weight:500; background:none; border:none; border-bottom:2px solid transparent; color:var(--text-3); cursor:pointer; transition:all .15s; white-space:nowrap; }
@@ -504,6 +510,10 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
     </div></div>
   </div>
 
+  <div class="xlink-bar">
+    <span class="xlink-label">Relaterede noter</span>
+    <button class="xlink-btn" onclick="goToNote('obs_1')">Præeklampsi / HELLP</button>
+  </div>
   <div class="case-nav">
     <button class="reveal-all-btn" onclick="revealAll('pe',6)">Afslør alle svar</button>
     <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
@@ -1135,6 +1145,10 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
     </div></div>
   </div>
 
+  <div class="xlink-bar">
+    <span class="xlink-label">Relaterede noter</span>
+    <button class="xlink-btn" onclick="goToNote('gyn_7')">Underlivsinfektion og PID</button>
+  </div>
   <div class="case-nav">
     <button class="reveal-all-btn" onclick="revealAll('pid',3)">Afslør alle svar</button>
     <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
@@ -1643,6 +1657,10 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
     </div></div>
   </div>
 
+  <div class="xlink-bar">
+    <span class="xlink-label">Relaterede noter</span>
+    <button class="xlink-btn" onclick="goToNote('obs_5')">Væksthæmning og blødning</button>
+  </div>
   <div class="case-nav">
     <button class="reveal-all-btn" onclick="revealAll('vaekst',4)">Afslør alle svar</button>
     <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
@@ -1726,6 +1744,10 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
     </div></div>
   </div>
 
+  <div class="xlink-bar">
+    <span class="xlink-label">Relaterede noter</span>
+    <button class="xlink-btn" onclick="goToNote('obs_6')">GDM og medicinske sygdomme</button>
+  </div>
   <div class="case-nav">
     <button class="reveal-all-btn" onclick="revealAll('gdm',4)">Afslør alle svar</button>
     <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
@@ -1811,6 +1833,10 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
     </div></div>
   </div>
 
+  <div class="xlink-bar">
+    <span class="xlink-label">Relaterede noter</span>
+    <button class="xlink-btn" onclick="goToNote('obs_7')">Præterm fødsel</button>
+  </div>
   <div class="case-nav">
     <button class="reveal-all-btn" onclick="revealAll('pterm',4)">Afslør alle svar</button>
     <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
@@ -2327,7 +2353,8 @@ var notesData = [
       {l:'Behandling', c:'<ul><li>Fluconazol 150 mg oralt engangsdosis (1. valg)</li><li>Alternativ: clotrimazol vaginalovula</li><li>Obs: kløe vedvarer de første 3–4 dage af behandling — informer patienten</li><li>Partnerbehandling ikke nødvendig (medmindre recidiverende)</li></ul>'},
       {l:'CAVE', c:'Recidiverende candida (&gt;4 episoder/år) → udeluk DM, immundefekt. Overvej profylaktisk fluconazol 150 mg ugentligt i 6 måneder.', full:true, warn:true}
     ]}
-  ]
+  ],
+  caseRefs:['underlivsinf']
 },
 
 { id:'gyn_8', spec:'GYN', num:8, title:'Human <em>reproduktion</em>',
@@ -2367,7 +2394,8 @@ var notesData = [
     {l:'Udredning', c:'<ul><li>BT ×2 med ≥4 timers interval</li><li>Urinstix (protein) + 24-timers urin</li><li>Blodprøver: trombocytter, LDH, haptoglobin, ALAT, urat, kreatinin, Hgb</li><li>CTG (fosterovervågning)</li><li>UL: fostervægt, fostervand, flow</li></ul>'},
     {l:'Behandling', c:'<ul><li>Eneste kur: <strong>forløsning</strong></li><li>Antihypertensiv: labetalol IV, methyldopa po, nifedipin po (mål BT &lt;160/110)</li><li>MgSO4 IV: krampe-profylakse/behandling ved svær PE og eklampsi</li><li>Betapred IM ved præmaturitet (&lt;34 uger)</li><li>Overveje overflytning til center med neonatalafdeling</li></ul>', full:true},
     {l:'Langtid + næste graviditet', c:'<ul><li>Øget risiko for PE i næste graviditet</li><li><strong>Hjertemagnyl (ASA lavdosis)</strong> fra uge 12-16 i næste graviditet</li><li>BT velbehandlet inden næste graviditet</li><li>Øget livstidsrisiko for kardiovaskulær sygdom — jævnlig BT-kontrol anbefales</li></ul>', full:true, hl:true, obs:true}
-  ]
+  ],
+  caseRefs:['praeeklampsi']
 },
 
 { id:'obs_2', spec:'OBS', num:2, title:'Svangreomsorg <em>og graviditetsundersøgelse</em>',
@@ -2413,7 +2441,8 @@ var notesData = [
     {l:'DDX — vaginalblødning', c:'<ul><li>Tegnblødning (begyndende fødsel)</li><li>Placenta prævia</li><li>Abruptio placentae</li><li>Vasa prævia (sjælden, fatal)</li><li>Erytroplakier, hæmorider</li><li>Cervixcancer</li><li>Uterusruptur (tidl. sectio)</li></ul>'},
     {l:'FGR — udredning + opfølgning', c:'<ul><li>Lav PAPP-A + øget a.uterina-modstand = markører fra 1. trimester</li><li>UL: flow i a.umbilicalis, a.cerebri media, ductus venosus; fostervægt, fostervand</li><li>BT + urinstix ved hver kontrol (PE-screening)</li><li>CTG</li></ul>'},
     {l:'Behandling', c:'<ul><li>FGR: tætte UL-kontroller; betapred + MgSO4 ved præterm forløsning; akut sectio ved truet foster</li><li>Placenta prævia: <strong>ALDRIG eksploration</strong>; Trendelenburg + ilt + IV; Tranexamsyre (Cyklokapron); Betapred; Planlagt sectio GA 37+0</li><li>Abruptio: akut forløsning ved truet foster</li></ul>', full:true}
-  ]
+  ],
+  caseRefs:['vaeksthemning']
 },
 
 { id:'obs_6', spec:'OBS', num:6, title:'GDM <em>og medicinske sygdomme</em>',
@@ -2426,7 +2455,8 @@ var notesData = [
     {l:'Behandling GDM', c:'<ul><li>1. linje: kostomlægning (fedt- og glukosefattig) + motion. Diætist-vejledning.</li><li>2. linje: insulin (hvis kost/motion utilstrækkeligt)</li><li>Igangsætning: senest 1 uge over termin (eller tidligere ved makrosomi/komplikationer)</li></ul>'},
     {l:'Andre medicinske sygdomme (dokumenteret)', c:'<ul><li>Hypothyreose: Eltroxin (levothyroxin) — TSH skal holdes velreguleret. Nævnt i F25.</li><li>GBS i urin: penicillin-kur + IV penicillin under fødsel</li><li>Astma, epilepsi, hjertesygdom: IKKE dækket i tilgængelige eksamenssæt</li></ul>', full:true},
     {l:'Dumpegrund', c:'Manglende OGTT-henvisning ved glucosuri + risikofaktorer = dumpegrund (S2018, V2020 retteark)', full:true, warn:true}
-  ]
+  ],
+  caseRefs:['gdm']
 },
 
 { id:'obs_7', spec:'OBS', num:7, title:'Præterm <em>fødsel</em>',
@@ -2439,7 +2469,8 @@ var notesData = [
     {l:'Behandling', c:'<ul><li>Tractocile (atosiban) IV: tokolyse</li><li>Betapred IM &lt;34 uger: lungemodning</li><li>MgSO4 IV &lt;32 uger: neuroprotektiv</li><li>Lutinus (vaginalt progesteron): rolig fase</li><li>Penicillin: GBS-profylakse ved aktiv fødsel</li><li>Neonatologisk samtale med forældre</li></ul>'},
     {l:'RDS og umodne organer', c:'<ul><li>RDS (respiratorisk distres-syndrom): surfactantmangel → nCPAP → Curosurf → respirator</li><li><strong>CNS</strong>: IVH grad 1-4, PVL</li><li><strong>Hjerte</strong>: DAP (ductus arteriosus persistens)</li><li><strong>Tarm</strong>: NEC (nekrotiserende enterocolitis)</li><li><strong>Øjne</strong>: ROP (retinopati of prematurity)</li></ul>', full:true},
     {l:'Husk', c:'CNS/IVH — Hjerte/DAP — Tarm/NEC — Øjne/ROP. Lær disse 4 par udenad (eksplicit eksamenskrav, S2020)', full:true, hl:true, obs:true}
-  ]
+  ],
+  caseRefs:['praeterm']
 },
 
 { id:'obs_8', spec:'OBS', num:8, title:'Barselskomplikationer',
@@ -2497,6 +2528,26 @@ function buildNotesSidebar() {
     });
   });
   sb.innerHTML = out;
+}
+
+function goToNote(noteId) {
+  document.getElementById('view-case').style.display = 'none';
+  document.getElementById('view-overview').style.display = 'block';
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.pane').forEach(function(p){ p.classList.remove('active'); });
+  document.getElementById('tab-noter').classList.add('active');
+  var btn = document.querySelector('.tab-btn[onclick*="tab-noter"]');
+  if (btn) btn.classList.add('active');
+  showNote(noteId);
+  var item = document.getElementById('ni_' + noteId);
+  if (item) item.scrollIntoView({ block:'nearest' });
+}
+
+function goToCase(caseId) {
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  var btn = document.querySelector('.tab-btn[onclick*="tab-emner"]');
+  if (btn) btn.classList.add('active');
+  openCase(caseId);
 }
 
 function switchNoteTab(noteId, idx) {
@@ -2564,6 +2615,16 @@ function showNote(id) {
       html += '<div class="nc-lbl" style="' + lblCol + '">' + g.l + '</div>';
       html += '<div>' + g.c + '</div>';
       html += '</div>';
+    });
+    html += '</div>';
+  }
+  if (n.caseRefs && n.caseRefs.length) {
+    html += '<div class="xlink-bar">';
+    html += '<span class="xlink-label">Relaterede cases</span>';
+    n.caseRefs.forEach(function(cid) {
+      var heading = document.querySelector('#case-' + cid + ' .case-header h2');
+      var title = heading ? heading.textContent : cid;
+      html += '<button class="xlink-btn" onclick="goToCase(\'' + cid + '\')">' + title + '</button>';
     });
     html += '</div>';
   }
