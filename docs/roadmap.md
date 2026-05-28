@@ -21,7 +21,7 @@ Tracks the status of every note card in `notesData`.
 | ID | Title | Status | Notes |
 |----|-------|--------|-------|
 | gyn_1 | Antikonception og abort | `[D]` | Expanded to 3 tabs: Antikonception / Abort / Nødprævention. Awaiting medical verification. |
-| gyn_2 | Blødningsforstyrrelser og PCOS | `[✓]` | Blødningsskema + PCOS follow-up (HbA1c, metabolisk syndrom) thin |
+| gyn_2 | Blødningsforstyrrelser (AUB) | `[D]` | Full rewrite from AUB slides. 5 tabs: Oversigt / PALM / COEIN / Diagnostik / Behandling. Awaiting verification. |
 | gyn_3 | Endometriose og godartede tumorer | `[✓]` | Fibrom-subtyper + adenomyose missing — low priority |
 | gyn_4 | Uro-gynækologi | `[✓]` | TVT + prolaps-grading missing |
 | gyn_5 | Tidlige graviditetskomplikationer | `[✓]` | Mola hydatidosa thin |
@@ -93,3 +93,4 @@ Files that would unlock blocked topics:
 | 2026-05-28 | gyn_1 | Expand antikonception note — generation guide, VTE tal, abort fordele/ulemper, nødprævention |
 | 2026-05-28 | gyn_7 + gyn_7b | Split infections note — Underlivsinfektion (4 tabs) + STD (6 tabs), slides-sourced |
 | 2026-05-28 | gyn_7b | Patch: remove unverified HPV % + screening ages, remove FHC from klamydia |
+| 2026-05-28 | gyn_2 | Full rewrite — AUB slides, FIGO cycle values, PALM-COEIN, PCOS tabel, behandlingsreduktionsprocenter |
