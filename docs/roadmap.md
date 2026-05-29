@@ -24,7 +24,7 @@ Tracks the status of every note card in `notesData`.
 | gyn_2 | Blødningsforstyrrelser (AUB) | `[D]` | Full rewrite from AUB slides. 5 tabs: Oversigt / PALM / COEIN / Diagnostik / Behandling. Awaiting verification. |
 | gyn_3 | Endometriose og godartede tumorer | `[✓]` | Fibrom-subtyper + adenomyose missing — low priority |
 | gyn_4 | Uro-gynækologi | `[✓]` | TVT + prolaps-grading missing |
-| gyn_5 | Tidlige graviditetskomplikationer | `[✓]` | Mola hydatidosa thin |
+| gyn_5 | Tidlige graviditetskomplikationer | `[D]` | Full rewrite. 5 tabs: Normal grav / Abortus / Retineret væv / EUG / Mola. Slides + Signe. Awaiting verification. |
 | gyn_6 | Gynækologisk cancer | `[✓]` | ⚠️ Ovariecancer næsten ikke dækket — needs forelæsning upload |
 | gyn_7  | Underlivsinfektion            | `[D]` | Split from gyn_7b. Tabs: BV / Bartholinitis / PID / TOA. Slides-sourced. Awaiting verification. |
 | gyn_7b | Seksuelt overførte infektioner | `[D]` | New note. Tabs: Herpes / HPV / Klamydia / Gonore / Syfilis / Mycoplasma. Slides-sourced. Awaiting verification. |
@@ -95,3 +95,4 @@ Files that would unlock blocked topics:
 | 2026-05-28 | gyn_7b | Patch: remove unverified HPV % + screening ages, remove FHC from klamydia |
 | 2026-05-28 | gyn_2 | Full rewrite — AUB slides, FIGO cycle values, PALM-COEIN, PCOS tabel, behandlingsreduktionsprocenter |
 | 2026-05-29 | gyn_1 | Patch: Blanket A udgået, SST-generationsvejledning, VTE-tabel, succesrater abort, spiral/sterilisation tilføjet |
+| 2026-05-29 | gyn_5 | Full rewrite — 2026 slides, rescue progesteron, mola protokol, anti-D, MTX ventetid |
