@@ -94,3 +94,4 @@ Files that would unlock blocked topics:
 | 2026-05-28 | gyn_7 + gyn_7b | Split infections note — Underlivsinfektion (4 tabs) + STD (6 tabs), slides-sourced |
 | 2026-05-28 | gyn_7b | Patch: remove unverified HPV % + screening ages, remove FHC from klamydia |
 | 2026-05-28 | gyn_2 | Full rewrite — AUB slides, FIGO cycle values, PALM-COEIN, PCOS tabel, behandlingsreduktionsprocenter |
+| 2026-05-29 | gyn_1 | Patch: Blanket A udgået, SST-generationsvejledning, VTE-tabel, succesrater abort, spiral/sterilisation tilføjet |
