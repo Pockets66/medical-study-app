@@ -22,7 +22,7 @@ Tracks the status of every note card in `notesData`.
 |----|-------|--------|-------|
 | gyn_1 | Antikonception og abort | `[V]` | Expanded to 3 tabs: Antikonception / Abort / Nødprævention. Verified by owner. |
 | gyn_2 | Blødningsforstyrrelser (AUB) | `[V]` | Full rewrite from AUB slides. 5 tabs: Oversigt / PALM / COEIN / Diagnostik / Behandling. Verified by owner. |
-| gyn_3 | Endometriose og godartede tumorer | `[✓]` | Fibrom-subtyper + adenomyose missing — low priority |
+| gyn_3 | Endometriose og godartede tumorer | `[D]` | Full rewrite. 5 tabs: Endometriose / Adenomyose / Polypper+Fibromer / Ovariecyster / DDX akutte smerter. Awaiting verification. |
 | gyn_4 | Uro-gynækologi | `[V]` | Full rewrite. 4 tabs: Udredning / Stressinkontinens / Urgeinkontinens / Genital prolaps. Verified by owner. |
 | gyn_5 | Tidlige graviditetskomplikationer | `[V]` | Full rewrite. 5 tabs: Normal grav / Abortus / Retineret væv / EUG / Mola. Slides + Signe. Verified by owner. |
 | gyn_6 | Gynækologisk cancer | `[✓]` | ⚠️ Ovariecancer næsten ikke dækket — needs forelæsning upload |
@@ -106,3 +106,4 @@ Files that would unlock blocked topics:
 | 2026-05-29 | gyn_4 | Full rewrite — 2026 slides, TVT-kriterier, prolaps-gradering, mirabegron, pessar-algoritme |
 | 2026-05-29 | flow:akut_underlivssmerter | New feature — Symptomudredning tab + flow renderer; first tree (EUG/abort/PID/torsion/cyste/endometriose/appendicit) |
 | 2026-05-31 | flow:bloedningsforstyrrelser | New flow tree (PMB/cancer, graviditet, cervix, fibrom, PCOS, koagulopati, HMB); folded in everything-except-cancer → [V] |
+| 2026-05-31 | gyn_3 | Full rewrite — 2026 slides, IOTA B/M regler, Ryeqo, UAE statistik, akutte underlivssmerter DDX |
