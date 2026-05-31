@@ -50,6 +50,12 @@ Tracks the status of every note card in `notesData`.
 
 ---
 
+## Symptomudredning — diagnostiske flowcharts (flowData)
+
+| ID | Symptom | Status | Notes |
+|----|---------|--------|-------|
+| akut_underlivssmerter | Akutte smerter i underlivet | `[D]` | Cross-checked vs in-app gyn_3/5/7 + cases. Pending slide-check: folsyre under MTX, hCG-endepunkt (<2 vs <5). |
+
 ## Backlog — topics not yet in the app
 
 Topics identified from exam sets or målbeskrivelser that have no note card yet.
@@ -97,3 +103,4 @@ Files that would unlock blocked topics:
 | 2026-05-29 | gyn_1 | Patch: Blanket A udgået, SST-generationsvejledning, VTE-tabel, succesrater abort, spiral/sterilisation tilføjet |
 | 2026-05-29 | gyn_5 | Full rewrite — 2026 slides, rescue progesteron, mola protokol, anti-D, MTX ventetid |
 | 2026-05-29 | gyn_4 | Full rewrite — 2026 slides, TVT-kriterier, prolaps-gradering, mirabegron, pessar-algoritme |
+| 2026-05-29 | flow:akut_underlivssmerter | New feature — Symptomudredning tab + flow renderer; first tree (EUG/abort/PID/torsion/cyste/endometriose/appendicit) |

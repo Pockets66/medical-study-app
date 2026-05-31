@@ -153,6 +153,53 @@ main { max-width:900px; margin:0 auto; padding:40px 24px; }
 .nst strong{font-weight:500}
 
 footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); border-top:1px solid var(--border); margin-top:60px; }
+
+/* SYMPTOMUDREDNING (FLOW) */
+.flow-trail { display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:0 0 16px; }
+.flow-crumb { font-size:11.5px; background:var(--surface2); color:var(--text-2); border:1px solid var(--border); padding:3px 9px; border-radius:20px; }
+.flow-crumb b { font-weight:600; color:var(--text); }
+.flow-crumb .c-q { color:var(--text-3); }
+.flow-arrow { color:var(--text-3); font-size:11px; }
+.flow-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
+.flow-q { font-family:'DM Serif Display',serif; font-weight:400; font-size:22px; margin:0 0 4px; }
+.flow-why { font-size:13.5px; color:var(--text-2); margin:0 0 16px; }
+.flow-why b { color:var(--gyn); font-weight:600; }
+.flow-redflag { display:flex; gap:10px; background:#FBEAE7; border-left:3px solid #C84040; border-radius:0 8px 8px 0; padding:12px 14px; margin:0 0 16px; font-size:13px; color:#7C241A; }
+.flow-redflag b { color:#C84040; }
+.flow-ask { background:var(--gyn-bg); border-radius:8px; padding:14px 16px; margin:0 0 18px; }
+.flow-ask h4 { margin:0 0 8px; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--gyn); font-weight:600; }
+.flow-ask ul { margin:0; padding-left:18px; font-size:13.5px; color:var(--text-2); }
+.flow-ask li { margin:3px 0; }
+.flow-ask li b { color:var(--text); font-weight:600; }
+.flow-opts { display:grid; gap:10px; }
+.flow-opt { text-align:left; background:var(--surface); border:1px solid var(--border-strong); border-radius:8px; padding:13px 15px; cursor:pointer; transition:all .14s; font-family:inherit; color:var(--text); }
+.flow-opt:hover { border-color:var(--gyn); background:var(--gyn-bg); transform:translateY(-1px); }
+.flow-opt .lead { display:block; font-weight:600; font-size:14.5px; margin-bottom:2px; }
+.flow-opt .hint { display:block; font-size:12.5px; color:var(--text-3); }
+.flow-urg { display:inline-block; font-size:10.5px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:3px 9px; border-radius:20px; margin-bottom:8px; }
+.flow-urg.akut { background:#FBEAE7; color:#C84040; }
+.flow-urg.haster { background:#FBF0E0; color:#B97514; }
+.flow-urg.rolig { background:#E7F4EE; color:#2D9E6B; }
+.flow-dxname { font-family:'DM Serif Display',serif; font-size:24px; }
+.flow-dxsub { font-size:13px; color:var(--text-3); margin:0 0 18px; }
+.flow-sec { margin:0 0 18px; }
+.flow-sec h3 { font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); font-weight:600; margin:0 0 8px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+.flow-sec ul { margin:0; padding-left:18px; font-size:14px; color:var(--text-2); }
+.flow-sec li { margin:5px 0; }
+.flow-sec li b, .flow-sec li strong { color:var(--text); font-weight:600; }
+.flow-ddx .d { font-weight:600; color:var(--text); }
+.flow-ddx .r { color:var(--text-2); }
+.flow-ki { background:#FBF0E0; border-left:3px solid #E8A020; border-radius:0 8px 8px 0; padding:14px 16px; margin:0 0 18px; }
+.flow-ki h3 { border:0; color:#B97514; margin:0 0 7px; font-size:11px; letter-spacing:.08em; text-transform:uppercase; font-weight:600; }
+.flow-ki ul { margin:0; padding-left:18px; font-size:14px; color:#6B4309; }
+.flow-ki li { margin:4px 0; }
+.flow-ki li b { color:#4A2F06; }
+.flow-controls { display:flex; gap:10px; margin-top:22px; }
+.flow-btn { font-family:inherit; font-size:13px; border-radius:6px; padding:9px 15px; cursor:pointer; border:1px solid var(--border-strong); background:var(--surface); color:var(--text-2); }
+.flow-btn:hover { background:var(--surface2); color:var(--text); }
+.flow-btn.primary { background:var(--gyn); border-color:var(--gyn); color:#FFF; }
+.flow-btn:disabled { opacity:.4; cursor:default; }
+.flow-caselink { display:inline-flex; gap:6px; font-size:13px; background:var(--gyn-bg); color:var(--gyn); border:1px solid var(--border); border-radius:6px; padding:8px 12px; cursor:pointer; }
 </style>
 </head>
 <body>
@@ -173,10 +220,26 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   <button class="tab-btn" onclick="showTab('tab-hyppighed',this)">Hyppighed</button>
   <button class="tab-btn" onclick="showTab('tab-strategi',this)">Studiestrategi</button>
   <button class="tab-btn" onclick="showTab('tab-tips',this)">Eksamenstips</button>
+  <button class="tab-btn" onclick="showTab('tab-flow',this)">Symptomudredning</button>
 </nav>
 
 <div id="view-overview">
 <main>
+
+<!-- TAB: SYMPTOMUDREDNING (FLOW) -->
+<div id="tab-flow" class="pane">
+  <p class="section-label">Symptomudredning</p>
+  <div id="flow-picker" class="case-grid"></div>
+  <div id="flow-app" style="display:none">
+    <div class="flow-trail" id="flowTrail"></div>
+    <div class="flow-card" id="flowCard"></div>
+    <div class="flow-controls">
+      <button class="flow-btn" id="flowBack">← Tilbage</button>
+      <button class="flow-btn primary" id="flowReset">↺ Start forfra</button>
+      <button class="flow-btn" id="flowPicker" style="margin-left:auto">Alle symptomer</button>
+    </div>
+  </div>
+</div>
 
 <!-- TAB: EMNER -->
 <div id="tab-emner" class="pane active">
@@ -2780,6 +2843,354 @@ function showNote(id) {
 }
 
 buildNotesSidebar();
+
+var flowData = [
+{ id:'akut_underlivssmerter', spec:'GYN', title:'Akutte smerter i underlivet',
+  src:'Eksamenssæt (V2022 EUG m.fl.) + noter gyn_3/5/7 + cases', start:'start',
+  nodes:{
+
+    start:{
+      q:'Akut vurdering + fokuseret anamnese',
+      why:'Smerter i underlivet hos en fertil kvinde er <b>ekstrauterin graviditet indtil det modsatte er bevist</b>. Vurder først om patienten er akut påvirket, og tag derefter en struktureret anamnese.',
+      redflag:'Påvirket, shockeret eller peritoneal patient → tænk <b>rumperet EUG</b>: ABC, 1–2 store PVK, 1 L isoton NaCl IV, BAC-test/forlig — og videre uden forsinkelse.',
+      ask:[
+        '<b>Smerteanamnese:</b> debut (akut/gradvis), lokalisation (ensidig/bilateral), karakter, intensitet, udstråling, varighed',
+        '<b>Blødning/menostasi:</b> sidste menstruation, aktuel blødning, mængde',
+        '<b>Udflåd</b>, feber, kvalme/opkastning, dysuri/pollakisuri, afføringsmønster',
+        '<b>Tidligere graviditeter</b>, tidl. EUG, fertilitetsbehandling, spiral (IUD)',
+        '<b>Øvrige sygdomme:</b> tidl. underlivsinfektion, kønssygdomme, gyn. operationer, endometriose',
+        '<b>Dispositioner</b> (familiær) · <b>medicin &amp; allergi</b>',
+        '<b>KRAM:</b> kost, rygning, alkohol, motion (rygning øger EUG-risiko)'
+      ],
+      opts:[
+        { lead:'Videre — tag urin-hCG', hint:'Det første afgørende skridt ved enhver fertil kvinde med underlivssmerter', next:'hcg' }
+      ]
+    },
+
+    hcg:{
+      q:'Urin-hCG (graviditetstest)?',
+      why:'Graviditetstesten deler udredningen i to. <b>Positiv test peger først og fremmest mod EUG</b> — også med spiral (da er graviditeten ekstrauterin indtil andet er bevist).',
+      opts:[
+        { lead:'Positiv', hint:'Tom uterus? Lateraliserede smerter? Fri væske? → vaginal UL', next:'ul_grav' },
+        { lead:'Negativ', hint:'Infektion, torsion, cysteruptur, endometriose eller kirurgisk årsag', next:'pid_check' }
+      ]
+    },
+
+    ul_grav:{
+      q:'Vaginal UL — ses intrauterin graviditet?',
+      why:'S-hCG suppleres med transvaginal UL. <b>10 % af EUG kan ikke ses på UL — en tom uterus udelukker derfor ikke EUG.</b>',
+      opts:[
+        { lead:'Tom uterus (ingen intrauterin sæk) ± fri væske', hint:'Lateraliserede adnexsmerter, evt. peritoneal reaktion', next:'eug' },
+        { lead:'Intrauterin sæk + blødning/smerter', hint:'Vurder os og fosterhjerteaktion', next:'abort' }
+      ]
+    },
+
+    pid_check:{
+      q:'Feber, purulent udflåd og bilateral rokkeømhed?',
+      why:'Bilaterale symptomer + feber + udflåd trækker mod infektion (PID). Ensidige, pludselige smerter trækker mod torsion/cyste.',
+      opts:[
+        { lead:'Ja — ofte bilateral, ≥ 38°C, ømt udflåd', hint:'Diagnostiske kriterier opfyldt?', next:'pid' },
+        { lead:'Nej — karakterisér smerten nærmere', hint:'Debut, side, UL-fund, cyklusrelation', next:'smertekarakter' }
+      ]
+    },
+
+    smertekarakter:{
+      q:'Hvordan ser smerten og UL ud?',
+      why:'Smertens debut, ensidighed og UL-fund (cyste, flow, fri væske) adskiller de benigne fra de tidskritiske.',
+      opts:[
+        { lead:'Pludselig, ensidig, voldsom + forstørret adnex uden klart dopplerflow', hint:'Kvalme/opkastning, palpabel øm udfyldning', next:'torsion' },
+        { lead:'Midtcyklisk, ensidig, aftagende + let fri væske', hint:'Svinder ofte efter timer', next:'cysteruptur' },
+        { lead:'Cyklisk/kronisk, dysmenorré, dyspareuni', hint:'Mere subakut billede', next:'endometriose' },
+        { lead:'Højresidig, vandrende fra umbilicus, anoreksi, feber', hint:'Vigtig kirurgisk DD', next:'appendicit' }
+      ]
+    },
+
+    eug:{
+      dx:'Ekstrauterin graviditet', dxsub:'Tubar hyppigst · ~1 % af graviditeter · 95 % i salpinx', urgency:'akut',
+      findings:[
+        'Positiv urin-hCG, relevant S-hCG; evt. lav Hgb ved blødning',
+        'Mistænkes ved <b>hCG &gt; 2.500 + tom gestationssæk</b>; insufficient hCG-stigning (ikke fordoblet på 2 dage)',
+        'Vaginal UL: <b>tom uterus</b> ± fri væske i fossa Douglasi; pseudogestationssæk kan forekomme',
+        'Lateraliserede adnexsmerter; peritoneal reaktion/shock ved ruptur'
+      ],
+      ddx:[
+        { d:'Spontan abort', r:'— intrauterin sæk på UL frem for tom uterus' },
+        { d:'Torkveret/rumperet ovariecyste', r:'— neg. graviditetstest' },
+        { d:'Salpingitis/PID', r:'— feber + bilaterale symptomer, neg. hCG' },
+        { d:'Appendicit', r:'— smertevandring, neg. hCG' }
+      ],
+      behandling:[
+        '<b>Ekspekterende:</b> ved stabil pt. og faldende hCG — følges til hCG &lt; 2',
+        '<b>Methotrexat 1 mg/kg i.m. × 1:</b> kun ved stabil pt., hCG &lt; 3.000, ingen blødning, EUG lokaliseret på UL',
+        '<b>Laparoskopi</b> (oftest <b>salpingektomi</b>, evt. tubotomi): ved hCG &gt; 3.000, ustabil pt. eller tvivlstilfælde. Forudgående 1–2 PVK, isoton NaCl, BAC-test',
+        '<b>Anti-D til Rh-negative ved kirurgisk behandling</b>; følg hCG til &lt; 2'
+      ],
+      ki:[
+        '<b>Methotrexat KI:</b> hæmodynamisk ustabil eller rumperet EUG · manglende mulighed for opfølgning',
+        'Nedsat lever- eller nyrefunktion · knoglemarvsdepression (anæmi/leuko-/trombopeni)',
+        'Aktiv infektion · immundefekt · ulcus pepticum · aktiv lungesygdom',
+        '<b>Amning</b> · overfølsomhed over for MTX',
+        'Relativt: hCG for høj, stor adnexmasse, fosterhjerteaktion',
+        '<b>Frarådet at blive gravid i 3 mdr. efter MTX</b> (kan påvises i leveren op til 3 mdr.)'
+      ],
+      prognose:'Recidivrisiko 10–15 % efter konservativ behandling → tidlig kontrol-UL ved ny graviditet. Øget risiko for tubafaktor-infertilitet.',
+      caseRef:'tidliggrav'
+    },
+
+    abort:{
+      dx:'Spontan abort', dxsub:'Truende / igangværende / inkomplet / missed', urgency:'haster',
+      findings:[
+        'Blødning + smerter efter menostasi; positiv hCG',
+        'UL: intrauterin sæk. <b>Truende:</b> lukket os, levende foster · <b>Missed:</b> ingen hjerteblink, lukket os · <b>Inkomplet:</b> delvis udtømt, fortsat blødning'
+      ],
+      ddx:[
+        { d:'Ekstrauterin graviditet', r:'— OBS hvis uterus er tom trods positiv hCG' },
+        { d:'Mola', r:'— uterus større end svarende til GA, meget høj hCG' }
+      ],
+      behandling:[
+        '<b>Truende abort:</b> ekspektation. Ved sikker intrauterin grav. + tidl. graviditetstab: overvej rescue-progesteron (vagitorie 400 mg × 2 til GA 12+0)',
+        '<b>Missed/inkomplet:</b> medicinsk — Mifegyn (mifepriston) + 48 t senere Cytotec (misoprostol), ~95 % effekt — eller kirurgisk evacuatio',
+        '<b>Anti-D til Rh-negative ved indgreb og GA ≥ 8+0</b> (ikke ved rent ekspekterende forløb)'
+      ],
+      ki:[
+        'Misoprostol: forsigtighed ved svær astma · mistanke om EUG skal være udelukket først'
+      ],
+      prognose:'Truende abort kan fortsætte som normal graviditet. Enkeltstående abort ændrer ikke prognosen for senere graviditet væsentligt.',
+      caseRef:'tidliggrav'
+    },
+
+    pid:{
+      dx:'PID — akut underlivsbetændelse', dxsub:'Endometritis · salpingitis · oophoritis · parametritis', urgency:'haster',
+      findings:[
+        '<b>Diagnose = mindst 4 af 5:</b> smerter · bilateral ømhed/rokkeømhed · temp &gt; 38°C · purulent udflåd og/eller positiv klamydiatest · forhøjet CRP/leukocytter/SR',
+        'Podning for klamydia + gonore fra cervix og urethra; transvaginal UL (TOA? fri væske?)',
+        'Hyppigst Chlamydia trachomatis; ofte bilaterale symptomer'
+      ],
+      ddx:[
+        { d:'Ekstrauterin graviditet', r:'— udeluk ALTID med urin-hCG inden diagnosen stilles' },
+        { d:'Appendicit', r:'— ofte svær at skelne hos unge; mere højresidig' },
+        { d:'Ovariecyste m. torsion/ruptur', r:'— ensidig, pludselig' },
+        { d:'UVI/pyelonefritis', r:'— dysuri, flankesmerter' }
+      ],
+      behandling:[
+        '<b>Ambulant:</b> tabl. tetracyklin 300 mg × 2 i 10 dage <em>eller</em> tetracyklin 100 mg × 2 + metronidazol 500 mg × 3 i 10 dage',
+        '<b>Mistanke om gonore:</b> ceftriaxon 250 mg IM som engangsdosis',
+        '<b>Svær PID / TOA / graviditet / manglende respons:</b> indlæggelse + IV antibiotika',
+        '<b>Partnervarsling + partnerbehandling</b>; anmeldelsespligt; analgetika (NSAID/paracetamol)',
+        'Spiral fjernes ved manglende respons; recidiv → laparoskopi i rolig fase'
+      ],
+      ki:[
+        '<b>Tetracyklin KI ved graviditet og amning samt til børn</b> → udeluk graviditet (hCG) før opstart; vælg makrolid som alternativ',
+        'NSAID: forsigtighed ved nyrepåvirkning/ulcus'
+      ],
+      prognose:'Tidlig behandling er afgørende. Sequelae: infertilitet (1 episode 11 % · 2 → 23 % · 3+ → 54 %), øget EUG-risiko, tubo-ovariel absces, kroniske bækkensmerter 15–20 %.',
+      caseRef:'underlivsinf'
+    },
+
+    torsion:{
+      dx:'Adnex-/ovarietorsion', dxsub:'Oftest højresidig · ofte dermoid/parovarial cyste', urgency:'akut',
+      findings:[
+        'Akut, ensidig, voldsom (turevis/konstant) smerte + kvalme/opkastning',
+        'GU: palpabel øm udfyldning, evt. peritoneal reaktion',
+        'Vaginal UL: forstørret ovarie/cyste; nedsat eller manglende dopplerflow'
+      ],
+      ddx:[
+        { d:'Appendicit', r:'— torsion oftest højre side (lig. lidt længere her)' },
+        { d:'Ekstrauterin graviditet', r:'— positiv hCG' },
+        { d:'Rumperet cyste', r:'— mindre voldsom, aftager' },
+        { d:'PID', r:'— feber, bilateral, udflåd' }
+      ],
+      behandling:[
+        '<b>Akut laparoskopi med detorkvering — skal ske inden ~72 timer for at bevare folliklerne</b>',
+        'Konservativ tilgang hos fertile: detorkvér og bevar ovariet (hormonproduktion kan overleve)',
+        'Nekrotisk adnex → salpingo-oophorektomi; ved malignitetsmistanke (ældre) → onkologisk set-up'
+      ],
+      ki:[
+        '<b>Tidskritisk — udsæt ikke operationen.</b> Bevaret dopplerflow udelukker IKKE torsion (kan være intermitterende)',
+        'Ved inkonklusiv anamnese/UL: diagnostisk laparoskopi frem for afventen'
+      ],
+      prognose:'God ovariel overlevelse ved tidlig detorkvering. Tab af ovariefunktion stiger markant efter ~72 timer / ved nekrose.',
+      caseRef:'endometriose'
+    },
+
+    cysteruptur:{
+      dx:'Ruptur af ovariecyste', dxsub:'Ofte funktionel / midtcyklisk (ovulationssmerte)', urgency:'rolig',
+      findings:[
+        'Akut ensidig smerte, mindre voldsom end torsion; svinder ofte efter få timer',
+        'GU: øm i adnex; vaginal UL: fri væske i fossa Douglasi (sjældent store mængder)'
+      ],
+      ddx:[
+        { d:'Adnextorsion', r:'— vedvarende/voldsomme smerter → obs torsion' },
+        { d:'Ekstrauterin graviditet', r:'— positiv hCG' },
+        { d:'Appendicit', r:'— højresidig, vandrende' }
+      ],
+      behandling:[
+        'Oftest konservativ: observation + analgetika',
+        'Indlæggelse til observation hvis smerter varer ved efter nogle timer → obs torsion (laparoskopi)',
+        'Kirurgi kun ved betydelig blødning/hæmodynamisk påvirkning'
+      ],
+      ki:[
+        'Udeluk EUG (hCG) og torsion før patienten beroliges/sendes hjem'
+      ],
+      prognose:'Selvlimiterende med god prognose i langt de fleste tilfælde.',
+      caseRef:'endometriose'
+    },
+
+    endometriose:{
+      dx:'Endometriose', dxsub:'Endometriom = chokoladecyste · subakut/kronisk', urgency:'rolig',
+      findings:[
+        'Cykliske, ofte invaliderende smerter; dysmenorré; dyspareuni; evt. infertilitet',
+        'GU: ømme knudrede fortykkelser ved sacrouterine ligament, fikseret uterus, evt. endometriom',
+        'UL kan være normal (peritoneal endometriose ses ikke) eller vise endometriom; negativ hCG'
+      ],
+      ddx:[
+        { d:'PID', r:'— feber, udflåd, akut' },
+        { d:'Adenomyose', r:'— diffust forstørret, øm uterus' },
+        { d:'Ovariecyste', r:'— udfyldning ved adnex' }
+      ],
+      behandling:[
+        '<b>Medicinsk først:</b> NSAID + paracetamol (NSAID evt. profylaktisk 2 dage før menstruation)',
+        '<b>Hormonelt:</b> P-piller, gestagen, hormonspiral (Mirena), GnRH-analoger — <b>ikke ved aktuelt graviditetsønske</b>',
+        'Kirurgi (laparoskopi, fjern cyste) ved manglende effekt',
+        'Fertilitetsbehandling ved graviditetsønske'
+      ],
+      ki:[
+        '<b>Hormonbehandling er ikke en mulighed, hvis patientens aktuelle ønske er graviditet</b>',
+        'P-piller: forsigtighed/KI ved tidl. DVT, høj alder + rygning, migræne med aura'
+      ],
+      prognose:'Kronisk tilstand der oftest svinder ved menopausen; god symptomeffekt af behandling og gode graviditetschancer, evt. med hjælp.',
+      caseRef:'endometriose'
+    },
+
+    appendicit:{
+      dx:'Appendicitis', dxsub:'Vigtig kirurgisk differentialdiagnose', urgency:'akut',
+      findings:[
+        'Smertevandring fra umbilicus → højre fossa; anoreksi, kvalme, feber',
+        'Slipømhed (McBurney); patienten ligger stille med bøjede ben for at undgå peritoneal stræk',
+        'Ofte svær at skelne fra PID hos unge kvinder'
+      ],
+      ddx:[
+        { d:'PID', r:'— bilateral, udflåd, rokkeømhed' },
+        { d:'Adnextorsion', r:'— højresidig, UL med nedsat flow' },
+        { d:'Ekstrauterin graviditet', r:'— positiv hCG' }
+      ],
+      behandling:[
+        'Kirurgisk: appendektomi (oftest laparoskopisk); akut kirurgisk tilsyn'
+      ],
+      ki:[
+        '<b>Udeluk graviditet (hCG) hos fertile kvinder</b> før billeddiagnostik/anæstesi-planlægning',
+        'Ved diagnostisk tvivl: supplér med UL/CT frem for at afvente'
+      ],
+      prognose:'God ved rettidig operation. Forsinkelse → perforation og peritonitis.',
+      caseRef:null
+    }
+
+  }
+}
+];
+
+
+/* ===== SYMPTOMUDREDNING (FLOW) ===== */
+var flowState = { tree:null, current:null, path:[] };
+
+function buildFlowPicker() {
+  var p = document.getElementById('flow-picker');
+  if (!p) return;
+  p.innerHTML = flowData.map(function(t){
+    var badge = (t.spec === 'OBS') ? 'obs' : 'gyn';
+    var label = (t.spec === 'OBS') ? 'Obstetrik' : 'Gynækologi';
+    return '<div class="case-card" onclick="openFlow(\'' + t.id + '\')">'
+      + '<span class="specialty-badge badge-' + badge + '">' + label + '</span>'
+      + '<h3>' + t.title + '</h3>'
+      + '<p>Klik dig gennem den deduktive udredning</p>'
+      + '<span class="arrow-icon">→</span></div>';
+  }).join('');
+}
+
+function openFlow(id) {
+  var t = flowData.find(function(x){ return x.id === id; });
+  if (!t) return;
+  flowState = { tree:t, current:t.start, path:[] };
+  document.getElementById('flow-picker').style.display = 'none';
+  document.getElementById('flow-app').style.display = 'block';
+  renderFlow();
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function flowToPicker() {
+  document.getElementById('flow-app').style.display = 'none';
+  document.getElementById('flow-picker').style.display = '';
+}
+
+function renderFlow() {
+  var t = flowState.tree, n = t.nodes[flowState.current];
+  var trail = document.getElementById('flowTrail');
+  trail.innerHTML = flowState.path.length
+    ? flowState.path.map(function(p){ return '<span class="flow-crumb"><span class="c-q">' + p.q + ':</span> <b>' + p.choice + '</b></span>'; }).join('<span class="flow-arrow">→</span>')
+    : '<span class="flow-crumb"><span class="c-q">' + t.title + '</span></span>';
+  document.getElementById('flowCard').innerHTML = n.opts ? flowQuestion(n) : flowTerminal(n);
+  document.getElementById('flowBack').disabled = flowState.path.length === 0;
+}
+
+function flowQuestion(n) {
+  var h = '<h2 class="flow-q">' + n.q + '</h2>';
+  if (n.why) h += '<p class="flow-why">' + n.why + '</p>';
+  if (n.redflag) h += '<div class="flow-redflag"><div>⚠</div><div>' + n.redflag + '</div></div>';
+  if (n.ask) h += '<div class="flow-ask"><h4>Spørg systematisk om</h4><ul>' + n.ask.map(function(a){ return '<li>' + a + '</li>'; }).join('') + '</ul></div>';
+  h += '<div class="flow-opts">' + n.opts.map(function(o,i){
+    return '<button class="flow-opt" onclick="flowChoose(' + i + ')"><span class="lead">' + o.lead + '</span><span class="hint">' + o.hint + '</span></button>';
+  }).join('') + '</div>';
+  return h;
+}
+
+function flowTerminal(n) {
+  var labels = { akut:'Kan ikke overses', haster:'Haster', rolig:'Oftest benign' };
+  var h = '<span class="flow-urg ' + n.urgency + '">' + labels[n.urgency] + '</span>';
+  h += '<div class="flow-dxname">' + n.dx + '</div>';
+  if (n.dxsub) h += '<p class="flow-dxsub">' + n.dxsub + '</p>';
+  h += flowSection('Forventede fund', n.findings);
+  h += '<div class="flow-sec flow-ddx"><h3>Differentialdiagnoser — og hvorfor</h3><ul>'
+     + n.ddx.map(function(d){ return '<li><span class="d">' + d.d + '</span> <span class="r">' + d.r + '</span></li>'; }).join('') + '</ul></div>';
+  h += flowSection('Behandling', n.behandling);
+  h += '<div class="flow-ki"><h3>Kontraindikationer &amp; cave</h3><ul>'
+     + n.ki.map(function(k){ return '<li>' + k + '</li>'; }).join('') + '</ul></div>';
+  h += '<div class="flow-sec"><h3>Prognose</h3><p style="margin:0;font-size:14px;color:var(--text-2)">' + n.prognose + '</p></div>';
+  if (n.caseRef) h += '<div class="flow-caselink" onclick="goToCase(\'' + n.caseRef + '\')">→ Åbn relateret case</div>';
+  return h;
+}
+
+function flowSection(title, items) {
+  return '<div class="flow-sec"><h3>' + title + '</h3><ul>' + items.map(function(i){ return '<li>' + i + '</li>'; }).join('') + '</ul></div>';
+}
+
+function flowChoose(i) {
+  var n = flowState.tree.nodes[flowState.current];
+  var opt = n.opts[i];
+  flowState.path.push({ q:n.q, choice:opt.lead });
+  flowState.current = opt.next;
+  renderFlow();
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+function flowBack() {
+  if (!flowState.path.length) return;
+  flowState.path.pop();
+  var cur = flowState.tree.start;
+  flowState.path.forEach(function(step){
+    var node = flowState.tree.nodes[cur];
+    var opt = node.opts.find(function(o){ return o.lead === step.choice; });
+    cur = opt.next;
+  });
+  flowState.current = cur;
+  renderFlow();
+}
+
+function flowResetFn() { flowState.current = flowState.tree.start; flowState.path = []; renderFlow(); }
+
+document.getElementById('flowBack').onclick = flowBack;
+document.getElementById('flowReset').onclick = flowResetFn;
+document.getElementById('flowPicker').onclick = flowToPicker;
+buildFlowPicker();
 
 </script>
 </body>

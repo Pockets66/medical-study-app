@@ -117,3 +117,39 @@ Defined in `:root` in `index.html`. Do not hardcode hex values in new code.
 --accent       global accent (red-orange)
 --radius       default border-radius (10px)
 ```
+
+## flowData — Symptomudredning (diagnostiske flowcharts)
+
+```js
+{
+  id:    'akut_underlivssmerter', // string, unique
+  spec:  'GYN',                   // 'GYN' | 'OBS' — drives card badge
+  title: 'Akutte smerter...',     // shown on picker card + trail
+  src:   'Eksamenssæt + noter',   // provenance, plain text
+  start: 'start',                 // id of the entry node
+  nodes: {                        // map of nodeId -> node
+    // QUESTION node (has opts[]):
+    start: {
+      q:       '...',             // question text (plain)
+      why:     '...',             // optional reasoning (HTML)
+      redflag: '...',             // optional red-flag callout (HTML)
+      ask:     [ '...' ],         // optional checklist (HTML strings)
+      opts:    [ { lead:'...', hint:'...', next:'nodeId' } ]
+    },
+    // TERMINAL node (no opts[]):
+    eug: {
+      dx:'...', dxsub:'...',      // diagnosis name + subtitle
+      urgency:'akut',             // 'akut' | 'haster' | 'rolig' (badge)
+      findings:   [ '...' ],      // HTML strings
+      ddx:        [ { d:'...', r:'...' } ], // dx + reason
+      behandling: [ '...' ],
+      ki:         [ '...' ],      // kontraindikationer & cave
+      prognose:   '...',
+      caseRef:    'tidliggrav'    // goToCase() key, or null
+    }
+  }
+}
+```
+
+Renderer reads `flowData`; node is terminal iff it has no `opts`. `caseRef`
+links out via the existing `goToCase()`.
