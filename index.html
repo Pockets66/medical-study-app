@@ -2845,6 +2845,247 @@ function showNote(id) {
 buildNotesSidebar();
 
 var flowData = [
+{ id:'bloedningsforstyrrelser', spec:'GYN', title:'Blødningsforstyrrelser (abnorm uterin blødning)',
+  src:'gyn_2 (AUB/PALM-COEIN) + gyn_6 (cancer) + bloedning/cancer cases', start:'start',
+  nodes:{
+
+    start:{
+      q:'Fokuseret anamnese + EPIS-triage',
+      why:'Abnorm uterin blødning udredes med <b>EPIS</b> først (Emergency · Pregnancy · Initial exam · Systemic disease), derefter <b>PALM-COEIN</b>. To akser styrer alt: <b>menopausal status</b> og <b>graviditet</b>.',
+      redflag:'Akut svær blødning eller hæmodynamisk påvirkning (Emergency) → ABC, Hgb, stabilisér. Postmenopausal blødning = malignitet, og positiv hCG hos fertil = EUG/abort — begge indtil det modsatte er bevist.',
+      ask:[
+        '<b>Blødningsmønster:</b> frekvens, regularitet, varighed, volumen — menoragi (&gt; 80 ml)? metroragi? intermenstruel? kontaktblødning? postmenopausal?',
+        '<b>Mængde:</b> bind-/tamponskift, koagler, bindvejning, sociale gener; Hgb + ferritin',
+        '<b>Menopausal status</b> + sidste menstruation · <b>graviditet/prævention</b> (IUD?)',
+        '<b>Smear-status</b> + kontaktblødning (obs. cervixcancer)',
+        '<b>Medicin:</b> antikoagulantia, tamoxifen, østrogen uden gestagen, hormonel prævention, SSRI',
+        '<b>Øvrige sygdomme:</b> stofskifte, blødningstendens (blå mærker, von Willebrand), PCOS-tegn',
+        '<b>Dispositioner:</b> HNPCC/Lynch, gynækologisk cancer, blødersygdom',
+        '<b>KRAM</b> + vægt/BMI (overvægt → uopponeret østrogen, anovulation)'
+      ],
+      opts:[
+        { lead:'Videre — afklar menopausal status', hint:'Den vigtigste forgrening: postmenopausal vs. fertil/perimenopausal', next:'menostatus' }
+      ]
+    },
+
+    menostatus:{
+      q:'Menopausal status?',
+      why:'Menopausal status afgør udredningsstrategien fundamentalt. <b>Postmenopausal blødning = endometriecancer indtil det modsatte er bevist.</b>',
+      opts:[
+        { lead:'Postmenopausal (> 1 år uden menstruation)', hint:'Enhver blødning skal udredes — ~10 % har cancer', next:'pmb' },
+        { lead:'Fertil / perimenopausal', hint:'Udeluk graviditet først (EPIS: P)', next:'graviditet' }
+      ]
+    },
+
+    graviditet:{
+      q:'Urin-hCG (graviditetstest)?',
+      why:'Hos fertil kvinde skal graviditet altid udelukkes (EPIS: Pregnancy). Husk også TSH ved blødningsforstyrrelser.',
+      opts:[
+        { lead:'Positiv', hint:'Graviditetsrelateret blødning — EUG, abort eller mola', next:'grav_blod' },
+        { lead:'Negativ', hint:'Karakterisér blødningen + UL → PALM-COEIN', next:'moenster' }
+      ]
+    },
+
+    moenster:{
+      q:'Hvad viser anamnese + transvaginal UL?',
+      why:'UL skelner strukturelle årsager (PALM: polyp, adenomyose, leiomyom, malignitet) fra ikke-strukturelle (COEIN: koagulopati, ovulatorisk dysfunktion, endometrial, iatrogen).',
+      opts:[
+        { lead:'Kontaktblødning / postcoital blødning', hint:'Obs. cervixdysplasi/cervixcancer', next:'cervix' },
+        { lead:'Strukturelt fund på UL (fibrom, polyp, fortykket endometrium)', hint:'PALM — hysteroskopi/MR supplerer', next:'fibrom' },
+        { lead:'Uregelmæssig/oligomenoré + hyperandrogene tegn, overvægt', hint:'Ovulatorisk dysfunktion', next:'pcos' },
+        { lead:'Kraftig blødning fra menarche / blødningstendens', hint:'Let ved blå mærker, næseblod', next:'koagulopati' },
+        { lead:'Regelmæssig kraftig blødning, normal UL', hint:'HMB uden strukturel årsag', next:'hmb' }
+      ]
+    },
+
+    pmb:{
+      dx:'Postmenopausal blødning → cancerpakke', dxsub:'Endometriecancer indtil det modsatte er bevist · ~10 % har cancer', urgency:'akut',
+      findings:[
+        'PMB = blødning &gt; 1 år efter sidste fysiologiske menstruation',
+        'Transvaginal UL (endometrietykkelse) + <b>endometriesug → histologi (cancerpakke)</b>',
+        'GU: inspektion portio, palpation uterus + adnexer, <b>rektaleksploration</b>; urinstix (hæmaturi?)',
+        'Risikofaktorer (endometriecancer): uopponeret østrogen — overvægt, nulliparitet, sen menopause, HRT uden gestagen, tamoxifen; diabetes, hypertension'
+      ],
+      ddx:[
+        { d:'Endometriecancer / hyperplasi / polyp', r:'— den primære bekymring ved PMB' },
+        { d:'Vaginalatrofi', r:'— eksklusionsdiagnose' },
+        { d:'Hæmaturi fra urinveje', r:'— udeluk med urinstix' },
+        { d:'Rektal blødning', r:'— udeluk med rektaleksploration' },
+        { d:'Cervixcancer', r:'— inspektion + smear/kolposkopi' }
+      ],
+      behandling:[
+        'Cancerpakke-henvisning; hysteroskopi + biopsi → histologi',
+        'Hyperplasi med atypi <em>eller</em> endometriecancer: <b>simpel hysterektomi + bilateral salpingo-ooforektomi (BSO) + sentinel node</b>',
+        'Højrisikohistologi: PET/CT inden operation',
+        'Atrofi (eksklusionsdiagnose): lokal østrogen'
+      ],
+      ki:[
+        '<b>Postmenopausal blødning = ALTID cancerpakke — "clear fail" hvis det glemmes (E23-retteark).</b>',
+        'Sentinel node-teknik ved endometriecancer er eksplicit krav for "very good" (E23)'
+      ],
+      prognose:'Afhænger af histologi og stadie; tidlig udredning er afgørende. Endometriecancer opdages oftest tidligt pga. blødningssymptom.',
+      caseRef:'cancer'
+    },
+
+    grav_blod:{
+      dx:'Graviditetsrelateret blødning', dxsub:'Positiv hCG → EUG, abort eller mola', urgency:'haster',
+      findings:[
+        'Positiv hCG; vaginal UL afgør placering',
+        '<b>Tom uterus + positiv hCG = EUG indtil det modsatte er bevist</b>',
+        'Intrauterin sæk + blødning → (truende/missed/inkomplet) abort',
+        'Uterus større end svarende til GA + meget høj hCG (&gt; 100.000) → mola'
+      ],
+      ddx:[
+        { d:'Ekstrauterin graviditet', r:'— tom uterus, lateraliserede smerter' },
+        { d:'Spontan abort', r:'— intrauterin sæk på UL' },
+        { d:'Mola hydatidosa', r:'— drueklase-UL, hCG &gt; 100.000' }
+      ],
+      behandling:[
+        'Følg det relevante spor — se symptom-træet "Akutte smerter i underlivet" og EUG/abort-casen',
+        '<b>Anti-D til Rh-negative ved indgreb</b>'
+      ],
+      ki:[
+        'Se aldrig bort fra spiral som disponerende — ved IUD er graviditeten ekstrauterin indtil andet er bevist'
+      ],
+      prognose:'Afhænger af årsag (se EUG/abort/mola).',
+      caseRef:'tidliggrav'
+    },
+
+    cervix:{
+      dx:'Cervixdysplasi / cervixcancer', dxsub:'Kontaktblødning · HPV (> 99 %, type 16/18)', urgency:'haster',
+      findings:[
+        'Kontaktblødning/postcoital blødning; evt. abnorm smear',
+        'GU: inspektion af portio (synlig tumor/erosion?)',
+        '<b>Smear → HPV-test → kolposkopi + biopsi</b> (med eddikesyre)',
+        'Risikofaktorer: HPV, mange partnere, tidlig debut, rygning, immunosuppression'
+      ],
+      ddx:[
+        { d:'Cervixpolyp / ektopi / cervicitis', r:'— benigne kontaktblødningsårsager' },
+        { d:'Endometriecancer', r:'— hvis ældre/postmenopausal' },
+        { d:'Atrofi', r:'— eksklusionsdiagnose' }
+      ],
+      behandling:[
+        'Kolposkopi + biopsi. CIN1: ekspektation · CIN2-3: konisation/LEEP',
+        'Cervixcancer: stadie-afhængig (FIGO) — konisation → (radikal) hysterektomi/trachelektomi + pelvin lymfadenektomi → kemo + stråle ved stadie ≥ 2B',
+        'HPV-vaccination (børnevaccinationsprogrammet) forebyggende'
+      ],
+      ki:[
+        '<b>Kontaktblødning → tænk altid cervixcancer.</b>',
+        'Smear tages KUN uden symptomer — ved symptomer gå direkte til kolposkopi/biopsi'
+      ],
+      prognose:'Stadie-afhængig (FIGO 1 ~90 % 5-års overlevelse, faldende ved højere stadie).',
+      caseRef:'cancer'
+    },
+
+    fibrom:{
+      dx:'Leiomyom (fibrom) / strukturel årsag', dxsub:'Hyppigste benigne uterustumor · submukøs mest symptomgivende', urgency:'rolig',
+      findings:[
+        'HMB ± tryksymptomer/smerter; 40 % af præmenopausale har fibromer',
+        'Transvaginal UL med Doppler (evt. 3D); MR ved kompleks udredning',
+        'Lokalisation: submukøs (i kaviteten — mest blødning), intramural, subserøs (trykgener)'
+      ],
+      ddx:[
+        { d:'Polyp (AUB-P)', r:'— fokal proces, bredt endometrium; hysteroskopi' },
+        { d:'Adenomyose (AUB-A)', r:'— diffust forstørret øm uterus, kan forveksles med fibrom på UL → MR' },
+        { d:'Endometriehyperplasi/-cancer', r:'— fortykket endometrium → biopsi' }
+      ],
+      behandling:[
+        'Blødningsreduktion: <b>Mirena (LNG-IUD, ↓ 90–95 %)</b>, tranexamsyre (Cyklokapron), NSAID, p-piller; husk <b>jernbehandling</b>',
+        'Submukøs → hysteroskopisk resektion (TCRF); subserøs/intramural → laparoskopisk myomektomi',
+        'Embolisering · GnRH-forbehandling (skrumper fibromet inden kirurgi) · hysterektomi ved svær sygdom',
+        'Polyp: hysteroskopisk resektion (histologi altid)'
+      ],
+      ki:[
+        'Histologi altid ved resektion',
+        'P-piller: forsigtighed/KI ved tidl. DVT, høj alder + rygning'
+      ],
+      prognose:'God symptomkontrol; recidiv muligt. Adenomyose har dårligere effekt af endometrieresektion (dybt infiltrerende).',
+      caseRef:'endometriose'
+    },
+
+    pcos:{
+      dx:'PCOS / ovulatorisk dysfunktion (AUB-O)', dxsub:'Rotterdam: mindst 2 af 3', urgency:'rolig',
+      findings:[
+        '<b>Rotterdam (2 af 3):</b> oligo-/anovulation · hyperandrogenisme (klinik/biokemi) · polycystiske ovarier på UL (AFC ≥ 20 i mindst ét ovarie)',
+        'Symptomer: oligomenoré/amenoré, hirsutisme, akne, overvægt, insulinresistens, infertilitet',
+        'Udredning: urin-hCG, <b>TSH</b>, prolaktin, LH/FSH, testosteron/SHBG, østradiol, 17-OHP; UL'
+      ],
+      ddx:[
+        { d:'Thyroidealidelse', r:'— TSH altid' },
+        { d:'Prolaktinom', r:'— prolaktin' },
+        { d:'Adrenal enzymdefekt / Cushing', r:'— 17-OHP, kortisol' },
+        { d:'Luteal fase-defekt', r:'— forkortet luteal fase' }
+      ],
+      behandling:[
+        '<b>Livsstil/vægttab = 1. valg</b> (genskaber ovulation)',
+        'P-piller (cykluskontrol, ↓ androgen) · metformin (insulinresistens) · spironolakton (hirsutisme)',
+        'Ovulationsinduktion (letrozol/clomifen) ved fertilitetsønske',
+        'Perimenopausalt: hormonspiral'
+      ],
+      ki:[
+        '<b>Anovulation → uopponeret østrogen → 3–5× øget endometriecancer-risiko</b> — sikr regelmæssig afstødning (gestagen/p-piller/spiral)',
+        'Overdiagnostik hos helt unge — kræv hyperandrogene tegn eller blodprøver',
+        'CA-125 og kønshormoner er IKKE rutineprøver ved perimenopausale blødninger (F23-retteark)'
+      ],
+      prognose:'Kronisk; god symptomkontrol med behandling. Metabolisk opfølgning pga. type 2-diabetes-risiko.',
+      caseRef:'bloedning'
+    },
+
+    koagulopati:{
+      dx:'Koagulopati (AUB-C)', dxsub:'13 % af kvinder med HMB · von Willebrand hyppigst', urgency:'haster',
+      findings:[
+        'HMB fra menarche; let ved blå mærker, næseblod, blødning ved tandindgreb/post partum',
+        '<b>Struktureret anamnese har ~90 % sensitivitet</b> for koagulationsdefekt',
+        'Årsager: von Willebrand, trombocytopeni/-dysfunktion, leversygdom, faktor XI/X-mangel, AK-behandling'
+      ],
+      ddx:[
+        { d:'Idiopatisk HMB', r:'— normal hæmostase' },
+        { d:'Iatrogent (AUB-I)', r:'— AK-behandling, IUD' },
+        { d:'Strukturel årsag', r:'— fibrom/polyp på UL' }
+      ],
+      behandling:[
+        'Hæmatologisk udredning + behandling af grundlidelse',
+        'Tranexamsyre (Cyklokapron); Mirena (LNG-IUD)',
+        'Von Willebrand: evt. desmopressin'
+      ],
+      ki:[
+        '<b>Adolescens med svær AUB → udeluk altid koagulationsdefekt</b> (eksamen-fælde)',
+        'NSAID: forsigtighed ved trombocytdefekt/blødningstendens'
+      ],
+      prognose:'God ved erkendt og behandlet grundlidelse.',
+      caseRef:'bloedning'
+    },
+
+    hmb:{
+      dx:'HMB uden strukturel årsag', dxsub:'Idiopatisk/endometrial (AUB-E/O) · regelmæssig kraftig blødning, normal UL', urgency:'rolig',
+      findings:[
+        'HMB &gt; 80 ml/cyklus (bindvejning, blødningskalender, sociale gener); Hgb/ferritin (anæmi?)',
+        'Normal transvaginal UL',
+        '<b>Endometriebiopsi</b> hvis &gt; 45 år eller risikofaktorer &lt; 45 (BMI &gt; 30, anovulation/PCOS, tamoxifen, HNPCC)'
+      ],
+      ddx:[
+        { d:'Strukturel årsag (PALM)', r:'— fibrom/polyp på UL' },
+        { d:'Koagulopati', r:'— blødningstendens' },
+        { d:'Ovulatorisk dysfunktion', r:'— uregelmæssig cyklus' },
+        { d:'Hypothyreose', r:'— TSH' }
+      ],
+      behandling:[
+        '<b>Mirena (LNG-IUD) = 1. valg</b> (↓ 90–95 %)',
+        'Tranexamsyre (Cyklokapron 1 g × 4 dag 1–3, ↓ 30–50 %); NSAID (↓ 20–50 %)',
+        'Kombineret p-piller; cyklisk gestagen; husk <b>jernbehandling</b>',
+        'Endometrieablation/-resektion ved svigt + intet graviditetsønske; hysterektomi som sidste udvej'
+      ],
+      ki:[
+        '<b>Endometriediagnostik (biopsi) før ablation</b> og ved &gt; 45 år/risikofaktorer — udeluk hyperplasi/cancer',
+        'Ablation/resektion frarådes ved graviditetsønske',
+        'P-piller: forsigtighed ved DVT, høj alder + rygning'
+      ],
+      prognose:'God blødningsreduktion; effekt er individuel.',
+      caseRef:'bloedning'
+    }
+
+  }
+},
 { id:'akut_underlivssmerter', spec:'GYN', title:'Akutte smerter i underlivet',
   src:'Eksamenssæt (V2022 EUG m.fl.) + noter gyn_3/5/7 + cases', start:'start',
   nodes:{
