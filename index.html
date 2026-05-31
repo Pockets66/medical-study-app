@@ -215,12 +215,10 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
 </header>
 
 <nav>
-  <button class="tab-btn active" onclick="showTab('tab-emner',this)">Cases</button>
-  <button class="tab-btn" onclick="showTab('tab-noter',this)">Noter</button>
-  <button class="tab-btn" onclick="showTab('tab-hyppighed',this)">Hyppighed</button>
-  <button class="tab-btn" onclick="showTab('tab-strategi',this)">Studiestrategi</button>
-  <button class="tab-btn" onclick="showTab('tab-tips',this)">Eksamenstips</button>
-  <button class="tab-btn" onclick="showTab('tab-flow',this)">Symptomudredning</button>
+  <button class="tab-btn active" onclick="showTab('tab-noter',this)">Pensum</button>
+  <button class="tab-btn" onclick="showTab('tab-flow',this)">Flow-diagnostik</button>
+  <button class="tab-btn" onclick="showTab('tab-emner',this)">Cases</button>
+  <button class="tab-btn" onclick="showTab('tab-tips-combined',this)">Tips</button>
 </nav>
 
 <div id="view-overview">
@@ -242,7 +240,7 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
 </div>
 
 <!-- TAB: EMNER -->
-<div id="tab-emner" class="pane active">
+<div id="tab-emner" class="pane">
 
   <p class="section-label">Obstetrik</p>
   <div class="case-grid">
@@ -400,8 +398,15 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   </div>
 </div>
 
+<!-- TAB: TIPS (combined: Hyppighed / Studiestrategi / Eksamenstips) -->
+<div id="tab-tips-combined" class="pane">
+  <div class="note-tabs">
+    <button class="note-tab-btn active" id="tipsbtn-0" onclick="switchTipsTab(0,this)">Hyppighed</button>
+    <button class="note-tab-btn" id="tipsbtn-1" onclick="switchTipsTab(1,this)">Studiestrategi</button>
+    <button class="note-tab-btn" id="tipsbtn-2" onclick="switchTipsTab(2,this)">Eksamenstips</button>
+  </div>
 <!-- TAB: HYPPIGHED -->
-<div id="tab-hyppighed" class="pane">
+<div id="tips-sub-0" class="note-tab-panel active">
   <p class="section-label">Hyppighed på eksamen (F23–F25, E23–E24)</p>
   <table class="freq-table">
     <thead><tr><th>Emne</th><th>Speciale</th><th>Hyppighed</th><th>Senest set</th></tr></thead>
@@ -420,7 +425,7 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
 </div>
 
 <!-- TAB: STUDIESTRATEGI -->
-<div id="tab-strategi" class="pane">
+<div id="tips-sub-1" class="note-tab-panel">
   <p class="section-label">Bedste strategier baseret på rettearks-analyse</p>
   <div class="tips-list">
     <div class="tip"><div class="tip-check">1</div><div><strong>Studér rettearkets punktlister direkte</strong> — hvert retteark er en checkliste over, præcis hvad der giver point. Lær disse punktlister udenad for de hyppigste emner.</div></div>
@@ -432,7 +437,7 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
 </div>
 
 <!-- TAB: EKSAMENSTIPS -->
-<div id="tab-tips" class="pane">
+<div id="tips-sub-2" class="note-tab-panel">
   <p class="section-label">Gode råd til selve eksamensdagen</p>
   <div class="tips-list">
     <div class="tip"><div class="tip-check">✓</div><div><strong>Gynækologisk undersøgelse hører næsten altid med</strong> — for alle gynækologiske stande forventes du at nævne og demonstrere GU inkl. inspektion, eksploration og evt. transvaginal UL.</div></div>
@@ -447,10 +452,11 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
     <div class="tip tip-warn"><div class="tip-check" style="background:#FBF0E0;color:#7A4A0A">!</div><div><strong>Husk PCOS Rotterdam-kriterierne</strong> — mindst 2 af 3 kriterier skal opfyldes. Kun polycystiske ovarier på UL er ikke nok.</div></div>
   </div>
 </div>
+</div><!-- /tab-tips-combined -->
 
 
-<!-- TAB: NOTER -->
-<div id="tab-noter" class="pane">
+<!-- TAB: NOTER (Pensum) -->
+<div id="tab-noter" class="pane active">
   <div class="notes-wrap" id="notesWrap">
     <div class="notes-sb" id="notesSidebar"></div>
     <div class="notes-main" id="notesMain"><p style="color:var(--text-3);font-size:14px">Vælg et emne til venstre.</p></div>
@@ -2241,10 +2247,13 @@ var revealed = {};
 for (var k in totalSteps) revealed[k] = {};
 
 function showTab(id, btn) {
+  // Always return to the overview surface — fixes tabs being dead from a case view
+  document.getElementById('view-case').style.display = 'none';
+  document.getElementById('view-overview').style.display = 'block';
   document.querySelectorAll('.pane').forEach(function(p){ p.classList.remove('active'); });
   document.querySelectorAll('.tab-btn').forEach(function(t){ t.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
+  if (btn) btn.classList.add('active');
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
@@ -2860,6 +2869,14 @@ function goToCase(caseId) {
   openCase(caseId);
 }
 
+function switchTipsTab(idx, btn) {
+  var wrap = document.getElementById('tab-tips-combined');
+  wrap.querySelectorAll('.note-tab-panel').forEach(function(p){ p.classList.remove('active'); });
+  wrap.querySelectorAll('.note-tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.getElementById('tips-sub-' + idx).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
 function switchNoteTab(noteId, idx) {
   var panels = document.querySelectorAll('#notesMain .note-tab-panel');
   var btns   = document.querySelectorAll('#notesMain .note-tab-btn');
@@ -2942,6 +2959,9 @@ function showNote(id) {
 }
 
 buildNotesSidebar();
+// Pensum is now the landing tab — open the first note so it isn't an empty panel
+var firstNote = document.querySelector('#notesSidebar .nitem');
+if (firstNote) firstNote.click();
 
 var flowData = [
 { id:'bloedningsforstyrrelser', spec:'GYN', title:'Blødningsforstyrrelser (abnorm uterin blødning)',

@@ -108,3 +108,4 @@ Files that would unlock blocked topics:
 | 2026-05-31 | flow:bloedningsforstyrrelser | New flow tree (PMB/cancer, graviditet, cervix, fibrom, PCOS, koagulopati, HMB); folded in everything-except-cancer → [V] |
 | 2026-05-31 | gyn_3 | Full rewrite — 2026 slides, IOTA B/M regler, Ryeqo, UAE statistik, akutte underlivssmerter DDX |
 | 2026-06-01 | gyn_6 | Full rewrite — onkogenetik (HBOC/Lynch/Knudson/RRBSO), cervix dysplasi+screening, cervix/endometrie/ovarie cancer from 2026 slides |
+| 2026-06-01 | ui | Nav refactor → Pensum/Flow-diagnostik/Cases/Tips; fix page-1 tab bug; consolidate Hyppighed/Studiestrategi/Eksamenstips under Tips sub-tabs |
