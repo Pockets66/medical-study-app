@@ -10,7 +10,7 @@ Persistence (user progress) is stored in `localStorage` under the key `wm_unifie
 ```js
 {
   id:    'gyn_1',          // string, unique — spec prefix + number
-  spec:  'GYN',            // 'GYN' | 'OBS'
+  spec:  'GYN',            // 'GYN' | 'OBS' | 'PEDS'
   num:   1,                // display label — string or integer (e.g. 7, '7b')
   title: 'Underlivsinfek…',// plain text (shown on card + case header)
   src:   'F24, E23',       // exam sources, plain text
@@ -31,6 +31,7 @@ Persistence (user progress) is stored in `localStorage` under the key `wm_unifie
 |------|---------|
 | GYN  | `--gyn` / `--gyn-bg` |
 | OBS  | `--obs` / `--obs-bg` |
+| PEDS | `--paed` / `--paed-bg` |
 
 ---
 
@@ -39,7 +40,7 @@ Persistence (user progress) is stored in `localStorage` under the key `wm_unifie
 ```js
 {
   id:   'gyn_1',           // string, unique — matches casesData convention
-  spec: 'GYN',             // 'GYN' | 'OBS'
+  spec: 'GYN',             // 'GYN' | 'OBS' | 'PEDS'
   num:  1,                 // sidebar display number
   title:'Underlivsinfektion <em>og PID</em>', // may contain <em>
   src:  'F24 (stand), E23',// exam sources

@@ -57,6 +57,11 @@ Tracks the status of every note card in `notesData`.
 | bloedningsforstyrrelser | Blødningsforstyrrelser (abnorm uterin blødning) | `[D]` | Grounded in gyn_2 (AUB/PALM-COEIN), gyn_6 (cancer) + bloedning/cancer cases. Awaiting owner review. |
 | akut_underlivssmerter | Akutte smerter i underlivet | `[V]` | Verified vs in-app gyn_3/5/7 + cases. Folsyre-under-MTX confirmed as slide typo (excluded); hCG-endepunkt `<2` confirmed. |
 
+### PEDS (Pædiatri)
+| id | Emne | Status | Note |
+|----|------|--------|------|
+| peds_1 | (stub) | `[ ]` | Placeholder note — scaffolding only, no content yet |
+
 ## Backlog — topics not yet in the app
 
 Topics identified from exam sets or målbeskrivelser that have no note card yet.
@@ -109,3 +114,4 @@ Files that would unlock blocked topics:
 | 2026-05-31 | gyn_3 | Full rewrite — 2026 slides, IOTA B/M regler, Ryeqo, UAE statistik, akutte underlivssmerter DDX |
 | 2026-06-01 | gyn_6 | Full rewrite — onkogenetik (HBOC/Lynch/Knudson/RRBSO), cervix dysplasi+screening, cervix/endometrie/ovarie cancer from 2026 slides |
 | 2026-06-01 | ui | Nav refactor → Pensum/Flow-diagnostik/Cases/Tips; fix page-1 tab bug; consolidate Hyppighed/Studiestrategi/Eksamenstips under Tips sub-tabs |
+| 2026-06-01 | ui | Collapsible Pensum groups (GYN/OBS/PEDS); add PEDS spec + colour handling + empty group + peds_1 stub |

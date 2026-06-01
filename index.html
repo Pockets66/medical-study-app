@@ -129,7 +129,17 @@ main { max-width:900px; margin:0 auto; padding:40px 24px; }
 .nitem:hover{background:var(--surface);color:var(--text)}
 .nitem.active{background:var(--surface);color:var(--text);border-left-color:var(--gyn);font-weight:500}
 .nitem.active.obs{border-left-color:var(--obs)}
+.nitem.active.peds{border-left-color:var(--paed)}
 .nitem-n{font-size:11px;color:var(--text-3);flex-shrink:0;padding-top:1px}
+.nsec-group{border-bottom:0.5px solid var(--border)}
+.nsec-group:last-child{border-bottom:none}
+.nsec-hdr-btn{width:100%;display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;font-family:inherit;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);padding:13px 14px;text-align:left;transition:color .12s}
+.nsec-hdr-btn:hover{color:var(--text-2)}
+.nsec-chevron{font-size:9px;display:inline-block;transition:transform .15s;transform:rotate(90deg)}
+.nsec-group.collapsed .nsec-chevron{transform:rotate(0deg)}
+.nsec-count{margin-left:auto;font-size:10px;font-weight:400;color:var(--text-3)}
+.nsec-group.collapsed .nsec-items{display:none}
+.nsec-empty{padding:2px 14px 12px;font-size:12px;font-style:italic;color:var(--text-3)}
 .nhd{margin-bottom:20px;padding-bottom:16px;border-bottom:0.5px solid var(--border)}
 .nbadge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px}
 .ntitle{font-family:'DM Serif Display',serif;font-size:23px;font-weight:400;line-height:1.2}
@@ -2825,7 +2835,10 @@ var notesData = [
     {l:'Kølebehandling', c:'<ul><li>Indikation: svær neonatal asfyksi</li><li>Temperatur: <strong>33,5°C i 72 timer</strong></li><li>Reducerer hjerneskade</li><li>CFM-overvågning for kramper</li><li>MR cerebrum dag 4-7</li></ul>'},
     {l:'Hvad mangler', c:'Intrauterin asfyksi UNDER fødsel: CTG-mønstre (decelerationer, variabilitet), ST-analyse/STAN og håndtering intrapartalt er IKKE dækket i tilgængelige projektfiler. Upload forelæsninger.', full:true, warn:true}
   ]
-}
+},
+
+{ id:'peds_1', spec:'PEDS', num:1, title:'Pædiatri <em>(stub — udfyldes)</em>',
+  src:'Placeholder — erstattes når pædiatri-indholdet skrives', sub:null, grid:[] }
 
 ];
 
@@ -2835,18 +2848,38 @@ var notesData = [
 function buildNotesSidebar() {
   var sb = document.getElementById('notesSidebar');
   if (!sb) return;
-  var specs = [{k:'GYN', label:'Gynækologi'}, {k:'OBS', label:'Obstetrik'}];
+  var specs = [
+    {k:'GYN',  label:'Gynækologi'},
+    {k:'OBS',  label:'Obstetrik'},
+    {k:'PEDS', label:'Pædiatri'}
+  ];
   var out = '';
   specs.forEach(function(sp) {
-    out += '<span class="nsec-lbl">' + sp.label + '</span>';
-    notesData.filter(function(n){ return n.spec === sp.k; }).forEach(function(n) {
-      var obs = n.spec === 'OBS' ? ' obs' : '';
-      out += '<div class="nitem' + obs + '" id="ni_' + n.id + '" onclick="showNote(\'' + n.id + '\')">';
-      out += '<span class="nitem-n">' + (n.num < 10 ? '0' + n.num : n.num) + '</span>';
-      out += '<span>' + n.title.replace(/<em>|<\/em>/g,'') + '</span></div>';
-    });
+    var items = notesData.filter(function(n){ return n.spec === sp.k; });
+    out += '<div class="nsec-group" id="nsec-' + sp.k + '">';
+    out += '<button class="nsec-hdr-btn" onclick="toggleNoteSec(\'' + sp.k + '\')">'
+         + '<span class="nsec-chevron">▸</span>'
+         + '<span>' + sp.label + '</span>'
+         + '<span class="nsec-count">' + items.length + '</span></button>';
+    out += '<div class="nsec-items">';
+    if (items.length) {
+      items.forEach(function(n) {
+        var specCls = n.spec === 'OBS' ? ' obs' : (n.spec === 'PEDS' ? ' peds' : '');
+        out += '<div class="nitem' + specCls + '" id="ni_' + n.id + '" onclick="showNote(\'' + n.id + '\')">';
+        out += '<span class="nitem-n">' + (n.num < 10 ? '0' + n.num : n.num) + '</span>';
+        out += '<span>' + n.title.replace(/<em>|<\/em>/g,'') + '</span></div>';
+      });
+    } else {
+      out += '<div class="nsec-empty">Ingen noter endnu</div>';
+    }
+    out += '</div></div>';
   });
   sb.innerHTML = out;
+}
+
+function toggleNoteSec(key) {
+  var g = document.getElementById('nsec-' + key);
+  if (g) g.classList.toggle('collapsed');
 }
 
 function goToNote(noteId) {
@@ -2895,9 +2928,12 @@ function showNote(id) {
   var n = notesData.find(function(x){ return x.id === id; });
   if (!n) return;
   var spec = n.spec;
-  var badgeStyle = spec === 'GYN'
-    ? 'background:var(--gyn-bg);color:var(--gyn)'
-    : 'background:var(--obs-bg);color:var(--obs)';
+  var specColors = {
+    GYN:  'background:var(--gyn-bg);color:var(--gyn)',
+    OBS:  'background:var(--obs-bg);color:var(--obs)',
+    PEDS: 'background:var(--paed-bg);color:var(--paed)'
+  };
+  var badgeStyle = specColors[spec] || specColors.GYN;
   var html = '<div class="nhd">';
   html += '<span class="nbadge" style="' + badgeStyle + '">' + spec + ' ' + (n.num < 10 ? '0' : '') + n.num + '</span>';
   html += '<div class="ntitle">' + n.title + '</div>';
