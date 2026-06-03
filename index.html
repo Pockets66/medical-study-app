@@ -4066,6 +4066,166 @@ var flowData = [
 
   }
 }
+,
+
+{
+  id:'neonatal_ikterus', spec:'PEDS',
+  title:'Den gule nyfødte (neonatal ikterus)',
+  src:'GZ-slides (Ikterus/ernæring/trivsel) + DPS-guideline + Excel',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'Et nyfødt barn er gult (ikterisk). Hvad guider udredningen?',
+      why:'To akser afgør det meste: <b>debut-tidspunkt</b> (timer/døgn) og om bilirubin er <b>ukonjugeret eller konjugeret</b>. Mål altid fraktioneret bilirubin og hold det op mod behandlingsgrænsen (DPS: GA, alder i timer, FV).',
+      redflag:'Ikterus i 1. levedøgn (&lt;24 t) er ALDRIG fysiologisk — tænk immunisering/hæmolyse. Affarvet (kit) afføring + konjugeret bili → galdevejsatresi.',
+      ask:[
+        'Hvornår debuterede gulsoten — &lt;24 t, 2.-5. døgn eller &gt;2 uger?',
+        'Ukonjugeret eller konjugeret (fraktioneret bili)?',
+        'Mors og barnets blodtype + DAT/Coombs; hgb, retikulocytter',
+        'Almentilstand, temperatur, ernæring og vægttab (% af FV)',
+        'Afføringsfarve (affarvet?) og urinfarve; etnicitet (G6PD)'
+      ],
+      opts:[
+        { lead:'Debut &lt;24 timer, ukonjugeret', hint:'Altid patologisk — hæmolyse/immunisering', next:'haemolyse' },
+        { lead:'Debut 2.-5. døgn, alment upåvirket, under grænse', hint:'Klassisk fysiologisk forløb', next:'fysiologisk' },
+        { lead:'Ammet barn med vægttab/dehydrering, sløv', hint:'Ammeikterus + dårlig trivsel', next:'trivsel' },
+        { lead:'Prolongeret &gt;2 uger, konjugeret', hint:'Evt. affarvet afføring', next:'konjugeret' },
+        { lead:'Ikterisk + alment påvirket/febrilt/slapt', hint:'Tænk infektion', next:'sepsis' }
+      ]
+    },
+
+    haemolyse:{
+      dx:'Isoimmun hæmolyse', dxsub:'Rhesus- eller ABO-immunisering', urgency:'akut',
+      findings:[
+        'Debut &lt;24 t, hurtig stigning i ukonjugeret bili',
+        'DAT/Coombs positiv; anæmi, retikulocytose; evt. hepatosplenomegali',
+        'Svær Rhesus: anæmi og hydrops foetalis'
+      ],
+      ddx:[
+        { d:'ABO', r:'— mor type 0, IgG anti-A/anti-B passerer placenta' },
+        { d:'Rhesus', r:'— mor RhD-neg, foster RhD-pos, anti-D' },
+        { d:'G6PD / sfærocytose / pyruvatkinase', r:'— sjældnere, debut 2.-7. døgn' },
+        { d:'Resorption', r:'— cephalhæmatom, indre blødning' }
+      ],
+      behandling:[
+        'Fototerapi (450 nm) efter DPS-grænse (50 lavere ved immuniseret)',
+        'IVIG ved isoimmun hæmolyse',
+        'Udskiftningstransfusion hvis bili 100 µmol/L over lysgrænsen',
+        'Maternel profylakse (Rhesus): anti-D uge 29 + inden 72 t efter fødsel'
+      ],
+      ki:[
+        'Fototerapi virker kun på ukonjugeret bilirubin',
+        'Anti-D gives kun til ikke-immuniserede gravide',
+        'Forsinket behandling → kernicterus (irreversibel)'
+      ],
+      prognose:'God ved rettidig behandling. Ubehandlet svær ukonjugeret hyperbilirubinæmi → kernicterus (CP, høretab, mental retardering).',
+      caseRef:'ikterus'
+    },
+
+    fysiologisk:{
+      dx:'Fysiologisk ikterus', dxsub:'Normalt, selvbegrænsende fænomen', urgency:'rolig',
+      findings:[
+        'Debut 2.-3. døgn, peak 4.-5.; stiger &lt;100 µmol/L/24 t',
+        'Ukonjugeret; barnet alment upåvirket; under behandlingsgrænsen',
+        '~60% af nyfødte; ~2% når behandlingsgrænsen'
+      ],
+      ddx:[
+        { d:'Patologisk ukonjugeret', r:'— debut &lt;24 t eller stigning &gt;100/24 t' },
+        { d:'Modermælksinduceret', r:'— ukonjugeret, gul i 1-2 mdr' },
+        { d:'Hæmolyse/sepsis', r:'— hvis hurtig stigning eller påvirket barn' }
+      ],
+      behandling:[
+        'Oftest ingen — sikre ernæring og hydrering (vægttab &lt;10%)',
+        'Fototerapi kun hvis over lysgrænsen; stop ved &lt;80% af grænsen'
+      ],
+      ki:[
+        'Gul i 1. levedøgn er aldrig fysiologisk — udred',
+        'Lavere behandlingsgrænse hos præmature og syge'
+      ],
+      prognose:'Udmærket; svinder spontant. Modermælksinduceret ikterus kan persistere 1-2 måneder uden behandling.',
+      caseRef:'ikterus'
+    },
+
+    trivsel:{
+      dx:'Ammeikterus med dårlig trivsel / dehydrering', dxsub:'Utilstrækkelig ernæring forværrer ikterus', urgency:'haster',
+      findings:[
+        'Vægttab &gt;7-10% af FV; sløv, urater i ble, tørre slimhinder',
+        'Forværret ukonjugeret ikterus (øget enterohepatisk reabsorption)',
+        'Evt. hypernatriæmisk dehydrering (S-Na forhøjet)'
+      ],
+      ddx:[
+        { d:'Utilstrækkelig amning', r:'— hyppigst; forsinket ammeetablering' },
+        { d:'Sepsis', r:'— hvis alment påvirket/febrilt' },
+        { d:'Metabolisk/hjertesygdom', r:'— ved manglende trivsel trods ernæring' }
+      ],
+      behandling:[
+        'Intensiveret ammerådgivning ± tilskud; se igen inden 48 t',
+        'Sonde + udmalket modermælk hvis sløv/ingen indtag',
+        'S-Na &gt;160 → i.v. isoton NaCl; ret natrium langsomt (~5 dage)',
+        'Bilirubin falder ofte på mad — lysbehandling ikke altid nødvendig'
+      ],
+      ki:[
+        '<b>Ret hypernatriæmi langsomt</b> — for hurtig korrektion er farlig',
+        'Manglende fremgang → henvis til børneafdeling'
+      ],
+      prognose:'God ved tidlig ernæringsindsats og forsigtig væskekorrektion.',
+      caseRef:'ikterus'
+    },
+
+    konjugeret:{
+      dx:'Konjugeret hyperbilirubinæmi (&gt;2 uger)', dxsub:'Altid patologisk — lever-/galdevejssygdom', urgency:'haster',
+      findings:[
+        'Prolongeret ikterus &gt;2 uger, grønlig skær',
+        'Affarvet (kit) afføring + mørk urin; hepatomegali',
+        'Evt. petekkier/leverpåvirkning (kongenit infektion)'
+      ],
+      ddx:[
+        { d:'Galdevejsatresi', r:'— vigtigst; Kasai &lt;8 uger' },
+        { d:'TORCH', r:'— toxo, rubella, CMV, herpes, coxsackie' },
+        { d:'Neonatal hepatitis / alfa-1-AT-mangel', r:'— leverårsager' },
+        { d:'Metabolisk', r:'— galaktosæmi, tyrosinæmi, cystisk fibrose' }
+      ],
+      behandling:[
+        'Fraktioneret bili, levertal, koagulation, galdevejs-UL',
+        'TORCH + metabolisk screening, TSH',
+        'Galdevejsatresi → Kasai-operation tidligt (&lt;8 uger), evt. levertransplantation'
+      ],
+      ki:[
+        '<b>Fototerapi virker IKKE på konjugeret bilirubin</b>',
+        'Forsinket diagnose af galdevejsatresi forværrer prognosen markant'
+      ],
+      prognose:'Afhænger af årsag. Galdevejsatresi har et kritisk tidsvindue — tidlig Kasai er afgørende.',
+      caseRef:null
+    },
+
+    sepsis:{
+      dx:'Neonatal sepsis med ikterus', dxsub:'Påvirket almentilstand + gulsot', urgency:'akut',
+      findings:[
+        'Alment påvirket: sløv, temperaturustabil, dårlig kapillærrespons',
+        'Nedsat appetit, irritabilitet; kramper kan ses ved meningitis',
+        'Ikterus + acidose/dehydrering'
+      ],
+      ddx:[
+        { d:'Meningitis', r:'— kramper, bulende fontanelle' },
+        { d:'UVI', r:'— febril, kan give konjugeret ikterus' },
+        { d:'Metabolisk sygdom', r:'— ved acidose/hypoglykæmi' }
+      ],
+      behandling:[
+        'Bloddyrkning, infektionstal, blodsukker, syre-base; LP ved mistanke',
+        'Empirisk antibiotika: ampicillin + gentamicin',
+        'Understøttende: væske, temperatur, ernæring'
+      ],
+      ki:[
+        'Ikterus + påvirket almentilstand → tænk altid sepsis',
+        'Afvent ikke prøvesvar før behandling ved klinisk mistanke'
+      ],
+      prognose:'God ved tidlig behandling; alvorlig ved forsinkelse (meningitis).',
+      caseRef:null
+    }
+
+  }
+}
 ];
 
 

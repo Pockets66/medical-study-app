@@ -57,6 +57,7 @@ Tracks the status of every note card in `notesData`.
 | bloedningsforstyrrelser | Blødningsforstyrrelser (abnorm uterin blødning) | `[D]` | Grounded in gyn_2 (AUB/PALM-COEIN), gyn_6 (cancer) + bloedning/cancer cases. Awaiting owner review. |
 | akut_underlivssmerter | Akutte smerter i underlivet | `[V]` | Verified vs in-app gyn_3/5/7 + cases. Folsyre-under-MTX confirmed as slide typo (excluded); hCG-endepunkt `<2` confirmed. |
 | livloest_nyfodt | Det livløse nyfødte barn | `[D]` | New PEDS flow tree. 5 terminaler (responderer / svær HIE / MAS / præmatur / opioid). caseRef→genoplivning. GZ-slides + ERC/NLS 2025. Awaiting verification. |
+| neonatal_ikterus | Den gule nyfødte (neonatal ikterus) | `[D]` | New PEDS flow tree. 5 terminaler (hæmolyse / fysiologisk / ammeikterus+trivsel / konjugeret / sepsis). caseRef→ikterus. GZ-slides + DPS. Awaiting verification. |
 
 ---
 
@@ -140,3 +141,4 @@ Files that would unlock blocked topics:
 | 2026-06-03 | flow:livloest_nyfodt + schema | New PEDS flow tree; flowData.spec += PEDS + buildFlowPicker PEDS badge; data-model.md updated. |
 | 2026-06-03 | peds_2 | New note — Ikterus/ernæring/trivsel from GZ-slides (authoritative). Second PEDS note. |
 | 2026-06-03 | case:ikterus | New PEDS case (ikterus/trivsel); cross-linked to peds_2. |
+| 2026-06-03 | flow:neonatal_ikterus | New PEDS flow tree (timing + konjugering); caseRef→ikterus. |
