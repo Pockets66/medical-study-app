@@ -351,6 +351,13 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
       <span class="arrow-icon">→</span>
     </div>
   </div>
+    <div class="case-card" onclick="openCase('ikterus')">
+      <span class="specialty-badge badge-paed">Pædiatri</span>
+      <h3>Neonatal ikterus og dårlig trivsel</h3>
+      <p>Fysiologisk vs patologisk, immunisering (ABO/Rhesus), fototerapi, kernicterus, hypernatriæmisk dehydrering</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · ABO/hypernatriæmi-stand, GZ-slides</div>
+      <span class="arrow-icon">→</span>
+    </div>
 
 <p class="section-label" style="margin-top:28px">Gynækologi</p>
   <div class="case-grid">
@@ -2336,6 +2343,125 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   </div>
 </div>
 
+<!-- === NEONATAL IKTERUS (PEDS) === -->
+<div id="case-ikterus" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Neonatal ikterus og dårlig trivsel</h2>
+    <p>12 timer gammel pige, ikterisk. Mater para 2, normal vaginal fødsel til tiden, FV 3500 g. Apgar 8/10. P-bili 200. &nbsp;·&nbsp; ABO-stand + hypernatriæmisk trivsel-case</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="ikt-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="ikt-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-ikt-1">
+    <div class="step-header" onclick="toggleStep('ikt',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Er denne ikterus fysiologisk eller patologisk? Hvilke oplysninger ønsker I?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Patologisk:</strong> ikterus ved 12 timer = debut &lt;24 timer, hvilket aldrig er fysiologisk</li>
+        <li>Fysiologisk debuterer 2.-3. døgn, peaker 4.-5., stiger &lt;100 µmol/L/24 t og holder sig under behandlingsgrænsen</li>
+      </ul>
+      <p>Ønskede oplysninger:</p>
+      <ul>
+        <li>Mors og barnets blodtype + <strong>DAT/Coombs</strong></li>
+        <li>Hgb, retikulocytter, blodudstrygning (hæmolyse?)</li>
+        <li>Bilirubin total + fraktioneret (ukonjugeret?)</li>
+        <li>Familieanamnese og etnicitet (Middelhav/Asien → G6PD)</li>
+        <li>Almentilstand, ernæring/vægt</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-ikt-2">
+    <div class="step-header" onclick="toggleStep('ikt',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Diagnose — hvilken type immunisering?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>ABO-immunisering:</strong> mater type 0, barn type A, DAT/Coombs positiv</li>
+        <li>Mor type 0 danner anti-A/anti-B af <strong>IgG</strong>-type, som passerer placenta og giver hæmolyse (øvrige blodtypers antistoffer er IgM og passerer ikke)</li>
+        <li><strong>Rhesus</strong> (mor RhD-neg, foster RhD-pos → anti-D IgG) er den anden klassiske isoimmunisering; oftest debut i 1. levedøgn</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-ikt-3">
+    <div class="step-header" onclick="toggleStep('ikt',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Behandling og behandlingsgrænser</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Fototerapi</strong> (enkelt/dobbelt/trippel): blåt lys 450 nm → ukonjug. bili omdannes til atoksisk lumirubin. Varighed 2-4 døgn; stop ved S-bili &lt;80% af lysgrænsen</li>
+        <li><strong>Behandlingsgrænser (DPS):</strong> afhænger af GA, alder i timer og FV; lysgrænse 50 lavere ved syg/immuniseret barn</li>
+        <li><strong>IVIG</strong> ved isoimmun hæmolyse</li>
+        <li><strong>Udskiftningstransfusion</strong> hvis bili 100 µmol/L over lysgrænsen (85 ml/kg via navlevene; ekstremt sjælden i dag)</li>
+        <li><strong>Maternel profylakse (Rhesus):</strong> anti-D 250-300 µg i uge 29 + inden 72 timer efter fødsel (kun ikke-immuniserede)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-ikt-4">
+    <div class="step-header" onclick="toggleStep('ikt',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hvad er truslen ved ubehandlet ukonjugeret ikterus?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><strong>Kernicterus (bilirubin-encefalopati):</strong> ukonjugeret, ikke-albuminbundet bili er lipofilt → passerer BBB → aflejres i basalganglier og hjernestamme.</p>
+      <ul>
+        <li><strong>Fase 1</strong> (reversibel ved lys): sløv, hypoton, nedsat dieevne</li>
+        <li><strong>Fase 2</strong> (5.-7. dag, irreversibel): hyperton, opistotonus, hjerneskrig</li>
+        <li><strong>Fase 3:</strong> hypotoni, koma, evt. død</li>
+      </ul>
+      <p>Langtidsprognose dårlig: ekstrapyramidale forstyrrelser (dystoni/tremor), cerebral parese, højfrekvent høretab, mental retardering.</p>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-ikt-5">
+    <div class="step-header" onclick="toggleStep('ikt',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Hvis ikterus var prolongeret (&gt;2 uger) — hvad må ikke overses?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Prolongeret ikterus &gt;2 uger med <strong>konjugeret</strong> bilirubin er ALTID patologisk</li>
+        <li>Tegn: grønlig skær, <strong>affarvet (kit) afføring + mørk urin</strong>, hepatomegali</li>
+        <li>Vigtigste DDX: <strong>galdevejsatresi</strong> → Kasai-operation tidligt (&lt;8 uger); også TORCH, neonatal hepatitis, metabolisk, parenteral ernæring</li>
+      </ul>
+      <div class="answer-warn">Fototerapi virker IKKE på konjugeret bilirubin. Tidlig diagnose af galdevejsatresi er afgørende for prognosen.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-ikt-6">
+    <div class="step-header" onclick="toggleStep('ikt',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Et andet barn: vægttab 12%, sløv, urater i bleen — hvad nu?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Dårlig trivsel med dehydrering</strong> — vægttab &gt;7-10% af FV, oftest pga. utilstrækkelig amning/forsinket ammeetablering</li>
+        <li>Mål S-Na (normal 135-145), S-bili og blodsukker</li>
+        <li><strong>Hypernatriæmisk dehydrering:</strong> S-Na 159; ved S-Na &gt;160 → i.v. isoton NaCl, ret natrium <strong>langsomt</strong> (~5 dage)</li>
+        <li>Anlæg sonde + udmalket modermælk; intensiveret ammerådgivning, se igen inden 48 timer</li>
+        <li>Ofte falder bilirubin på mad — lysbehandling ikke altid nødvendig</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="xlink-bar">
+    <span class="xlink-label">Relaterede noter</span>
+    <button class="xlink-btn" onclick="goToNote('peds_2')">Ikterus, ernæring og trivsel</button>
+  </div>
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('ikt',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
 <!-- === KOMPLICEREDE FØDSLER === -->
 <div id="case-kompfodsel" class="case-pane" style="display:none">
   <div class="case-header">
@@ -3087,6 +3213,60 @@ var notesData = [
       {l:'Thompson-score', full:true, c:'<p>Daglig score under koeling, 9 parametre: tonus, bevidsthed, kramper, kropsstilling, moro-, gribe-, sutterefleks, respiration og fontanelletonus.</p><ul><li><strong>TS &gt;15</strong> = daarligt outcome</li><li><strong>TS falder til &lt;10</strong> efter 1 uge = god prognose</li></ul>'},
       {l:'Sequelae ved svaer asfyksi/HIE', full:true, c:'<ul><li>ca. <strong>25% doer</strong></li><li>ca. <strong>25% handicappede:</strong> spastiske pareser, mental retardering, spiseproblemer, epilepsi, nedsat syn, nedsat hoerelse, ADHD</li></ul>'},
       {l:'Hvad skal I kunne (eksamen)', hl:true, full:true, c:'<ul><li>Genoplivningsalgoritme med <strong>VENTILATION</strong></li><li>Apgar &mdash; de 5 kliniske parametre</li><li>Acidose-type: <strong>metabolisk / laktatacidose</strong></li><li>Koelebehandling i 3 doegn ved svaer HIE</li><li>Kliniske parametre til svaerhedsgrad og prognose: <strong>Thompson-score</strong></li></ul>'}
+    ]}
+
+  ]
+}
+,
+
+{ id:'peds_2', spec:'PEDS', num:2, title:'Ikterus, ernæring <em>og trivsel</em>',
+  src:'Forelaesning: Ikterus, ernaering og trivsel hos det neonatale barn (GZ, neonatolog, maj 2026) · DPS-guideline (paediatri.dk) · SST 2015 · Excel-eksamensnoter · Eksamenssaet (ABO/hypernatriaemisk trivsel)',
+  caseRefs:['ikterus'],
+  sub:'<table class="nst"><tr><td><b>Fysiologisk</b></td><td>Debut 2.-3. doegn, peak 4.-5.; ukonjugeret; under behandlingsgraense</td></tr><tr><td><b>Patologisk hvis</b></td><td>Debut &lt;24 t · stigning &gt;100 &micro;mol/L/24 t · prolongeret &gt;2 uger</td></tr><tr><td><b>Ukonjugeret</b></td><td>Neurotoksisk &rarr; kernicterus ved hoeje vaerdier</td></tr><tr><td><b>Konjugeret &gt;2 uger</b></td><td>ALTID patologisk &mdash; obs galdevejsatresi (Kasai &lt;8 uger)</td></tr><tr><td><b>Fototerapi</b></td><td>Blaat lys 450 nm &rarr; lumirubin; 2-4 doegn; stop ved &lt;80% af graense</td></tr><tr><td><b>Vaegttab</b></td><td>Normalt &lt;7-10% af FV; S-Na &gt;160 &rarr; i.v. isoton NaCl</td></tr></table>',
+  tabs:[
+
+    { label:'Fysiologisk ikterus', grid:[
+      {l:'Hvad er gulsot (icterus neonatorum)', full:true, c:'<p>Gul- eller gul-groen-farvning af hud og sclerae pga. forhoejet bilirubin i blod og vaev.</p><ul><li><strong>Ukonjugeret</strong> hyperbilirubinaemi &mdash; neurotoksisk ved hoeje vaerdier (kernicterus)</li><li><strong>Konjugeret</strong> hyperbilirubinaemi &mdash; ofte prolongeret (&gt;2. leveuge), altid patologisk</li></ul>'},
+      {l:'Fysiologisk ikterus &mdash; et normalt faenomen', c:'<ul><li>~60% af alle nyfoedte faar ikterus i 1. leveuge; ~2% over behandlingsgraensen</li><li>Debut 2.-3. doegn, <strong>peak 4.-5. levedoegn</strong></li><li>Stiger &lt;100 &micro;mol/L/24 timer</li><li>Holder sig under behandlingsgraensen; barnet er alment upaavirket</li></ul>'},
+      {l:'Hvorfor opstaar den', c:'<ul><li>Stor Hb-nedbrydning (hoej Hb ved foedsel + kort levetid af foetale erytrocytter)</li><li>Reduceret konjugering (umoden lever)</li><li>Hoej enterohepatisk reabsorption (glukuronidase i mekonium og modermaelk)</li></ul>'},
+      {l:'Bilirubins biokemi (kort)', c:'<p>Haem &rarr; biliverdin &rarr; <strong>ukonjugeret bilirubin</strong> (bundet til albumin) &rarr; konjugeres i leveren med glukuronsyre (UGT) &rarr; <strong>konjugeret bilirubin</strong> (vandoploeseligt) udskilles via galden til tarmen. Glukuronidase i tarmen dekonjugerer &rarr; enterohepatisk kredsloeb.</p>'},
+      {l:'Modermaelksinduceret ikterus', c:'<ul><li>Ammede boern kan vaere gule i 1-2 maaneder</li><li>Ukonjugeret hyperbilirubinaemi</li><li>Glukuronidase i modermaelken &rarr; oeget enterohepatisk kredsloeb</li></ul>'},
+      {l:'Forvaerres af', warn:true, c:'<ul><li>Dehydrering og amme-problemer / forsinket ammeetablering</li><li>Polycytaemi; recipient i tvillinge-transfusionssyndrom</li><li>Cephalhaematom, indre bloedninger (resorption)</li><li>Sen mekoniumafgang; sen navlesnorsafklemning</li><li>Praematuritet</li></ul>'}
+    ]},
+
+    { label:'Patologisk — ukonjugeret', grid:[
+      {l:'Hvornaar er ikterus patologisk', full:true, hl:true, c:'<ul><li><strong>Debut &lt;24 timer = altid patologisk</strong> (aldrig fysiologisk)</li><li>Hurtig stigning &gt;100 &micro;mol/L/24 timer</li><li>Prolongeret ikterus (&gt;2 uger)</li><li>Alment paavirket + ikterisk &rarr; taenk sepsis, dehydrering, acidose</li></ul>'},
+      {l:'Aarsager — hæmolyse', c:'<ul><li><strong>Isoimmun (1. doegn):</strong> Rhesus (anti-D), ABO (mor type 0, IgG)</li><li><strong>Sjaeldne (2.-7. doegn):</strong> G6PD-mangel (hyppig i Middelhavsomraadet), sfaerocytose, pyruvatkinasemangel, alfa-thalassaemi</li><li><strong>Resorption:</strong> cephalhaematom, indre bloedninger</li></ul>'},
+      {l:'Aarsager — andre ukonjugerede', c:'<ul><li>Modermaelksinduceret (oeget enterohepatisk kredsloeb)</li><li>Endokrin/metabolisk: kongenit hypothyreose, Crigler-Najjar I/II, Gilbert-Meulengracht (UGT-mangel)</li></ul>'},
+      {l:'Immunisering — mekanisme', full:true, c:'<p>Blodtypeantigener kan immunisere mor; vigtigst <strong>RhD (46%)</strong>, Kell (15%), C, c, E, e og ABO. Immunresponset er primaert <strong>IgG</strong>, som passerer placenta og giver foetal haemolyse.</p><p><strong>Rhesus:</strong> mor RhD-negativ + foster RhD-positiv &rarr; mor danner anti-D (IgG) &rarr; haemolyse af fostererytrocytter &rarr; evt. anaemi og hydrops foetalis.</p><p><strong>ABO:</strong> mor type 0 danner anti-A/anti-B af <strong>IgG</strong>-type (kan passere placenta); oevrige blodtypers anti-stoffer er IgM. DAT/Coombs positiv.</p>'},
+      {l:'Udredning', c:'<ul><li>Bilirubin total + fraktioneret (ukonjugeret forhoejet)</li><li>Hgb, retikulocytter, blodudstrygning</li><li>Blodtype mor + barn, <strong>DAT/Coombs</strong> (positiv = immunisering)</li><li>Evt. G6PD, TSH</li></ul>'},
+      {l:'Maternel profylakse (anti-D)', c:'<ul><li>Blodtype + antistof-screening ved 1. graviditetsundersoegelse</li><li>RhD-negative: foetal RhD-typebestemmelse uge 25</li><li>Ikke-immuniserede RhD-neg med RhD-pos foster: <strong>250-300 &micro;g anti-D i uge 29 + inden 72 timer efter foedsel</strong></li><li>Anti-D virker kun paa naive B-celler &mdash; gives <strong>ikke</strong> til allerede immuniserede</li></ul>'}
+    ]},
+
+    { label:'Konjugeret & kernicterus', grid:[
+      {l:'Konjugeret hyperbilirubinaemi (&gt;2 uger)', full:true, hl:true, c:'<p>Forhoejet konjugeret (direkte) bilirubin, oftest prolongeret &gt;2 uger. <strong>ALTID patologisk</strong> &mdash; tegn paa lever-/galdevejssygdom.</p><p>Klassiske tegn: groenlig skaer, <strong>affarvet (kit) afoe-ring + moerk urin</strong>, hepatomegali, evt. petekkier (kongenit infektion).</p>'},
+      {l:'Aarsager (konjugeret)', c:'<ul><li><strong>Galde:</strong> galdevejsatresi (vigtigst!), choledochuscyste</li><li><strong>Lever:</strong> neonatal hepatitis, alfa-1-antitrypsinmangel, langvarig parenteral ernaering</li><li><strong>Infektion:</strong> TORCH (toxoplasmose, rubella, CMV, herpes, coxsackie), UVI/sepsis</li><li><strong>Metabolisk/endokrin:</strong> galaktosaemi, tyrosinaemi, cystisk fibrose, binyrebarkinsufficiens</li></ul>'},
+      {l:'Galdevejsatresi', warn:true, c:'<ul><li>Affarvet afoering + konjugeret ikterus &rarr; mistaenk altid</li><li><strong>Kasai-operation tidligt (&lt;8 uger!)</strong> &mdash; tidlig diagnose er afgoerende</li><li>Evt. senere levertransplantation</li><li>Fototerapi virker <strong>IKKE</strong> paa konjugeret bilirubin</li></ul>'},
+      {l:'Kernicterus &mdash; patofysiologi', full:true, c:'<p>Ukonjugeret, ikke-albuminbundet bilirubin er lipofilt og passerer blod-hjerne-barrieren. Aflejres i <strong>basalganglier og hjernestamme</strong> &rarr; irreversibel skade ved meget hoeje vaerdier (saerlig risiko ved immunisering / manglende behandling).</p>'},
+      {l:'Kernicterus &mdash; 3 faser', c:'<ol style="padding-left:18px;line-height:1.8"><li><strong>Tidligt</strong> (reversibel ved lys): sloev, hypoton, nedsat dieevne</li><li><strong>5.-7. dag</strong> (irreversibel): hyperton, opistotonus, hjerneskrig</li><li><strong>Sent:</strong> hypotoni, koma, evt. doed</li></ol>'},
+      {l:'Kernicterus &mdash; langtidsprognose', warn:true, c:'<ul><li>Daarlig naar skaden er etableret</li><li>Ekstrapyramidale forstyrrelser (dystoni, tremor)</li><li>Cerebral parese</li><li>Hoejfrekvent hoeretab</li><li>Mental retardering</li></ul>'}
+    ]},
+
+    { label:'Behandling', grid:[
+      {l:'Fototerapi', full:true, c:'<ul><li>Blaat lys 450 nm (eller blaagroent 500 nm) &mdash; fremskynder bilirubin-udskillelse</li><li>Danner en strukturel isomer; ukonjug. bili omdannes til atoksisk vandoploeseligt <strong>lumirubin</strong>, udskilles via galde og urin</li><li>Normal varighed 2-4 doegn; briller; enkelt-/dobbelt-/trippellys</li><li>Virker kun paa <strong>ukonjugeret</strong> bilirubin</li></ul>'},
+      {l:'Behandlingsgraenser (DPS)', hl:true, c:'<ul><li>Lysgraense afhaenger af GA, alder i timer og foedselsvaegt (DPS-kurve, paediatri.dk)</li><li>Lysgraense <strong>50 lavere</strong> for syge og immuniserede boern</li><li>Ophoer ved S-bili <strong>&lt;80% af lysgraensen</strong></li></ul>'},
+      {l:'Udskiftningstransfusion', c:'<ul><li>Indikation: se-bilirubin <strong>100 &micro;mol/L over lysgraensen</strong></li><li>Via navlevenekateter: udskiftes 85 ml blod/kg i portioner af 10-20 ml over ca. en time</li><li>Efterhaanden ekstremt sjaelden procedure</li></ul>'},
+      {l:'IVIG', c:'<p>Intravenoes immunglobulin (IVIG) ved isoimmun haemolyse &mdash; supprimerer haemolysen og kan reducere behovet for udskiftningstransfusion.</p>'},
+      {l:'Ved svaer immunisering (foster/nyfoedt)', c:'<ul><li>PSV-MCA (Doppler) estimerer foetal anaemigrad &rarr; intrauterin transfusion (efter 18-20 uger, gentages ofte hver 2. uge)</li><li>Forloesning ved sectio ved alvorlig immunisering</li><li>Postnatalt: fototerapi (dobbelt/trippel), IVIG, evt. blod- og udskiftningstransfusion</li></ul>'}
+    ]},
+
+    { label:'Ernæring & trivsel', grid:[
+      {l:'Ernaering (mature nyfoedte)', full:true, c:'<p>Modermaelk er 1. valg; modermaelkserstatning (MME) ved utilstraekkelig amning. Doegnbehov (fuldt MME-ernaeret, SST 2015):</p><table class="freq-table"><tr><th>Alder</th><th>Vaegt</th><th>Doegnbehov</th></tr><tr><td>Indtil 1 maaned</td><td>2,5-4 kg</td><td>160 ml/kg</td></tr><tr><td>Efter 1 maaned</td><td>3-5 kg</td><td>120-150 ml/kg</td></tr><tr><td>&gt;5 kg</td><td>&mdash;</td><td>100-120 ml/kg (max ca. 1000 ml)</td></tr></table><p style="margin-top:8px">Overgangskost fra ca. 6 maaneder.</p>'},
+      {l:'Trivsel &mdash; normal udvikling', c:'<ul><li>Fysiologisk vaegttab normalt <strong>&lt;7-10% af foedselsvaegten</strong> (nadir foerste dage)</li><li>Foelg WHO-vaekstkurver (vaegt, laengde, hovedomfang)</li></ul>'},
+      {l:'Daarlig trivsel &mdash; aarsager', c:'<ul><li>Utilstraekkelig ernaering/amning (hyppigst), forsinket ammeetablering</li><li>Dehydrering (evt. hypernatriaemisk)</li><li>Sygdom: infektion/sepsis, hjertesygdom, metabolisk</li></ul>'},
+      {l:'Daarlig trivsel &mdash; haandtering', full:true, c:'<ul><li>Vaegttab &gt;7-10%: intensiveret ammeraadgivning &plusmn; tilskud; <strong>se igen inden 48 timer</strong></li><li>Sloev/ingen indtag: sonde + udmalket modermaelk</li><li>Manglende fremgang &rarr; henvis til boerneafdeling (via egen laege/vagtlaege)</li></ul>'},
+      {l:'Hypernatriaemisk dehydrering', warn:true, c:'<ul><li>Sloevhed, urater i ble, toerre slimhinder, stort vaegttab</li><li>S-Na forhoejet (normal 135-145)</li><li><strong>S-Na &gt;160 &rarr; i.v. isoton NaCl</strong> &mdash; ret natrium <strong>langsomt</strong> (typisk over ~5 dage)</li><li>Ofte falder bilirubin paa mad alene &mdash; lysbehandling ikke altid noedvendig</li></ul>'},
+      {l:'Det skal I kunne (eksamen)', hl:true, full:true, c:'<ul><li>Fysiologisk vs patologisk; ukonjugeret vs konjugeret</li><li>Ikterus i 1. levedoegn = patologisk; debut-timing styrer DDX (&lt;24 t immunisering/haemolyse; &gt;2 uger konjugeret/lever-galde)</li><li>GA og behandlingsgraenser (lavere ved praematur/syg)</li><li>Vaegttab ikke over 10%; ammeetablering; WHO-vaekstkurver</li><li>Alment paavirket + ikterisk &rarr; taenk sepsis/dehydrering/acidose</li><li>Risikofaktorer: mors blodtype, etnicitet (Middelhav/Asien &rarr; G6PD)</li></ul>'}
     ]}
 
   ]

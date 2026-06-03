@@ -65,6 +65,7 @@ Tracks the status of every note card in `notesData`.
 | id | Emne | Status | Note |
 |----|------|--------|------|
 | peds_1 | Asfyksi og neonatal genoplivning | `[D]` | Full note, 4 tabs (Definition+årsager / Genoplivning+Apgar / HIE+køling / Prognose+sequelae). GZ-slides + ERC/NLS 2025 + Excel + S2021/S2017. Awaiting verification. |
+| peds_2 | Ikterus, ernæring og trivsel | `[D]` | New note, 5 tabs (Fysiologisk / Patologisk-ukonjugeret / Konjugeret+kernicterus / Behandling / Ernæring+trivsel). GZ-slides + DPS + SST 2015 + exam (ABO/hypernatriæmi). Awaiting verification. |
 
 ---
 
@@ -74,6 +75,7 @@ Tracks the status of every note card in `notesData`.
 | id | Emne | Status | Note |
 |----|------|--------|------|
 | genoplivning | Neonatal genoplivning og asfyksi | `[D]` | New case, 6 steps. GZ Case 1+2 + S2021/S2017. Cross-linked to peds_1. Awaiting verification. |
+| ikterus | Neonatal ikterus og dårlig trivsel | `[D]` | New case, 6 steps. GZ Case 4 (ABO) + Case 2 (hypernatriæmi) + ikterus-workup/kernicterus. Cross-linked to peds_2. Awaiting verification. |
 
 ## Backlog — topics not yet in the app
 
@@ -136,3 +138,5 @@ Files that would unlock blocked topics:
 | 2026-06-03 | peds_1 | New note — Asfyksi/neonatal genoplivning from GZ-slides (authoritative). First populated PEDS note; replaces stub. |
 | 2026-06-03 | case:genoplivning | New PEDS case + Pædiatri section in Cases tab + .badge-paed; cross-linked to peds_1. |
 | 2026-06-03 | flow:livloest_nyfodt + schema | New PEDS flow tree; flowData.spec += PEDS + buildFlowPicker PEDS badge; data-model.md updated. |
+| 2026-06-03 | peds_2 | New note — Ikterus/ernæring/trivsel from GZ-slides (authoritative). Second PEDS note. |
+| 2026-06-03 | case:ikterus | New PEDS case (ikterus/trivsel); cross-linked to peds_2. |
