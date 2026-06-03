@@ -210,6 +210,7 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
 .flow-btn.primary { background:var(--gyn); border-color:var(--gyn); color:#FFF; }
 .flow-btn:disabled { opacity:.4; cursor:default; }
 .flow-caselink { display:inline-flex; gap:6px; font-size:13px; background:var(--gyn-bg); color:var(--gyn); border:1px solid var(--border); border-radius:6px; padding:8px 12px; cursor:pointer; }
+.specialty-badge.badge-paed { background:var(--paed-bg); color:var(--paed); }
 </style>
 </head>
 <body>
@@ -340,7 +341,18 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
     </div>
   </div>
 
-  <p class="section-label" style="margin-top:28px">Gynækologi</p>
+    <p class="section-label" style="margin-top:28px">Pædiatri</p>
+  <div class="case-grid">
+    <div class="case-card" onclick="openCase('genoplivning')">
+      <span class="specialty-badge badge-paed">Pædiatri</span>
+      <h3>Neonatal genoplivning og asfyksi</h3>
+      <p>NLS-algoritme på dukken, Apgar, navlesnors blodprøver, kølebehandling og prognose</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · S2021, S2017, GZ-slides</div>
+      <span class="arrow-icon">→</span>
+    </div>
+  </div>
+
+<p class="section-label" style="margin-top:28px">Gynækologi</p>
   <div class="case-grid">
     <div class="case-card" onclick="openCase('antikonception')">
       <span class="specialty-badge badge-gyn">Gynækologi</span>
@@ -2206,6 +2218,124 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   </div>
 </div>
 
+<!-- === NEONATAL GENOPLIVNING (PEDS) === -->
+<div id="case-genoplivning" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Neonatal genoplivning og asfyksi</h2>
+    <p>Case 1 (GZ): Akut sectio GA 37+4 pga. placentaløsning. Barnet er livløst ved fødslen. &nbsp;·&nbsp; S2021/S2017 manikin-stand</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="gen-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="gen-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-gen-1">
+    <div class="step-header" onclick="toggleStep('gen',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Genoplivning — hvad gør du? (demonstrér på dukken)</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ol style="padding-left:20px; line-height:1.9">
+        <li>Start uret</li>
+        <li>Stimulér med aftørring, varmelampe, oprethold normal temperatur</li>
+        <li>Frie luftveje (sug i næse og mund, neutral hovedstilling)</li>
+        <li>Hold masken på næse og mund → <strong>5 inflationsventilationer</strong> (2-3 sek.)</li>
+        <li>Revurdér thoraxbevægelse og puls; ved fortsat puls &lt;60/min → <strong>hjertemassage 3:1</strong> samtidig med ventilation</li>
+        <li>Overvej intubation</li>
+        <li>Dernæst <strong>volumen</strong> (isoton NaCl og/eller 0 Rh-neg blod 10 ml/kg) og <strong>adrenalin</strong> (10 µg/kg i.v.) — i nævnte rækkefølge</li>
+      </ol>
+      <div class="answer-highlight">VENTILATION, VENTILATION — det er den vigtigste handling. Hjertemassage og medicin er sjældent nødvendigt.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-gen-2">
+    <div class="step-header" onclick="toggleStep('gen',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Redegør for Apgar-score — de 5 parametre</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Hjerteaktion:</strong> ingen / &lt;100 / &gt;100</li>
+        <li><strong>Respiration:</strong> ingen / svag, gispende / god, kraftig (skriger)</li>
+        <li><strong>Tonus:</strong> slap / lidt fleksion / fleksion af alle ekstremiteter</li>
+        <li><strong>Reflekser:</strong> ingen / grimasse / gråd, afværger (reagerer på sugning)</li>
+        <li><strong>Farve:</strong> bleg/blå / acrocyanose / lyserød</li>
+      </ul>
+      <p>Vurderes ved 1 og 5 min. Svær asfyksi &lt;4 ved 1 min, moderat &lt;8. Ved standen forventes ikke nødvendigvis redegørelse for sværhedsgrad-cutoffs — kend de 5 parametre.</p>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-gen-3">
+    <div class="step-header" onclick="toggleStep('gen',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Tolkning af navlesnors blodprøver</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Case 1: NS-pH <strong>6,65</strong> og BE <strong>-21,1</strong></li>
+        <li>Dette er en <strong>metabolisk (laktat)acidose</strong></li>
+        <li>Bekræfter svær perinatal/intrauterin asfyksi (definition: pH &lt;7,0 og BE &lt;-12)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-gen-4">
+    <div class="step-header" onclick="toggleStep('gen',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Diagnose, behandling og overvågning</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Diagnose:</strong> svær neonatal asfyksi (svær HIE) med baggrund i placentaløsning</li>
+        <li>Indlæggelse på neonatalafdeling</li>
+        <li>Opfylder kølekriterier → <strong>kølebehandling 33,5°C i 72 timer</strong></li>
+        <li><strong>CFM/aEEG</strong> til overvågning for kramper</li>
+        <li><strong>Thompson-score</strong> dagligt mens der køles</li>
+        <li>Kramper, sutterefleks og tonus er vigtigst for prognosen</li>
+        <li><strong>MR cerebrum dag 4-7</strong> (thalamus + basalganglier) mhp. skade og prognose</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-gen-5">
+    <div class="step-header" onclick="toggleStep('gen',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Prognose — de to forløb</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>God prognose:</strong> kan tage maden inden 7. levedøgn + neurologisk intakt (sutterefleks). Case 1 endte med normal MR dag 7.</li>
+        <li><strong>Dårlig prognose:</strong> fladt EEG/aEEG efter 6 timer, langvarige kramper, høj Thompson-score (&gt;15). Case 2 (svær asfyksi, burst suppression → fladt EEG) var udsigtsløs og behandlingen blev afsluttet.</li>
+        <li>Sequelae ved svær HIE: ca. 25% dør, ca. 25% handicappes (spastiske pareser, retardering, epilepsi, sanseforstyrrelser, ADHD).</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-gen-6">
+    <div class="step-header" onclick="toggleStep('gen',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvornår ophører man med genoplivning?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Ingen hjerteaktion efter <strong>&gt;10 min</strong> sufficient genoplivning</li>
+        <li>Ingen spontan respiration efter <strong>&gt;30 min</strong> sufficient genoplivning</li>
+        <li>Beslutningen træffes af den <strong>mest erfarne læge (bagvagt)</strong> til stede</li>
+      </ul>
+      <div class="answer-warn">Først udeluk: maternel medicin (slapt barn → overvej naloxon, dog ikke ved opioidafhængig mor) og svær misdannelse.</div>
+    </div></div>
+  </div>
+
+  <div class="xlink-bar">
+    <span class="xlink-label">Relaterede noter</span>
+    <button class="xlink-btn" onclick="goToNote('peds_1')">Asfyksi og neonatal genoplivning</button>
+  </div>
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('gen',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
 <!-- === KOMPLICEREDE FØDSLER === -->
 <div id="case-kompfodsel" class="case-pane" style="display:none">
   <div class="case-header">
@@ -2916,8 +3046,51 @@ var notesData = [
   ]
 },
 
-{ id:'peds_1', spec:'PEDS', num:1, title:'Pædiatri <em>(stub — udfyldes)</em>',
-  src:'Placeholder — erstattes når pædiatri-indholdet skrives', sub:null, grid:[] }
+{ id:'peds_1', spec:'PEDS', num:1, title:'Asfyksi <em>og neonatal genoplivning</em>',
+  src:'Forelaesning: Asfyksi og genoplivning af nyfoedte (GZ, neonatolog, maj 2026) · ERC/NLS 2025 · Excel-eksamensnoter · Eksamenssaet S2021/S2017',
+  caseRefs:['genoplivning'],
+  sub:'<table class="nst"><tr><td><b>Definition</b></td><td>Metabolisk acidose ved foedslen: pH &lt;7,0 og BE &lt;-12 mmol/L</td></tr><tr><td><b>Genoplivning</b></td><td>VENTILATION foerst &rarr; 5 inflationsventilationer &rarr; hjertemassage 3:1</td></tr><tr><td><b>Adrenalin</b></td><td>10 &micro;g/kg i.v. (=0,01 mg/kg)</td></tr><tr><td><b>Volumen</b></td><td>Isoton NaCl eller 0 Rh-neg blod 10 ml/kg</td></tr><tr><td><b>Koeling</b></td><td>33,5&deg;C i 72 timer ved moderat/svaer HIE</td></tr><tr><td><b>Apgar (1 min)</b></td><td>Svaer asfyksi &lt;4 · moderat &lt;8 · normal &ge;8</td></tr><tr><td><b>Thompson</b></td><td>&gt;15 = daarligt outcome · &lt;10 efter 1 uge = god prognose</td></tr></table>',
+  tabs:[
+
+    { label:'Definition & aarsager', grid:[
+      {l:'Definition', full:true, c:'<p>Asfyksi (graesk: <em>manglende puls</em>) defineres som <strong>metabolisk acidose ved foedslen med pH &lt;7,0 og BE &lt;-12 mmol/L</strong> (syreophobning).</p><p><strong>Perinatal asfyksi:</strong> en intrauterin periode med nedsat blod-gas-udveksling via placenta &rarr; <strong>hypoxi</strong> (iltmangel), <strong>hypercapni</strong> (&uarr;PaCO2) og <strong>metabolisk acidose</strong> &rarr; cirkulatorisk kollaps &rarr; HIE &rarr; doed.</p>'},
+      {l:'Normal a-gas hos nyfoedt', hl:true, c:'<ul><li>pH 7,25-7,35 (OK ned til 7,20)</li><li>BE -3 til +3</li><li>Laktat &lt;2 mmol/L</li></ul>'},
+      {l:'Patofysiologi', c:'<p>&darr;Flow fra placenta + &darr;gasudveksling &rarr; intrauterin asfyksi og iskaemi &rarr; &darr;cerebral perfusion.</p><ul><li><strong>Primaer fase:</strong> initial skade med celledoed</li><li><strong>Latent fase:</strong> mange celler restituerer delvist (terapeutisk vindue ~6 t)</li><li><strong>Sekundaer fase:</strong> forsinket celledoed timer senere</li></ul>'},
+      {l:'AEtiologi', c:'<ul><li>Placentaloesning</li><li>Navlesnorsfremfald / afklemt navlesnor</li><li>Foeto-maternel bloedning</li><li>Fastsiddende skuldre eller hoved</li><li>Uterusruptur</li><li>Langvarig foedsel / haarde veer</li><li>Svaer infektion / sepsis hos mor eller barn</li></ul>'},
+      {l:'Praenatale tegn', c:'<ul><li>Faerre fosterbevaegelser</li><li>Groent fostervand (mekonium pga. stress)</li></ul>'},
+      {l:'Intrauterin udredning (obstetrisk snitflade)', full:true, warn:true, c:'<p>Ved mistanke om asfyksi under foedslen:</p><ul><li><strong>CTG</strong> &mdash; fosterets hjertefrekvens + uteruskontraktioner; patologi: sene decelerationer og &darr;variabilitet</li><li><strong>STAN</strong> &mdash; ST-analyse af foster-EKG (supplement til CTG); ST-anomali tyder paa myokardiehypoxi</li><li><strong>Scalp-pH</strong> &mdash; vurder igangvaerende acidose</li><li><strong>Navlestrengs a-gas</strong> &mdash; stiller diagnosen asfyksi (pH + BE)</li></ul><p>Detaljeret intrapartal CTG-tolkning hoerer under obstetrik (se backlog).</p>'}
+    ]},
+
+    { label:'Genoplivning & Apgar', grid:[
+      {l:'Neonatal genoplivning &mdash; NLS 2025 (algoritme)', full:true, c:'<p><strong>VENTILATION er hjoernestenen &mdash; hjertemassage og medicin er sjaeldent noedvendigt.</strong></p><ol style="padding-left:18px;line-height:1.9"><li>Foedsel &rarr; <strong>start uret</strong>. Forsinket navlesnorsafklemning &ge;60 sek. hvis muligt.</li><li>Toer, stimuler, hold barnet varmt (de fleste behoever ikke avanceret hjaelp).</li><li>Vurder <strong>vejrtraekning og hjerteaktion</strong> (vejleder naeste skridt).</li><li>Utilstraekkelig vejrtraekning &rarr; frie luftveje (neutral hovedstilling).</li><li>Apnoe/gisp &rarr; <strong>5 inflationsventilationer</strong> (30 cm H2O, PEEP 5, 21% O2 til terminsbarn).</li><li>Revurder. Ingen thoraxbevaegelse &rarr; tjek maske, hovedstilling, kaebeloeft &rarr; <strong>gentag 5 ventilationer</strong>.</li><li>Puls forbliver &lt;60/min trods effektiv ventilation &rarr; <strong>hjertemassage 3:1</strong> (90 kompressioner + 30 ventilationer/min), 100% O2, overvej tube/SGA.</li><li>Revurder hvert 30. sek. Fortsat &lt;60 &rarr; IV/IO-adgang (navlevene) &rarr; <strong>adrenalin + volumen</strong>.</li></ol>'},
+      {l:'Laegemidler & volumen', hl:true, c:'<ul><li><strong>Adrenalin i.v.:</strong> 10 &micro;g/kg (=0,01 mg/kg); ERC tillader 10-30 &micro;g/kg hver 4. min.</li><li><strong>Volumenbolus:</strong> isoton NaCl eller 0 Rh-negativt blod 10 ml/kg</li><li><strong>Glukose 10%:</strong> 2 ml/kg ved hypoglykaemi</li></ul>'},
+      {l:'SpO2-maal (praeduktalt, hoejre haand)', c:'<ul><li>3 min: 70-75%</li><li>5 min: 80-85%</li><li>10 min: 85-95%</li></ul>'},
+      {l:'Praematur &lt;32 uger &mdash; modificeret', c:'<ul><li>Laeg barnet i plastikpose + hue <strong>uden aftoerring</strong>; ekstern varmekilde</li><li>CPAP 6 cm H2O hvis vejrtraekning</li><li>Lavere inflationstryk (start 25 cm H2O)</li><li>Overvej hoejere O2 og surfactant</li></ul>'},
+      {l:'Apgar-score (1 og 5 minutter)', full:true, c:'<p>Opfundet af Virginia Apgar (1952). Klinisk vurdering ved 1 og 5 min.</p><table class="freq-table"><tr><th>Parameter</th><th>0</th><th>1</th><th>2</th></tr><tr><td>Puls (HR)</td><td>Ingen</td><td>&lt;100</td><td>&gt;100</td></tr><tr><td>Respiration</td><td>Ingen</td><td>Svag, uregelmaessig, gispende</td><td>God, kraftig</td></tr><tr><td>Tonus</td><td>Ingen</td><td>Lidt fleksion</td><td>Fleksion af alle ekstremiteter</td></tr><tr><td>Reflekser</td><td>Ingen</td><td>Grimasserer, svag graad</td><td>Graad, afvaerger</td></tr><tr><td>Farve</td><td>Bleg eller blaa</td><td>Acrocyanose</td><td>Lyseroed</td></tr></table><p style="margin-top:10px">Svaer asfyksi: &lt;4 ved 1 min · moderat: &lt;8 ved 1 min · normal: &ge;8 ved 1 min.</p>'},
+      {l:'Genoplivningsophoer', full:true, warn:true, c:'<ul><li>Ingen hjerteaktion efter <strong>&gt;10 min</strong> sufficient genoplivning</li><li>Ingen spontan respiration efter <strong>&gt;30 min</strong> sufficient genoplivning</li><li>Beslutningen traeffes af den <strong>mest erfarne laege (bagvagt)</strong> til stede</li></ul><p>Foerst udeluk: maternel medicin (slapt barn &rarr; overvej naloxon) og svaer misdannelse.</p>'}
+    ]},
+
+    { label:'HIE & koeling', grid:[
+      {l:'HIE &mdash; hypoxisk-iskaemisk encefalopati', full:true, c:'<p>HIE = hjerneskaden, der opstaar som foelge af perinatal asfyksi: <strong>hypoxi</strong> (&darr;ilt) + <strong>iskaemi</strong> (&darr;perfusion) + <strong>encefalopati</strong> (sygdom i hjernen).</p><ul><li>~1/1000 foedsler</li><li>Klinisk debut ofte 6-12 timer efter foedslen</li></ul>'},
+      {l:'Sarnat-gradering', c:'<p>Klinisk klassifikation af HIE i 3 grader: <strong>mild / moderat / svaer</strong> (bevidsthed, tonus, reflekser, autonom funktion, kramper/EEG).</p><ul><li>Korrelerer bedre med neurologisk outcome end Apgar</li><li>Bruges til: (1) koele-beslutning (kun moderat/svaer koeles) og (2) foerste prognose</li></ul>'},
+      {l:'Koelekriterier', hl:true, full:true, c:'<p><em>Tvivlen kommer altid barnet til gode.</em></p><p><strong>Indikation:</strong> GA &gt;36 uger OG &lt;6 timer gammel OG mindst <strong>et</strong> af:</p><ul><li>Apgar &lt;6 efter 10 min</li><li>Acidose inden for 1. levetime (pH &lt;7,00 eller BE &lt;-16 i navlearterie/arterieblod)</li><li>Behov for ventilation (tube eller maske) efter 10 min</li></ul><p><strong>OG</strong> moderat/svaer encefalopati (kliniske tegn i &ge;3 af 6 Sarnat-kategorier).</p>'},
+      {l:'Koelebehandling (protokol)', c:'<ul><li>Helkropskoeling: koldt vand i taepper, kernetemp <strong>33,5&deg;C i 72 timer</strong>, derefter langsom genopvarmning</li><li>Under koeling: morfininfusion (mod koeleubehag)</li><li>Sondeernaering (modermaelk) + 10% glukose i.v. (hypoglykaemi)</li><li>~10 boern/aar paa OUH</li></ul>'},
+      {l:'Hvorfor virker koeling', c:'<ul><li>Neuroprotektion &mdash; bremser apoptose/celledoed</li><li>Latent vindue ~6 timer hvor koeling virker</li><li>Risici: trombocytopeni og rytmeforstyrrelser</li></ul>'},
+      {l:'Monitorering under koeling', c:'<ul><li><strong>CFM / aEEG:</strong> overvaagning for kramper</li><li><strong>Thompson-score</strong> dagligt</li><li><strong>MR cerebrum dag 4-7:</strong> thalamus + basalganglier (umyeliniseret graa substans mest saarbar)</li></ul>'},
+      {l:'Multiorgan-komplikationer ved HIE', full:true, warn:true, c:'<ul><li><strong>Kardiel:</strong> myokardiedysfunktion &mdash; tjek BT, kapillaerrespons, laktat, pH</li><li><strong>Pulmonal:</strong> pulmonal hypertension / mekoniumaspiration &mdash; hold pCO2 4,5-6 kPa</li><li><strong>Renal:</strong> SIADH</li><li><strong>GI:</strong> nekrotiserende enterocolitis (NEC)</li><li><strong>Metabolisk:</strong> hypoglykaemi og hypocalcaemi</li><li>Oeget infektionsrisiko</li></ul>'}
+    ]},
+
+    { label:'Prognose & sequelae', grid:[
+      {l:'Cerebrale skader', c:'<p>Omraader med hoej metabolisme er mest udsatte &mdash; graa substans (neuroner): <strong>basalganglier, thalamus, hippocampus, hjernestamme</strong>.</p>'},
+      {l:'God prognose', hl:true, c:'<ul><li>Kan tage maden inden 7. levedoegn</li><li>Neurologisk intakt &mdash; <strong>sutterefleks!</strong></li></ul>'},
+      {l:'Daarlig prognose', warn:true, c:'<ul><li>Ingen sutterefleks</li><li>Fladt EEG/aEEG efter 6 timer</li><li>Langvarige kramper</li><li>Fortsat kliniske symptomer efter 10 dage / hoej Thompson-score</li></ul>'},
+      {l:'Thompson-score', full:true, c:'<p>Daglig score under koeling, 9 parametre: tonus, bevidsthed, kramper, kropsstilling, moro-, gribe-, sutterefleks, respiration og fontanelletonus.</p><ul><li><strong>TS &gt;15</strong> = daarligt outcome</li><li><strong>TS falder til &lt;10</strong> efter 1 uge = god prognose</li></ul>'},
+      {l:'Sequelae ved svaer asfyksi/HIE', full:true, c:'<ul><li>ca. <strong>25% doer</strong></li><li>ca. <strong>25% handicappede:</strong> spastiske pareser, mental retardering, spiseproblemer, epilepsi, nedsat syn, nedsat hoerelse, ADHD</li></ul>'},
+      {l:'Hvad skal I kunne (eksamen)', hl:true, full:true, c:'<ul><li>Genoplivningsalgoritme med <strong>VENTILATION</strong></li><li>Apgar &mdash; de 5 kliniske parametre</li><li>Acidose-type: <strong>metabolisk / laktatacidose</strong></li><li>Koelebehandling i 3 doegn ved svaer HIE</li><li>Kliniske parametre til svaerhedsgrad og prognose: <strong>Thompson-score</strong></li></ul>'}
+    ]}
+
+  ]
+}
 
 ];
 
@@ -3562,6 +3735,157 @@ var flowData = [
 
   }
 }
+,
+
+{
+  id:'livloest_nyfodt', spec:'PEDS',
+  title:'Det livløse nyfødte barn',
+  src:'GZ-slides (Asfyksi/genoplivning) + ERC/NLS 2025 + Excel',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'Et nyfødt barn er ved fødslen blegt/blåt, slapt og uden sufficient vejrtrækning. Hvad guider dine næste skridt?',
+      why:'NLS 2025: vurder <b>vejrtrækning og hjerteaktion</b> — det styrer algoritmen. Ventilation er hjørnestenen; hjertemassage og medicin er sjældent nødvendigt.',
+      redflag:'Kendt placentaløsning, navlesnorskomplikation eller grønt fostervand → forvent asfyksi og hav genoplivningsbordet klar.',
+      ask:[
+        'GA — terminsbarn eller præmatur &lt;32 uger?',
+        'Fostervandets farve — mekonium (grønt)?',
+        'Kendt placentaløsning / navlesnorsfremfald / føto-maternel blødning?',
+        'Maternel medicin under fødslen (opioid)?',
+        'Respiration: apnø eller gisp? Puls &gt;100, &lt;100 eller &lt;60?'
+      ],
+      opts:[
+        { lead:'Terminsbarn, apnø/gisp, puls &lt;100 — barnet svarer på ventilation', hint:'Puls stiger efter de første inflationsventilationer', next:'respond_vent' },
+        { lead:'Trods effektiv ventilation: puls &lt;60, slapt, svær metabolisk acidose', hint:'Lav Apgar, pH &lt;7,0, encefalopati', next:'svaer_hie' },
+        { lead:'Grønt/mekoniumfarvet fostervand + respiratorisk distress', hint:'Takypnø, cyanose efter mekoniumeksposition', next:'mas' },
+        { lead:'Præmatur &lt;32 uger', hint:'Kræver modificeret tilgang', next:'praematur' },
+        { lead:'Slapt, respirationsdepression — mor fik opioid under fødslen', hint:'Puls ofte bevaret', next:'opioid' }
+      ]
+    },
+
+    respond_vent:{
+      dx:'Forbigående perinatal asfyksi', dxsub:'Vellykket genoplivning — barnet responderer', urgency:'haster',
+      findings:[
+        'Puls stiger &gt;100/min efter 5 inflationsventilationer',
+        'Spontan respiration etableres, barnet bliver lyserødt',
+        'Stigende SpO2 mod målene (3 min 70-75%, 5 min 80-85%, 10 min 85-95%)'
+      ],
+      ddx:[
+        { d:'Svær asfyksi/HIE', r:'— hvis puls forbliver &lt;60 trods effektiv ventilation' },
+        { d:'Mekoniumaspiration', r:'— hvis grønt fostervand og fortsat distress' }
+      ],
+      behandling:[
+        'Fortsæt ventilation til stabil spontan respiration',
+        'Oprethold normal temperatur; hud-mod-hud hvis stabil',
+        'Observation, monitorér SpO2 og blodsukker; tidlig amning'
+      ],
+      ki:[
+        'Stop ikke ventilation før sufficient egen respiration',
+        'Undgå hyperoxi — titrér O2 efter SpO2-mål'
+      ],
+      prognose:'God ved hurtig respons på ventilation og normal efterfølgende neurologisk vurdering.',
+      caseRef:'genoplivning'
+    },
+
+    svaer_hie:{
+      dx:'Svær neonatal asfyksi → HIE', dxsub:'Hypoxisk-iskæmisk encefalopati', urgency:'akut',
+      findings:[
+        'Lav Apgar; navlesnors a-gas med metabolisk (laktat)acidose (pH &lt;7,0, BE &lt;-12)',
+        'Encefalopati: sløv→komatøs, hyper-→hypotoni, manglende sutterefleks, kramper',
+        'Debut ofte 6-12 timer; multiorganpåvirkning (kardiel, renal/SIADH, NEC, hypoglykæmi)'
+      ],
+      ddx:[
+        { d:'Mekoniumaspiration', r:'— grønt fostervand, primært respiratorisk' },
+        { d:'Neonatal sepsis/infektion', r:'— GBS, subtile tegn, kramper' },
+        { d:'Medfødt misdannelse / metabolisk sygdom', r:'— udeluk før genoplivningsophør' }
+      ],
+      behandling:[
+        'Fortsæt NLS: hjertemassage 3:1, adrenalin 10 µg/kg i.v., volumen 10 ml/kg',
+        'Vurder kølekriterier → helkropskøling 33,5°C i 72 timer ved moderat/svær HIE',
+        'CFM/aEEG (kramper); Thompson-score dagligt; MR cerebrum dag 4-7'
+      ],
+      ki:[
+        'Køling kun ved GA &gt;36 uger, &lt;6 timer gammel og moderat/svær encefalopati',
+        '<b>Tvivlen kommer altid barnet til gode</b>',
+        'Genoplivningsophør: ingen hjerteaktion &gt;10 min eller ingen spontan resp. &gt;30 min — afgøres af bagvagt'
+      ],
+      prognose:'Afhænger af Sarnat-grad og Thompson-score. Ved svær HIE: ca. 25% dør, ca. 25% handicappes. Sutterefleks, EEG og kramper er de stærkeste prognostiske tegn.',
+      caseRef:'genoplivning'
+    },
+
+    mas:{
+      dx:'Mekoniumaspirationssyndrom (MAS)', dxsub:'Mekonium i luftvejene → obstruktion og inflammation', urgency:'haster',
+      findings:[
+        'Grønt/mekoniumfarvet fostervand',
+        'Respiratorisk distress: takypnø, indtrækninger, cyanose',
+        'Risiko for persisterende pulmonal hypertension'
+      ],
+      ddx:[
+        { d:'RDS', r:'— især præmatur, surfactantmangel' },
+        { d:'Neonatal pneumoni/sepsis', r:'— infektiøse tegn' },
+        { d:'Transitorisk takypnø (TTN)', r:'— mild, selvlimiterende' }
+      ],
+      behandling:[
+        'Frie luftveje; sug ved behov (ikke rutinemæssig intubation hvis vital)',
+        'Respiratorisk støtte efter behov (CPAP/respirator); evt. surfactant, NO',
+        'Understøttende: temperatur, kredsløb, blodsukker'
+      ],
+      ki:[
+        'Undgå unødig aggressiv sugning hos vital, kraftigt skrigende barn',
+        'NO/viagra og ECMO er ikke til præmature'
+      ],
+      prognose:'Variabel; afhænger af grad af aspiration og pulmonal hypertension.',
+      caseRef:null
+    },
+
+    praematur:{
+      dx:'Præmatur &lt;32 uger', dxsub:'Modificeret genoplivning og stabilisering', urgency:'haster',
+      findings:[
+        'Umoden lunge → risiko for RDS (surfactantmangel)',
+        'Hurtigt varmetab; sårbar over for hyperoxi'
+      ],
+      ddx:[
+        { d:'RDS', r:'— mikroatelektaser, stigende iltbehov' },
+        { d:'Apnø/bradykardi', r:'— umoden respirationsregulering' }
+      ],
+      behandling:[
+        'Læg barnet i plastikpose + hue uden aftørring; ekstern varmekilde',
+        'CPAP 6 cm H2O hvis vejrtrækning; lavere inflationstryk (start 25 cm H2O)',
+        'Overvej surfactant; titrér O2 efter SpO2-mål; overflyt til neonatalafsnit'
+      ],
+      ki:[
+        'Undgå hyperoxi (ROP-risiko; mål-SpO2 88-93%)',
+        'Undgå hypotermi — stabilisér temperatur tidligt'
+      ],
+      prognose:'Afhænger stærkt af GA; øget risiko for RDS, IVH, NEC, ROP.',
+      caseRef:null
+    },
+
+    opioid:{
+      dx:'Opioid-induceret respirationsdepression', dxsub:'Maternel opioid → neonatal respirationsdepression', urgency:'haster',
+      findings:[
+        'Slapt barn med respirationsdepression, men puls ofte bevaret',
+        'Mor har fået morfika/opioid under fødslen'
+      ],
+      ddx:[
+        { d:'Asfyksi/HIE', r:'— acidose, encefalopati, dårlig puls' },
+        { d:'Neonatal sepsis', r:'— infektiøse tegn' }
+      ],
+      behandling:[
+        'Effektiv ventilation er den primære behandling',
+        'Naloxon kan overvejes ved fortsat respirationsdepression efter sufficient ventilation'
+      ],
+      ki:[
+        '<b>Naloxon er kontraindiceret ved kronisk maternel opioidbrug</b> → udløser abstinenser/kramper hos barnet',
+        'Naloxon erstatter ikke ventilation'
+      ],
+      prognose:'God ved effektiv ventilation; tilstanden er reversibel.',
+      caseRef:null
+    }
+
+  }
+}
 ];
 
 
@@ -3572,8 +3896,10 @@ function buildFlowPicker() {
   var p = document.getElementById('flow-picker');
   if (!p) return;
   p.innerHTML = flowData.map(function(t){
-    var badge = (t.spec === 'OBS') ? 'obs' : 'gyn';
-    var label = (t.spec === 'OBS') ? 'Obstetrik' : 'Gynækologi';
+    var badgeMap = { OBS:'obs', PEDS:'paed', GYN:'gyn' };
+    var labelMap = { OBS:'Obstetrik', PEDS:'Pædiatri', GYN:'Gynækologi' };
+    var badge = badgeMap[t.spec] || 'gyn';
+    var label = labelMap[t.spec] || 'Gynækologi';
     return '<div class="case-card" onclick="openFlow(\'' + t.id + '\')">'
       + '<span class="specialty-badge badge-' + badge + '">' + label + '</span>'
       + '<h3>' + t.title + '</h3>'

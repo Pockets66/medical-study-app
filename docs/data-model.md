@@ -124,7 +124,7 @@ Defined in `:root` in `index.html`. Do not hardcode hex values in new code.
 ```js
 {
   id:    'akut_underlivssmerter', // string, unique
-  spec:  'GYN',                   // 'GYN' | 'OBS' — drives card badge
+  spec:  'GYN',                   // 'GYN' | 'OBS' | 'PEDS' — drives card badge
   title: 'Akutte smerter...',     // shown on picker card + trail
   src:   'Eksamenssæt + noter',   // provenance, plain text
   start: 'start',                 // id of the entry node

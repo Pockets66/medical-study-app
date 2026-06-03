@@ -56,11 +56,24 @@ Tracks the status of every note card in `notesData`.
 |----|---------|--------|-------|
 | bloedningsforstyrrelser | Blødningsforstyrrelser (abnorm uterin blødning) | `[D]` | Grounded in gyn_2 (AUB/PALM-COEIN), gyn_6 (cancer) + bloedning/cancer cases. Awaiting owner review. |
 | akut_underlivssmerter | Akutte smerter i underlivet | `[V]` | Verified vs in-app gyn_3/5/7 + cases. Folsyre-under-MTX confirmed as slide typo (excluded); hCG-endepunkt `<2` confirmed. |
+| livloest_nyfodt | Det livløse nyfødte barn | `[D]` | New PEDS flow tree. 5 terminaler (responderer / svær HIE / MAS / præmatur / opioid). caseRef→genoplivning. GZ-slides + ERC/NLS 2025. Awaiting verification. |
 
-### PEDS (Pædiatri)
+---
+
+## PEDS notes
+
 | id | Emne | Status | Note |
 |----|------|--------|------|
-| peds_1 | (stub) | `[ ]` | Placeholder note — scaffolding only, no content yet |
+| peds_1 | Asfyksi og neonatal genoplivning | `[D]` | Full note, 4 tabs (Definition+årsager / Genoplivning+Apgar / HIE+køling / Prognose+sequelae). GZ-slides + ERC/NLS 2025 + Excel + S2021/S2017. Awaiting verification. |
+
+---
+
+## Cases (OSCE)
+
+### PEDS
+| id | Emne | Status | Note |
+|----|------|--------|------|
+| genoplivning | Neonatal genoplivning og asfyksi | `[D]` | New case, 6 steps. GZ Case 1+2 + S2021/S2017. Cross-linked to peds_1. Awaiting verification. |
 
 ## Backlog — topics not yet in the app
 
@@ -80,6 +93,10 @@ Topics identified from exam sets or målbeskrivelser that have no note card yet.
 | Den normale fødsel / dystoci | 🔴 High | Eksamenssæt F25, S2018 | Kan draftes nu |
 | CTG-tolkning | 🔴 High | Mangler forelæsning | Upload forelæsning |
 | Flerfoldsgraviditet (uddybet) | 🟡 Medium | Signe noter | Kan draftes nu |
+
+### PEDS
+- [ ] obs_10 — slim to intrauterin/intrapartal asfyksi only (CTG-mønstre, STAN,
+      scalp-pH) now that neonatal content lives in peds_1. Needs OBS CTG slides.
 
 ---
 
@@ -116,3 +133,6 @@ Files that would unlock blocked topics:
 | 2026-06-01 | ui | Nav refactor → Pensum/Flow-diagnostik/Cases/Tips; fix page-1 tab bug; consolidate Hyppighed/Studiestrategi/Eksamenstips under Tips sub-tabs |
 | 2026-06-01 | ui | Collapsible Pensum groups (GYN/OBS/PEDS); add PEDS spec + colour handling + empty group + peds_1 stub |
 | 2026-06-01 | ui | Complete case↔note linking — caseRefs on all notes + "Relaterede noter" bars on all cases |
+| 2026-06-03 | peds_1 | New note — Asfyksi/neonatal genoplivning from GZ-slides (authoritative). First populated PEDS note; replaces stub. |
+| 2026-06-03 | case:genoplivning | New PEDS case + Pædiatri section in Cases tab + .badge-paed; cross-linked to peds_1. |
+| 2026-06-03 | flow:livloest_nyfodt + schema | New PEDS flow tree; flowData.spec += PEDS + buildFlowPicker PEDS badge; data-model.md updated. |
