@@ -4397,6 +4397,156 @@ var flowData = [
     }
 
   }
+},
+
+{
+  id:'neonatal_resp_distress', spec:'PEDS',
+  title:'Respiratorisk distress hos den nyfødte',
+  src:'GZ-slides (Præmaturitet/RDS) + neonatal DDX + Excel',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'Et nyfødt barn har respiratorisk distress: takypnø, indtrækninger, eksspiratorisk knirken, cyanose og spil af alae nasi. Hvad guider differentialdiagnosen?',
+      why:'Tre akser styrer det meste: <b>gestationsalder</b> (præmatur vs term), <b>fostervandets farve</b> (mekonium) og <b>infektionsrisiko</b> (GBS, vandafgang, feber). Hertil forløb/debut og pludselig ensidig forværring (pneumothorax).',
+      redflag:'Pludselig forværring + asymmetrisk thorax + ensidigt nedsat respirationslyd → mistænk (tryk)pneumothorax — akut. Påvirket almentilstand + risikofaktorer → behandl for sepsis uden at afvente dyrkning.',
+      ask:[
+        'GA — præmatur (&lt;34-37 uger) eller terminsbarn?',
+        'Fostervandets farve — mekonium (grønt)?',
+        'Fødselsmåde — elektivt sectio uden veer?',
+        'Infektionsrisiko — GBS-positiv mor, vandafgang &gt;18 t, maternel feber?',
+        'Debut og forløb; pludselig forværring / asymmetrisk thorax?'
+      ],
+      opts:[
+        { lead:'Præmatur, stigende iltbehov, mikroatelektaser på rtg', hint:'Surfactantmangel', next:'rds' },
+        { lead:'Terminsbarn, elektivt sectio uden veer, hurtigt forbigående', hint:'"Våde lunger"', next:'ttn' },
+        { lead:'Grønt/mekoniumfarvet fostervand, term/post-term', hint:'Aspiration', next:'mas' },
+        { lead:'Risikofaktorer for infektion (GBS, vandafgang, feber)', hint:'Påvirket almentilstand', next:'pneumoni' },
+        { lead:'Pludselig forværring, asymmetrisk thorax, ensidigt nedsat respirationslyd', hint:'Akut', next:'pneumothorax' }
+      ]
+    },
+
+    rds:{
+      dx:'Respiratorisk distress-syndrom (RDS)', dxsub:'Surfactantmangel hos den præmature', urgency:'akut',
+      findings:[
+        'Præmatur (risiko størst jo lavere GA); takypnø, indtrækninger, eksp. knirken, cyanose, spil af alae nasi',
+        'Faldende pO2/saturation, stigende pCO2',
+        'Rtg. thorax: mikroatelektaser ("mælkeglas") + luftbronkogram'
+      ],
+      ddx:[
+        { d:'TTN', r:'— terminsbarn, hurtigt forbigående' },
+        { d:'Neonatal pneumoni/sepsis', r:'— infektionsrisiko, påvirket AT' },
+        { d:'Mekoniumaspiration', r:'— grønt fostervand' }
+      ],
+      behandling:[
+        'Forebyggelse: antenatal glukokortikoid ved truende fødsel <uge 34',
+        'CPAP (nCPAP) som første støtte',
+        'Surfactant (Curosurf) via INSURE/LISA — reducerer mortaliteten ~40%; evt. respirator'
+      ],
+      ki:[
+        'Undgå hyperoxi → ROP-risiko (mål-saturation 88-93%)',
+        'Ventilation/ilt kan give IPE, BPD/CLD',
+        'Antenatal steroid kun ved GA <uge 34'
+      ],
+      prognose:'God med surfactant; risiko for BPD/CLD ved langvarig respirator/ilt.',
+      caseRef:'praematur'
+    },
+
+    ttn:{
+      dx:'Transitorisk takypnø (TTN)', dxsub:'"Våde lunger" — forsinket resorption af lungevæske', urgency:'rolig',
+      findings:[
+        'Terminsbarn, ofte elektivt sectio uden veer',
+        'Takypnø kort efter fødsel, oftest forbigående inden for 24-72 timer',
+        'Mild iltbehov; rtg. kan vise vædske i fissurer'
+      ],
+      ddx:[
+        { d:'RDS', r:'— især præmatur, sværere/progredierende' },
+        { d:'Neonatal pneumoni', r:'— hvis infektionsrisiko' }
+      ],
+      behandling:[
+        'Understøttende: ilt efter behov, observation',
+        'Sjældent CPAP; ernæring efter behov'
+      ],
+      ki:[
+        'Udeluk sepsis hvis risikofaktorer er til stede',
+        'Diagnose stilles ofte retrospektivt når tilstanden svinder'
+      ],
+      prognose:'Udmærket; selvlimiterende.',
+      caseRef:null
+    },
+
+    mas:{
+      dx:'Mekoniumaspirationssyndrom (MAS)', dxsub:'Mekonium i luftvejene', urgency:'haster',
+      findings:[
+        'Grønt/mekoniumfarvet fostervand; term/post-term',
+        'Respiratorisk distress; risiko for persisterende pulmonal hypertension'
+      ],
+      ddx:[
+        { d:'RDS', r:'— præmatur, surfactantmangel' },
+        { d:'Pneumoni/sepsis', r:'— infektiøse tegn' },
+        { d:'Pneumothorax', r:'— pludselig forværring' }
+      ],
+      behandling:[
+        'Frie luftveje; sug ved behov (ikke rutinemæssig intubation hos vital, skrigende barn)',
+        'Respiratorisk støtte (CPAP/respirator); evt. surfactant, NO',
+        'Understøttende: temperatur, kredsløb, blodsukker'
+      ],
+      ki:[
+        'NO/viagra og ECMO er ikke til præmature',
+        'Undgå unødig aggressiv sugning hos vital nyfødt'
+      ],
+      prognose:'Variabel; afhænger af aspirationsgrad og pulmonal hypertension.',
+      caseRef:null
+    },
+
+    pneumoni:{
+      dx:'Neonatal pneumoni / sepsis', dxsub:'Ofte GBS (early onset)', urgency:'akut',
+      findings:[
+        'Risikofaktorer: GBS-koloniseret mor, vandafgang >18 t, maternel feber',
+        'Påvirket almentilstand: temperaturustabil, sløv, dårlig kapillærrespons',
+        'Respiratorisk distress + evt. apnø; kramper kan ses ved meningitis'
+      ],
+      ddx:[
+        { d:'RDS', r:'— præmatur, surfactantmangel' },
+        { d:'TTN', r:'— mild, forbigående' },
+        { d:'Meningitis', r:'— kramper, bulende fontanelle' }
+      ],
+      behandling:[
+        'Bloddyrkning, infektionstal, syre-base, blodsukker; LP ved mistanke om meningitis',
+        'Empirisk antibiotika: ampicillin + gentamicin',
+        'Respiratorisk støtte (nCPAP), væske, fenemal ved kramper'
+      ],
+      ki:[
+        'Behandl ved klinisk mistanke uden at afvente dyrkningssvar',
+        'Påvirket nyfødt + respiratorisk distress → tænk altid sepsis'
+      ],
+      prognose:'God ved tidlig behandling; alvorlig ved forsinkelse/meningitis.',
+      caseRef:null
+    },
+
+    pneumothorax:{
+      dx:'Pneumothorax', dxsub:'Luft i pleura — evt. trykpneumothorax', urgency:'akut',
+      findings:[
+        'Pludselig forværring af respiration og saturation',
+        'Asymmetrisk thorax, ensidigt nedsat respirationslyd',
+        'Ved trykpneumothorax: hæmodynamisk påvirkning (kredsløbskollaps)'
+      ],
+      ddx:[
+        { d:'RDS/MAS med forværring', r:'— underliggende lungesygdom' },
+        { d:'Medfødt: diafragmahernie', r:'— scaphoidt abdomen, tarm i thorax' }
+      ],
+      behandling:[
+        'Ilt; akut nåleaspiration ved trykpneumothorax',
+        'Pleuradræn ved persisterende/stor pneumothorax'
+      ],
+      ki:[
+        'Trykpneumothorax er akut livstruende — afvent ikke billeddiagnostik ved kredsløbskollaps'
+      ],
+      prognose:'God ved hurtig aflastning; afhænger af underliggende lungesygdom.',
+      caseRef:null
+    }
+
+  }
 }
 ];
 

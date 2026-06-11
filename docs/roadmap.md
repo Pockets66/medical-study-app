@@ -58,6 +58,7 @@ Tracks the status of every note card in `notesData`.
 | akut_underlivssmerter | Akutte smerter i underlivet | `[V]` | Verified vs in-app gyn_3/5/7 + cases. Folsyre-under-MTX confirmed as slide typo (excluded); hCG-endepunkt `<2` confirmed. |
 | livloest_nyfodt | Det livløse nyfødte barn | `[D]` | New PEDS flow tree. 5 terminaler (responderer / svær HIE / MAS / præmatur / opioid). caseRef→genoplivning. GZ-slides + ERC/NLS 2025. Awaiting verification. |
 | neonatal_ikterus | Den gule nyfødte (neonatal ikterus) | `[D]` | New PEDS flow tree. 5 terminaler (hæmolyse / fysiologisk / ammeikterus+trivsel / konjugeret / sepsis). caseRef→ikterus. GZ-slides + DPS. Awaiting verification. |
+| neonatal_resp_distress | Respiratorisk distress hos den nyfødte | `[D]` | New PEDS flow tree. 5 terminaler (RDS / TTN / MAS / pneumoni-sepsis / pneumothorax). caseRef→praematur (RDS). GZ-slides + neonatal DDX. Awaiting verification. |
 
 ---
 
@@ -148,3 +149,4 @@ Files that would unlock blocked topics:
 | 2026-06-03 | flow:neonatal_ikterus | New PEDS flow tree (timing + konjugering); caseRef→ikterus. |
 | 2026-06-11 | peds_3 | New note — Præmaturitet from GZ-slides (authoritative). Third PEDS note; folds in caffein (apnø) + antenatal steroid (lungemodning). |
 | 2026-06-11 | case:praematur | New PEDS case (organ-by-organ præmaturitet); cross-linked to peds_3. |
+| 2026-06-11 | flow:neonatal_resp_distress | New PEDS flow tree (neonatal respiratorisk distress); RDS→praematur case. |
