@@ -372,6 +372,13 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
       <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · S2020, GZ+RMP-slides</div>
       <span class="arrow-icon">→</span>
     </div>
+    <div class="case-card" onclick="openCase('hjertebarn')">
+      <span class="specialty-badge badge-paed">Pædiatri</span>
+      <h3>Hjertebarn (CHD med inkompensation)</h3>
+      <p>VSD-præsentation hos spædbarn, EKKO-udredning, ABCD-behandling og forældreinformation</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · S2018, HA-slides</div>
+      <span class="arrow-icon">→</span>
+    </div>
 
 <p class="section-label" style="margin-top:28px">Gynækologi</p>
   <div class="case-grid">
@@ -2761,6 +2768,179 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   </div>
   <div class="case-nav">
     <button class="reveal-all-btn" onclick="revealAll('nif',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === HJERTEBARN (CHD MED INKOMPENSATION) (PEDS) === -->
+<div id="case-hjertebarn" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Hjertebarn (CHD med inkompensation)</h2>
+    <p><b>Case (S2018 mundtlig):</b> Alberte er 3 måneder gammel og henvender sig hos egen læge fordi forældrene synes, hun ikke trives. Hun var fuldbåren med fødselsvægt 3.200 g. Forældrene fortæller, hun virker forpustet ved måltider og sveder på panden, men har ikke haft feber. Du bliver bedt om at udrede barnet.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="hjb-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="hjb-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-hjb-1">
+    <div class="step-header" onclick="toggleStep('hjb',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Hvad spørger du forældrene om under anamnesen?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Spædbarnsanamnese — strukturér efter:</b></p>
+      <ul>
+        <li><b>Familieanamnese:</b> hjertesygdom i familien, pludselig hjertedød &lt;50 år, syndromer (Down, Turner, Williams, Noonan)</li>
+        <li><b>Graviditet:</b> infektioner (rubella), maternel diabetes, medicin (warfarin), alkohol/teratogener; prænatale scanninger</li>
+        <li><b>Fødsel:</b> termin? fødselsvægt? Apgar? umiddelbar tilpasning?</li>
+        <li><b>Vækst:</b> tidligere vægte (5-ugers undersøgelse hos egen læge/sundhedsplejerske), vægtkurve, længde, hovedomfang</li>
+        <li><b>Ernæring:</b> amning vs flaske, hyppighed, varighed pr. måltid, mængde; <b>forpustethed ved måltid?</b> svedtendens ved spisning?</li>
+        <li><b>Sygdomstegn:</b> vejrtrækning, farve (cyanose?), træthed, gylp/opkast, diaré, feber, infektionstegn, hyppige forkølelser</li>
+        <li>Sociale forhold, søvnmønster, kontakt</li>
+      </ul>
+      <div class="answer-highlight">Hos et spædbarn med dårlig trivsel er <b>ernæringsanamnesen central</b>: et hjertebarn med inkompensation kan ikke spise længe ad gangen, bliver forpustet, sveder, og slipper brystet/flasken.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hjb-2">
+    <div class="step-header" onclick="toggleStep('hjb',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Hvad lægger du særlig vægt på ved den objektive undersøgelse af et 3 mdr. gammelt spædbarn?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Objektiv us. af spædbarn — top til tå:</b></p>
+      <ul>
+        <li><b>Almentilstand</b> — kontakt, trættet, irritabel? Farver, perifert kolde? Dysmorfe træk (syndromer)?</li>
+        <li><b>Vækst</b> — vægt, længde, hovedomfang i percentiler; sammenhold med fødselsmål</li>
+        <li><b>Vitalia</b> — RF (hvile), puls, BT, SAT, temperatur</li>
+        <li><b>Kranium og fontanelle</b> &mdash; nivellering, størrelse</li>
+        <li><b>Respiration (st.p.):</b> takypnø, indtrækninger (subcostale, interkostale), spil af alae nasi, krepitationer, hvæsen</li>
+        <li><b>Cor (st.c.):</b> regelmæssighed, frekvens, <b>mislyd</b> (placering, styrke, cyklus, lydkarakter, stråling)</li>
+        <li><b>Abdomen:</b> <b>hepatomegali</b> (&gt;3 cm under kurvatur = patologisk hos spædbarn), splenomegali</li>
+        <li><b>Femoralispulse</b> — symmetriske og kraftige? Manglende/svage → coarctatio</li>
+        <li><b>Ekstremiteter:</b> perifer cirkulation, ødemer (sjældent hos spædbarn)</li>
+        <li>Hud, fontanelle, dysmorfe træk (Downs, Turners)</li>
+      </ul>
+      <div class="answer-warn">Normal RF spædbarn: 40-60/min. Normal puls: 120-130/min. Takypnø i hvile + sved ved måltider + dårlig trivsel = klassisk inkompensations-billede hos spædbarn.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hjb-3">
+    <div class="step-header" onclick="toggleStep('hjb',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Du finder: trættet alment påvirket pige, perifert kølig, RF 80 i hvile, puls 150, SAT 98%, T 37,2, vægt 4.250 g (under percentil). Subcostale indtrækninger ved gråd, krepitationer. St.c.: regelmæssig hjerteaktion, styrke 3 systolisk mislyd tydeligst langs venstre sternalrand. Ingen diastolisk mislyd. Hepatomegali. Femoralispulse +/+. Hvilke fund peger på hjertesygdom, og hvad er din arbejdsdiagnose?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Fund forenelige med strukturel hjertesygdom og inkompensation:</b></p>
+      <ul>
+        <li><b>Mislyd</b> — styrke 3 systolisk ved venstre sternalrand er <b>patologisk indtil andet er bevist</b> (alle børn &lt;1 år)</li>
+        <li><b>Takypnø i hvile</b> (RF 80) + indtrækninger</li>
+        <li><b>Hepatomegali</b> — kardiel kongestion</li>
+        <li>Perifert kølig, dårlig trivsel (vægt under percentil-kurven)</li>
+        <li>Normal SAT 98% udelukker cyanotisk hjertefejl</li>
+        <li>Symmetriske femoralispulse udelukker coarctatio</li>
+      </ul>
+      <p><b>Arbejdsdiagnose: Morbus cordis med tiltagende kardial inkompensation</b> — mest sandsynligt <b>VSD</b> (hyppigste, typisk debut 2-3 mdr. når lungemodstanden falder).</p>
+      <p><b>Vigtige differentialdiagnoser:</b></p>
+      <ul>
+        <li>Andre V→H-shunts: ASD, PDA, AVSD</li>
+        <li>Luftvejs- eller anden infektion (kan koincidere)</li>
+        <li>Spiseproblemer, dehydratio</li>
+        <li>Mindre sandsynligt: cyanotisk hjertefejl (SAT 98% taler imod)</li>
+      </ul>
+      <div class="answer-highlight">Børn &lt;1 år har patologisk mislyd indtil andet er bevist — selv en styrke 2-3 systolisk mislyd hos en 3 mdr. gammel pige med dårlig trivsel kræver EKKO.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hjb-4">
+    <div class="step-header" onclick="toggleStep('hjb',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hvilken videre udredning bestiller du, og hvordan forklarer du det til forældrene?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Udredningsplan:</b></p>
+      <ul>
+        <li><b>SAT-måling</b> (præduktal h. hånd + postduktal fod) &mdash; screening for cyanotisk hjertefejl; sideforskel → ductus-afh./coarctatio</li>
+        <li><b>Ekkokardiografi</b> &mdash; <b>diagnostisk</b> for de fleste medfødte hjertefejl; viser anatomi, defektens størrelse og placering, shuntretning og hæmodynamik</li>
+        <li><b>EKG</b> — aksedeviation, hypertrofi, evt. arytmi</li>
+        <li><b>BT på 4 ekstremiteter</b> — sideforskel arm/ben → coarctatio</li>
+        <li>Blodprøver: hgb, infektionstal, væsketal, syre-base (sekundære fund)</li>
+        <li>Evt. rtg. thorax — kardiomegali, øget lungekartegning</li>
+      </ul>
+      <p><b>Information til forældrene:</b></p>
+      <ul>
+        <li>"Jeg har lyttet på Albertes hjerte og hører en mislyd. Hos så lille en pige skal vi altid undersøge nærmere, fordi mislyd kan være tegn på en lille fejl i hjertet."</li>
+        <li>"Vi vil måle iltmætningen i hendes blod med en lille klemme på fingeren — det gør ikke ondt."</li>
+        <li>"Vi vil lave en ultralydsskanning af hjertet — en ekkokardiografi. Det er som en almindelig ultralyd, ufarligt og gør ikke ondt. Den viser hjertets opbygning og hvordan blodet løber."</li>
+        <li>"Når vi har svarene, sætter vi os og forklarer hvad vi finder og hvad næste skridt er."</li>
+      </ul>
+      <div class="answer-warn">OBS S2018 rettekort: "Den studerende dumper, hvis der ikke mistænkes hjertesygdom og bestilles ekkokardiografi." EKKO er det centrale udredningsskridt og skal nævnes eksplicit.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hjb-5">
+    <div class="step-header" onclick="toggleStep('hjb',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">EKKO viser en VSD med tiltagende V→H-shunt. Forklar fysiologien til forældrene og redegør for hvorfor symptomerne typisk debuterer ved 2-3 mdr. — ikke ved fødslen.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Forklaring til forældrene (i lægmandstermer):</b></p>
+      <ul>
+        <li>"Alberte har et lille hul i skillevæggen mellem hjertets to nederste kamre — det kalder vi en VSD."</li>
+        <li>"Normalt er der højt tryk i lungernes blodkar lige efter fødslen, så ikke meget blod presses gennem hullet."</li>
+        <li>"I løbet af de første 2-3 måneder falder trykket i lungernes kar — så begynder blodet at presses fra venstre til højre hjertekammer og videre ud i lungerne i for store mængder."</li>
+        <li>"Det belaster hjertet og lungerne, og det er derfor Alberte først nu er begyndt at have det dårligt med trivsel og vejrtrækning."</li>
+      </ul>
+      <p><b>Eksaminator-svar (hæmodynamisk):</b></p>
+      <ul>
+        <li>Lungekarmodstanden er <b>høj hos den nyfødte</b> → minimal V→H-shunt ved fødslen</li>
+        <li>Modstanden <b>falder gradvist mod 2-3 mdr. alderen</b></li>
+        <li>Tiltagende V→H-shunt gennem septumdefekten → øget lungeflow → kardiel volumenbelastning</li>
+        <li>Resultat: <b>hjerteinsufficiens med takypnø, sved ved måltider, dårlig trivsel og hepatomegali</b></li>
+        <li>Ubehandlet stor VSD kan på sigt give <b>Eisenmenger</b>: pulmonal hypertension med shunt-reversal (H→V) og cyanose &mdash; irreversibelt</li>
+      </ul>
+      <div class="answer-highlight">Denne hæmodynamiske forklaring er et tilbagevendende tillægsspørgsmål til VSD-casen (S2018 rettekort).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hjb-6">
+    <div class="step-header" onclick="toggleStep('hjb',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvordan behandler du Alberte, og hvilken opfølgning planlægger du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Akut/medicinsk behandling:</b></p>
+      <ul>
+        <li><b>Diuretika</b> (typisk furosemid) — afhjælper kongestion og lungestase</li>
+        <li><b>ACE-hæmmer</b> — reducerer afterload og symptomer</li>
+        <li>Ved behov: <b>betablokker</b> ved med. resistens, evt. <b>digoxin</b> (mnemonic <b>ABCD</b>)</li>
+        <li><b>Optimeret ernæring</b> — evt. anlæggelse af ventrikelsonde for at sikre kalorier; calorie-tæt modermælkserstatning</li>
+        <li>Henvisning til <b>børnekardiolog</b></li>
+      </ul>
+      <p><b>Definitiv behandling:</b></p>
+      <ul>
+        <li><b>Lille VSD:</b> ofte observation — kan lukke spontant; kontrol med EKKO</li>
+        <li><b>Stor symptomgivende VSD:</b> kirurgisk lukning med <b>patch</b> på hjertelungemaskine (typisk inden Eisenmenger udvikles)</li>
+        <li>Kateterbaseret lukning kan være muligt for udvalgte muskulære VSDer</li>
+      </ul>
+      <p><b>Opfølgning og rådgivning:</b></p>
+      <ul>
+        <li>Regelmæssig EKKO og vægtkontrol hos børnekardiolog</li>
+        <li>Endokarditprofylakse efter individuel vurdering</li>
+        <li>Forældreinformation om symptomer på forværring (øget takypnø, sved, fald i ernæringsindtag, blålig farve)</li>
+        <li>Vaccinationer fortsætter normalt; influenza- og RSV-profylakse efter individuel vurdering</li>
+      </ul>
+      <div class="answer-warn">Hvis Alberte havde haft <b>cyanose</b>, <b>shock</b> eller var <b>nyfødt</b> med samme præsentation, ville algoritmen være helt anderledes: tænk ductus-afh hjertefejl → <b>prostaglandin IV straks</b> (livreddende) → kontakt børnekardiolog akut.</div>
+    </div></div>
+  </div>
+
+  <div class="xlink-bar">
+    <span class="xlink-label">Relaterede noter</span>
+    <button class="xlink-btn" onclick="goToNote('peds_5')">Medfødte hjertesygdomme (CHD)</button>
+  </div>
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('hjb',6)">Afslør alle svar</button>
     <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
   </div>
 </div>

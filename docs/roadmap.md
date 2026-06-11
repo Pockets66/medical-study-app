@@ -84,6 +84,7 @@ Tracks the status of every note card in `notesData`.
 | ikterus | Neonatal ikterus og dårlig trivsel | `[D]` | New case, 6 steps. GZ Case 4 (ABO) + Case 2 (hypernatriæmi) + ikterus-workup/kernicterus. Cross-linked to peds_2. Awaiting verification. |
 | praematur | Det meget præmature barn | `[D]` | New case, 6 steps (organ for organ: lunger/hjerte/hjerne/tarm/øjne/prognose). GZ running case (GA 25+0). Cross-linked to peds_3. Awaiting verification. |
 | neonatal_infektion | Neonatal infektion (GBS / HSV) | `[D]` | New case, 6 steps. GZ Case 1 (GBS-meningit) + Case 2 (HSV-encephalit) + S2020 framing. Cross-linked to peds_4. Awaiting verification. |
+| hjertebarn | Hjertebarn (CHD med inkompensation) | `[D]` | New case, 6 steps. S2018 Alberte-VSD som skabelon + HA-slides + Excel. Cross-linked to peds_5. Awaiting verification. |
 
 ## Backlog — topics not yet in the app
 
@@ -158,3 +159,4 @@ Files that would unlock blocked topics:
 | 2026-06-11 | case:neonatal_infektion | New PEDS case (GBS + HSV); Pædiatri-card spliced; cross-linked to peds_4. |
 | 2026-06-11 | flow:neonatal_infektion | New PEDS flow tree (infektionsmistanke); 4 terminaler; caseRef→neonatal_infektion. |
 | 2026-06-11 | peds_5 | New note — Medfødte hjertesygdomme (CHD) fra HA-slides (autoritativ) + Excel + S2018. Femte PEDS note; dækker pink/blue/ductus-afh/obstruktive + ABCD + prostaglandin + mislyde + SVT. |
+| 2026-06-11 | case:hjertebarn | New PEDS case (S2018 Alberte-VSD); Pædiatri-card spliced; cross-linked to peds_5. |
