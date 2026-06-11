@@ -81,6 +81,7 @@ Tracks the status of every note card in `notesData`.
 | genoplivning | Neonatal genoplivning og asfyksi | `[D]` | New case, 6 steps. GZ Case 1+2 + S2021/S2017. Cross-linked to peds_1. Awaiting verification. |
 | ikterus | Neonatal ikterus og dårlig trivsel | `[D]` | New case, 6 steps. GZ Case 4 (ABO) + Case 2 (hypernatriæmi) + ikterus-workup/kernicterus. Cross-linked to peds_2. Awaiting verification. |
 | praematur | Det meget præmature barn | `[D]` | New case, 6 steps (organ for organ: lunger/hjerte/hjerne/tarm/øjne/prognose). GZ running case (GA 25+0). Cross-linked to peds_3. Awaiting verification. |
+| neonatal_infektion | Neonatal infektion (GBS / HSV) | `[D]` | New case, 6 steps. GZ Case 1 (GBS-meningit) + Case 2 (HSV-encephalit) + S2020 framing. Cross-linked to peds_4. Awaiting verification. |
 
 ## Backlog — topics not yet in the app
 
@@ -152,3 +153,4 @@ Files that would unlock blocked topics:
 | 2026-06-11 | case:praematur | New PEDS case (organ-by-organ præmaturitet); cross-linked to peds_3. |
 | 2026-06-11 | flow:neonatal_resp_distress | New PEDS flow tree (neonatal respiratorisk distress); RDS→praematur case. |
 | 2026-06-11 | peds_4 | New note — Infektioner hos det nyfødte barn (GBS + HSV + LOS) from GZ+RMP-slides (authoritative). Fourth PEDS note. |
+| 2026-06-11 | case:neonatal_infektion | New PEDS case (GBS + HSV); Pædiatri-card spliced; cross-linked to peds_4. |

@@ -365,6 +365,13 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
       <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · GZ-slides (case)</div>
       <span class="arrow-icon">→</span>
     </div>
+    <div class="case-card" onclick="openCase('neonatal_infektion')">
+      <span class="specialty-badge badge-paed">Pædiatri</span>
+      <h3>Neonatal infektion (GBS / HSV)</h3>
+      <p>Early-onset sepsis, GBS-profylakse, neonatal herpes — udredning og empirisk antibiotika</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · S2020, GZ+RMP-slides</div>
+      <span class="arrow-icon">→</span>
+    </div>
 
 <p class="section-label" style="margin-top:28px">Gynækologi</p>
   <div class="case-grid">
@@ -2581,6 +2588,179 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   </div>
   <div class="case-nav">
     <button class="reveal-all-btn" onclick="revealAll('pmt',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === NEONATAL INFEKTION (GBS / HSV) (PEDS) === -->
+<div id="case-neonatal_infektion" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Neonatal infektion (GBS / HSV)</h2>
+    <p><b>Case (sammensat):</b> Pige født ved sectio i GA 38+3 pga. manglende progression og mistanke om intrauterin asfyksi. Apgar 0/1, 5/5, 9/10. NS-pH (arterie) 6,82, BE −15. Indlægges på neonatalafdeling pga. asfyksi og knirkende respiration. I 2. levedøgn udvikles temperaturustabilitet, takykardi, takypnø og kramper.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="nif-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="nif-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-nif-1">
+    <div class="step-header" onclick="toggleStep('nif',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Du modtager barnet på neonatalafdelingen. Hvad lægger du vægt på ved den objektive undersøgelse, og hvilken initial paraklinik bestiller du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Objektivt — almentilstand først:</b></p>
+      <ul>
+        <li>Farver, kapillærrespons (&lt;3 sek.), tonus, respirationsmønster</li>
+        <li>Puls, saturation, blodtryk, temperatur</li>
+        <li>Resterende top-til-tå inkl. fontanelle, st.c. et p., abdomen, hud (vesikler? petekkier? navleinfektion?), ble-region</li>
+      </ul>
+      <p><b>Paraklinik:</b></p>
+      <ul>
+        <li>Blodsukker, syre-base + laktat (afsløre acidose/hypoglykæmi)</li>
+        <li>Infektionstal: CRP, leukocytter + differential, trombocytter, hgb</li>
+        <li>Elektrolytter inkl. natrium, calcium</li>
+        <li>Bloddyrkning <b>før</b> antibiotika</li>
+      </ul>
+      <div class="answer-highlight"><b>CRP kan være normal de første 12-24 timer</b> selvom barnet er svært inficeret. Vent aldrig på CRP før antibiotika ved klinisk mistanke.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-nif-2">
+    <div class="step-header" onclick="toggleStep('nif',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">24 timer gammel er pigen urolig med forlænget kapillærrespons (5 sek.), takykard (200/min), takypnø (90/min) og virker hyperton, pirrelig og irritabel — obs. kramper. Paraklinik: metabolisk acidose (pH 7,14, BE −10,8), laktat 8,3, CRP 90, leukocytter 2,54 (neutrofile 1,26). Hvad er din arbejdsdiagnose, og hvilken empirisk behandling starter du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Arbejdsdiagnose:</b> Early-onset sepsis (EOS, sepsis &lt;72 timer fra fødslen) med <b>mistanke om meningitis</b> pga. krampe-billedet og hypertonien. Hyppigste agens er <b>GBS</b>; differential: E. coli, listeria, herpes.</p>
+      <p><b>Behandling:</b></p>
+      <ul>
+        <li>Væskebolus ved kredsløbspåvirkning</li>
+        <li>Empirisk antibiotika: <b>penicillin + gentamicin</b> (ren sepsis-mistanke)</li>
+        <li>Ved klar meningitis-mistanke / kramper opgraderes til <b>ampicillin + gentamicin + cefotaxim</b></li>
+        <li>Fenemal (phenobarbital) som første-linje krampebehandling</li>
+        <li>Understøttende: nCPAP, sonde, early feeding, temperaturkontrol</li>
+      </ul>
+      <div class="answer-warn">Lave leukocytter (&lt;5) er lige så bekymrende som høje værdier hos nyfødte. Trombocytopeni er sent og dårligt prognostisk tegn.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-nif-3">
+    <div class="step-header" onclick="toggleStep('nif',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Du overvejer lumbalpunktur. Hvornår er det indiceret hos den nyfødte med sepsis-mistanke, og hvilken rolle spiller re-LP?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Indikation for LP:</b></p>
+      <ul>
+        <li>Kramper eller andre meningitis-tegn (bulende fontanelle, fokale udfald)</li>
+        <li>Påvirket barn med forhøjede infektionstal (forventning om bakteriæmi)</li>
+        <li>Påvist GBS/E. coli i bloddyrkning</li>
+        <li>HSV-mistanke (kramper, vesikler hos mor eller barn, encephalopati)</li>
+      </ul>
+      <p><b>Re-LP:</b></p>
+      <ul>
+        <li>Ved bekræftet meningitis &mdash; vurder respons på behandling og afgør behandlingsvarighed</li>
+        <li>Persisterende pleocytose eller positiv kultur &rarr; forlænget behandling</li>
+      </ul>
+      <p><b>Spinalvæske ved neonatal HSV:</b> normal mikroskopi/sukker/celletal er ikke beroligende — PCR for HSV er afgørende. Forhøjet protein støtter encephalit-diagnosen.</p>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-nif-4">
+    <div class="step-header" onclick="toggleStep('nif',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Bloddyrkning viser GBS. Hvilket regime fortsætter du på, og hvor længe?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Skift til målrettet behandling:</b></p>
+      <ul>
+        <li><b>Påvist GBS-sepsis:</b> Benzylpenicillin <b>0,2 mil. IE/kg/døgn</b> fordelt på 4 doser i <b>7 døgn</b></li>
+        <li><b>Påvist GBS-meningitis:</b> Benzylpenicillin <b>0,4 mil. IE/kg/døgn</b> fordelt på 4 doser i <b>min. 14 døgn</b> (typisk 2-4 uger)</li>
+      </ul>
+      <p><b>Monitorering:</b></p>
+      <ul>
+        <li>CRP til normalisering (kan tage 2-3 uger ved meningitis)</li>
+        <li>Re-LP for at vurdere respons</li>
+        <li>Ambulant blodprøvekontrol 3 dage efter udskrivelse — obs. recidiv</li>
+        <li>Ambulant follow-up mhp. udvikling (varige mén hos ca. 10% af overlevende: cerebral parese, hørenedsættelse, mental retardering)</li>
+      </ul>
+      <div class="answer-highlight">Mortalitet ved tidlig GBS-infektion er ~10%. Ud over de døde har ~10% af overlevende varige mén.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-nif-5">
+    <div class="step-header" onclick="toggleStep('nif',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Forestil dig nu en variant: andet barn, GA 41+3, vaginalt forløst, grønt fostervand og påvirket CTG. 9 timer gammel udvikler barnet smasken og generaliserede tonisk-kloniske kramper. CRP 0,4, leukocytter 37,7. Hvilken differential kommer øverst, og hvordan håndterer du den?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Differential: neonatal HSV-encephalit.</b> Argumenter:</p>
+      <ul>
+        <li>Krampedebut i 1.-4. leveuge (her dag 1)</li>
+        <li>Lav/normal CRP udelukker ikke HSV (modsat bakteriel sepsis)</li>
+        <li>Andre differentialer: bakteriel meningitis (men ofte stigende CRP), cerebral blødning/infarkt, metabolisk sygdom, asfyksi-HIE</li>
+      </ul>
+      <p><b>Udredning:</b></p>
+      <ul>
+        <li>Bloddyrkning, infektionstal, BS, S/B</li>
+        <li><b>Lumbalpunktur</b> — spinalvæske til PCR for HSV (+ celletal, protein, sukker, dyrkning)</li>
+        <li>Podninger fra øje, næse, mund, rektum + evt. vesikel til PCR for HSV</li>
+        <li>Blod til PCR for HSV</li>
+        <li>Mater: blod til HSV-antistoffer (primær vs. recidiverende?)</li>
+        <li>MR cerebrum — typisk temporallap eller basalganglier</li>
+      </ul>
+      <p><b>Behandling:</b></p>
+      <ul>
+        <li>Empirisk antibiotika fortsætter (ampicillin/penicillin + gentamicin) indtil bakteriæmi er udelukket</li>
+        <li>Tilføj <b>aciclovir i.v.</b> straks ved klinisk HSV-mistanke — afvent ikke PCR-svar</li>
+        <li>Krampebehandling: fenemal &plusmn; lidocain; ved svære kramper midazolam og evt. respirator</li>
+      </ul>
+      <div class="answer-warn">En nyfødt med uforklarede kramper i de første 4 leveuger skal have aciclovir startet empirisk, indtil HSV er udelukket. Forsinkelse koster CNS-skade.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-nif-6">
+    <div class="step-header" onclick="toggleStep('nif',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Spinalvæske er positiv for HSV-1 PCR (blod negativ). Hvordan behandler du neonatal HSV-encephalit, og hvad er indikationerne for antibiotika under fødslen ved henholdsvis GBS og HSV?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>HSV-encephalit-behandling:</b></p>
+      <ul>
+        <li>Højdosis <b>aciclovir i.v. i 3 uger</b></li>
+        <li>Efterfulgt af <b>aciclovir per os i 6 måneder</b></li>
+        <li>Tæt neurologisk og udviklingsmæssig opfølgning</li>
+      </ul>
+      <p><b>GBS &mdash; indikationer for antibiotika under fødsel (mor skal have AB + podes):</b></p>
+      <ul>
+        <li>Tidligere født barn med neonatal GBS-infektion</li>
+        <li>GA &lt; 35+0 hvor fødslen skønnes nært forestående</li>
+        <li>Feber under fødslen</li>
+      </ul>
+      <p><b>GBS — kun podes (AB kun ved positiv pode):</b></p>
+      <ul>
+        <li>GA 35+0 &ndash; 36+6 (præterm fødsel/PPROM)</li>
+        <li>PROM senest 14 timer</li>
+        <li>Påvist GBS under aktuelle graviditet</li>
+      </ul>
+      <p><b>Regime ved fødsel:</b> Penicillin 5 MIE (3 g) i.v. initielt + 2 MIE (1,2 g) hver 4. time. Ved temp &gt;39°C eller intrauterin infektion: ampicillin 2 g × 4 + gentamicin.</p>
+      <p><b>HSV — håndtering af mor:</b></p>
+      <ul>
+        <li><b>Primær eller non-primær herpes</b> nær termin (udbrud efter uge 34) &rarr; <b>sectio</b></li>
+        <li>Udbrud behandles med aciclovir</li>
+        <li>Recidiverende herpes (antistoffer mod samme type) &rarr; meget lille smitterisiko; profylakse med aciclovir ved hyppige recidiver</li>
+      </ul>
+      <div class="answer-highlight">Slå op i din GBS-flowchart hver gang: 3 indikationer for AB+pod, 3 indikationer for kun pod. Det er en klassisk eksamensfælde.</div>
+    </div></div>
+  </div>
+
+  <div class="xlink-bar">
+    <span class="xlink-label">Relaterede noter</span>
+    <button class="xlink-btn" onclick="goToNote('peds_4')">Infektioner hos det nyfødte barn</button>
+  </div>
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('nif',6)">Afslør alle svar</button>
     <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
   </div>
 </div>
