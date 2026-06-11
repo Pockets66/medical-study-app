@@ -99,8 +99,8 @@ main { max-width:900px; margin:0 auto; padding:40px 24px; }
 .xlink-btn:hover { background:var(--surface2); color:var(--text); }
 
 /* NOTE SUB-TABS */
-.note-tabs { display:flex; gap:0; border-bottom:1px solid var(--border); margin:0 0 20px; }
-.note-tab-btn { padding:9px 16px; font-size:13px; font-weight:500; background:none; border:none; border-bottom:2px solid transparent; color:var(--text-3); cursor:pointer; transition:all .15s; white-space:nowrap; }
+.note-tabs { display:flex; flex-wrap:wrap; gap:0; border-bottom:1px solid var(--border); margin:0 0 20px; }
+.note-tab-btn { padding:9px 16px; font-size:13px; font-weight:500; background:none; border:none; border-bottom:2px solid transparent; color:var(--text-3); cursor:pointer; transition:all .15s; }
 .note-tab-btn:hover { color:var(--text); }
 .note-tab-btn.active { color:var(--text); border-bottom-color:var(--text); }
 .note-tab-panel { display:none; }
