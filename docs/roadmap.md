@@ -59,6 +59,7 @@ Tracks the status of every note card in `notesData`.
 | livloest_nyfodt | Det livløse nyfødte barn | `[D]` | New PEDS flow tree. 5 terminaler (responderer / svær HIE / MAS / præmatur / opioid). caseRef→genoplivning. GZ-slides + ERC/NLS 2025. Awaiting verification. |
 | neonatal_ikterus | Den gule nyfødte (neonatal ikterus) | `[D]` | New PEDS flow tree. 5 terminaler (hæmolyse / fysiologisk / ammeikterus+trivsel / konjugeret / sepsis). caseRef→ikterus. GZ-slides + DPS. Awaiting verification. |
 | neonatal_resp_distress | Respiratorisk distress hos den nyfødte | `[D]` | New PEDS flow tree. 5 terminaler (RDS / TTN / MAS / pneumoni-sepsis / pneumothorax). caseRef→praematur (RDS). GZ-slides + neonatal DDX. Awaiting verification. |
+| neonatal_infektion | Infektionsmistanke hos det nyfødte barn | `[D]` | New PEDS flow tree. 4 terminaler (GBS-sepsis EOS / GBS-meningitis EOS / LOS / HSV). caseRef→neonatal_infektion. GZ+RMP-slides + DPS HSV-retningslinje. Awaiting verification. |
 
 ---
 
@@ -154,3 +155,4 @@ Files that would unlock blocked topics:
 | 2026-06-11 | flow:neonatal_resp_distress | New PEDS flow tree (neonatal respiratorisk distress); RDS→praematur case. |
 | 2026-06-11 | peds_4 | New note — Infektioner hos det nyfødte barn (GBS + HSV + LOS) from GZ+RMP-slides (authoritative). Fourth PEDS note. |
 | 2026-06-11 | case:neonatal_infektion | New PEDS case (GBS + HSV); Pædiatri-card spliced; cross-linked to peds_4. |
+| 2026-06-11 | flow:neonatal_infektion | New PEDS flow tree (infektionsmistanke); 4 terminaler; caseRef→neonatal_infektion. |

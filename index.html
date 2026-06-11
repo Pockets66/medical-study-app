@@ -4792,6 +4792,178 @@ var flowData = [
     }
 
   }
+},
+
+{
+  id:'neonatal_infektion', spec:'PEDS',
+  title:'Infektionsmistanke hos det nyfødte barn',
+  src:'GZ+RMP-slides (Infektioner hos det nyfødte barn, maj 2026) + DPS HSV-retningslinje + Excel-eksamensnoter',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'En nyfødt har tegn på infektion: påvirket almentilstand, temperaturustabilitet, dårlig kapillærrespons, takykardi/takypnø, apnø eller kramper. Hvad guider udredningen?',
+      why:'Tre akser styrer empiri og videre udredning: <b>timing</b> (early-onset &lt;72 timer vs late-onset &gt;72 timer) bestemmer agens-spektret og smittevejen, <b>klinik</b> (kramper og/eller fokale udfald &rarr; meningitis eller encephalit) bestemmer LP og regime, og <b>risikofaktorer</b> (mor GBS, vandafgang, vesikler, CVK) peger på agens. <b>Antibiotika startes på klinisk mistanke</b> — afvent ikke CRP eller dyrkning.',
+      redflag:'Kramper, bulende fontanelle eller fokale neurologiske udfald hos en nyfødt &rarr; tænk meningitis eller HSV-encephalit. Anlæg LP og start aciclovir + bredspektret AB samtidig.',
+      ask:[
+        'GA og fødselsmåde (sectio? vaginalt? grønt fostervand?)',
+        'Tidspunkt for symptomdebut ift. fødslen (&lt;72 timer = EOS; &gt;72 timer = LOS)',
+        'Maternelle risikofaktorer: GBS-status, langvarig vandafgang (PROM/PPROM), feber under fødslen, kendt herpes / genitale vesikler',
+        'Indlagt med PVK / CVK / PICC / navlekateter?',
+        'Klinik: kramper? vesikler/hududslæt? hud-/navleinfektion? almentilstand?',
+        'Paraklinik: CRP, leukocytter + differential, trombocytter, S/B, BS, bloddyrkning ± LP'
+      ],
+      opts:[
+        { lead:'Symptomdebut &lt;72 timer (EOS) — vurder fokus',     hint:'Vertikal smitte fra mors fødselskanal',          next:'eos_branch' },
+        { lead:'Symptomdebut &gt;72 timer (LOS) — indlagt barn med kateter eller hud-/navleinfektion', hint:'CLABSI eller hudinfektion',     next:'los' },
+        { lead:'Vesikler hos mor eller barn, eller uforklarede kramper / encephalopati i 1.-4. leveuge', hint:'Tænk HSV',                       next:'hsv' }
+      ]
+    },
+
+    eos_branch:{
+      q:'Early-onset sepsis-mistanke. Hvilket fokus styrer dit empiriske regime?',
+      why:'Ved <b>ren sepsis</b> uden CNS-tegn er <b>penicillin + gentamicin</b> tilstrækkeligt. Ved <b>meningitis-mistanke</b> (kramper, bulende fontanelle, fokale udfald) opgraderes til <b>ampicillin + gentamicin + cefotaxim</b> for at dække penetration over blod-hjerne-barrieren og listeria. Ved <b>langvarig PPROM eller præmatur</b> overvejes meropenem for at dække resistente gram-negative.',
+      ask:[
+        'Tegn på meningitis: kramper, bulende fontanelle, fokal neurologi?',
+        'Risikofaktorer der skifter regime: langvarig PPROM, præmaturitet?',
+        'Er der vesikler eller HSV-mistanke der kræver aciclovir-tillæg?'
+      ],
+      opts:[
+        { lead:'Ren sepsis (ingen CNS-tegn)',                               hint:'Penicillin + gentamicin',          next:'gbs_sepsis' },
+        { lead:'Kramper / meningitis-tegn',                                  hint:'Amp + gent + cefotaxim + LP',     next:'gbs_meningitis' }
+      ]
+    },
+
+    gbs_sepsis:{
+      dx:'Early-onset GBS-sepsis', dxsub:'Sepsis &lt;72 timer; hyppigste agens er gruppe B streptokokker', urgency:'akut',
+      findings:[
+        'Påvirket almentilstand, temperaturustabilitet, dårlig kapillærrespons, takykardi, takypnø, apnø, sløvhed/irritabilitet',
+        'Maternelle risikofaktorer: GBS-koloniseret, langvarig vandafgang (&gt;18 t), feber under fødsel, præmaturitet, tidligere barn med GBS-infektion',
+        'Paraklinik: stigende CRP (kan være normal de første 12-24 timer!), lave eller høje leukocytter, evt. trombocytopeni; metabolisk acidose; bloddyrkning positiv'
+      ],
+      ddx:[
+        { d:'E. coli-sepsis', r:'— særligt ved PPROM og hos præmature' },
+        { d:'Listeria', r:'— mor smittet via fødevarer; granulomatosis infantiseptica' },
+        { d:'Neonatal HSV', r:'— vesikler? lav CRP men kramper?' },
+        { d:'RDS / TTN / MAS', r:'— resp. distress uden infektion (se flow: Resp. distress)' },
+        { d:'Hypoglykæmi / kongenit hjertesygdom', r:'— differentialer ved sløvt nyfødt barn' }
+      ],
+      behandling:[
+        'Bloddyrkning <b>før</b> antibiotika; CRP, leu+diff, BS, S/B + laktat',
+        'Empirisk: <b>penicillin + gentamicin</b>',
+        'Langvarig PPROM / præmatur: overvej meropenem',
+        'Påvist GBS: <b>Benzylpenicillin 0,2 mil. IE/kg/døgn fordelt på 4 doser i 7 døgn</b>',
+        'Understøttende: nCPAP/respirator, væskebolus, sonde, temperaturkontrol'
+      ],
+      ki:[
+        'Start antibiotika på klinisk mistanke — afvent ikke CRP eller dyrkning',
+        'Lave leukocytter (&lt;5) er lige så bekymrende som høje',
+        'Lav LP ved påvirket barn med forhøjet CRP — skjult meningitis er hyppigt'
+      ],
+      prognose:'Mortalitet ved tidlig GBS-infektion ~10%. Hos overlevende har ~10% varige mén (cerebral parese, hørenedsættelse, mental retardering). Tidlig antibiotika er afgørende.',
+      caseRef:'neonatal_infektion'
+    },
+
+    gbs_meningitis:{
+      dx:'Early-onset GBS-meningitis', dxsub:'EOS med CNS-affektion — kramper, hyperton, irritabilitet', urgency:'akut',
+      findings:[
+        'Kramper, hyperton/pirrelig adfærd, bulende fontanelle, fokale udfald',
+        'Sepsis-tegn samtidigt (takykardi, takypnø, kapillærpåvirkning)',
+        'Paraklinik: stigende CRP, evt. lave eller høje leukocytter, trombocytopeni; metabolisk acidose; hypocalcæmi/hyponatriæmi kan ses (SIADH)',
+        'Spinalvæske: pleocytose, forhøjet protein, lav glucose; dyrkning/PCR positiv for GBS'
+      ],
+      ddx:[
+        { d:'E. coli-meningitis', r:'— særligt ved PPROM og hos præmature' },
+        { d:'Neonatal HSV-encephalit', r:'— lav CRP, fokale kramper, læsioner i temporallap/basalganglier på MR' },
+        { d:'Hypoxisk-iskæmisk encephalopati', r:'— asfyksi-anamnese, navlestrengs-pH lavt' },
+        { d:'Listeria-meningitis', r:'— sjælden; mor med fødevareeksposition' },
+        { d:'Cerebral blødning / infarkt', r:'— UL/MR' },
+        { d:'Medfødt stofskiftesygdom', r:'— acidose, hyperammoniæmi' }
+      ],
+      behandling:[
+        'Lumbalpunktur (medmindre kontraindiceret); spinalvæske til mikroskopi, dyrkning, PCR (inkl. HSV), protein, glucose, celletal',
+        'Empirisk: <b>ampicillin + gentamicin + cefotaxim</b>',
+        'Suppler med <b>aciclovir</b> ved klinisk HSV-mistanke (lav CRP + kramper, vesikler)',
+        'Påvist GBS: <b>Benzylpenicillin 0,4 mil. IE/kg/døgn fordelt på 4 doser i min. 14 døgn</b> (typisk 2-4 uger)',
+        'Re-LP for at vurdere respons',
+        'Krampebehandling: fenemal (phenobarbital); ved svære/refraktære kramper midazolam ± respirator'
+      ],
+      ki:[
+        'CRP kan normalisere langsomt (uger) — brug klinik og re-LP til at styre varigheden',
+        'Hypocalcæmi og hyponatriæmi (SIADH) er hyppige komplikationer — kontrollér elektrolytter',
+        'Re-LP 2-3 uger inde i forløbet er typisk; ved persisterende pleocytose forlænges behandlingen',
+        'Ambulant blodprøvekontrol 3 dage efter udskrivelse — obs. recidiv'
+      ],
+      prognose:'Alvorlig tilstand. Mortalitet højere end ved ren sepsis; hos overlevende ses neurologiske mén hos en betydelig del. Tidlig behandling og tæt monitorering er afgørende.',
+      caseRef:'neonatal_infektion'
+    },
+
+    los:{
+      dx:'Late-onset sepsis (LOS)', dxsub:'Sepsis &gt;72 timer — typisk CVK-associeret (CLABSI) eller hud-/navleinfektion', urgency:'akut',
+      findings:[
+        'Indlagt barn, ofte præmatur, med PVK/CVK/PICC/navlekateter i mere end nogle dage',
+        'Temperaturustabilitet, sløvhed, apnø, bradykardi, dårlig trivsel, øget iltbehov',
+        'Lokale tegn: rødme/sekret omkring kateter eller navle; hudinfektion',
+        'Paraklinik: stigende CRP, leukocytose eller leukopeni, trombocytopeni; bloddyrkning fra både CVK og perifert'
+      ],
+      ddx:[
+        { d:'Nekrotiserende enterocolitis (NEC)', r:'— oppustet abdomen, blod i afføring, præmatur' },
+        { d:'UVI', r:'— febrilitet, urinstix; urinvejsmisdannelse?' },
+        { d:'Pneumoni (nosokomiel)', r:'— respiratoriske symptomer, evt. ventilator-associeret' },
+        { d:'Candida-sepsis', r:'— ved langvarig AB, parenteral ernæring, præmatur' }
+      ],
+      behandling:[
+        'Bloddyrkning fra CVK <b>og</b> perifert; CRP, leu+diff, BS, S/B; LP ved CNS-symptomer',
+        'Empirisk: <b>Piperacillin/tazobactam som monoterapi</b> til indlagte børn med PVK/CVK eller mistænkt hud-/navleinfektion',
+        'Tilføj vancomycin ved mistanke om MRSA eller fund af koagulase-negative stafylokokker',
+        'Antifungal (fluconazol/amphotericin) ved Candida-mistanke',
+        'Fjern kateter tidligt ved bekræftet bakteriæmi (særligt S. aureus, Candida, klebsiella)'
+      ],
+      ki:[
+        'CVK-liggetid og håndtering er den vigtigste modificerbare risikofaktor — aseptik!',
+        'Falsk positiv kontaminering med koagulase-negative stafylokokker er hyppig — gentag bloddyrkning ved klinisk uvished',
+        'Tidlig overgang til enteral ernæring &rarr; tidligere fjernelse af CVK reducerer LOS-risiko'
+      ],
+      prognose:'God ved tidlig behandling og kateterhåndtering. Mortalitet stiger ved meget præmature, polymikrobiel infektion og Candida.',
+      caseRef:null
+    },
+
+    hsv:{
+      dx:'Neonatal herpes simplex (HSV)', dxsub:'Mukokutan, encephalit eller dissemineret form, oftest 1.-4. leveuge', urgency:'akut',
+      findings:[
+        'Vesikler hos mor (genitalt) eller barn (hud, slimhinder)',
+        'Mukokutan form: vesikulært udslæt, øjenaffektion, mund-/slimhinde-vesikler',
+        'Encephalit: kramper (ofte fokale), irritabilitet, fontanellebule, fokal neurologi; <b>CRP kan være lav/normal</b>',
+        'Dissemineret form: multiorgan-svigt (lever, koagulopati), sepsis-lignende billede',
+        'MR cerebrum: typisk læsioner i temporallap eller basalganglier',
+        'Spinalvæske: forhøjet protein (men kan også være normalt); afgørende: <b>PCR for HSV</b>'
+      ],
+      ddx:[
+        { d:'Bakteriel meningitis', r:'— GBS, E. coli; typisk stigende CRP' },
+        { d:'Sepsis af anden årsag', r:'— GBS, E. coli, listeria' },
+        { d:'Hypoxisk-iskæmisk encephalopati', r:'— asfyksi-anamnese' },
+        { d:'Cerebral blødning / infarkt', r:'— billeddiagnostik' },
+        { d:'Metabolisk sygdom', r:'— acidose, hyperammoniæmi, hypoglykæmi' }
+      ],
+      behandling:[
+        '<b>Aciclovir i.v. straks</b> ved klinisk mistanke — afvent ikke PCR-svar',
+        'Udredning: PCR for HSV fra <b>vesikel + øje + næse + mund + rektum + blod + spinalvæske</b>; mater: blod til HSV-antistoffer',
+        'Bevar empirisk AB (ampicillin/penicillin + gentamicin ± cefotaxim) indtil bakteriæmi udelukket',
+        '<b>Encephalit:</b> højdosis aciclovir i.v. i <b>3 uger</b>, efterfulgt af <b>aciclovir per os i 6 måneder</b>',
+        'Krampebehandling: fenemal ± lidocain; ved svære kramper midazolam + respirator',
+        'Tæt neurologisk og udviklingsmæssig opfølgning'
+      ],
+      ki:[
+        '<b>Lav/normal CRP udelukker ikke HSV</b> — tværtimod et klassisk fund ved HSV-encephalit',
+        'Primær genital herpes hos mor &gt;uge 34 &rarr; <b>sectio</b>; recidiverende herpes har minimal smitterisiko',
+        'En nyfødt med uforklarede kramper i de første 4 leveuger skal have aciclovir startet empirisk',
+        'Forsinkelse koster CNS-skade — start behandling før diagnostisk afklaring'
+      ],
+      prognose:'Variabel og afhænger af præsentation. Mukokutan: god prognose ved tidlig behandling. Encephalit: betydelig risiko for varige neurologiske mén selv med rettidig aciclovir. Dissemineret: høj mortalitet trods behandling.',
+      caseRef:'neonatal_infektion'
+    }
+
+  }
 }
 ];
 
