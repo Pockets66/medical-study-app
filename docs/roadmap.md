@@ -69,6 +69,7 @@ Tracks the status of every note card in `notesData`.
 | peds_1 | Asfyksi og neonatal genoplivning | `[D]` | Full note, 4 tabs (Definition+årsager / Genoplivning+Apgar / HIE+køling / Prognose+sequelae). GZ-slides + ERC/NLS 2025 + Excel + S2021/S2017. Awaiting verification. |
 | peds_2 | Ikterus, ernæring og trivsel | `[D]` | New note, 5 tabs (Fysiologisk / Patologisk-ukonjugeret / Konjugeret+kernicterus / Behandling / Ernæring+trivsel). GZ-slides + DPS + SST 2015 + exam (ABO/hypernatriæmi). Awaiting verification. |
 | peds_3 | Præmaturitet og dens komplikationer | `[D]` | New note, 5 tabs (Definitioner+årsager / Lunger / Hjerte+CNS / Tarm+øjne / Prognose). GZ-slides + kvalitetsdatabase + Excel. Partially closes apnø/lungemodning gap. Awaiting verification. |
+| peds_4 | Infektioner hos det nyfødte barn | `[D]` | New note, 5 tabs (Oversigt+klinik / GBS / HSV / Andre+LOS / Det skal I kunne). GZ+RMP-slides + DPS HSV-retningslinje + Excel + S2020. Awaiting verification. |
 
 ---
 
@@ -150,3 +151,4 @@ Files that would unlock blocked topics:
 | 2026-06-11 | peds_3 | New note — Præmaturitet from GZ-slides (authoritative). Third PEDS note; folds in caffein (apnø) + antenatal steroid (lungemodning). |
 | 2026-06-11 | case:praematur | New PEDS case (organ-by-organ præmaturitet); cross-linked to peds_3. |
 | 2026-06-11 | flow:neonatal_resp_distress | New PEDS flow tree (neonatal respiratorisk distress); RDS→praematur case. |
+| 2026-06-11 | peds_4 | New note — Infektioner hos det nyfødte barn (GBS + HSV + LOS) from GZ+RMP-slides (authoritative). Fourth PEDS note. |
