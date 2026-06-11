@@ -67,6 +67,7 @@ Tracks the status of every note card in `notesData`.
 |----|------|--------|------|
 | peds_1 | Asfyksi og neonatal genoplivning | `[D]` | Full note, 4 tabs (Definition+årsager / Genoplivning+Apgar / HIE+køling / Prognose+sequelae). GZ-slides + ERC/NLS 2025 + Excel + S2021/S2017. Awaiting verification. |
 | peds_2 | Ikterus, ernæring og trivsel | `[D]` | New note, 5 tabs (Fysiologisk / Patologisk-ukonjugeret / Konjugeret+kernicterus / Behandling / Ernæring+trivsel). GZ-slides + DPS + SST 2015 + exam (ABO/hypernatriæmi). Awaiting verification. |
+| peds_3 | Præmaturitet og dens komplikationer | `[D]` | New note, 5 tabs (Definitioner+årsager / Lunger / Hjerte+CNS / Tarm+øjne / Prognose). GZ-slides + kvalitetsdatabase + Excel. Partially closes apnø/lungemodning gap. Awaiting verification. |
 
 ---
 
@@ -100,6 +101,8 @@ Topics identified from exam sets or målbeskrivelser that have no note card yet.
 ### PEDS
 - [ ] obs_10 — slim to intrauterin/intrapartal asfyksi only (CTG-mønstre, STAN,
       scalp-pH) now that neonatal content lives in peds_1. Needs OBS CTG slides.
+- [ ] Standalone apnø/bradykardi + detaljeret antenatal håndtering (kun delvist
+      dækket i peds_3) — udvid hvis eksamenssæt kræver mere.
 
 ---
 
@@ -142,3 +145,4 @@ Files that would unlock blocked topics:
 | 2026-06-03 | peds_2 | New note — Ikterus/ernæring/trivsel from GZ-slides (authoritative). Second PEDS note. |
 | 2026-06-03 | case:ikterus | New PEDS case (ikterus/trivsel); cross-linked to peds_2. |
 | 2026-06-03 | flow:neonatal_ikterus | New PEDS flow tree (timing + konjugering); caseRef→ikterus. |
+| 2026-06-11 | peds_3 | New note — Præmaturitet from GZ-slides (authoritative). Third PEDS note; folds in caffein (apnø) + antenatal steroid (lungemodning). |

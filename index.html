@@ -3270,6 +3270,55 @@ var notesData = [
     ]}
 
   ]
+},
+
+{ id:'peds_3', spec:'PEDS', num:3, title:'Præmaturitet <em>og dens komplikationer</em>',
+  src:'Forelaesning: Praematuritet (GZ, neonatolog, maj 2026, authoritative) · Dansk Kvalitetsdatabase for Nyfoedte (overlevelse) · Excel-eksamensnoter',
+  caseRefs:['praematur'],
+  sub:'<table class="nst"><tr><td><b>Praematur</b></td><td>GA &lt;37+0 (~6-7% af en foedselsaargang)</td></tr><tr><td><b>Meget / ekstremt</b></td><td>Meget &lt;32+0 · ekstremt (immatur) &lt;28+0 · ekstremt immatur &lt;24+0</td></tr><tr><td><b>Foedselsvaegt</b></td><td>LBW &lt;2500 g · VLBW &lt;1500 g · ELBW &lt;1000 g</td></tr><tr><td><b>4 hoveddiagnoser</b></td><td>Lunger (RDS/BPD) · Hjerte (PDA) · CNS (IVH/PVL) · Tarm (NEC) · Oejne (ROP)</td></tr><tr><td><b>RDS-forebyggelse</b></td><td>Antenatal glukokortikoid ved truende foedsel &lt;uge 34</td></tr><tr><td><b>Surfactant</b></td><td>Reducerer mortaliteten ~40% ved RDS</td></tr></table>',
+  tabs:[
+
+    { label:'Definitioner & årsager', grid:[
+      {l:'Definitioner (GA)', full:true, hl:true, c:'<ul><li><strong>Praematur:</strong> GA &lt;37+0 (~6-7% af en foedselsaargang)</li><li><strong>Moderat/sen praematur:</strong> GA 32-34 og 35-36</li><li><strong>Meget praematur:</strong> GA &lt;32+0</li><li><strong>Ekstremt praematur (= immatur):</strong> GA &lt;28+0 (mere end 12 uger foer tid)</li><li><strong>Ekstremt immatur:</strong> GA &lt;24+0 (22-23)</li></ul>'},
+      {l:'Foedselsvaegt', c:'<ul><li>LBW (low birth weight): FV &lt;2500 g</li><li>VLBW (very low): FV &lt;1500 g</li><li>ELBW (extremely low): FV &lt;1000 g</li></ul>'},
+      {l:'Vaekstreferencer', c:'<ul><li><strong>SGA</strong> (small for GA): vejer mindre end ~80% af det normale</li><li><strong>AGA</strong> (appropriate for GA) / <strong>LGA</strong> (large for GA, fx ved dysreguleret DM)</li><li><strong>IUGR</strong> (intrauterin vaeksthaemning)</li><li><strong>Dysmatur:</strong> mager, stort hoved, tynde ekstremiteter, store haender/foedder, rigelig hud</li></ul>'},
+      {l:'Aarsager til praematur foedsel', c:'<ul><li><strong>Hos mor:</strong> praeeklampsi, placenta-/cervixinsufficiens, genital infektion, svaer maternel sygdom med forloesningsbehov, spontant</li><li><strong>Hos fosteret:</strong> flerfold, kromosomabnormiteter, misdannelser</li></ul>'},
+      {l:'Indlaeggelse efter GA', full:true, c:'<ul><li><strong>FV &lt;2200 g eller GA &lt;36 uger:</strong> indlaeggelse paa neonatalafdeling</li><li><strong>GA 32-35:</strong> sondeernaering + evt. i.v. glukose, monitorering af respiration/hjerteaktion, obs ikterus</li><li><strong>GA 28-31:</strong> kuvoese, nCPAP, monitorering, sonde, i.v. glukose, evt. caffein + parenteral ernaering (PN)</li><li><strong>GA &lt;28 uger:</strong> specialistopgave (NICU)</li></ul>'},
+      {l:'Overlevelse (Dansk Kvalitetsdatabase)', c:'<ul><li>Hoejest doedelighed i uge 22-23</li><li>Fra uge 24: ca. 70% overlevelse (blandt levendefoedte)</li><li>Stiger til ~94% ved uge 28 og ~98% ved uge 30-31</li><li>Jo laengere fosteret er inde, jo bedre prognose</li></ul>'}
+    ]},
+
+    { label:'Lunger', grid:[
+      {l:'Lungeudvikling (stadier)', full:true, c:'<ul><li>Embryonal (4-7 uger) &middot; pseudoglandulaer (5-17) &middot; <strong>canalicular (16-26)</strong> &middot; saccular (24-38) &middot; alveolaer (36 uger &rarr; postnatalt)</li><li>I canalicular-fasen: luftvejsdiameter oeges, primitive alveoler dannes, type I/II pneumocytter differentieres og <strong>surfactant-produktion starter</strong></li></ul>'},
+      {l:'RDS — patofysiologi', hl:true, c:'<p>Respiratorisk distress-syndrom. <strong>Mangel paa surfactant</strong> (type II-pneumocytter) &rarr; hoej overfladespaending &rarr; alveolerne kan ikke holdes aabne i slut-ekspiration &rarr; alveolaert kollaps/atelektaser &rarr; utilstraekkelig ilt/CO2-udveksling. Risikoen stoerst jo lavere GA.</p>'},
+      {l:'RDS — klinik & udredning', c:'<ul><li>Takypnoe, inspiratoriske indtraekninger, eksspiratorisk knirken, cyanose, spil af alae nasi</li><li>Faldende pO2 og saturation, stigende pCO2</li><li>Rtg. thorax: mikroatelektaser ("maelkeglas"), luftbronkogram</li></ul>'},
+      {l:'RDS — forebyggelse & behandling', full:true, c:'<ul><li><strong>Forebyggelse:</strong> antenatal glukokortikoid til alle i truende foedsel <strong>foer uge 34</strong> (stimulerer surfactant-produktion)</li><li><strong>CPAP</strong> (nCPAP) som foerste respiratoriske stoette</li><li><strong>Surfactant (Curosurf):</strong> fosfolipidfraktion fra griselunge, endotracheopulmonal instillation &mdash; <strong>reducerer mortaliteten ~40%</strong></li><li><strong>INSURE</strong> (Intubation-Surfactant-Extubation) eller <strong>LISA</strong> (Less Invasive Surfactant Administration)</li><li>Respirator hvis utilstraekkeligt</li></ul>'},
+      {l:'Komplikationer til ventilation', warn:true, c:'<ul><li>Interstitielt pulmonalt emfysem (IPE) &mdash; kan medfoere alveoleruptur</li><li>BPD/CLD (se nedenfor)</li><li>Undgaa hyperoxi &rarr; ROP-risiko</li></ul>'},
+      {l:'BPD / CLD', c:'<p>Bronkopulmonal dysplasi / kronisk lungesygdom. <strong>Definition: iltbehov ved GA svarende til 36+0 eller 28 dage efter foedsel.</strong></p><ul><li>Lungeskade efter respiratorbehandling, ilttilskud og infektioner; inflammatorisk, progredierende over foerste leveuger</li><li>Stigende iltbehov og CPAP-afhaengighed; evt. fibrose/emfysem i sen fase</li><li>Evt. iltbehandling i hjemmet; lungefunktionen kan blive normal paa lang sigt</li></ul>'},
+      {l:'Apnoe / bradykardi & caffein', c:'<ul><li>Umoden respirationsregulering hos praemature &rarr; apnoe og bradykardi</li><li><strong>Caffeincitrat</strong> (oral/i.v.) stimulerer respirationen &mdash; standardbehandling hos meget praemature</li></ul>'}
+    ]},
+
+    { label:'Hjerte & CNS', grid:[
+      {l:'Persisterende ductus arteriosus (PDA/DAP)', full:true, c:'<p>Ductus arteriosus lukker ikke &mdash; <strong>venstre-hoejre-shunt</strong>: hyperperfusion af lunger (respirationsproblemer) + hypoperfusion af organer (nyre, tarm, hjerne). Risikofaktor: praematuritet.</p><ul><li>Klinik: kraftig puls (oeget pulstryk), mislyd med maksimum under venstre klavikel, hyperaktivt praecordie; stigende cirkulatorisk overbelastning &rarr; hjertesvigt</li><li>Oeget risiko for NEC (tarm-hypoperfusion)</li></ul>'},
+      {l:'PDA — behandling', warn:true, c:'<ul><li>Tidligere: farmakologisk lukning med <strong>indomethacin/ibuprofen</strong> (haemmer prostaglandinsyntese) eller kirurgisk ligatur</li><li><strong>Anbefaling 2024: ingen behandling, medmindre</strong> betydende shunt/symptomer &mdash; mange lukker spontant</li></ul>'},
+      {l:'Hjerneblødning (oversigt)', c:'<ul><li>Bloedninger hos ~25% af ekstremt tidligt foedte</li><li>Diagnose: UL af cerebrum gennem den forreste fontanelle</li><li>Opstaar oftest inden for de foerste 72 timer</li><li>Hyppigst ved svaer RDS + samtidig asfyksi</li></ul>'},
+      {l:'IVH — gradering', full:true, hl:true, c:'<ul><li><strong>Grad 1:</strong> bloedning i periventrikulaer germinal matrix (umodne kar) &mdash; oeger ikke CP-risiko</li><li><strong>Grad 2:</strong> bryder igennem til / opstaar i ventrikelsystemet</li><li><strong>Grad 3:</strong> ventrikeldilatation pga. bloedning &mdash; risiko for hydrocephalus; 25-30% CP-risiko</li><li><strong>Grad 4:</strong> haemoragisk infarkt pga. kompromitteret veneafloeb fra hvid substans &mdash; stor risiko for hemiparese</li></ul>'},
+      {l:'Periventrikulaer leukomalaci (PVL)', c:'<ul><li>Skader i periventrikulaer hvid substans pga. inflammation eller iskaemi (asfyksi)</li><li>Initialt UL: smaa ekkorige omraader (flare)</li><li>Persisterer &gt;2-4 uger &rarr; cystiske laesioner (cPVL), irreversibelt tab af hvid substans</li><li><strong>80-90% risiko for spastisk cerebral parese</strong> (bilaterale cyster: naesten 100%)</li></ul>'}
+    ]},
+
+    { label:'Tarm & øjne', grid:[
+      {l:'Ernaering hos praemature', full:true, c:'<ul><li>GA 35-36 uger: sutte/synkerefleks udviklet &mdash; de fleste kan die lidt</li><li>GA &lt;34-35 uger: behov for <strong>enteral ernaering (EN) via ventrikelsonde</strong></li><li>"Minimal enteral nutrition" til de allermindste</li><li><strong>Modermaelk</strong> er foerstevalg</li><li>Parenteral ernaering (PN) via centralt kateter (NVK/CVK) til de allermindste/mest syge</li></ul>'},
+      {l:'Nekrotiserende enterocolitis (NEC)', full:true, warn:true, c:'<ul><li>Infektion i tarmvaeggen med gasgangraen, ofte sepsis &mdash; <strong>hoej mortalitet</strong>; ~5% af boern &lt;32 uger</li><li>Symptomer: galdefarvet gylp / gul-groenne aspirater, opdrevet spaendt abdomen, evt. blod i afoeringen</li><li>Roentgen (klassisk): luftbobler i tarmvaeggen (pneumatosis intestinalis); fri luft over leveren ved perforation</li><li>Behandling: <strong>madpause + 3-stofs antibiotika</strong>; operation ved perforation (stomi, ofte trivselsproblemer)</li></ul>'},
+      {l:'Retinopati hos praemature (ROP)', c:'<ul><li>Neovaskularisering og bloedning i nethinden &rarr; risiko for nethindeloesning</li><li>Stoerst risiko hos de mest umodne/sygeste og vaeksthaemmede</li><li><strong>For meget ilt oeger risikoen</strong> (mal-saturation 88-93%, ikke hoejere)</li><li>Behandling: laserbehandling reducerer blindhedsrisiko (behandles paa Rigshospitalet)</li></ul>'}
+    ]},
+
+    { label:'Prognose & udvikling', grid:[
+      {l:'Risiko efter GA', c:'<ul><li>Skader paa hjerne, nethinde og lunger er hyppigst ved <strong>GA &lt;26 uger</strong></li><li>Forvaerres ved NEC med operation</li></ul>'},
+      {l:'Neurologisk udvikling', warn:true, c:'<ul><li>5-10% risiko for cerebral parese</li><li>Indlaeringsvanskeligheder (saerligt abstrakt taenkning, fx matematik)</li></ul>'},
+      {l:'Familie', c:'<p>Langvarige indlaeggelser og kritisk sygdom giver risiko for <strong>PTSD hos foraeldre</strong> &mdash; husk psykosocial stoette.</p>'},
+      {l:'Det skal I kunne (eksamen)', hl:true, full:true, c:'<ul><li>Definition af praematuritet (GA- og FV-kategorier)</li><li>De 4 hoveddiagnoser med udfordringer:<ul><li>CardioPulmonalt: RDS, BPD, PDA</li><li>CNS: IVH grad 1-4, PVL</li><li>GI: ernaering og NEC</li><li>Oejne: ROP</li></ul></li><li>Risici og prognose</li></ul>'}
+    ]}
+
+  ]
 }
 
 ];
