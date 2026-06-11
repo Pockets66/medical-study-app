@@ -358,6 +358,13 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
       <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · ABO/hypernatriæmi-stand, GZ-slides</div>
       <span class="arrow-icon">→</span>
     </div>
+    <div class="case-card" onclick="openCase('praematur')">
+      <span class="specialty-badge badge-paed">Pædiatri</span>
+      <h3>Det meget præmature barn</h3>
+      <p>Organ for organ: RDS/BPD, PDA, IVH/PVL, NEC, ROP og prognose (GA 25+0)</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · GZ-slides (case)</div>
+      <span class="arrow-icon">→</span>
+    </div>
 
 <p class="section-label" style="margin-top:28px">Gynækologi</p>
   <div class="case-grid">
@@ -2458,6 +2465,122 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   </div>
   <div class="case-nav">
     <button class="reveal-all-btn" onclick="revealAll('ikt',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- === DET MEGET PRÆMATURE BARN (PEDS) === -->
+<div id="case-praematur" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Det meget præmature barn</h2>
+    <p>Dreng født GA 25+0, FV 750 g. Gennemgå risici og komplikationer organ for organ. &nbsp;·&nbsp; GZ-undervisningscase</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="pmt-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="pmt-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-pmt-1">
+    <div class="step-header" onclick="toggleStep('pmt',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Indlæggelse og initial stabilisering — hvad gør I?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>GA &lt;28 uger = specialistopgave på NICU</li>
+        <li>Kuvøse (temperatur), <strong>nCPAP</strong>, monitorering af respiration og hjerteaktion</li>
+        <li>Sondeernæring (modermælk), i.v. glukose, evt. parenteral ernæring via centralt kateter</li>
+        <li><strong>Caffeincitrat</strong> mod apnø/bradykardi</li>
+        <li>Husk antenatal glukokortikoid givet til mor ved truende fødsel &lt;uge 34 (forebygger RDS)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pmt-2">
+    <div class="step-header" onclick="toggleStep('pmt',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Lunger: respiratorisk distress — diagnose og behandling</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>RDS:</strong> surfactantmangel → alveolært kollaps; takypnø, indtrækninger, eksp. knirken, cyanose, spil af alae nasi</li>
+        <li>Rtg: mikroatelektaser ("mælkeglas") + luftbronkogram; faldende pO2, stigende pCO2</li>
+        <li>Behandling: CPAP → <strong>surfactant (Curosurf)</strong> via INSURE/LISA (reducerer mortalitet ~40%); evt. respirator</li>
+        <li>Senere risiko for <strong>BPD/CLD</strong>: iltbehov ved GA 36+0 eller 28 dage; lungeskade efter respirator/ilt/infektion</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pmt-3">
+    <div class="step-header" onclick="toggleStep('pmt',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hjerte: hvad hører I ved auskultation?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Persisterende ductus arteriosus (PDA):</strong> mislyd med maksimum under venstre klavikel, kraftig puls (øget pulstryk), hyperaktivt præcordie</li>
+        <li>Venstre-højre-shunt → hyperperfusion af lunger (respirationsproblemer) + hypoperfusion af tarm/nyre/hjerne; risiko for NEC</li>
+        <li>Behandling: historisk indomethacin/ibuprofen eller kirurgisk ligatur; <strong>anbefaling 2024: ofte ingen behandling, medmindre betydende shunt</strong></li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pmt-4">
+    <div class="step-header" onclick="toggleStep('pmt',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hjerne: hvilke komplikationer overvåges, og hvordan?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>IVH</strong> (hos ~25% af ekstremt præmature, oftest &lt;72 timer; UL via forreste fontanelle):
+          <ul>
+            <li>Grad 1: germinal matrix — øger ikke CP-risiko</li>
+            <li>Grad 2: gennembrud til ventrikel</li>
+            <li>Grad 3: ventrikeldilatation → hydrocephalus, 25-30% CP</li>
+            <li>Grad 4: hæmoragisk infarkt → stor risiko for hemiparese</li>
+          </ul>
+        </li>
+        <li><strong>PVL:</strong> iskæmi/inflammation i hvid substans; cystisk PVL (&gt;2-4 uger) → 80-90% spastisk cerebral parese</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pmt-5">
+    <div class="step-header" onclick="toggleStep('pmt',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Tarm: udspilet abdomen + blod i afføringen — diagnose?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>Nekrotiserende enterocolitis (NEC):</strong> galdefarvet gylp/gul-grønne aspirater, opdrevet spændt abdomen, evt. blod i afføringen</li>
+        <li>Røntgen: luftbobler i tarmvæggen (pneumatosis intestinalis); fri luft over leveren ved perforation</li>
+        <li>Behandling: <strong>madpause + 3-stofs antibiotika</strong>; operation ved perforation (stomi). Høj mortalitet; ~5% &lt;32 uger</li>
+        <li>Ernæring generelt: modermælk; minimal enteral nutrition til de mindste; PN via centralt kateter</li>
+      </ul>
+      <div class="answer-warn">NEC er en visuel diagnose til eksamen — kend det klassiske røntgenbillede (pneumatosis + fri luft).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pmt-6">
+    <div class="step-header" onclick="toggleStep('pmt',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Øjne og prognose</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><strong>ROP:</strong> neovaskularisering/blødning → nethindeløsning; for meget ilt øger risiko (mål-saturation 88-93%); laserbehandling reducerer blindhedsrisiko</li>
+        <li><strong>Udvikling:</strong> skader på hjerne/øjne/lunger hyppigst ved GA &lt;26 uger; 5-10% risiko for cerebral parese; indlæringsvanskeligheder</li>
+        <li>Husk psykosocial støtte — risiko for <strong>PTSD hos forældre</strong></li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="xlink-bar">
+    <span class="xlink-label">Relaterede noter</span>
+    <button class="xlink-btn" onclick="goToNote('peds_3')">Præmaturitet og dens komplikationer</button>
+  </div>
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('pmt',6)">Afslør alle svar</button>
     <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
   </div>
 </div>

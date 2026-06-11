@@ -78,6 +78,7 @@ Tracks the status of every note card in `notesData`.
 |----|------|--------|------|
 | genoplivning | Neonatal genoplivning og asfyksi | `[D]` | New case, 6 steps. GZ Case 1+2 + S2021/S2017. Cross-linked to peds_1. Awaiting verification. |
 | ikterus | Neonatal ikterus og dårlig trivsel | `[D]` | New case, 6 steps. GZ Case 4 (ABO) + Case 2 (hypernatriæmi) + ikterus-workup/kernicterus. Cross-linked to peds_2. Awaiting verification. |
+| praematur | Det meget præmature barn | `[D]` | New case, 6 steps (organ for organ: lunger/hjerte/hjerne/tarm/øjne/prognose). GZ running case (GA 25+0). Cross-linked to peds_3. Awaiting verification. |
 
 ## Backlog — topics not yet in the app
 
@@ -146,3 +147,4 @@ Files that would unlock blocked topics:
 | 2026-06-03 | case:ikterus | New PEDS case (ikterus/trivsel); cross-linked to peds_2. |
 | 2026-06-03 | flow:neonatal_ikterus | New PEDS flow tree (timing + konjugering); caseRef→ikterus. |
 | 2026-06-11 | peds_3 | New note — Præmaturitet from GZ-slides (authoritative). Third PEDS note; folds in caffein (apnø) + antenatal steroid (lungemodning). |
+| 2026-06-11 | case:praematur | New PEDS case (organ-by-organ præmaturitet); cross-linked to peds_3. |
