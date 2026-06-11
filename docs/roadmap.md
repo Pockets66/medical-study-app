@@ -60,6 +60,7 @@ Tracks the status of every note card in `notesData`.
 | neonatal_ikterus | Den gule nyfødte (neonatal ikterus) | `[D]` | New PEDS flow tree. 5 terminaler (hæmolyse / fysiologisk / ammeikterus+trivsel / konjugeret / sepsis). caseRef→ikterus. GZ-slides + DPS. Awaiting verification. |
 | neonatal_resp_distress | Respiratorisk distress hos den nyfødte | `[D]` | New PEDS flow tree. 5 terminaler (RDS / TTN / MAS / pneumoni-sepsis / pneumothorax). caseRef→praematur (RDS). GZ-slides + neonatal DDX. Awaiting verification. |
 | neonatal_infektion | Infektionsmistanke hos det nyfødte barn | `[D]` | New PEDS flow tree. 4 terminaler (GBS-sepsis EOS / GBS-meningitis EOS / LOS / HSV). caseRef→neonatal_infektion. GZ+RMP-slides + DPS HSV-retningslinje. Awaiting verification. |
+| hjertesygdom_barn | Mistanke om hjertesygdom hos barnet | `[D]` | New PEDS flow tree. 7 terminaler (vsd / tga / tof / ductus_afh_cyanose [PA+HLHS] / coarctatio / svt / fysiologisk_mislyd). Start node = 4 præsentationsformer. caseRef→hjertebarn. HA-slides + Excel + S2018. Awaiting verification. |
 
 ---
 
@@ -160,3 +161,4 @@ Files that would unlock blocked topics:
 | 2026-06-11 | flow:neonatal_infektion | New PEDS flow tree (infektionsmistanke); 4 terminaler; caseRef→neonatal_infektion. |
 | 2026-06-11 | peds_5 | New note — Medfødte hjertesygdomme (CHD) fra HA-slides (autoritativ) + Excel + S2018. Femte PEDS note; dækker pink/blue/ductus-afh/obstruktive + ABCD + prostaglandin + mislyde + SVT. |
 | 2026-06-11 | case:hjertebarn | New PEDS case (S2018 Alberte-VSD); Pædiatri-card spliced; cross-linked to peds_5. |
+| 2026-06-11 | flow:hjertesygdom_barn | New PEDS flow tree (mistanke om hjertesygdom); 7 terminaler omkring de 4 præsentationsformer; vsd-terminal → case hjertebarn. |

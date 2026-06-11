@@ -5207,6 +5207,296 @@ var flowData = [
     }
 
   }
+},
+
+{
+  id:'hjertesygdom_barn', spec:'PEDS',
+  title:'Mistanke om hjertesygdom hos barnet',
+  src:'HA forelæsning (Pædiatrisk Kardiologi, december 2025) + Excel-eksamensnoter PÆD + S2018 (VSD-Alberte)',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'Et barn præsenterer med tegn på mulig hjertesygdom. Hvilken af de fire klassiske præsentationsformer dominerer billedet?',
+      why:'Helle Andersens slide 12 + 32 sammenfatter: <b>de fire klassiske præsentationsformer er mislyd, cyanose, hjerteinsufficiens og shock</b>. Hver giver en anden differentialliste, en anden tidshorisont, og forskellige akut-skridt. <b>Ductus-afhængig hjertesygdom skal mistænkes ved enhver præsentation i 1.-7. levedøgn med cyanose, shock eller grå/marmoreret barn</b> &mdash; prostaglandin IV redder liv og skader ikke selvom diagnosen viser sig at være sepsis.',
+      redflag:'Nyfødt med svær cyanose, shock, metabolisk acidose eller grå/marmoreret farve indenfor 1.-7. levedøgn &rarr; mistænk <b>ductus-afhængig hjertefejl</b> &rarr; <b>start prostaglandin IV på mistanken alene</b> + akut børnekardiologisk tilsyn.',
+      ask:[
+        'Alder: nyfødt (&lt;1 mdr.), spædbarn (1 mdr.&ndash;2 år), større barn?',
+        'Tidsforløb: pludselig akut (nyfødt, ductus-lukker), gradvist over uger (spædbarn med inkompensation), eller stabilt over år?',
+        'Saturation præduktal (h. hånd) og postduktal (fod) — sideforskel?',
+        'Femoralispulse — symmetriske og kraftige?',
+        'Vækst og trivsel — vægtkurve, ernæringsindtag, sved/forpustethed ved måltider?',
+        'Familieanamnese — pludselig hjertedød, syndromer (Down, Turner, Williams, Noonan)?'
+      ],
+      opts:[
+        { lead:'Mislyd som dominerende fund (typisk tilfældigt fund eller målrettet undersøgelse)', hint:'Stills/innocent vs patologisk?', next:'mislyd_branch' },
+        { lead:'Cyanose (central, kan være varierende eller persisterende)',                       hint:'Hvornår debuterer cyanosen?',    next:'cyanose_branch' },
+        { lead:'Hjerteinsufficiens / dårlig trivsel hos spædbarn (takypnø, sved ved amning, hepatomegali)', hint:'Klassisk VSD-billede',           next:'vsd' },
+        { lead:'Shock / akut kollaps i 1.-7. levedøgn eller med takykardi 200+',                    hint:'CoA eller SVT — typisk',         next:'shock_branch' }
+      ]
+    },
+
+    mislyd_branch:{
+      q:'Mislyd hos barnet — er den fysiologisk (innocent) eller patologisk?',
+      why:'10-50% af raske børn har en <b>fysiologisk mislyd</b>. Den er altid <b>systolisk</b>, maksimum styrke <b>2-3 af 6</b>, typisk vibratorisk (Stills) eller pulmonal uddrivnings-karakter, og forsvinder ved positionsskift. <b>Diastoliske mislyde er altid patologiske</b>. <b>Mislyde med styrke ≥4</b> (med fremissement) er altid patologiske. <b>Børn &lt;1 år har patologisk mislyd indtil andet er bevist</b> &mdash; alle skal have EKKO.',
+      ask:[
+        'Cyklus — systolisk, diastolisk, kontinuerlig (PDA)?',
+        'Styrke 1-6 — over 3 med fremissement?',
+        'Alder — &lt;1 år: altid patologisk indtil EKKO?',
+        'Trivsel og ledsagende symptomer — takypnø, sved ved amning, dårlig trivsel?',
+        'Femoralispulse, SAT, BT på 4 ekstremiteter'
+      ],
+      opts:[
+        { lead:'Systolisk, styrke 1-3, ingen øvrige tegn, barn &gt;1 år — typisk Stills/vibratorisk', hint:'Innocent murmur', next:'fysiologisk_mislyd' },
+        { lead:'Diastolisk ELLER styrke ≥4 ELLER barn &lt;1 år ELLER ledsagende symptomer',          hint:'EKKO obligatorisk', next:'vsd' }
+      ]
+    },
+
+    cyanose_branch:{
+      q:'Cyanotisk barn — hvornår debuterer cyanosen, og hvilket mønster dominerer?',
+      why:'Tidspunktet for cyanose-debut er en stærk diagnostisk pejling. <b>Cyanose ved fødslen</b> uden mislyd → TGA (parallelle kredsløb). <b>Forværring ved ductuslukning (1.-7. levedøgn)</b> → ductus-afh. pulmonalkredsløb (PA, HLHS). <b>Tet-spells eller varierende cyanose</b> efter 2-6 mdr. → Fallot. <b>Cyanose udløses ved &gt;3 mmol/L uiltet hgb</b> — SAT &gt;80% giver ingen sikker cyanose; anæmiske børn cyanoserer sent.',
+      ask:[
+        'Debut — ved fødslen, indenfor 1.-7. levedøgn, eller senere?',
+        'Mislyd — er der en mislyd, og hvilken karakter?',
+        'SAT præ-/postduktal — sideforskel?',
+        'Episoder — Tet-spells efter gråd eller om morgenen?',
+        'Hyperoxitest (hvis tilgængelig) — stiger pO₂ ved 100% O₂?'
+      ],
+      opts:[
+        { lead:'Svær cyanose ved fødsel, ingen/diskret mislyd, SAT lav både arme og ben',         hint:'TGA — transposition', next:'tga' },
+        { lead:'Tet-spells eller varierende cyanose 2-6 mdr., systolisk mislyd ved ve. sternalrand', hint:'Fallot tetralogi',    next:'tof' },
+        { lead:'Forværring ved ductuslukning, kritisk syg 1.-7. levedøgn, metabolisk acidose',     hint:'PA eller HLHS',       next:'ductus_afh_cyanose' }
+      ]
+    },
+
+    shock_branch:{
+      q:'Akut kollaps eller shock-billede — hvor er problemet?',
+      why:'<b>De to klassiske shock-præsentationer i pædiatrisk kardiologi</b> er coarctatio aortae (ductus-afh systemkredsløb, debut ved ductuslukning) og supraventrikulær takykardi (arytmi, kan ske i alle aldre). Manglende femoralispulse og sideforskel BT arm/ben er CoA; takykardi 200-300/min med smal QRS er SVT.',
+      ask:[
+        'Femoralispulse — manglende eller svage?',
+        'BT på 4 ekstremiteter — sideforskel arm/ben?',
+        'Puls — takykardi 200-300+?',
+        'Alder — nyfødt med ductuslukning eller større barn med pludselig kollaps?',
+        'EKG — smal eller bred QRS, regelmæssig?'
+      ],
+      opts:[
+        { lead:'Nyfødt 1.-7. levedøgn, grå/marmoreret, svage/manglende femoralispulse, BT-forskel arm/ben', hint:'CoA — ductus-afh systemkredsløb', next:'coarctatio' },
+        { lead:'Pludselig puls 220-300/min, smal QRS, evt. kollaps',                                       hint:'SVT — arytmi',                    next:'svt' }
+      ]
+    },
+
+    vsd:{
+      dx:'VSD (Ventrikelseptumdefekt) — pink/acyanotisk hjertefejl', dxsub:'Hyppigste medfødte hjertefejl (31%); klassisk debut 2-3 mdr.', urgency:'haster',
+      findings:[
+        'Spædbarn 2-3 mdr. med dårlig trivsel, takypnø, sved ved måltider, hepatomegali',
+        'Systolisk mislyd langs <b>venstre sternalrand</b> (typisk 3.-4. ICS), styrke 3-4',
+        'Normal SAT, symmetriske femoralispulse — udelukker cyanotisk og coarctatio',
+        'Vægtkurve under percentilen, perifert kølig',
+        'Rtg. thorax: forstørret hjerte, øget lungekartegning'
+      ],
+      ddx:[
+        { d:'ASD', r:'— oftest asymptomatisk i barnetalder; fixed kløvet 2. hjertelyd' },
+        { d:'PDA', r:'— maskinmislyd (systolisk-diastolisk) ved 2. ve. ICS' },
+        { d:'AVSD', r:'— særligt ved Down; tidlig og svær inkompensation' },
+        { d:'Luftvejsinfektion', r:'— kan koincidere; udeluk på klinik + paraklinik' },
+        { d:'Spiseproblem / dehydratio', r:'— differentialdiagnose ved dårlig trivsel' }
+      ],
+      behandling:[
+        '<b>EKKO obligatorisk</b> (diagnostisk) + SAT + BT 4 ekstremiteter + EKG',
+        'Forklar fysiologien til forældrene: lungemodstanden falder mod 2-3 mdr. → tiltagende V→H-shunt',
+        '<b>Anticongestiv (ABCD):</b> start <b>ACE-hæmmer + diuretika</b>; tilføj betablokker/Ca-blokker ved med. resistens; evt. digoxin',
+        'Optimer ernæring: kalorie-tæt mælk, evt. ventrikelsonde',
+        'Lille VSD: observation — kan lukke spontant',
+        'Stor symptomgivende VSD: kirurgisk lukning med <b>patch</b> på hjertelungemaskine (før Eisenmenger udvikles)'
+      ],
+      ki:[
+        '<b>Børn &lt;1 år har patologisk mislyd indtil EKKO viser andet</b> — undlad ikke EKKO',
+        'Ubehandlet stor VSD → <b>Eisenmenger</b>: pulmonal hypertension + shunt-reversal + cyanose (irreversibelt)',
+        'Hvis SAT &lt;90% eller cyanose tilstede → tænk i stedet på cyanotisk eller ductus-afh hjertefejl',
+        'Akut forværring under infektion er almindeligt — øg observation ved feber'
+      ],
+      prognose:'Generelt god ved tidlig diagnose og behandling. Små VSDer lukker spontant hos majoriteten. Store VSDer kræver operation men har god langtidsprognose hvis lukket før Eisenmenger.',
+      caseRef:'hjertebarn'
+    },
+
+    tga:{
+      dx:'TGA — Transposition af de store arterier', dxsub:'Cyanotisk; parallelle kredsløb; hyppigste cyanotiske hjertefejl ved fødsel', urgency:'akut',
+      findings:[
+        'Svær central cyanose <b>ved fødslen</b>; SAT lav både præduktal og postduktal',
+        'Ofte <b>ingen mislyd</b> — barnet "fanges på cyanosen"',
+        'Hyperoxitest: pO₂ stiger ikke ved 100% O₂',
+        'Acidose tiltager når ductus og foramen ovale lukker'
+      ],
+      ddx:[
+        { d:'HLHS', r:'— ductus-afh systemkredsløb; lavt perifert flow' },
+        { d:'PA', r:'— ductus-afh pulmonalkredsløb; forværring ved ductuslukning' },
+        { d:'Persisterende pulmonal hypertension (PPHN)', r:'— meconiumaspiration; sideforskel SAT' },
+        { d:'Pulmonalsygdom', r:'— hyperoxitest skiller (pO₂ stiger ved lungesygdom)' }
+      ],
+      behandling:[
+        '<b>Prostaglandin E1 IV straks</b> ved klinisk mistanke — opretholder mixing via ductus',
+        '<b>Ballonseptostomi (Rashkind)</b> — kateter rives gennem foramen ovale for at sikre atrial mixing',
+        '<b>Definitiv: arteriel switch-operation</b> i 1. levetid (kar skæres over og byttes om)',
+        'Akut børnekardiologisk overflytning til specialafdeling'
+      ],
+      ki:[
+        'Cyanose uden mislyd hos nyfødt = mistænk altid TGA eller anden mixing-afhængig hjertefejl',
+        'Ubehandlet: 95% dør &lt;1. år',
+        'Med operation: god prognose, men livslang opfølgning'
+      ],
+      prognose:'Med tidlig prostaglandin + Rashkind + arteriel switch er prognosen god. Forsinkelse koster liv.',
+      caseRef:null
+    },
+
+    tof:{
+      dx:'TOF — Fallots tetralogi', dxsub:'Cyanotisk; 4 defekter (VSD + aortaoverridning + PS + RV-hypertrofi)', urgency:'akut',
+      findings:[
+        'Varierende cyanose afh. PS-grad: mild PS = "pink Fallot"; svær PS = "blue Fallot"',
+        'Systolisk uddrivningsmislyd ved ve. sternalrand (PS-mislyd)',
+        '<b>Tet-spells (cyanotiske anfald)</b>: 2-6 mdr., typisk om morgenen eller efter gråd; infundibulumspasme → akut svær cyanose; kan være livstruende',
+        'EKG: RV-hypertrofi; rtg. thorax: "støvle-hjerte"',
+        'Trommestik-fingre, clubbing (ved langvarig hypoxæmi)'
+      ],
+      ddx:[
+        { d:'TGA', r:'— cyanose ved fødsel uden mislyd; ingen tet-spells' },
+        { d:'PA', r:'— total cyanose, ductus-afh' },
+        { d:'Anden cyanotisk hjertefejl', r:'— EKKO afgør' }
+      ],
+      behandling:[
+        '<b>Akut tet-spell:</b><ul><li><b>Squat</b> (knæ mod brystet) → ↑systemmodstand → ↓H→V-shunt</li><li><b>Betablokker</b> (relaxer infundibulum; akut + profylakse)</li><li><b>Morfin</b> (↓sympatikus, ↓hyperpnø, ↓infundibulumspasme)</li><li><b>Prostaglandin</b> hvis ductus-afhængig</li><li>Ilttilskud</li></ul>',
+        'Elektiv kirurgi 6-12 mdr.: VSD-lukning + udvidelse af RV-udløb',
+        'Børnekardiologisk follow-up livslangt (resterende PS, arytmier)'
+      ],
+      ki:[
+        'Tet-spells kan være livstruende — forældreinstruks om squat-manøvren før kirurgi',
+        'Ubehandlet middellevetid ca. 10 år',
+        'DiGeorge syndrom association — overvej genetisk udredning'
+      ],
+      prognose:'Med kirurgi i 1. leveår er prognosen god. Senere komplikationer (resterende PS, arytmier) kræver livslang opfølgning.',
+      caseRef:null
+    },
+
+    ductus_afh_cyanose:{
+      dx:'Ductus-afhængig cyanotisk hjertefejl (PA / HLHS)', dxsub:'Pulmonal atresi eller hypoplastisk venstre ventrikel — kritisk syg ved ductuslukning', urgency:'akut',
+      findings:[
+        '<b>Forværring ved ductuslukning</b> i 1.-7. levedøgn',
+        'Svær cyanose (PA) eller grå/marmoreret med ↓perifer flow (HLHS)',
+        'Metabolisk acidose ved ductuslukning',
+        'Evt. ingen mislyd; oftest diagnosticeret prænatalt ved EKKO',
+        'SAT-screening lige efter fødsel: lav SAT eller sideforskel'
+      ],
+      ddx:[
+        { d:'TGA', r:'— cyanose ved fødslen; mixing-afhængig' },
+        { d:'Anden ductus-afh hjertefejl', r:'— CoA, kritisk AS' },
+        { d:'Neonatal sepsis', r:'— DDx ved grå/påvirket nyfødt; prostaglandin skader ikke' }
+      ],
+      behandling:[
+        '<b>Prostaglandin E1 IV straks</b> ved klinisk mistanke — livreddende; holder ductus åben',
+        'ABC, korrektion af acidose, varme, glukose',
+        'Akut overflytning til børnekardiologisk specialafdeling',
+        '<b>HLHS:</b> kirurgi i 3 stadier — <b>Norwood</b> (1-2 dage) → <b>Glenn</b> (4-6 mdr.) → <b>Fontan</b> (2-4 år)',
+        '<b>PA:</b> kirurgisk shunt → senere reparation'
+      ],
+      ki:[
+        'Prostaglandin har bivirkninger (apnø, hypotension, kramper, diarré) — vær forberedt på respiratorisk støtte',
+        'Diagnosen skal stilles prænatalt eller &lt;24 t — postnatal SAT-screening obligatorisk',
+        'Forsinkelse koster liv — ductus lukker indenfor 24 timer'
+      ],
+      prognose:'HLHS: variabel; trin-vis Fontan-strategi giver mulighed for overlevelse men med komplikationer. PA: afhænger af tilknyttede defekter.',
+      caseRef:null
+    },
+
+    coarctatio:{
+      dx:'Coarctatio aortae (CoA)', dxsub:'Ductus-afhængig systemkredsløb; klassisk shock ved ductuslukning', urgency:'akut',
+      findings:[
+        '<b>Nyfødt (1.-7. levedøgn):</b> shock, grå, metabolisk acidose, dårlig perifer cirkulation; <b>svage/manglende femoralispulse</b>; SAT lav i benene; BT-forskel arm/ben',
+        '<b>Ældre barn/voksen:</b> hypertension i overekstremiteter, svage femoralispulse, hovedpine, claudicatio',
+        'Bikuspid aortaklap (hyppigste association); 20-30% af <b>Turner-piger</b> har CoA',
+        'EKKO: viser forsnævringen, typisk ved ductusisthmus'
+      ],
+      ddx:[
+        { d:'HLHS / kritisk AS', r:'— anden ductus-afh systemkredsløbsfejl' },
+        { d:'Neonatal sepsis', r:'— DDx ved grå/påvirket nyfødt' },
+        { d:'Stofskiftesygdom', r:'— acidose, hypoglykæmi' }
+      ],
+      behandling:[
+        '<b>Akut: prostaglandin IV straks</b> + stabilisering (væske, korrektion af acidose, evt. inotropi)',
+        'Akut overflytning til børnekardiologisk specialafdeling',
+        '<b>Definitiv: kirurgisk resektion + end-til-end anastomose</b> eller subclavian flap-teknik',
+        'Alternativ: ballondilatation ± stent (særligt re-coarctatio)',
+        'Livslang opfølgning: hypertension, re-coarctatio, aortarodsdilatation'
+      ],
+      ki:[
+        'Femoralispulse skal palperes på alle nyfødte før udskrivelse',
+        'BT på alle 4 ekstremiteter — sideforskel arm/ben er diagnostisk',
+        'Mistænk CoA hos enhver nyfødt med shock eller grå farve i 1. leveuge',
+        'Tjek for Turner-syndrom hos piger med CoA'
+      ],
+      prognose:'God ved tidlig diagnose og kirurgi. Re-coarctatio kan ses; livslang BT-kontrol og kardiologisk opfølgning.',
+      caseRef:null
+    },
+
+    svt:{
+      dx:'Supraventrikulær takykardi (SVT)', dxsub:'Arytmi; klassisk shock-præsentation hos spædbarn eller akut anfald hos større barn', urgency:'akut',
+      findings:[
+        '<b>Puls 220-300/min</b> hos spædbarn (lavere ved større børn); regelmæssig; <b>smal QRS</b>',
+        'Hos spædbarn: dårlig trivsel, irritabilitet, sved, gråfarvet — diagnostisk forsinkelse hyppig',
+        'Hos større barn: hjertebanken, evt. synkope, brystubehag',
+        'EKG: smal QRS-takykardi uden p-takker (eller p efter QRS)',
+        'Differentialdiagnose: sinustakykardi (varierende, max ~220), ventrikulær takykardi (bred QRS)'
+      ],
+      ddx:[
+        { d:'Sinustakykardi', r:'— sekundær (feber, sepsis, dehydratio, smerter); puls varierer' },
+        { d:'Ventrikulær takykardi', r:'— bred QRS; sjælden, alvorlig' },
+        { d:'Atrieflagren', r:'— savtaks-mønster på EKG' },
+        { d:'CoA / strukturel hjertefejl', r:'— udeluk ved EKKO efter konvertering' }
+      ],
+      behandling:[
+        '<b>Hæmodynamisk stabil:</b><ul><li><b>Vagale manøvrer:</b> hos spædbarn — <b>ispose på panden</b> (mammalian dive reflex); hos større barn — Valsalva, ishuldetest</li><li><b>Adenosin</b> IV ved fortsat SVT — hurtig push i stor vene + skyl</li></ul>',
+        '<b>Hæmodynamisk ustabil (shock, bevidstløs):</b><ul><li><b>Synkroniseret elektrokonvertering</b> (0,5-1 J/kg)</li></ul>',
+        'Efter konvertering: EKKO for at udelukke strukturel hjertesygdom (særligt WPW-mønster)',
+        'Profylakse: betablokker eller digoxin; ablation ved tilbagevenden hos større børn'
+      ],
+      ki:[
+        'Adenosin har <b>meget kort halveringstid</b> (~10 sek) — kræver hurtig push + saltvandsskyl',
+        'Ved hæmodynamisk ustabilitet er <b>elektrokonvertering førstevalg</b>, ikke medicin',
+        'WPW (Wolff-Parkinson-White) er associeret med SVT; vurder for delta-bølge på EKG efter konvertering',
+        'Spædbørn kompenserer længe — diagnosen kan blive forsinket; mistænk SVT ved hjerteinsuff-billede uden mislyd'
+      ],
+      prognose:'God ved akut behandling. Tilbagefald kan ses; profylakse eller ablation efter behov.',
+      caseRef:null
+    },
+
+    fysiologisk_mislyd:{
+      dx:'Fysiologisk mislyd (innocent murmur)', dxsub:'10-50% af raske børn har fysiologisk mislyd', urgency:'rolig',
+      findings:[
+        'Altid <b>systolisk</b>; maksimum styrke <b>2-3 af 6</b>',
+        'Typisk vibratorisk/<b>Stills murmur</b> eller pulmonal uddrivningsmislyd',
+        'Lokalisation: typisk apeks eller venstre sternalrand',
+        'Karakter: blød, musikalsk, varierer med position og respiration',
+        'Barnet er klinisk velbefindende: normal trivsel, normal SAT, symmetriske femoralispulse, normalt BT'
+      ],
+      ddx:[
+        { d:'Lille VSD', r:'— kan også være styrke 2-3 systolisk; EKKO afgør' },
+        { d:'ASD', r:'— fixed kløvet 2. hjertelyd er kendetegnet' },
+        { d:'Mild PS / AS', r:'— stråling til hals; ejektionsklik' }
+      ],
+      behandling:[
+        'Ingen behandling — kun observation',
+        'Forklar forældrene at fysiologiske mislyde er meget almindelige og forsvinder typisk med årene',
+        'Genvurder ved næste børneundersøgelse'
+      ],
+      ki:[
+        '<b>Børn &lt;1 år har patologisk mislyd indtil andet er bevist</b> — EKKO ved enhver mislyd hos spædbarn',
+        '<b>Diastoliske mislyde er altid patologiske</b>',
+        '<b>Mislyde med styrke ≥4 (fremissement) er altid patologiske</b>',
+        'Hvis tvivl eller ledsagende symptomer (takypnø, dårlig trivsel, cyanose, svage pulse) → EKKO'
+      ],
+      prognose:'Udmærket; ingen kardial sygdom. Mislyden forsvinder typisk i løbet af barndommen.',
+      caseRef:null
+    }
+
+  }
 }
 ];
 
