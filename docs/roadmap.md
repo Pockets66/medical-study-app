@@ -71,6 +71,7 @@ Tracks the status of every note card in `notesData`.
 | peds_2 | Ikterus, ernæring og trivsel | `[D]` | New note, 5 tabs (Fysiologisk / Patologisk-ukonjugeret / Konjugeret+kernicterus / Behandling / Ernæring+trivsel). GZ-slides + DPS + SST 2015 + exam (ABO/hypernatriæmi). Awaiting verification. |
 | peds_3 | Præmaturitet og dens komplikationer | `[D]` | New note, 5 tabs (Definitioner+årsager / Lunger / Hjerte+CNS / Tarm+øjne / Prognose). GZ-slides + kvalitetsdatabase + Excel. Partially closes apnø/lungemodning gap. Awaiting verification. |
 | peds_4 | Infektioner hos det nyfødte barn | `[D]` | New note, 5 tabs (Oversigt+klinik / GBS / HSV / Andre+LOS / Det skal I kunne). GZ+RMP-slides + DPS HSV-retningslinje + Excel + S2020. Awaiting verification. |
+| peds_5 | Medfødte hjertesygdomme (CHD) | `[D]` | New note, 5 tabs (Oversigt+klassifikation / Acyanotisk / Cyanotisk / Obstruktive+ductus-afh / Behandling+mislyde+arytmier). HA-slides (dec 2025) + Excel + S2018 (VSD-Alberte) + Signe (suppl). Awaiting verification. |
 
 ---
 
@@ -156,3 +157,4 @@ Files that would unlock blocked topics:
 | 2026-06-11 | peds_4 | New note — Infektioner hos det nyfødte barn (GBS + HSV + LOS) from GZ+RMP-slides (authoritative). Fourth PEDS note. |
 | 2026-06-11 | case:neonatal_infektion | New PEDS case (GBS + HSV); Pædiatri-card spliced; cross-linked to peds_4. |
 | 2026-06-11 | flow:neonatal_infektion | New PEDS flow tree (infektionsmistanke); 4 terminaler; caseRef→neonatal_infektion. |
+| 2026-06-11 | peds_5 | New note — Medfødte hjertesygdomme (CHD) fra HA-slides (autoritativ) + Excel + S2018. Femte PEDS note; dækker pink/blue/ductus-afh/obstruktive + ABCD + prostaglandin + mislyde + SVT. |
