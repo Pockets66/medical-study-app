@@ -386,6 +386,13 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
       <div class="case-meta"><span class="difficulty diff-high"></span> H&oslash;j prioritet &middot; V2022, PW-slides</div>
       <span class="arrow-icon">&rarr;</span>
     </div>
+        <div class="case-card" onclick="openCase('hsp_nefrit')">
+      <span class="specialty-badge badge-paed">P&aelig;diatri</span>
+      <h3>IgA-vaskulit (HSP) med nefrit hos pige</h3>
+      <p>Palpabel purpura, sen-nefrit-udvikling, behandlingsalgoritme og livsvigtigt DDX</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> H&oslash;j prioritet &middot; PW-slides 16-18</div>
+      <span class="arrow-icon">&rarr;</span>
+    </div>
 
 <p class="section-label" style="margin-top:28px">Gynækologi</p>
   <div class="case-grid">
@@ -3096,6 +3103,149 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   <div class="case-nav"><button class="back-btn" onclick="closeCase()">&larr; Tilbage til oversigt</button></div>
 </div>
 
+<div id="case-hsp_nefrit" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">&larr; Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">P&aelig;diatri</span>
+    <h2>IgA-vaskulit (HSP) med nefrit hos pige</h2>
+    <p><b>Case (PW-slides 16-18):</b> Sofia, 6 &aring;r. Henvist af egen l&aelig;ge med "udsl&aelig;t der ikke svarer p&aring; antihistamin". Mor fort&aelig;ller om en let halsbet&aelig;ndelse for 2 uger siden, men ellers rask. De sidste 3-4 dage har Sofia haft "bl&aring; pletter" p&aring; underbenene, ondt i kn&aelig;ene og det sidste d&oslash;gn ogs&aring; mavesmerter.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="hsp-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="hsp-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-hsp-1">
+    <div class="step-header" onclick="toggleStep('hsp',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">1) Hvad forventer du at finde objektivt n&aring;r du unders&oslash;ger Sofia?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Palpabel purpura</b> distalt p&aring; UE, nates, evt. albueregion &mdash; deklivt fordelt (hos g&aring;-barn = underben/balder; hos baby = ryg/balder). <i>Eneste b&oslash;rnesygdom med palpabel purpura.</i></li>
+        <li><b>Periartikul&aelig;rt &oslash;dem + smerter</b> ved kn&aelig;/ankel &mdash; IKKE intraartikul&aelig;r effusion. Sofia kan have v&aelig;greb&aelig;rende halten.</li>
+        <li><b>Abdominal &oslash;mhed</b> &mdash; diffus, ej peritonitis. Tjek for mel&aelig;na/h&aelig;matochezi (33 % har akut GI-bl&oslash;dning).</li>
+        <li><b>Alm&aelig;ntilstand:</b> typisk <i>ikke</i> akut p&aring;virket eller septisk &mdash; vigtig forskel fra meningokoksygdom.</li>
+        <li><b>BT</b> skal m&aring;les ved indl&aelig;ggelse + dagligt &mdash; baseline til at fange nefrit-udvikling.</li>
+        <li>Skrotalt &oslash;dem hos drenge er muligt.</li>
+      </ul>
+      <div class="answer-highlight">Klinisk pejlem&aelig;rke: <b>palpabel purpura nedenfor bukse-niveau</b> p&aring; et i &oslash;vrigt rimeligt p&aring;virket barn er IgA-vaskulit indtil andet er bevist.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hsp-2">
+    <div class="step-header" onclick="toggleStep('hsp',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">2) Hvad er den klassiske HSP-tetrade, og hvor hyppigt rammer hvert element?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <table class="nst">
+        <tr><th>System</th><th>Manifestation</th><th>Frekvens</th></tr>
+        <tr><td>Hud</td><td>Palpabel purpura UE/nates</td><td>100 %</td></tr>
+        <tr><td>Led</td><td>Artralgi/artrit + periartikul&aelig;rt &oslash;dem (kn&aelig;, ankel)</td><td>82 %</td></tr>
+        <tr><td>GI</td><td>Mavesmerter, kvalme, opkast; akut GI-bl&oslash;dning ~33 %</td><td>63 %</td></tr>
+        <tr><td>Nyrer</td><td>Glomerulonefrit (h&aelig;maturi &plusmn; proteinuri)</td><td>40 % (1 % kronisk)</td></tr>
+      </table>
+      <i>Frekvenser fra Signe (supplement&aelig;rt). PW-slides n&aelig;vner manifestationerne uden tal.</i><br><br>
+      <b>Patogenese:</b> leukocytoklastisk vaskulit med IgA-aflejring i karv&aelig;ggen. Hyppigste systemiske vaskulit hos b&oslash;rn. 90 % &lt; 10 &aring;r; drenge:piger 2:1; peak om efter&aring;r/vinter; ofte forudg&aring;ende &oslash;vre luftvejsinfektion (her Sofias halsbet&aelig;ndelse for 2 uger siden).
+      <div class="answer-warn">Sofia har p.t. <b>3 ud af 4</b> elementer (hud + led + GI). <b>Nyrer kommer senere</b> &mdash; det er pr&aelig;cis derfor hun skal indl&aelig;gges/observeres.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hsp-3">
+    <div class="step-header" onclick="toggleStep('hsp',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">3) Hvorfor indl&aelig;gges Sofia til observation, og hvad f&oslash;lger I?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <b>Begrundelse for indl&aelig;ggelse:</b>
+      <ul>
+        <li><b>Nefritis udvikler sig EFTER hudsymptomerne</b> &mdash; oftest 1-4 uger senere, sj&aelig;ldent &gt; 10 uger efter debut.</li>
+        <li>Tidlig opdagelse af nefrit + HT &aelig;ndrer prognosen.</li>
+        <li>Akut GI-bl&oslash;dning (33 %) skal monitoreres.</li>
+        <li>Differentialdiagnoser med v&aelig;sentlig morbiditet skal udelukkes (se nedenfor).</li>
+      </ul>
+      <b>Akut DDX-udelukkelse (blodpr&oslash;ver f&oslash;rste d&oslash;gn):</b>
+      <ul>
+        <li><b>Trombocytter</b> &mdash; normale ved HSP, lave ved ITP og meningokoksygdom</li>
+        <li><b>Koagulationsfaktorer</b> (INR/APTT) &mdash; normale ved HSP</li>
+        <li><b>CRP + leukocytter</b> &mdash; let forh&oslash;jet ved HSP, kraftigt ved sepsis</li>
+        <li><b>Kreatinin + urinstix</b> &mdash; baseline</li>
+      </ul>
+      <b>L&oslash;bende monitorering under indl&aelig;ggelse:</b>
+      <ul>
+        <li><b>BT + urinstix dagligt</b></li>
+        <li>Puls, mavesmerter, mel&aelig;na-observation</li>
+      </ul>
+      <b>Efter udskrivelse:</b> BT + urinstix-kontrol i <b>mindst 6 m&aring;neder</b> (PW slide 17).
+      <div class="answer-highlight">Bem&aelig;rk vinduet: nefritis er sj&aelig;ldent senere end 10 uger efter debut. Hvis Sofia har normale stix + BT efter 10 uger uden behandling, er nefrit-risikoen lille.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hsp-4">
+    <div class="step-header" onclick="toggleStep('hsp',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">4) Hvad er initial behandling af Sofias HSP &mdash; givet at hun ikke har nyrep&aring;virkning endnu?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Artrit, feber, udsl&aelig;t og milde mavesmerter er selvlimiterende</b> &mdash; symptomatisk behandling.</li>
+        <li><b>Paracetamol</b> til smerter (foretrukket pga. renal hensyn).</li>
+        <li><b>NSAID</b> kan bruges hvis ingen nyrep&aring;virkning og ingen akut GI-bl&oslash;dning, men paracetamol er f&oslash;rstevalg.</li>
+        <li><b>Ingen rutinem&aelig;ssig prednisolon</b> &mdash; ingen evidens for at det reducerer risikoen for at udvikle nefrit, og PW-slides afviser eksplicit profylaktisk steroid.</li>
+        <li>Steroid kan overvejes ved <b>sv&aelig;re mavesmerter eller GI-bl&oslash;dning</b> &mdash; reducerer symptomvarighed, &aelig;ndrer ikke nyreprognose.</li>
+        <li><b>Hydrering</b>, hvile.</li>
+        <li>Familien instrueres i tegn p&aring; nyrep&aring;virkning &mdash; sk&aelig;rmet urin, &oslash;dem, hovedpine &mdash; og s&oslash;rger for opf&oslash;lgning.</li>
+      </ul>
+      <div class="answer-warn"><b>NSAID-f&aelig;lde:</b> sm&aring;b&oslash;rn med begyndende dehydrering + ibuprofen + IgA-vaskulit &rarr; akut nyresvigt. V&aelig;r forsigtig.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hsp-5">
+    <div class="step-header" onclick="toggleStep('hsp',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">5) Sofia kommer 4 uger senere til kontrol. Urinstix viser 2+ protein og 3+ blod. BT 138/88 (over 95-percentilen). Protein/kreatinin-ratio 1500 mg/g. Kreatinin let stigende. Hvad nu?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <b>Dette er HSP-nefrit med d&aring;rlige prognostiske faktorer</b> &mdash; sub-nefrotisk proteinuri + HT + begyndende nyrep&aring;virkning.<br><br>
+      <b>Tiltag:</b>
+      <ul>
+        <li><b>Henvis til p&aelig;diatrisk nefrolog</b> akut.</li>
+        <li><b>Overvej nyrebiopsi</b> &mdash; graderer IgA-aflejringsm&aelig;ngde og halvm&aring;ne-dannelse (crescents); guider behandlings-intensitet.</li>
+        <li><b>Prednisolon &plusmn; cytostatika</b> &mdash; PW: ~70 % bliver raske med kombineret behandling. (Dosering ikke specificeret p&aring; slides; nefrolog-protokol.)</li>
+        <li><b>BT-behandling med ACE-h&aelig;mmer</b> &mdash; b&aring;de BT-kontrol OG proteinuri-reduktion (renoprotektivt).</li>
+        <li>Saltrestriktion.</li>
+        <li><b>T&aelig;t opf&oslash;lgning</b> &mdash; ugentlig kreatinin/BT/urin initialt.</li>
+      </ul>
+      <b>D&aring;rlige prognostiske faktorer (alle g&aelig;lder her):</b> nefrotisk niveau proteinuri, akut nyresvigt, hypertension, sv&aelig;r histologi (halvm&aring;ner).
+      <div class="answer-highlight">Det er kombinationen <b>proteinuri + HT + stigende kreatinin</b> der flytter Sofia fra "selvlimiterende vaskulit" til "kr&aelig;ver immunsuppression". Isoleret mikroh&aelig;maturi behandles ikke aktivt.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-hsp-6">
+    <div class="step-header" onclick="toggleStep('hsp',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">6) Hvilke differentialdiagnoser m&aring; ALDRIG overses ved palpabel purpura hos barn?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <table class="nst">
+        <tr><th>DDX</th><th>Skiller fra HSP ved&hellip;</th></tr>
+        <tr><td><b>Meningokoksygdom</b></td><td>Akut septisk, lavt BT, hurtig progression, lave trombocytter, p&aring;virket alm&aelig;ntilstand &mdash; LP + bloddyrkning + bredspektret AB STRAKS</td></tr>
+        <tr><td><b>ITP</b></td><td>Lave trombocytter, peteckier er IKKE palpable, oftest godt alm&aelig;ntilstand</td></tr>
+        <tr><td><b>Koagulopati</b></td><td>Familieanamnese, forl&aelig;nget INR/APTT, bl&oslash;dninger fra slimhinder</td></tr>
+        <tr><td><b>Akut leuk&aelig;mi</b></td><td>Hepatosplenomegali, an&aelig;mi, feber, p&aring;virket alm&aelig;ntilstand &mdash; diff-t&aelig;lling + benmarvsunders&oslash;gelse</td></tr>
+        <tr><td><b>Non-accidental injury (NAI)</b></td><td>Atypisk lokalisation (bagdel/bagside l&aring;r, ansigt), forskellige aldersstadier af blodudtr&aelig;dninger, anamnesetiske flag</td></tr>
+        <tr><td><b>Septisk vaskulit</b> (rickettsia m.fl.)</td><td>Rejseanamnese, feber, septisk billede</td></tr>
+      </table>
+      <div class="answer-warn"><b>Den vigtigste:</b> meningokoksygdom kan i tidlig fase ligne HSP. <b>Lavt BT eller dramatisk forv&aelig;rring i alm&aelig;ntilstand &rarr; behandl som meningokok F&Oslash;R diagnose er sikker.</b></div>
+    </div></div>
+  </div>
+
+  <div class="related-notes">
+    <span class="rl-label">Relaterede noter:</span>
+    <button onclick="goToNote('peds_6')" class="rl-link">peds_6 &middot; Nyre- og urinvejssygdomme hos b&oslash;rn</button>
+  </div>
+  <div class="case-nav"><button class="back-btn" onclick="closeCase()">&larr; Tilbage til oversigt</button></div>
+</div>
+
 <!-- === KOMPLICEREDE FØDSLER === -->
 <div id="case-kompfodsel" class="case-pane" style="display:none">
   <div class="case-header">
@@ -3206,7 +3356,7 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
 <footer>K8 OSCE Studieguide · Kvinde, Mor, Barn · SDU · Baseret på eksamenssæt F23–F25 + E23–E24</footer>
 
 <script>
-var totalSteps = { uvc:6, pe:6, anti:5, blod:5, endo:5, uro:5, tidlig:4, canc:4, pid:3, rep:4, hrt:4, svang:4, prae:4, tvil:4, vaekst:4, gdm:4, pterm:4, bars:4, vir:3, asf:3, komp:2, norm:2 };
+var totalSteps = { uvc:6, hsp:6, pe:6, anti:5, blod:5, endo:5, uro:5, tidlig:4, canc:4, pid:3, rep:4, hrt:4, svang:4, prae:4, tvil:4, vaekst:4, gdm:4, pterm:4, bars:4, vir:3, asf:3, komp:2, norm:2 };
 var revealed = {};
 for (var k in totalSteps) revealed[k] = {};
 
@@ -4604,7 +4754,7 @@ var notesData = [
     ]}
 
   ],
-  caseRefs:['uvi_cakut']
+  caseRefs:['uvi_cakut','hsp_nefrit']
 }
 
 ];
@@ -6272,7 +6422,7 @@ var flowData = [
         'Vaccinationer udsk&aelig;dse mens b&oslash;rnet er i aktiv prednisolon-behandling'
       ],
       prognose:'Oftest komplet remission. 1 % udvikler kronisk nyresygdom. D&aring;rlige prognostiske faktorer: nefrotisk syndrom ved debut, akut nyresvigt, sv&aelig;r HT.',
-      caseRef:null
+      caseRef:'hsp_nefrit'
     },
 
     t_psgn:{

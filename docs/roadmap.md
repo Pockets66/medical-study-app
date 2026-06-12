@@ -61,7 +61,7 @@ Tracks the status of every note card in `notesData`.
 | neonatal_resp_distress | Respiratorisk distress hos den nyfødte | `[D]` | New PEDS flow tree. 5 terminaler (RDS / TTN / MAS / pneumoni-sepsis / pneumothorax). caseRef→praematur (RDS). GZ-slides + neonatal DDX. Awaiting verification. |
 | neonatal_infektion | Infektionsmistanke hos det nyfødte barn | `[D]` | New PEDS flow tree. 4 terminaler (GBS-sepsis EOS / GBS-meningitis EOS / LOS / HSV). caseRef→neonatal_infektion. GZ+RMP-slides + DPS HSV-retningslinje. Awaiting verification. |
 | hjertesygdom_barn | Mistanke om hjertesygdom hos barnet | `[D]` | New PEDS flow tree. 7 terminaler (vsd / tga / tof / ductus_afh_cyanose [PA+HLHS] / coarctatio / svt / fysiologisk_mislyd). Start node = 4 præsentationsformer. caseRef→hjertebarn. HA-slides + Excel + S2018. Awaiting verification. |
-| haematuri_barn | Hæmaturi hos barn | `[D]` | New PEDS flow tree. 6 terminaler (PSGN / HSP-nefrit / IgA-nefropati / UVI / urolitiase / benign isoleret mikrohæmaturi). caseRef→uvi_cakut. PW-slides + Excel + Signe (suppl). Awaiting verification. |
+| haematuri_barn | Hæmaturi hos barn | `[D]` | New PEDS flow tree. 6 terminaler (PSGN / HSP-nefrit / IgA-nefropati / UVI / urolitiase / benign isoleret mikrohæmaturi). caseRef→uvi_cakut + hsp_nefrit. PW-slides + Excel + Signe (suppl). Awaiting verification. |
 
 ---
 
@@ -89,6 +89,7 @@ Tracks the status of every note card in `notesData`.
 | neonatal_infektion | Neonatal infektion (GBS / HSV) | `[D]` | New case, 6 steps. GZ Case 1 (GBS-meningit) + Case 2 (HSV-encephalit) + S2020 framing. Cross-linked to peds_4. Awaiting verification. |
 | hjertebarn | Hjertebarn (CHD med inkompensation) | `[D]` | New case, 6 steps. S2018 Alberte-VSD som skabelon + HA-slides + Excel. Cross-linked to peds_5. Awaiting verification. |
 | uvi_cakut | UVI/pyelonefritis hos pige med CAKUT | `[D]` | New case, 6 steps. V2022 Pyelonefritis (skriftlig) som template + PW-slides UVI-block. Cross-linked to peds_6. Awaiting verification. |
+| hsp_nefrit | IgA-vaskulit (HSP) med nefrit hos pige | `[D]` | New case, 6 steps. PW-slides 16-18 (autoritativ) + Signe (suppl, frekvenser). Cross-linked to peds_6 + haematuri_barn-flow (t_hsp). Awaiting verification. |
 
 ## Backlog — topics not yet in the app
 
@@ -168,3 +169,4 @@ Files that would unlock blocked topics:
 | 2026-06-12 | peds_6 | New note — Nyre- og urinvejssygdomme hos børn fra PW-slides (autoritativ) + Excel + V2022. Sjette PEDS note; dækker nyrefunktion/AKI/CKD/HT, nefrotisk syndrom, GN+HSP+hæmaturi, CAKUT-spektret, UVI+vandladning. |
 | 2026-06-12 | case:uvi_cakut | New PEDS case (UVI/pyelonefritis hos 8-årig pige med CAKUT, modelleret efter V2022 Pyelonefritis skriftlig); Pædiatri-card spliced; cross-linked to peds_6. |
 | 2026-06-12 | flow:haematuri_barn | New PEDS flow tree (hæmaturi-DDX); 6 terminaler; caseRef→uvi_cakut. Lukker tab 3 (GN/hæmaturi) i peds_6 ind i en symptomudredning. |
+| 2026-06-12 | case:hsp_nefrit | New PEDS case (IgA-vaskulit med nefrit, klassisk PW-slide-narrativ); cross-linked to peds_6 + haematuri_barn t_hsp. |
