@@ -6172,6 +6172,278 @@ var flowData = [
     }
 
   }
+},
+
+{
+  id:'haematuri_barn',
+  spec:'PEDS',
+  title:'H&aelig;maturi hos barn',
+  src:'PW-slides (b&oslash;rnenefrologi del 1, slide 21-28) + Excel + Signe (suppl)',
+  start:'start',
+  nodes:{
+
+    /* ===== START ===== */
+    start:{
+      q:'Makroskopisk eller mikroskopisk h&aelig;maturi?',
+      why:'<b>Makroskopisk h&aelig;maturi</b> (synligt blod, cola-/r&oslash;d urin, terminal blodtilblanding) kr&aelig;ver altid udredning. '
+        + '<b>Mikroskopisk h&aelig;maturi</b> (kun p&aring; stix/mikroskopi) skal verificeres p&aring; mindst 2 separate urinpr&oslash;ver f&oslash;r videre udredning.<br><br>'
+        + '<b>Urinstix-f&aelig;lde:</b> falsk positiv blod kan ses ved myoglobinuri (rhabdomyolyse), h&aelig;moglobinuri, samt visse l&aelig;gemidler (rifampicin, nitrofurantoin, beetroot). '
+        + '<b>Erytrocytcylindre p&aring; urinmikroskopi &rarr; glomerul&aelig;r oprindelse</b> (= GN).',
+      redflag:'<b>R&oslash;de flag der h&oslash;rer hjemme p&aring; b&oslash;rneafdeling i dag:</b><ul>'
+        + '<li>H&aelig;maturi + oliguri + hypertension &rarr; akut GN</li>'
+        + '<li>Palpabel purpura distalt p&aring; UE &rarr; HSP</li>'
+        + '<li>Sv&aelig;r p&aring;virket, septisk, lav BT &rarr; urosepsis / HUS</li>'
+        + '<li>Trauma-anamnese &rarr; nyrekontusion / urinvejsbeskadigelse</li>'
+        + '<li>Familieanamnese med blodfarvet urin + d&oslash;vhed &rarr; Alport syndrom</li>'
+      + '</ul>',
+      ask:[
+        '<b>Anamnese:</b> debut (akut/snigende), farve (cola/r&oslash;d/terminal), forudg&aring;ende infektion (&Oslash;LI / hudinfektion / faryngitis), feber, smerter, makro- vs mikro-tidligere, familiebillede',
+        '<b>Objektivt:</b> BT (gentagne m&aring;linger med korrekt manchet), &oslash;dem (periorbitalt? UE?), hud (purpura, udsl&aelig;t?), led (artrit?), abdomen (smerter? renal banken?)',
+        '<b>Urin:</b> stix + mikroskopi (cylindre? leukocytter?) + dyrkning'
+      ],
+      opts:[
+        { lead:'Makroskopisk h&aelig;maturi', hint:'synlig r&oslash;d/cola-farve eller terminal blodtilblanding', next:'q_ledsage' },
+        { lead:'Mikroskopisk h&aelig;maturi', hint:'kun fund p&aring; stix/urinmikroskopi', next:'q_mikro_tegn' }
+      ]
+    },
+
+    /* ===== MIKRO BRANCH ===== */
+    q_mikro_tegn:{
+      q:'Er der tegn p&aring; glomerul&aelig;r affektion?',
+      why:'Isoleret persisterende mikroh&aelig;maturi (uden proteinuri, uden HT, uden erytrocytcylindre, normal nyrefunktion) er ofte <b>benign</b> &mdash; f&aelig;ldes ofte hos slanke teenagere efter motion eller hos b&oslash;rn med famili&aelig;r tynd basalmembran-sygdom. '
+        + 'Tilstedev&aelig;relse af proteinuri, hypertension, erytrocytcylindre eller p&aring;virket nyrefunktion derimod tyder p&aring; ægte glomerul&aelig;r sygdom og kr&aelig;ver udredning som ved makro-h&aelig;maturi.',
+      ask:[
+        '<b>Urin:</b> protein/kreatinin-ratio (sub-nefrotisk eller h&oslash;jere?), erytrocytcylindre p&aring; mikroskopi',
+        '<b>Blod:</b> BT (95-percentilen?), kreatinin, komplement (C3/C4), ASOT/anti-DNAse B'
+      ],
+      opts:[
+        { lead:'Ja &mdash; proteinuri / HT / erytrocytcylindre / &uarr; kreatinin', hint:'glomerul&aelig;r sygdom skal udredes som ved makroh&aelig;maturi', next:'q_ledsage' },
+        { lead:'Nej &mdash; isoleret persisterende mikroh&aelig;maturi', hint:'ingen proteinuri, normal BT, normal nyrefunktion', next:'t_benign' }
+      ]
+    },
+
+    /* ===== LEDSAGE-FUND BRANCH ===== */
+    q_ledsage:{
+      q:'Hvilke ledsage-fund er der?',
+      why:'Ledsage-fundene afsl&oslash;rer typisk diagnosen ved akut h&aelig;maturi. '
+        + 'M&oslash;nstret <b>purpura + led + GI + nyrer</b> peger entydigt p&aring; IgA-vaskulit (HSP). '
+        + '<b>Cola-urin + HT + &oslash;dem efter en streptokok-infektion</b> &rarr; klassisk PSGN. '
+        + '<b>Synpharyngitisk h&aelig;maturi</b> (samtidig med eller 1-2 dage efter en &oslash;vre luftvejsinfektion) peger p&aring; IgA-nefropati &mdash; modsat PSGN-latens p&aring; 1-3 uger. '
+        + '<b>Dysuri + feber + flankesmerter</b> &rarr; pyelonefritis/UVI. '
+        + '<b>Akut flankesmerter + ev. krampagtige</b> &rarr; urolitiase.',
+      opts:[
+        { lead:'Palpabel purpura distalt p&aring; UE + artralgi/artrit + mavesmerter', hint:'IgA-vaskulit (HSP-nefrit) &mdash; hud + led + GI + nyrer-tetrade', next:'t_hsp' },
+        { lead:'Forudg&aring;ende streptokok-infektion (1-3 uger) + oliguri + HT + &oslash;dem', hint:'Cola-urin, nefritisk syndrom; &darr; C3', next:'t_psgn' },
+        { lead:'Makroh&aelig;maturi 1-2 dage efter &oslash;vre luftvejsinfektion (synpharyngitisk)', hint:'IgA-nefropati &mdash; persisterende mikroh&aelig;maturi imellem episoder', next:'t_iga' },
+        { lead:'Feber + dysuri/pollakisuri + flankesmerter', hint:'Pyelonefritis / cystitis', next:'t_uvi' },
+        { lead:'Akut, krampagtige flankesmerter &plusmn; udstr&aring;ling', hint:'Urolitiase &mdash; oftest med ledsagende kvalme', next:'t_sten' }
+      ]
+    },
+
+    /* ===== TERMINALER ===== */
+
+    t_hsp:{
+      dx:'IgA-vaskulit (Henoch-Sch&ouml;nleins purpura) med nefrit',
+      dxsub:'Hyppigste systemiske vaskulit hos b&oslash;rn. IgA-aflejring i kar.',
+      urgency:'haster',
+      findings:[
+        '<b>Hud:</b> palpabel purpura distalt p&aring; UE, nates, albueregion &mdash; deklivt (eneste b&oslash;rnesygdom med palpabel purpura)',
+        '<b>Led:</b> artralgi/artrit + periartikul&aelig;rt &oslash;dem (kn&aelig;, ankel) &mdash; ej intraartikul&aelig;rt',
+        '<b>GI:</b> mavesmerter, kvalme, opkast; 33 % har akut GI-bl&oslash;dning',
+        '<b>Nyrer:</b> glomerulonefrit (h&aelig;maturi &plusmn; proteinuri) der opst&aring;r EFTER hudsymptomerne (uger op til 10 uger efter debut)',
+        '<b>Frekvenser (Signe, suppl):</b> hud 100 %, led 82 %, GI 63 %, nyrer 40 % (1 % kronisk)',
+        '<b>Normale</b> trombocytter og koagulationsfaktorer &mdash; vigtigt for at skille fra ITP/meningokoksygdom'
+      ],
+      ddx:[
+        { d:'ITP', r:'lavt antal trombocytter, ej palpabel purpura (peteckier)' },
+        { d:'Meningokoksygdom', r:'akut p&aring;virket barn, hurtig progression, septisk' },
+        { d:'IgA-nefropati prim&aelig;r', r:'samme histologi men ingen ekstrarenale manifestationer' },
+        { d:'SLE/JIA-vaskulit', r:'sj&aelig;ldent hos b&oslash;rn; immunologiske markerer' }
+      ],
+      behandling:[
+        '<b>Indl&aelig;ggelse til observation af nyrefunktion</b> &mdash; nefritis udvikler sig i ugerne EFTER hudsymptomerne',
+        'Artrit/feber/udsl&aelig;t er <b>selvlimiterende</b> &rarr; symptomatisk (paracetamol &plusmn; NSAID, hvis ingen nyrep&aring;virkning)',
+        'Mild nyrep&aring;virkning (h&aelig;maturi &plusmn; sm&aring; periorbital&oslash;dem) &rarr; ingen specifik behandling, opf&oslash;lgning',
+        '<b>Sv&aelig;r nefrit</b> (nefrotisk niveau proteinuri, akut nyresvigt, HT) &rarr; <b>prednisolon &plusmn; cytostatika</b> (~70 % bliver raske)',
+        'Opf&oslash;lgning med <b>BT + urinstix i mindst 6 m&aring;neder</b>'
+      ],
+      ki:[
+        'NSAID undg&aring;s ved nyrep&aring;virkning',
+        'Vaccinationer udsk&aelig;dse mens b&oslash;rnet er i aktiv prednisolon-behandling'
+      ],
+      prognose:'Oftest komplet remission. 1 % udvikler kronisk nyresygdom. D&aring;rlige prognostiske faktorer: nefrotisk syndrom ved debut, akut nyresvigt, sv&aelig;r HT.',
+      caseRef:null
+    },
+
+    t_psgn:{
+      dx:'Post-streptokok glomerulonefritis (PSGN)',
+      dxsub:'Akut nefritisk syndrom 1-3 uger efter streptokok-infektion.',
+      urgency:'haster',
+      findings:[
+        '<b>Latens:</b> 1-3 uger efter streptokok-faryngitis; 3-6 uger efter streptokok-impetigo',
+        '<b>Demografi:</b> oftest b&oslash;rn 2-12 &aring;r, drenge hyppigere',
+        '<b>Nefritisk triade:</b> oliguri + HT + makroh&aelig;maturi (cola-urin) + ans&oslash;dem',
+        'Sub-nefrotisk proteinuri (under 3 g/d&oslash;gn)',
+        '<b>&darr; C3, normal C4</b> &mdash; klassisk paraklinisk fund',
+        'Positiv <b>ASOT / anti-DNAse B</b>; evt. positiv StrepA-test',
+        'Patogenese: immunkompleks-medieret inflammation; komplement-aktivering'
+      ],
+      ddx:[
+        { d:'IgA-nefropati', r:'synpharyngitisk (1-2 dage), normal C3' },
+        { d:'IgA-vaskulit nefrit', r:'palpabel purpura + led + GI; normal C3' },
+        { d:'MPGN', r:'lavt C3 og C4; ofte v&aelig;rre prognose' },
+        { d:'SLE-nefrit', r:'lav C3+C4, positive ANA, multisystem-symptomer' }
+      ],
+      behandling:[
+        '<b>Underst&oslash;ttende:</b> v&aelig;ske- og elektrolytbalance, BT-kontrol (diuretika, evt. ACE-h&aelig;mmer)',
+        'Saltrestriktion ved &oslash;dem',
+        '<b>Antibiotika (penicillin)</b> &mdash; eradikerer streptokok-b&aelig;rertilstand og forhindrer smittespredning. &Aelig;ndrer IKKE selve forl&oslash;bet af PSGN.',
+        'Indl&aelig;ggelse ved akut nyresvigt, sv&aelig;r HT, hypertensiv encefalopati eller akut hjertesvigt'
+      ],
+      ki:[
+        'Undg&aring; nefrotoksika (NSAID, aminoglykosider) i akut fase',
+        'V&aelig;ske-restriktion ved oliguri/&oslash;dem'
+      ],
+      prognose:'Oftest komplet remission hos b&oslash;rn (&gt; 95 %). C3 normaliseres efter 6-8 uger. Persisterende lav C3 &gt; 12 uger &rarr; mistanke om MPGN &rarr; biopter.',
+      caseRef:null
+    },
+
+    t_iga:{
+      dx:'IgA-nefropati (prim&aelig;r)',
+      dxsub:'Mesangio-proliferativ GN med IgA-nedslag. Synpharyngitisk h&aelig;maturi.',
+      urgency:'rolig',
+      findings:[
+        '<b>Klinik:</b> oftest makroskopisk h&aelig;maturi <b>1-2 dage efter</b> &oslash;vre luftvejsinfektion (synpharyngitisk &mdash; modsat PSGNs 1-3 ugers latens)',
+        '<b>Mellem episoder:</b> persisterende mikroh&aelig;maturi',
+        'Proteinuri ofte til stede, men typisk sub-nefrotisk',
+        '<b>Normal C3</b> (modsat PSGN)',
+        'Diagnose stilles ved <b>nyrebiopsi</b> &mdash; mesangio-proliferativ GN med IgA-aflejring',
+        'Sekund&aelig;re former (samme histologi): HSP-nefrit, leversygdom, IBD, psoriasis, HIV'
+      ],
+      ddx:[
+        { d:'PSGN', r:'1-3 ugers latens, lav C3, positiv ASOT' },
+        { d:'IgA-vaskulit nefrit', r:'samtidig hud/led/GI-symptomer' },
+        { d:'Alport syndrom', r:'familieanamnese, sensoriel d&oslash;vhed, &oslash;jeforandringer' },
+        { d:'Tynd basalmembran', r:'isoleret mikroh&aelig;maturi i familie; god prognose' }
+      ],
+      behandling:[
+        '<b>BT-kontrol</b> med <b>ACE-h&aelig;mmer</b> &mdash; m&aring;l proteinuri-reduktion',
+        '<b>Prednisolon</b> ved sv&aelig;r affektion (proteinuri &gt; 1 g/d&oslash;gn vedvarende)',
+        'Evt. <b>immunsuppressiva</b> ved progressiv sygdom',
+        'L&aring;ngsigtet opf&oslash;lgning &mdash; pediatrisk nefrolog'
+      ],
+      ki:[
+        'Undg&aring; nefrotoksika (NSAID)',
+        'Live-virus-vacciner mens p&aring; immunsuppressiv behandling'
+      ],
+      prognose:'Variabel. ~25-30 % udvikler kronisk nyresygdom over 20-30 &aring;r. D&aring;rlige prognostiske faktorer: vedvarende proteinuri, HT, p&aring;virket nyrefunktion ved debut.',
+      caseRef:null
+    },
+
+    t_uvi:{
+      dx:'Urinvejsinfektion (cystitis eller pyelonefritis)',
+      dxsub:'H&aelig;maturi som ledsage-fund til UVI &mdash; oftest cystitis hos st&oslash;rre piger.',
+      urgency:'haster',
+      findings:[
+        '<b>Cystitis:</b> dysuri, pollakisuri, urge, evt. let makroh&aelig;maturi, ej feber',
+        '<b>Pyelonefritis:</b> feber + flankesmerter + opkast + alm&aelig;np&aring;virket',
+        'B&oslash;rn &lt; 2 &aring;r: uspecifik klinik (feber, opkast, irritabilitet, tr&aelig;thed, prolongeret ikterus, sepsis)',
+        '<b>Urinstix:</b> positiv leukocyt-esterase + nitrit',
+        '<b>Urin-dyrkning:</b> E. coli 90 %; v&aelig;kst &gt; 10&#x2075; (MSU pige) / &gt; 10&#x2074; (MSU dreng) / enhver v&aelig;kst (suprapubisk)',
+        'Forh&oslash;jet CRP/leukocytter ved pyelonefritis',
+        '<b>F&aelig;lde:</b> Proteus under forhuden hos sm&aring; drenge &rarr; falsk positiv nitrit'
+      ],
+      ddx:[
+        { d:'Pyelonefritis', r:'feber + flankesmerter; v&aelig;rdig IV ved &lt; 6 mdr, kendt CAKUT eller sepsis' },
+        { d:'Asymptomatisk bakteriuri', r:'positiv dyrkning uden symptomer; behandles ikke' },
+        { d:'Urolitiase', r:'krampagtige smerter, evt. UL/lavdosis CT' },
+        { d:'GN-debut med UVI som trigger', r:'tjek BT, proteinuri, kreatinin' }
+      ],
+      behandling:[
+        '<b>Cystitis:</b> bakteriostatisk antibiotika &mdash; trimetoprim eller nitrofurantoin &mdash; 5-7 dage (aldrig &lt; 5 dage hos b&oslash;rn)',
+        '<b>Pyelonefritis &gt; 6 mdr + ingen CAKUT/sepsis:</b> peroral amoxicillin/clavulansyre eller pivmecillinam i 10 dage',
+        '<b>Pyelonefritis &lt; 6 mdr ELLER kendt CAKUT ELLER sepsis:</b> IV ampicillin + gentamycin',
+        '<b>Bloddyrkning F&Oslash;R AB</b> ved mistanke om urosepsis',
+        'Skift PO &harr; IV efter klinik + resistens-svar',
+        'Behandl <b>obstipation</b> aggressivt parallelt &mdash; vigtig faktor for recidiv'
+      ],
+      ki:[
+        'Trimetoprim har ringe v&aelig;vspenetrans &rarr; uegnet ved pyelonefritis',
+        'Aminoglykosid kr&aelig;ver renal monitorering, undg&aring;s ved kendt nyrep&aring;virkning'
+      ],
+      prognose:'Cystitis g&aring;r over med behandling. <b>Recidiv-risiko:</b> CAKUT, VUR, obstipation, dysfunktionel bl&aelig;re. Efter 2. UVI hos pige eller 1. UVI hos dreng &rarr; udredning (VVS, uroflow, residual, UL, MCU).',
+      caseRef:'uvi_cakut'
+    },
+
+    t_sten:{
+      dx:'Urolitiase (sten i urinvejene)',
+      dxsub:'Sj&aelig;ldnere hos b&oslash;rn end voksne; ofte associeret med metabolisk &aring;rsag.',
+      urgency:'haster',
+      findings:[
+        '<b>Klinik:</b> akut, krampagtige flankesmerter &plusmn; udstr&aring;ling til lyske/scrotum/lab',
+        'Kvalme, opkast',
+        '<b>H&aelig;maturi</b> (mikro eller makro) i &gt; 90 %',
+        'Evt. dysuri, feber (hvis kompliceret med UVI ovenp&aring;)',
+        '<b>UL af urinvejene</b> som f&oslash;rste-linje billeddiagnostik &mdash; viser sten + ledsagende hydronefrose',
+        'Evt. lavdosis CT ved tvivl',
+        'Udredning for metabolisk &aring;rsag: <b>hyperkalciuri</b> (idiopatisk eller D-vitamin-overskud), hyperoxaluri, cystinuri, hyperurikæmi'
+      ],
+      ddx:[
+        { d:'Pyelonefritis', r:'feber dominerer; ikke krampagtige smerter' },
+        { d:'Appendicit', r:'kvalme + smerter h&oslash;jre fossa; lokaliseret &oslash;mhed' },
+        { d:'Adn&aelig;k&iacute;t (ovarietorsion m.m.)', r:'pige; gynud + UL bekken' },
+        { d:'GN med smerter', r:'sj&aelig;ldent; HT + &oslash;dem' }
+      ],
+      behandling:[
+        '<b>Akut:</b> smertelindring (paracetamol &plusmn; NSAID, evt. opioid), v&aelig;sketerapi',
+        'Hovedparten af sm&aring; sten &lt; 5 mm passerer spontant',
+        '<b>Stort sten / obstruktion / komplicerende UVI</b> &rarr; urolog: ESWL eller endoskopisk fjernelse',
+        'Udredning + behandling af metabolisk &aring;rsag (di&aelig;t, citrat, evt. thiazid mod hyperkalciuri)',
+        '&Oslash;get v&aelig;skeindtag (m&aring;l urin-output 2 ml/kg/t)'
+      ],
+      ki:[
+        'NSAID kontraindiceret ved nyrep&aring;virkning',
+        'V&aelig;skeoverlast ved kompromitteret nyrefunktion'
+      ],
+      prognose:'God ved sm&aring; sten + behandlet metabolisk &aring;rsag. Recidiv-risiko 30-50 % uden &aelig;tiologisk udredning og forebyggelse.',
+      caseRef:null
+    },
+
+    t_benign:{
+      dx:'Benign isoleret mikroh&aelig;maturi',
+      dxsub:'Isoleret persisterende mikroh&aelig;maturi uden GN-tegn. Inkluderer famili&aelig;r tynd basalmembran og motions-induceret h&aelig;maturi.',
+      urgency:'rolig',
+      findings:[
+        'Persisterende mikroh&aelig;maturi (verificeret p&aring; mindst 2 separate pr&oslash;ver)',
+        '<b>Ingen</b> proteinuri (urin protein/kreatinin-ratio normal)',
+        '<b>Ingen</b> hypertension',
+        '<b>Ingen</b> erytrocytcylindre p&aring; mikroskopi',
+        'Normal nyrefunktion (kreatinin, eGFR)',
+        'Normalt komplement, normal ASOT',
+        'Familieanamnese: ofte famili&aelig;r tynd basalmembran-sygdom hos for&aelig;ldre/s&oslash;skende'
+      ],
+      ddx:[
+        { d:'Famili&aelig;r tynd basalmembran', r:'arvelig; god prognose; samme klinik' },
+        { d:'Alport syndrom', r:'sensoriel d&oslash;vhed, &oslash;jeforandringer (lenticonus), familiehistorie med nyresvigt &mdash; m&aring; udelukkes' },
+        { d:'IgA-nefropati (tidlig)', r:'episoder af makroh&aelig;maturi efter &Oslash;LI; kr&aelig;ver opf&oslash;lgning' },
+        { d:'Idiopatisk hyperkalciuri', r:'urin-kalcium/kreatinin-ratio &uarr;; risiko for sten' },
+        { d:'Motions-induceret h&aelig;maturi', r:'forsvinder ved hvile; ses hos slanke teenagere' }
+      ],
+      behandling:[
+        '<b>Ingen specifik behandling</b>',
+        '&Aring;rlig opf&oslash;lgning med BT + urinstix + kreatinin',
+        'Udelukke Alport hvis familieanamnese med d&oslash;vhed eller tidlig nyresvigt: audiometri, &oslash;jenunders&oslash;gelse, evt. genetisk udredning',
+        'Tjek urin-kalcium/kreatinin-ratio (hyperkalciuri)',
+        'Informer familien om at det er en benign tilstand &mdash; men opf&oslash;lgning anbefales for at fange et evt. skiftende m&oslash;nster'
+      ],
+      ki:[
+        'Ingen specifikke'
+      ],
+      prognose:'Udm&aelig;rket. Famili&aelig;r tynd basalmembran giver normalt ikke nyresvigt. &Aelig;ndring i klinik (proteinuri, HT, faldende eGFR) &rarr; revurd&eacute;r DDX.',
+      caseRef:null
+    }
+
+  }
 }
 ];
 

@@ -61,6 +61,7 @@ Tracks the status of every note card in `notesData`.
 | neonatal_resp_distress | Respiratorisk distress hos den nyfødte | `[D]` | New PEDS flow tree. 5 terminaler (RDS / TTN / MAS / pneumoni-sepsis / pneumothorax). caseRef→praematur (RDS). GZ-slides + neonatal DDX. Awaiting verification. |
 | neonatal_infektion | Infektionsmistanke hos det nyfødte barn | `[D]` | New PEDS flow tree. 4 terminaler (GBS-sepsis EOS / GBS-meningitis EOS / LOS / HSV). caseRef→neonatal_infektion. GZ+RMP-slides + DPS HSV-retningslinje. Awaiting verification. |
 | hjertesygdom_barn | Mistanke om hjertesygdom hos barnet | `[D]` | New PEDS flow tree. 7 terminaler (vsd / tga / tof / ductus_afh_cyanose [PA+HLHS] / coarctatio / svt / fysiologisk_mislyd). Start node = 4 præsentationsformer. caseRef→hjertebarn. HA-slides + Excel + S2018. Awaiting verification. |
+| haematuri_barn | Hæmaturi hos barn | `[D]` | New PEDS flow tree. 6 terminaler (PSGN / HSP-nefrit / IgA-nefropati / UVI / urolitiase / benign isoleret mikrohæmaturi). caseRef→uvi_cakut. PW-slides + Excel + Signe (suppl). Awaiting verification. |
 
 ---
 
@@ -166,3 +167,4 @@ Files that would unlock blocked topics:
 | 2026-06-11 | flow:hjertesygdom_barn | New PEDS flow tree (mistanke om hjertesygdom); 7 terminaler omkring de 4 præsentationsformer; vsd-terminal → case hjertebarn. |
 | 2026-06-12 | peds_6 | New note — Nyre- og urinvejssygdomme hos børn fra PW-slides (autoritativ) + Excel + V2022. Sjette PEDS note; dækker nyrefunktion/AKI/CKD/HT, nefrotisk syndrom, GN+HSP+hæmaturi, CAKUT-spektret, UVI+vandladning. |
 | 2026-06-12 | case:uvi_cakut | New PEDS case (UVI/pyelonefritis hos 8-årig pige med CAKUT, modelleret efter V2022 Pyelonefritis skriftlig); Pædiatri-card spliced; cross-linked to peds_6. |
+| 2026-06-12 | flow:haematuri_barn | New PEDS flow tree (hæmaturi-DDX); 6 terminaler; caseRef→uvi_cakut. Lukker tab 3 (GN/hæmaturi) i peds_6 ind i en symptomudredning. |
