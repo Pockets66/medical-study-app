@@ -90,6 +90,7 @@ Tracks the status of every note card in `notesData`.
 | hjertebarn | Hjertebarn (CHD med inkompensation) | `[D]` | New case, 6 steps. S2018 Alberte-VSD som skabelon + HA-slides + Excel. Cross-linked to peds_5. Awaiting verification. |
 | uvi_cakut | UVI/pyelonefritis hos pige med CAKUT | `[D]` | New case, 6 steps. V2022 Pyelonefritis (skriftlig) som template + PW-slides UVI-block. Cross-linked to peds_6. Awaiting verification. |
 | hsp_nefrit | IgA-vaskulit (HSP) med nefrit hos pige | `[D]` | New case, 6 steps. PW-slides 16-18 (autoritativ) + Signe (suppl, frekvenser). Cross-linked to peds_6 + haematuri_barn-flow (t_hsp). Awaiting verification. |
+| nefrotisk_sndr | Nefrotisk syndrom hos småbarn | `[D]` | New case, 6 steps. PW-slides 13-14 + ISKDC-protokol (flagget). Klassisk MCD/SSNS-narrativ med relaps. Cross-linked to peds_6. Awaiting verification. |
 
 ## Backlog — topics not yet in the app
 
@@ -170,3 +171,4 @@ Files that would unlock blocked topics:
 | 2026-06-12 | case:uvi_cakut | New PEDS case (UVI/pyelonefritis hos 8-årig pige med CAKUT, modelleret efter V2022 Pyelonefritis skriftlig); Pædiatri-card spliced; cross-linked to peds_6. |
 | 2026-06-12 | flow:haematuri_barn | New PEDS flow tree (hæmaturi-DDX); 6 terminaler; caseRef→uvi_cakut. Lukker tab 3 (GN/hæmaturi) i peds_6 ind i en symptomudredning. |
 | 2026-06-12 | case:hsp_nefrit | New PEDS case (IgA-vaskulit med nefrit, klassisk PW-slide-narrativ); cross-linked to peds_6 + haematuri_barn t_hsp. |
+| 2026-06-12 | case:nefrotisk_sndr | New PEDS case (idiopatisk nefrotisk syndrom hos 3-årig dreng; MCD-præsentation; ISKDC-prednisolon; relaps); Pædiatri-card spliced; cross-linked to peds_6. |

@@ -393,6 +393,13 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
       <div class="case-meta"><span class="difficulty diff-high"></span> H&oslash;j prioritet &middot; PW-slides 16-18</div>
       <span class="arrow-icon">&rarr;</span>
     </div>
+        <div class="case-card" onclick="openCase('nefrotisk_sndr')">
+      <span class="specialty-badge badge-paed">P&aelig;diatri</span>
+      <h3>Nefrotisk syndrom hos sm&aring;barn</h3>
+      <p>3-&aring;rig dreng med periorbitalt &oslash;dem, ISKDC-prednisolon-protokol og relaps-h&aring;ndtering</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> H&oslash;j prioritet &middot; PW-slides 13-14</div>
+      <span class="arrow-icon">&rarr;</span>
+    </div>
 
 <p class="section-label" style="margin-top:28px">Gynækologi</p>
   <div class="case-grid">
@@ -3246,6 +3253,179 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   <div class="case-nav"><button class="back-btn" onclick="closeCase()">&larr; Tilbage til oversigt</button></div>
 </div>
 
+<div id="case-nefrotisk_sndr" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">&larr; Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">P&aelig;diatri</span>
+    <h2>Nefrotisk syndrom hos sm&aring;barn</h2>
+    <p><b>Case (PW-slides 13-14 + ISKDC-protokol):</b> Lukas, 3 &aring;r. For 2 dage siden begyndte familien at l&aelig;gge m&aelig;rke til "h&aelig;vede &oslash;jne" om morgenen. Egen l&aelig;ge mente initialt allergisk reaktion. Nu ogs&aring; let h&aelig;vede ben + sk&aelig;mmende urin (skummende). Lukas er lidt sl&oslash;v men ej akut syg. BT 95/55 mmHg, temperatur 37,0&deg;C. Mor n&aelig;vner en let halsbet&aelig;ndelse for ~10 dage siden.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="nef-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="nef-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-nef-1">
+    <div class="step-header" onclick="toggleStep('nef',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">1) Hvad sp&oslash;rger du efter i anamnesen, og hvad ser du efter objektivt?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <b>Anamnese:</b><ul>
+        <li>Forudg&aring;ende infektion (typisk &Oslash;LI 1-2 uger forinden &mdash; her halsbet&aelig;ndelse)</li>
+        <li>Allergier (skiller fra angio&oslash;dem)</li>
+        <li>Familieanamnese for nyresygdom, kongenitte syndromer</li>
+        <li>Tidligere &oslash;dem-episoder eller hospitalsindl&aelig;ggelser</li>
+        <li>Hyppighed/farve af vandladning &mdash; <b>skummende urin = proteinuri</b></li>
+        <li>V&aelig;gtudvikling sidste uger</li>
+      </ul>
+      <b>Objektivt:</b><ul>
+        <li><b>BT &mdash; skal v&aelig;re NORMALT</b> (Lukas har 95/55). Vigtig forskel fra akut GN, hvor BT er forh&oslash;jet!</li>
+        <li><b>Periorbitalt &oslash;dem</b> om morgenen &mdash; forveksles ofte med allergisk reaktion (klassisk f&aelig;lde)</li>
+        <li>Progredierer typisk til ankel-, scrotum/labial- og senere ascitisk/anasarca-&oslash;dem</li>
+        <li><b>V&aelig;gtsammenligning</b> &mdash; ofte +1-3 kg over baseline (v&aelig;skeretention)</li>
+        <li>Auskult&eacute;r lunger (overv&aelig;ske &rarr; pleura-eksudat)</li>
+        <li>Abdomen: ascites? Hepatomegali?</li>
+        <li>Alm&aelig;ntilstand: typisk ej akut p&aring;virket (modsat sepsis/akut GN)</li>
+      </ul>
+      <div class="answer-highlight"><b>Klinisk f&aelig;lde:</b> periorbitalt &oslash;dem om morgenen hos sm&aring;barn fortolkes ofte som allergisk reaktion. Manglende respons p&aring; antihistamin + progression over dage &rarr; t&aelig;nk nefrotisk syndrom og <b>tag urinstix</b>.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-nef-2">
+    <div class="step-header" onclick="toggleStep('nef',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">2) Hvad er definitions-triaden, og hvilke pr&oslash;ver bestiller du?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <b>Definitions-triade ved nefrotisk syndrom:</b><ul>
+        <li><b>Sv&aelig;r proteinuri</b> &mdash; 3+ p&aring; urinstix, eller protein/kreatinin-ratio &gt; 200 mg/mmol, eller &gt; 1000 mg/m&sup2;/d&oslash;gn</li>
+        <li><b>Udtalt &oslash;dem</b></li>
+        <li><b>Hypoalbumin&aelig;mi</b> (s-albumin &lt; 25 g/L)</li>
+      </ul>
+      <b>Pr&oslash;ver:</b><ul>
+        <li><b>Urinstix</b> &mdash; protein 3-4+</li>
+        <li><b>Urin protein/kreatinin-ratio</b> eller d&oslash;gnurin &mdash; kvantific&eacute;r proteintab</li>
+        <li><b>Urin-mikroskopi</b> &mdash; erytrocytcylindre? (Hvis ja &rarr; tyder p&aring; GN i stedet)</li>
+        <li><b>Blodpr&oslash;ver:</b> albumin (lav), kreatinin (initialt normal), kolesterol (h&oslash;j), <b>komplement C3/C4</b> (normalt ved MCD; lavt ved MPGN/SLE/PSGN), ASOT, evt. ANA</li>
+        <li><b>UL af nyrer</b> &mdash; udeluk strukturel sygdom + baseline</li>
+        <li><b>Nyrebiopsi: nej</b> initialt ved klassisk pr&aelig;sentation hos 1-6 &aring;rige &mdash; biopsi reserveres til SRNS, atypisk alder, makroh&aelig;maturi, p&aring;virket nyrefunktion, eller lavt komplement</li>
+      </ul>
+      <div class="answer-warn">Lavt komplement (C3 og/eller C4) ved &oslash;dem &rarr; <b>IKKE simpel MCD-nefrotisk</b> &mdash; t&aelig;nk MPGN, SLE-nefrit eller PSGN. Disse skal bioptereres.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-nef-3">
+    <div class="step-header" onclick="toggleStep('nef',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">3) Resultaterne kommer: stix 4+ protein, s-albumin 16 g/L, s-kreatinin 32 &mu;mol/L (normal for alder), s-kolesterol 8,5 mmol/L, C3 + C4 normale, ASOT negativ. Hvad er din diagnose, og hvilken histologi forventer du?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <b>Diagnose:</b> Idiopatisk nefrotisk syndrom &mdash; klassisk pr&aelig;sentation:<ul>
+        <li>Alder 1-6 &aring;r (peak 2-3 &aring;r)</li>
+        <li>Periorbitalt &oslash;dem som debutsymptom</li>
+        <li>Normalt BT</li>
+        <li>Normalt komplement</li>
+        <li>Ingen makroh&aelig;maturi</li>
+        <li>Normal nyrefunktion</li>
+      </ul>
+      <b>Histologi:</b> I &gt; <b>80 %</b> af tilf&aelig;lde hos 1-6 &aring;rige er det <b>Minimal Change Disease (MCD)</b>:<ul>
+        <li>Lysmikroskopi: normale glomeruli</li>
+        <li>Elektronmikroskopi: <b>foot process effacement</b> p&aring; podocytterne</li>
+        <li>Immunfluorescens: oftest negativ</li>
+        <li>~90 % af MCD er <b>steroid-sensitivt (SSNS)</b></li>
+      </ul>
+      <b>Patofysiologi:</b> skade p&aring; podocytter &rarr; tab af albumin &rarr; &darr; onkotisk tryk &rarr; &oslash;dem. Lever-kompensation &uarr; lipoprotein-syntese &rarr; hyperlipid&aelig;mi. Tab af antitrombin-III + IgG &rarr; trombo-emboli- og infektionsrisiko.
+      <div class="answer-highlight">Lukas behandles uden biopsi &mdash; ren klinisk diagnose. Biopsi kommer kun p&aring; tale hvis han ikke responderer p&aring; prednisolon (SRNS).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-nef-4">
+    <div class="step-header" onclick="toggleStep('nef',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">4) Beskriv behandlingen &mdash; b&aring;de specifik og underst&oslash;ttende.</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <b>Prednisolon-protokol (ISKDC-standard &mdash; verific&eacute;r mod lokal):</b><ul>
+        <li><b>60 mg/m&sup2;/d&oslash;gn</b> i 4-6 uger (max 80 mg/d&oslash;gn)</li>
+        <li>Derefter aftrapning: <b>40 mg/m&sup2; hver 2. dag</b> i 4-6 uger</li>
+        <li><b>Evaluering ved 4 uger</b> &mdash; remission (&lt; trace protein p&aring; stix i 3 dage) &rarr; SSNS</li>
+      </ul>
+      <b>Underst&oslash;ttende behandling:</b><ul>
+        <li><b>Saltrestriktion</b> + moderat v&aelig;skerestriktion</li>
+        <li><b>Diuretika</b> (furosemid) ved sv&aelig;rt &oslash;dem &mdash; men forsigtig: kan udl&oslash;se hypovol&aelig;mi</li>
+        <li><b>Albumin-infusion</b> ved sv&aelig;r hypoalbumin&aelig;mi (&lt; 15 g/L) + symptomgivende &oslash;dem (ascites, sv&aelig;rt scrotum) eller intravasal hypovol&aelig;mi</li>
+        <li><b>Pneumokok-vaccination</b> + overvej penicillin-profylakse mens i aktiv fase</li>
+        <li><b>LMWH</b> ved sv&aelig;r hypoalbumin&aelig;mi (trombo-emboli-risiko, s&aelig;rligt s-albumin &lt; 20 g/L)</li>
+        <li><b>Hjemme-urinstix p&aring; morgenurin</b> &mdash; familien instrueres i tidlig relaps-detektion</li>
+        <li>Calcium + vitamin D-tilskud under prednisolon (knogleprotektion)</li>
+      </ul>
+      <div class="answer-warn"><b>Sourcing-flag:</b> ISKDC-doseringen (60 mg/m&sup2;) er international standard og er ikke specificeret p&aring; PW-slides. <b>Verific&eacute;r mod lokal protokol</b> &mdash; nogle steder bruger anderledes intensitet/varighed.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-nef-5">
+    <div class="step-header" onclick="toggleStep('nef',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">5) Hvilke akutte komplikationer skal du v&aelig;re opm&aelig;rksom p&aring; i den aktive fase?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <table class="nst">
+        <tr><th>Komplikation</th><th>Mekanisme</th><th>H&aring;ndtering</th></tr>
+        <tr><td><b>Pneumokok-peritonit</b></td><td>Tab af IgG + komplement &rarr; nedsat opsonisering. Klassisk hos nefrotisk syndrom!</td><td>Lav t&aelig;rskel for bloddyrkning + paracentese + bredspektret AB. Pneumokok-vacc.</td></tr>
+        <tr><td><b>Trombo-emboli</b> (DVT, sinus-venetrombose, lungeemboli)</td><td>Tab af antitrombin-III + andre antikoag. Hyperviskositet.</td><td>LMWH-profylakse ved s-albumin &lt; 20 g/L. V&aelig;r opm&aelig;rksom p&aring; krampeanfald (sinus-venetrombose).</td></tr>
+        <tr><td><b>Hypovol&aelig;mi/shock</b></td><td>Tab af onkotisk tryk + diuretika &rarr; intravasal hypovol&aelig;mi trods &oslash;dem</td><td>Vurder intravasal status (kapill&aelig;rf&aelig;ldning, BT, puls, urin Na) F&Oslash;R h&oslash;jdosis diuretika. Albumin-infusion &plusmn; v&aelig;ske.</td></tr>
+        <tr><td><b>Akut nyreskade</b></td><td>Prerenal pga hypovol&aelig;mi, eller akut tubul&aelig;r nekrose</td><td>F&oslash;lg kreatinin t&aelig;t; juster diuretika.</td></tr>
+        <tr><td>Andre infektioner</td><td>Generelt nedsat immunkompetens</td><td>Hold lav t&aelig;rskel for AB; pneumokok + influenza-vacc.</td></tr>
+      </table>
+      <div class="answer-highlight">Klassikeren til eksamen: <b>3-&aring;rig med nefrotisk syndrom udvikler feber + abdominalsmerter + ascites</b> &rarr; t&aelig;nk pneumokok-peritonit &rarr; paracentese + AB.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-nef-6">
+    <div class="step-header" onclick="toggleStep('nef',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">6) 6 uger senere er Lukas i komplet remission. 3 m&aring;neder efter f&aring;r han en ny &Oslash;LI og urinstix viser pludselig igen 4+ protein. Hvad nu &mdash; og hvorn&aring;r begynder du at t&aelig;nke alternativ behandling?</div></div>
+      <span class="reveal-indicator">&darr;</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <b>Definition relaps:</b> 4+ protein p&aring; stix i 3 p&aring; hinanden f&oslash;lgende morgen-urinpr&oslash;ver hos en patient i tidligere remission.<br><br>
+      <b>Behandling af relaps:</b><ul>
+        <li>Prednisolon-genoptag (typisk kortere kur end f&oslash;rste gang &mdash; daglig dosis indtil remission + 3 dage, derefter alternerende aftrapning)</li>
+      </ul>
+      <b>Hvorn&aring;r overvejes steroid-sparende behandling?</b><ul>
+        <li><b>Frequent relapser</b>: &ge; 2 relapser inden for 6 m&aring;neder efter initial respons, eller &ge; 4/12 m&aring;neder</li>
+        <li><b>Steroid-afh&aelig;ngig</b>: relaps under aftrapning eller inden for 14 dage efter ophr&oslash;r</li>
+        <li><b>Steroid-toxicitet</b>: v&aelig;ksth&aelig;mning, cushingoidt udseende, osteopeni, gr&aring; st&aelig;r, BT-stigning, adf&aelig;rds&aelig;ndringer</li>
+      </ul>
+      <b>Steroid-sparende alternativer:</b><ul>
+        <li>Calcineurin-h&aelig;mmere (ciclosporin, tacrolimus)</li>
+        <li>Mycophenolat mofetil (MMF)</li>
+        <li>Rituximab (B-celle-deplet&aring;tion &mdash; effektiv ved frequent relapser/steroid-afh&aelig;ngighed)</li>
+        <li>Cyclophosphamid (mindre brugt, alkylerende)</li>
+      </ul>
+      <b>SRNS (steroid-resistent nefrotisk syndrom):</b><ul>
+        <li>Definition: <b>Ingen remission efter 4-6 ugers fuld prednisolon</b></li>
+        <li>Histologi: typisk <b>FSGS</b> (focal segmental glomerulosclerose) eller andre &mdash; <b>biopsi p&aring;kr&aelig;vet</b></li>
+        <li>Prognose v&aelig;rre &mdash; risiko for kronisk nyresvigt</li>
+        <li>Behandling: calcineurin-h&aelig;mmere + ACE-h&aelig;mmer; transplantation kan komme p&aring; tale</li>
+      </ul>
+      <b>Atypiske tr&aelig;k der b&oslash;r udl&oslash;se biopsi tidligere:</b><ul>
+        <li>Alder &lt; 1 &aring;r (kongenit) eller &gt; 12 &aring;r</li>
+        <li>Makroskopisk h&aelig;maturi</li>
+        <li>Hypertension</li>
+        <li>P&aring;virket nyrefunktion (&uarr; kreatinin)</li>
+        <li>Lavt komplement</li>
+        <li>SRNS</li>
+      </ul>
+      <div class="answer-warn"><b>Husk eksamenstrappen:</b> SSNS &rarr; frequent relapser/steroid-afh&aelig;ngig &rarr; steroid-sparende &rarr; SRNS &rarr; biopsi &rarr; FSGS/andre histologier &rarr; calcineurin-h&aelig;mmere. <b>SRNS er den st&oslash;rste prognostiske vandvej.</b></div>
+    </div></div>
+  </div>
+
+  <div class="related-notes">
+    <span class="rl-label">Relaterede noter:</span>
+    <button onclick="goToNote('peds_6')" class="rl-link">peds_6 &middot; Nyre- og urinvejssygdomme hos b&oslash;rn</button>
+  </div>
+  <div class="case-nav"><button class="back-btn" onclick="closeCase()">&larr; Tilbage til oversigt</button></div>
+</div>
+
 <!-- === KOMPLICEREDE FØDSLER === -->
 <div id="case-kompfodsel" class="case-pane" style="display:none">
   <div class="case-header">
@@ -3356,7 +3536,7 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
 <footer>K8 OSCE Studieguide · Kvinde, Mor, Barn · SDU · Baseret på eksamenssæt F23–F25 + E23–E24</footer>
 
 <script>
-var totalSteps = { uvc:6, hsp:6, pe:6, anti:5, blod:5, endo:5, uro:5, tidlig:4, canc:4, pid:3, rep:4, hrt:4, svang:4, prae:4, tvil:4, vaekst:4, gdm:4, pterm:4, bars:4, vir:3, asf:3, komp:2, norm:2 };
+var totalSteps = { uvc:6, hsp:6, nef:6, pe:6, anti:5, blod:5, endo:5, uro:5, tidlig:4, canc:4, pid:3, rep:4, hrt:4, svang:4, prae:4, tvil:4, vaekst:4, gdm:4, pterm:4, bars:4, vir:3, asf:3, komp:2, norm:2 };
 var revealed = {};
 for (var k in totalSteps) revealed[k] = {};
 
@@ -4754,7 +4934,7 @@ var notesData = [
     ]}
 
   ],
-  caseRefs:['uvi_cakut','hsp_nefrit']
+  caseRefs:['uvi_cakut','hsp_nefrit','nefrotisk_sndr']
 }
 
 ];
