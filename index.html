@@ -379,6 +379,13 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
       <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · S2018, HA-slides</div>
       <span class="arrow-icon">→</span>
     </div>
+        <div class="case-card" onclick="openCase('uvi_cakut')">
+      <span class="specialty-badge badge-paed">P&aelig;diatri</span>
+      <h3>UVI/pyelonefritis hos pige med CAKUT</h3>
+      <p>8-&aring;rig pige med 2. febrile UVI og kendt CAKUT (hydronefrose) &mdash; symptomer, diagnostik, behandling og udredning</p>
+      <div class="case-meta"><span class="difficulty diff-high"></span> H&oslash;j prioritet &middot; V2022, PW-slides</div>
+      <span class="arrow-icon">&rarr;</span>
+    </div>
 
 <p class="section-label" style="margin-top:28px">Gynækologi</p>
   <div class="case-grid">
@@ -2945,6 +2952,150 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   </div>
 </div>
 
+<div id="case-uvi_cakut" class="case-pane" style="display:none;">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">&larr; Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">P&aelig;diatri</span>
+    <h2>UVI/pyelonefritis hos pige med CAKUT</h2>
+    <p><b>Case (V2022 Pyelonefritis, skriftlig):</b> Anna, 8 &aring;r. Tidligere kendt med h&oslash;jresidig hydronefrose (CAKUT). Indl&aelig;gges med h&oslash;j feber (39,2&deg;C), opkast og flankesmerter. Det er hendes <b>2. febrile UVI</b> p&aring; 1 &aring;r.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="uvc-progress" style="width:0%"></div></div>
+<p class="progress-label" id="uvc-progress-label">0 / 6 afsløret</p>
+
+<div class="step-card" id="step-uvc-1">
+  <div class="step-header" onclick="toggleStep('uvc',1)">
+    <div><div class="step-num">Trin 1</div><div class="step-q">1) Hvilke symptomer p&aring; UVI forventer du hos en pige p&aring; 8 &aring;r? (n&aelig;vn mindst 5)</div></div>
+    <span class="reveal-indicator">&darr;</span>
+  </div>
+  <div class="step-answer"><div class="answer-body">
+    <ul>
+      <li><b>Dysuri</b> (svie ved vandladning)</li>
+      <li><b>Pollakisuri</b> (hyppig vandladning)</li>
+      <li><b>Urge</b> (tr&aelig;ngning)</li>
+      <li><b>Pludselig inkontinens</b></li>
+      <li><b>Mave- eller flankesmerter</b></li>
+      <li><b>Feber + tr&aelig;thed</b></li>
+      <li>Kvalme, nedsat appetit</li>
+      <li>Makroskopisk h&aelig;maturi</li>
+      <li>Feberkramper</li>
+      <li>(Ildelugtende urin &mdash; mindre p&aring;lidelig)</li>
+    </ul>
+    <div class="answer-highlight">Til sammenligning er symptomerne hos b&oslash;rn &lt; 2 &aring;r meget uspecifikke: feber, opkast, irritabilitet, nedsat f&oslash;deindtag/v&aelig;gttab, prolongeret ikterus, sepsis, feberkramper. <b>Jo yngre alder, des mere uspecifikke!</b></div>
+  </div></div>
+</div>
+
+<div class="step-card" id="step-uvc-2">
+  <div class="step-header" onclick="toggleStep('uvc',2)">
+    <div><div class="step-num">Trin 2</div><div class="step-q">2) Ved febril UVI &mdash; hvilke blodpr&oslash;ver forventer du er abnorme?</div></div>
+    <span class="reveal-indicator">&darr;</span>
+  </div>
+  <div class="step-answer"><div class="answer-body">
+    <ul>
+      <li><b>Leukocytter</b> &mdash; forh&oslash;jet (med neutrofilocytose)</li>
+      <li><b>Neutrofilocytter</b> &mdash; forh&oslash;jet</li>
+      <li><b>CRP</b> &mdash; forh&oslash;jet</li>
+      <li><b>Trombocytter</b> &mdash; forh&oslash;jet (akut-fase-reaktion)</li>
+      <li><b>Kreatinin</b> &mdash; kan v&aelig;re forh&oslash;jet (s&aelig;rligt ved CAKUT eller dehydrering)</li>
+      <li><b>V&aelig;kst i bloddyrkning</b> ved urosepsis</li>
+    </ul>
+    <div class="answer-highlight">Husk: <b>bloddyrkning F&Oslash;R AB-behandling</b> ved mistanke om pyelonefritis/urosepsis.</div>
+  </div></div>
+</div>
+
+<div class="step-card" id="step-uvc-3">
+  <div class="step-header" onclick="toggleStep('uvc',3)">
+    <div><div class="step-num">Trin 3</div><div class="step-q">3) Du beslutter at bestille en urinunders&oslash;gelse. Beskriv metoder til urinopsamling samt fortolkning.</div></div>
+    <span class="reveal-indicator">&darr;</span>
+  </div>
+  <div class="step-answer"><div class="answer-body">
+    <b>Opsamlingsmetoder (kr&aelig;ver ukontamineret urin!):</b>
+    <ul>
+      <li><b>Ren midtstr&aring;leurin (MSU)</b> &mdash; mest praktisk hos st&oslash;rre b&oslash;rn</li>
+      <li><b>Kateterisation</b></li>
+      <li><b>Suprapubisk bl&aelig;repunktur</b> &mdash; "guld-standard" ved tvivl</li>
+      <li><b>POSEURIN KAN IKKE ANVENDES</b> (for h&oslash;j kontaminationsrate)</li>
+    </ul>
+    <b>Fortolkning af urinstix:</b>
+    <ul>
+      <li><b>Leukocyt-esterase positiv</b> &rarr; sandsynlig UVI</li>
+      <li><b>Nitrit positiv</b> &rarr; meget sandsynlig UVI</li>
+      <li><b>Leukocyt-esterase + nitrit positiv</b> &rarr; meget sandsynlig UVI</li>
+      <li><b>Blod og protein</b> alene &mdash; uspecifikke for UVI</li>
+    </ul>
+    <b>Urin-dyrkning &mdash; koloniantal-tabel:</b>
+    <table class="nst">
+      <tr><th>Metode</th><th>Koloniantal (kolonier/ml)</th><th>Sandsynlighed</th></tr>
+      <tr><td>Suprapubisk punktur</td><td>Enhver v&aelig;kst</td><td>&gt; 99 %</td></tr>
+      <tr><td>Kateterisation</td><td>&gt; 10&#x2075;</td><td>95 %</td></tr>
+      <tr><td>MSU pige</td><td>&gt; 10&#x2075;</td><td>80 % (1&times;) &rarr; 95 % (3&times;)</td></tr>
+      <tr><td>MSU dreng</td><td>&gt; 10&#x2074;</td><td>Infektion sandsynlig</td></tr>
+    </table>
+    <b>Husk:</b> blandingsflora = forurening. Resistens-svar afventes for valg af AB ved cystitis.
+    <div class="answer-warn"><b>F&AElig;LDE:</b> Sm&aring; drenge med fysiologisk fimose har ofte Proteus under forhuden &rarr; <b>falsk positiv nitrit</b>!</div>
+  </div></div>
+</div>
+
+<div class="step-card" id="step-uvc-4">
+  <div class="step-header" onclick="toggleStep('uvc',4)">
+    <div><div class="step-num">Trin 4</div><div class="step-q">4) Det viste sig at Anna har en UVI med <i>E. coli</i>. Beskriv den generelle behandling af febril UVI hos b&oslash;rn i forskellige aldersgrupper.</div></div>
+    <span class="reveal-indicator">&darr;</span>
+  </div>
+  <div class="step-answer"><div class="answer-body">
+    <b>Behandlingsl&aelig;ngde: 10 dage ved pyelonefritis. 5-7 dage ved cystitis.</b>
+    <table class="nst">
+      <tr><th>Peroral (PO) AB</th><th>Intraven&oslash;s (IV) AB</th></tr>
+      <tr><td><b>B&oslash;rn &gt; 6 m&aring;neder</b><br>+ ingen opkast<br>+ ingen CAKUT<br>+ ingen sepsis</td><td><b>B&oslash;rn &lt; 6 m&aring;neder</b><br>eller <b>kendt CAKUT</b><br>eller <b>sepsis</b> (urosepsis = v&aelig;kst i bloddyrkning)</td></tr>
+      <tr><td><b>Amoxicillin/clavulansyre</b> eller <b>Pivmecillinam</b> indtil resistens-svar</td><td><b>Ampicillin + Gentamycin</b> indtil resistens-svar</td></tr>
+    </table>
+    <b>I Annas tilf&aelig;lde:</b> 8 &aring;r + KENDT CAKUT &rarr; <b>IV ampicillin + gentamycin</b> &mdash; CAKUT er en selvst&aelig;ndig indikation for IV-behandling.
+    <div class="answer-highlight"><b>Klinisk pointe:</b> Bare den ene kriterie (CAKUT) flytter behandlingen fra PO til IV &mdash; det er det vigtigste at huske til eksamen.</div>
+  </div></div>
+</div>
+
+<div class="step-card" id="step-uvc-5">
+  <div class="step-header" onclick="toggleStep('uvc',5)">
+    <div><div class="step-num">Trin 5</div><div class="step-q">5) Redeg&oslash;r for faktorer der kunne v&aelig;re &aring;rsag til Annas recidiverende UVI.</div></div>
+    <span class="reveal-indicator">&darr;</span>
+  </div>
+  <div class="step-answer"><div class="answer-body">
+    <ul>
+      <li><b>Obstipation (dyseliminationsproblematik)</b> &mdash; tarmen trykker p&aring; bl&aelig;ren, reducerer t&oslash;mning. Klassisk samspil: "b&oslash;rn som holder p&aring; det ene, holder ogs&aring; p&aring; det andet"</li>
+      <li><b>Urinretention / d&aring;rlig bl&aelig;ret&oslash;mning</b></li>
+      <li><b>Obstruktion i urinvejene</b> &mdash; her kendt hydronefrose / CAKUT</li>
+      <li><b>Vesikoureteral refluks (VUR)</b></li>
+      <li>Asymptomatisk bakteriuri</li>
+      <li>Daginkontinens / dysfunktionel vandladning</li>
+    </ul>
+    <div class="answer-highlight">B&oslash;rn med CAKUT har stase i urinvejene og kan ofte ikke t&oslash;mme bl&aelig;ren ordentligt &mdash; selv lavvirulente bakterier kan f&aring; fodfeste.</div>
+  </div></div>
+</div>
+
+<div class="step-card" id="step-uvc-6">
+  <div class="step-header" onclick="toggleStep('uvc',6)">
+    <div><div class="step-num">Trin 6</div><div class="step-q">6) Angiv et udredningsprogram for Anna med henblik p&aring; at forebygge yderligere urinvejsinfektioner.</div></div>
+    <span class="reveal-indicator">&darr;</span>
+  </div>
+  <div class="step-answer"><div class="answer-body">
+    <ol>
+      <li><b>V&aelig;ske/vandladnings-skema (VVS)</b> &mdash; objektivt belyse drikke- og vandladningsvaner</li>
+      <li><b>Uroflow + residualurin-bestemmelse</b> &mdash; afkl&aelig;de bl&aelig;rens funktion og t&oslash;mningsgrad</li>
+      <li><b>UL af nyrer + urinveje</b> &mdash; obs progression af hydronefrose</li>
+      <li><b>MCU (miktions-cystouretrografi)</b> &mdash; vesikoureteral refluks I-V</li>
+      <li>Evt. <b>DMSA-skintigrafi</b> &mdash; arv&aelig;v efter tidligere pyelonefritis</li>
+      <li>Evt. <b>MAG3-renografi</b> &mdash; funktionsfordeling mellem nyrerne (lateralisering &lt; 40 % &rarr; overvej kirurgi)</li>
+      <li><b>Behandl obstipation</b> aggressivt parallelt</li>
+      <li>Overvej AB-profylakse hvis CAKUT/refluks er sv&aelig;r</li>
+    </ol>
+    <div class="answer-highlight">Husk at <b>behandle obstipationen</b> &mdash; uden det forts&aelig;tter UVI-recidiverne uanset hvor mange unders&oslash;gelser man laver.</div>
+  </div></div>
+</div>
+  <div class="related-notes">
+    <span class="rl-label">Relaterede noter:</span>
+    <button onclick="goToNote('peds_6')" class="rl-link">peds_6 · Nyre- og urinvejssygdomme hos børn</button>
+  </div>
+  <div class="case-nav"><button class="back-btn" onclick="closeCase()">&larr; Tilbage til oversigt</button></div>
+</div>
+
 <!-- === KOMPLICEREDE FØDSLER === -->
 <div id="case-kompfodsel" class="case-pane" style="display:none">
   <div class="case-header">
@@ -3055,7 +3206,7 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
 <footer>K8 OSCE Studieguide · Kvinde, Mor, Barn · SDU · Baseret på eksamenssæt F23–F25 + E23–E24</footer>
 
 <script>
-var totalSteps = { pe:6, anti:5, blod:5, endo:5, uro:5, tidlig:4, canc:4, pid:3, rep:4, hrt:4, svang:4, prae:4, tvil:4, vaekst:4, gdm:4, pterm:4, bars:4, vir:3, asf:3, komp:2, norm:2 };
+var totalSteps = { uvc:6, pe:6, anti:5, blod:5, endo:5, uro:5, tidlig:4, canc:4, pid:3, rep:4, hrt:4, svang:4, prae:4, tvil:4, vaekst:4, gdm:4, pterm:4, bars:4, vir:3, asf:3, komp:2, norm:2 };
 var revealed = {};
 for (var k in totalSteps) revealed[k] = {};
 
@@ -3930,6 +4081,530 @@ var notesData = [
     ]}
 
   ]
+},
+
+{
+  id:'peds_6',
+  spec:'PEDS',
+  num:6,
+  title:'Nyre- og urinvejssygdomme hos b&oslash;rn',
+  src:'PW-slides (b&oslash;rnenefrologi del 1+2, autoritativ) + Excel + V2022 Pyelonefritis + Signe (suppl)',
+  sub:'<table class="nst">'
+    + '<tr><th>Akronym</th><th>Hvad</th></tr>'
+    + '<tr><td><b>AKI</b></td><td>Akut nyreskade &mdash; &gt;50 % stigning i P-kreatinin; ofte oliguri (&lt;0,5 ml/kg/t). Pr&aelig;renal/renal/postrenal. Reversibel.</td></tr>'
+    + '<tr><td><b>CKD</b></td><td>Kronisk nyresygdom &mdash; stadier 1-5 efter eGFR (stadie 5 = &lt;15 ml/min/1,73m&sup2; eller dialyse).</td></tr>'
+    + '<tr><td><b>CAKUT</b></td><td>Congenital Anomalies of Kidney and Urinary Tract &mdash; hyppigste medf&oslash;dte misdannelse; ~50 % af b&oslash;rn med terminal nyresvigt har CAKUT.</td></tr>'
+    + '<tr><td><b>VUR</b></td><td>Vesikoureteral refluks &mdash; tilbagel&oslash;b af urin fra bl&aelig;re til ureter/nyrebakken. Graderet I-V (Signe/Excel).</td></tr>'
+    + '<tr><td><b>PUV</b></td><td>Posteriore urethralklapper &mdash; obstruerende klapper i bageste urethra; KUN drenge (1:8000). Fosterdiagnostisk "key hole sign".</td></tr>'
+    + '<tr><td><b>HSP</b></td><td>Henoch-Sch&ouml;nleins purpura = IgA-vaskulit &mdash; hyppigste systemiske vaskulit hos b&oslash;rn. Hud + led + GI + nyrer.</td></tr>'
+    + '<tr><td><b>PSGN</b></td><td>Post-streptokok glomerulonefritis &mdash; akut GN 1-3 uger efter streptokok-infektion; immunkomplekser + komplement-aktivering.</td></tr>'
+    + '<tr><td><b>SSNS / SRNS</b></td><td>Steroid-sensitivt / steroid-resistent nefrotisk syndrom &mdash; sensitivitet evalueres efter 4 ugers prednisolon. SRNS = v&aelig;rre prognose.</td></tr>'
+    + '<tr><td><b>MAG3 / DMSA / MCU</b></td><td>Renografi (funktionsfordeling) / scintigrafi (arv&aelig;v) / mikti&oacute;ns-cystouretrografi (refluks).</td></tr>'
+    + '</table>',
+  tabs:[
+
+    /* ────────────────────────────────────────────────────────────────────
+       TAB 1: Nyrefunktion (eGFR / AKI / CKD / Hypertension)
+       ────────────────────────────────────────────────────────────────────*/
+    { label:'Nyrefunktion', grid:[
+      {l:'M&aring;ling af nyrefunktion (PW slide 4)', c:'<ul>'
+        + '<li><b>P-kreatinin</b> &mdash; basis, men afh&aelig;ngig af muskelmasse</li>'
+        + '<li><b>Cystatin C</b> &mdash; mindre p&aring;virket af muskelmasse, bedre hos sm&aring;b&oslash;rn</li>'
+        + '<li><b>eGFR (Schwartz-formel):</b><br><code>eGFR = k &times; h&oslash;jde (cm) &divide; kreatinin (&mu;mol/L)</code><br><i>k &asymp; 40 (bedside Schwartz; verific&eacute;r mod lokal protokol)</i></li>'
+        + '<li><b>EDTA-GFR</b> &mdash; gold standard, ved tvivl</li>'
+        + '<li><b>Kreatinin-clearance</b> &mdash; d&oslash;gnurin</li>'
+        + '<li><b>Karbamid</b> &mdash; senere stigning end krea ved kronisk svigt</li>'
+      + '</ul>'},
+
+      {l:'Akut nyreskade (AKI) (PW slide 5)', warn:true, c:'<b>Definition:</b> &gt; 50 % stigning i P-kreatinin (+/&minus; oliguri &lt; 0,5 ml/kg/t; normal 1-2 ml/kg/t).<br><br>'
+        + '<b>Pr&aelig;renal</b> (hypoperfusion):<ul>'
+        + '<li>Hypovol&aelig;mi (gastroenterit, brandskader, sepsis)</li>'
+        + '<li>Kredsl&oslash;bssvigt</li>'
+      + '</ul>'
+        + '<b>Renal</b> (parenkymskade):<ul>'
+        + '<li>Glomerulonefritis (PSGN, IgA, HSP-nefrit)</li>'
+        + '<li>H&aelig;molytisk uremisk syndrom (HUS)</li>'
+        + '<li>Akut tubul&aelig;r nekrose (iskemi, nefrotoksika)</li>'
+        + '<li>Akut pyelonefritis</li>'
+      + '</ul>'
+        + '<b>Postrenal</b> (obstruktion):<ul>'
+        + '<li><b>Posteriore urethralklapper (PUV)</b> hos drenge</li>'
+        + '<li>Stennedslag, blokade af kateter</li>'
+      + '</ul>'},
+
+      {l:'Kronisk nyresygdom (CKD) &mdash; stadier (PW slide 6)', c:'<table class="nst">'
+        + '<tr><th>Stadie</th><th>eGFR (ml/min/1,73m&sup2;)</th><th>Beskrivelse</th></tr>'
+        + '<tr><td>1</td><td>&ge; 90</td><td>Normal/&oslash;get GFR med nyreskade</td></tr>'
+        + '<tr><td>2</td><td>60-89</td><td>Let nedsat GFR</td></tr>'
+        + '<tr><td>3</td><td>30-59</td><td>Moderat nedsat GFR</td></tr>'
+        + '<tr><td>4</td><td>15-29</td><td>Sv&aelig;rt nedsat GFR</td></tr>'
+        + '<tr><td>5</td><td>&lt; 15 / dialyse</td><td>Nyresvigt</td></tr>'
+      + '</table>'},
+
+      {l:'CKD &mdash; &aring;rsager hos b&oslash;rn (PW slide 7)', c:'<ul>'
+        + '<li><b>CAKUT</b> &mdash; renal dysplasi/obstruktion (st&oslash;rste gruppe; ~50 % af terminal nyresvigt)</li>'
+        + '<li><b>Glomerulonefritis</b> &mdash; IgA, MPGN m.fl.</li>'
+        + '<li><b>Nefrotisk syndrom</b> &mdash; s&aelig;rligt SRNS-formerne</li>'
+        + '<li>Cystiske nyresygdomme (ARPKD)</li>'
+      + '</ul>'},
+
+      {l:'CKD &mdash; sene-stadie symptomer (PW slide 8)', warn:true, c:'<ul>'
+        + '<li>Anoreksi og sl&oslash;vhed</li>'
+        + '<li>Polydipsi og polyuri (tab af koncentreringsevne)</li>'
+        + '<li><b>D&aring;rlig trivsel / v&aelig;ksthemning</b> &mdash; klassisk r&oslash;dt flag hos barn</li>'
+        + '<li>Renal osteodystrofi &mdash; renal rakitis (knogledeformiteter)</li>'
+        + '<li>Hypertension</li>'
+        + '<li>Akut p&aring; kronisk nyresvigt (udl&oslash;st af infektion/dehydrering)</li>'
+        + '<li>Tilf&aelig;ldigt fund af proteinuri</li>'
+        + '<li>Uforklaret normocytisk an&aelig;mi (EPO-mangel)</li>'
+      + '</ul>'},
+
+      {l:'Hypertension hos b&oslash;rn &mdash; definition + symptomer (PW slide 29)', c:'<b>Definition:</b> BT &gt; 95-percentilen ved gentagne m&aring;linger med korrekt manchet.<br><br>'
+        + '<b>Symptomer/objektive fund:</b><ul>'
+        + '<li>Hovedpine, opkast, kvalme</li>'
+        + '<li>Facialisparese</li>'
+        + '<li>Hypertensiv retinopati</li>'
+        + '<li>Kramper</li>'
+        + '<li>Proteinuri</li>'
+        + '<li>D&aring;rlig trivsel</li>'
+        + '<li>Hjertesvigt</li>'
+      + '</ul>'},
+
+      {l:'Hypertension hos b&oslash;rn &mdash; &aring;rsager (PW slide 30)', c:'<b>Renal (hyppigst):</b><ul>'
+        + '<li>Renalparenkymal sygdom (CAKUT, kronisk GN)</li>'
+        + '<li>Renovaskul&aelig;r &mdash; <b>a. renalis-stenose</b></li>'
+        + '<li>Polycystisk nyresygdom (ARPKD / ADPKD)</li>'
+        + '<li>Renale tumorer (Wilms)</li>'
+      + '</ul>'
+        + '<b>Kardiovaskul&aelig;r:</b><ul>'
+        + '<li><b>Coarctatio aortae</b> &mdash; tjek femoralispulse + BT i b&aring;de UE og OE</li>'
+      + '</ul>'
+        + '<b>Katekolamin-overskud:</b><ul>'
+        + '<li>F&aelig;okromocytom</li>'
+        + '<li>Neuroblastom</li>'
+      + '</ul>'
+        + '<b>Endokrin:</b><ul>'
+        + '<li>Kongenit adrenal hyperplasi (CAH)</li>'
+        + '<li>Cushing syndrom / kortikosteroid-behandling</li>'
+        + '<li>Hyperthyreose</li>'
+      + '</ul>'},
+
+      {l:'Klinisk perler &mdash; det skal I kunne', hl:true, full:true, c:'<ul>'
+        + '<li><b>Hypertension hos barn er oftest sekund&aelig;r</b> &mdash; modsat voksne. Lav altid renal + kardiovaskul&aelig;r + endokrin udredning.</li>'
+        + '<li><b>D&aring;rlig trivsel + an&aelig;mi + polyuri</b> hos st&oslash;rre barn &rarr; t&aelig;nk CKD.</li>'
+        + '<li><b>Anuri/oliguri + h&aelig;maturi + HT</b> hos barn &rarr; akut GN indtil andet er bevist.</li>'
+        + '<li><b>Postrenal AKI hos dreng</b> &rarr; obs PUV (UL + kreatinin).</li>'
+      + '</ul>'}
+    ]},
+
+    /* ────────────────────────────────────────────────────────────────────
+       TAB 2: Nefrotisk syndrom
+       ────────────────────────────────────────────────────────────────────*/
+    { label:'Nefrotisk syndrom', grid:[
+      {l:'Definition &mdash; triade (PW slide 13)', hl:true, c:'<ul>'
+        + '<li><b>Sv&aelig;r proteinuri</b> &mdash; 3+ p&aring; urinstix, eller &gt; 1000 mg/m&sup2;/d&oslash;gn</li>'
+        + '<li><b>Udtalt &oslash;dem</b> &mdash; typisk periorbitalt om morgenen, senere generaliseret (anasarca, ascites)</li>'
+        + '<li><b>Hypoalbumin&aelig;mi</b> (s-albumin lav)</li>'
+      + '</ul>'
+        + '<i>Oftest idiopatisk hos b&oslash;rn. Histologisk: minimal change disease (MCD) i &gt; 80 % af tilf&aelig;lde.</i>'},
+
+      {l:'Patofysiologi', c:'<ul>'
+        + '<li>Skade p&aring; podocytter &rarr; tab af albumin gennem glomerul&aelig;rmembranen</li>'
+        + '<li>&darr; plasma-albumin &rarr; &darr; onkotisk tryk &rarr; &oslash;dem</li>'
+        + '<li>Levertab kompenserer med &uarr; lipoprotein-syntese &rarr; hyperlipid&aelig;mi</li>'
+        + '<li>Tab af antitrombin-III + andre antikoagulanter &rarr; <b>&uarr; trombo-emboli-risiko</b></li>'
+        + '<li>Tab af IgG + komplement &rarr; <b>&uarr; infektionsrisiko</b> (s&aelig;rligt pneumokok-peritonit)</li>'
+      + '</ul>'},
+
+      {l:'Klinisk billede', c:'<ul>'
+        + '<li>Sm&aring;b&oslash;rn 1-6 &aring;r (peak omkring 2-3 &aring;r) &mdash; drenge 2:1</li>'
+        + '<li>Debut: <b>periorbitalt &oslash;dem</b> (kan forveksles med allergisk reaktion!), evt. forudg&aring;ende &oslash;vre luftvejsinfektion</li>'
+        + '<li>Progredierer til ankel-, scrotal-, ascitisk &oslash;dem</li>'
+        + '<li>Skummende urin (proteinuri) &mdash; foruds&aelig;tter, at familien har bem&aelig;rket det</li>'
+        + '<li>BT typisk normalt (i modsat ved akut GN!)</li>'
+      + '</ul>'},
+
+      {l:'Udredning', c:'<ul>'
+        + '<li><b>Urinstix</b> &mdash; 3-4+ protein</li>'
+        + '<li><b>Urin protein/kreatinin-ratio</b> eller <b>d&oslash;gnurin</b> &mdash; kvantific&eacute;r proteintab</li>'
+        + '<li><b>Blod:</b> albumin (lav), kreatinin (normal initialt), kolesterol (h&oslash;j), komplement (normalt ved MCD; lavt ved MPGN/SLE-nefrit)</li>'
+        + '<li>Urin-mikroskopi &mdash; ej erytrocytcylindre (de tyder p&aring; GN i stedet)</li>'
+        + '<li>UL nyrer &mdash; for at udelukke strukturel sygdom</li>'
+        + '<li><b>Nyrebiopsi</b> kun ved SRNS, atypisk alder, makro h&aelig;maturi eller p&aring;virket nyrefunktion</li>'
+      + '</ul>'},
+
+      {l:'Behandling &mdash; prednisolon-protokol (PW slide 14)', warn:true, c:'<b>F&oslash;rstegangs behandling (ISKDC-protokol &mdash; verific&eacute;r mod lokal):</b><ul>'
+        + '<li>Prednisolon <b>60 mg/m&sup2;/d&oslash;gn i 4-6 uger</b> (max 80 mg)</li>'
+        + '<li>Derefter aftrapning: 40 mg/m&sup2; hver anden dag i 4-6 uger</li>'
+        + '<li>Evalu&eacute;r respons efter 4 uger &rarr; <b>SSNS</b> hvis remission</li>'
+      + '</ul>'
+        + '<b>Supplerende:</b><ul>'
+        + '<li>Saltrestriktion + diuretika ved sv&aelig;rt &oslash;dem</li>'
+        + '<li>Albumin-infusion ved sv&aelig;r hypoalbumin&aelig;mi + symptomgivende &oslash;dem (ascites, scrotum) eller intravasal hypovol&aelig;mi</li>'
+        + '<li>Pneumokok-vaccination + penicillin-profylakse overvejes</li>'
+        + '<li>Lavmolekyl&aelig;rt heparin ved sv&aelig;r hypoalbumin&aelig;mi (trombo-emboli-risiko)</li>'
+      + '</ul>'
+        + '<i>OBS: doseringen er ikke specificeret p&aring; PW-slides &mdash; afventer ejer-verifikation.</i>'},
+
+      {l:'SSNS vs SRNS (PW slide 14)', c:'<table class="nst">'
+        + '<tr><th>SSNS &mdash; steroid-sensitivt</th><th>SRNS &mdash; steroid-resistent</th></tr>'
+        + '<tr><td>Remission efter 4 ugers prednisolon</td><td>Ingen remission efter 4 uger</td></tr>'
+        + '<tr><td>Typisk MCD-histologi</td><td>Krever <b>yderligere diagnostik</b> &mdash; nyrebiopsi (FSGS, MPGN m.fl.)</td></tr>'
+        + '<tr><td>God langtidsprognose</td><td><b>V&aelig;rre prognose</b> &mdash; risiko for kronisk nyresvigt</td></tr>'
+        + '<tr><td>Aftrapning af steroid efter remission</td><td>Calcineurin-h&aelig;mmere (ciclosporin/tacrolimus), MMF, rituximab</td></tr>'
+      + '</table>'},
+
+      {l:'Relaps + komplikationer (PW slide 14)', warn:true, c:'<ul>'
+        + '<li><b>Relaps er MEGET hyppig</b> i SSNS &mdash; majoriteten f&aring;r mindst &eacute;n relaps; ca. halvdelen er frequent relapsers / steroid-afh&aelig;ngige</li>'
+        + '<li>Triggere: infektioner, allergi, vaccinationer</li>'
+        + '<li>Familien instrueres i hjemme-urinstix p&aring; morgenurin &mdash; tidlig opdagelse</li>'
+        + '<li><b>Komplikationer i aktiv fase:</b> infektion (pneumokok-peritonit), trombo-emboli (DVT, sinusvenetrombose), hypovol&aelig;mi/shock, akut nyreskade</li>'
+        + '<li><b>Steroid-bivirkninger ved frequent relapsers:</b> v&aelig;ksth&aelig;mning, cushingoidt udseende, osteopeni, gr&aring; st&aelig;r, BT-stigning &mdash; overvej steroid-sparende behandling</li>'
+      + '</ul>'},
+
+      {l:'N&aring;r er det IKKE klassisk nefrotisk syndrom?', hl:true, c:'<b>Atypiske tr&aelig;k &rarr; t&aelig;nk anden GN-form / b&oslash;r biopteres:</b><ul>'
+        + '<li>Alder &lt; 1 &aring;r (kongenit nefrotisk syndrom) eller &gt; 12 &aring;r</li>'
+        + '<li>Makroskopisk h&aelig;maturi</li>'
+        + '<li>P&aring;virket nyrefunktion (&uarr; kreatinin)</li>'
+        + '<li>Hypertension</li>'
+        + '<li>Lavt komplement (C3/C4) &mdash; t&aelig;nk MPGN, SLE-nefrit, PSGN</li>'
+        + '<li>Steroid-resistent (SRNS)</li>'
+      + '</ul>'}
+    ]},
+
+    /* ────────────────────────────────────────────────────────────────────
+       TAB 3: Glomerulonefritis & h&aelig;maturi (HSP/IgA/PSGN)
+       ────────────────────────────────────────────────────────────────────*/
+    { label:'GN & h&aelig;maturi', grid:[
+      {l:'Akut glomerulonefritis &mdash; klinisk billede (PW slide 21)', warn:true, c:'<b>Nefritisk triade:</b><ul>'
+        + '<li><b>Nedsat urinproduktion + v&aelig;ske-overskud</b> &mdash; oliguri, periorbitalt &oslash;dem</li>'
+        + '<li><b>Hypertension</b> &mdash; kan give kramper</li>'
+        + '<li><b>H&aelig;maturi + proteinuri</b> &mdash; makroh&aelig;maturi ("cola-urin") + sub-nefrotisk proteinuri</li>'
+      + '</ul>'
+        + '<b>Hyppigste &aring;rsager hos b&oslash;rn:</b><ul>'
+        + '<li>IgA-nefropati / IgA-vaskulit (HSP-nefrit)</li>'
+        + '<li>Post-streptokok GN (PSGN)</li>'
+      + '</ul>'},
+
+      {l:'H&aelig;maturi &mdash; makro vs mikro (PW slide 23)', c:'<ul>'
+        + '<li><b>Makroskopisk h&aelig;maturi:</b> cola-farve / r&oslash;d urin / terminal blodtilblanding</li>'
+        + '<li><b>Mikroskopisk h&aelig;maturi:</b> kr&aelig;ver mikroskopi af urin (erytrocytter, cylindre)</li>'
+        + '<li><b>Urinstix:</b> screener for blod &mdash; men falsk positiv ved myoglobin, hemoglobin, visse l&aelig;gemidler</li>'
+        + '<li><b>Erytrocytcylindre i urin &rarr; glomerul&aelig;r oprindelse</b> (= GN)</li>'
+      + '</ul>'},
+
+      {l:'H&aelig;maturi-DDX (PW slide 24)', c:'<table class="nst">'
+        + '<tr><th>Niveau</th><th>Tilstand</th></tr>'
+        + '<tr><td>Glomerul&aelig;rt</td><td><b>Glomerulonefritis</b> &mdash; IgA-nefropati, PSGN, HSP-nefrit</td></tr>'
+        + '<tr><td>Tubul&aelig;rt</td><td>Tubulitis</td></tr>'
+        + '<tr><td>Konkrementer</td><td>Sten i urinvejene (urolitiase)</td></tr>'
+        + '<tr><td>Bl&aelig;re/nyre</td><td>Urinvejsinfektion (cystitis, pyelonefritis)</td></tr>'
+        + '<tr><td>Urethra</td><td>Urethritis</td></tr>'
+      + '</table>'
+        + '<i>Husk ogs&aring;: tumor (Wilms, rabdomyosarkom &mdash; sj&aelig;ldent), trauma, koagulopati, idiopatisk hyperkalciuri.</i>'},
+
+      {l:'IgA-vaskulit (Henoch-Sch&ouml;nleins purpura, HSP) (PW slide 16)', hl:true, full:true, c:'<b>Hyppigste systemiske vaskulit hos b&oslash;rn.</b> Leukocytoklastisk vaskulit med IgA-aflejring i karv&aelig;ggen.<br><br>'
+        + '<b>Demografi (Signe, suppl):</b> 90 % &lt; 10 &aring;r; drenge:piger 2:1; mest ud-tal om efter&aring;r/vinter; ofte forudg&aring;ende &oslash;vre luftvejsinfektion.<br><br>'
+        + '<b>Klassisk klinisk billede &mdash; HUD + LED + GI + NYRER:</b>'
+        + '<table class="nst">'
+        + '<tr><th>System</th><th>Manifestation</th><th>Frekvens (Signe, suppl)</th></tr>'
+        + '<tr><td>Hud</td><td><b>Palpabel purpura</b> distalt p&aring; UE, nates, albueregion &mdash; deklivt (afh&aelig;ngig af om barnet g&aring;r eller kravler). <i>Eneste b&oslash;rnesygdom med palpabel purpura.</i></td><td>100 %</td></tr>'
+        + '<tr><td>Led</td><td>Artralgi/artrit + periartikul&aelig;rt &oslash;dem (kn&aelig;, ankel) &mdash; ej intraartikul&aelig;rt</td><td>82 %</td></tr>'
+        + '<tr><td>GI</td><td>Mavesmerter, kvalme, opkast; 33 % har akut GI-bl&oslash;dning</td><td>63 %</td></tr>'
+        + '<tr><td>Nyrer</td><td>Glomerulonefritis (h&aelig;maturi &plusmn; let proteinuri), opst&aring;r sent i forl&oslash;bet &mdash; uger til 10 uger efter debut</td><td>40 % (1 % kronisk)</td></tr>'
+        + '</table>'
+        + '<i>Normale trombocytter og koagulationsfaktorer &mdash; vigtigt for at adskille fra ITP/meningokoksygdom.</i>'},
+
+      {l:'IgA-vaskulit &mdash; behandling og opf&oslash;lgning', c:'<ul>'
+        + '<li><b>Artrit, feber, udsl&aelig;t er selvlimiterende</b> &mdash; sympto-matisk (paracetamol, evt. NSAID)</li>'
+        + '<li><b>Indl&aelig;gges til observation af nyrefunktion</b> &mdash; nefritis opst&aring;r i ugerne EFTER hudsymptomerne er klinget af. Sj&aelig;ldent senere end 10 uger efter debut.</li>'
+        + '<li>Sm&aring; periorbital&oslash;dem + blodig urin der g&aring;r v&aelig;k af sig selv &mdash; ingen behandling</li>'
+        + '<li><b>D&aring;rlige prognostiske faktorer:</b> nefrotisk syndrom, akut nyresvigt, hypertension &rarr; prednisolon + cytostatika (~70 % bliver raske)</li>'
+        + '<li>Opf&oslash;lgning med BT + urinstix i mindst 6 m&aring;neder</li>'
+      + '</ul>'},
+
+      {l:'IgA-nefropati (PW slides 19-20)', c:'<ul>'
+        + '<li><b>Prim&aelig;r:</b> idiopatisk &mdash; biopsi viser mesangio-proliferativ GN med IgA-nedslag</li>'
+        + '<li><b>Sekund&aelig;r:</b>'
+          + '<ul>'
+          + '<li><b>IgA-vaskulit (HSP-nefrit)</b> &mdash; samme histologi som prim&aelig;r IgA-nefropati</li>'
+          + '<li>Leversygdom</li>'
+          + '<li>Immunologiske sygdomme: IBD, psoriasis, HIV m.fl.</li>'
+          + '</ul></li>'
+        + '<li><b>Klinik:</b> oftest makroskopisk h&aelig;maturi 1-2 dage efter &oslash;vre luftvejsinfektion (synpharyngitisk h&aelig;maturi); persisterende mikrohematuri imellem</li>'
+        + '<li><b>Behandling:</b> BT-kontrol (ACE-h&aelig;mmer), prednisolon ved sv&aelig;r affektion, evt. immunsuppressiva</li>'
+      + '</ul>'},
+
+      {l:'Post-streptokok GN (PSGN) (PW slide 28)', c:'<ul>'
+        + '<li><b>De fleste infektioner kan medf&oslash;re PSGN &mdash; men streptokokker er hyppigst</b></li>'
+        + '<li><b>Patogenese:</b> inflammation i kapillarv&aelig;ggene pga. immunkompleks-dannelse; typisk IgG-medieret &rarr; komplement-aktivering (&darr; C3)</li>'
+        + '<li><b>Latens:</b> 1-3 uger efter streptokok-faryngitis; 3-6 uger efter streptokok-impetigo</li>'
+        + '<li><b>Demografi:</b> oftest b&oslash;rn 2-12 &aring;r, drenge hyppigere</li>'
+        + '<li><b>Klinik:</b> akut nefritisk syndrom &mdash; oliguri, makroh&aelig;maturi, hypertension, ans&oslash;dem; kan give akut nyresvigt</li>'
+        + '<li><b>Diagnose:</b> &darr; C3, positiv ASOT/anti-DNAse B, evt. positiv StrepA-test</li>'
+        + '<li><b>Behandling:</b> underst&oslash;ttende (v&aelig;ske/elektrolytter, BT, diuretika) + antibiotika (penicillin) &mdash; men antibiotika &aelig;ndrer ej forl&oslash;bet, det forhindrer smittespredning</li>'
+        + '<li><b>Prognose:</b> oftest komplet remission hos b&oslash;rn; C3 normaliseres efter ~6-8 uger</li>'
+      + '</ul>'},
+
+      {l:'R&oslash;de flag &mdash; t&aelig;nk akut GN', hl:true, full:true, c:'<ul>'
+        + '<li><b>Cola-farvet urin + ans&oslash;dem + HT</b> hos skoleb&oslash;rn &rarr; akut GN. Foruds&aelig;tter altid forel&aelig;ggelse for nefrolog.</li>'
+        + '<li><b>Pal&shy;pabel purpura distalt p&aring; UE</b> &rarr; HSP &mdash; <i>indl&aelig;gges</i> til obs af nyrefunktion selv ved milde hudsymptomer.</li>'
+        + '<li><b>Lavt C3 + h&aelig;maturi + str&aelig;b/forudg&aring;ende infektion</b> &rarr; PSGN (men ogs&aring; MPGN, SLE-nefrit som DDX).</li>'
+        + '<li>Akut GN-billede uden lavt C3 &rarr; t&aelig;nk IgA-nefropati eller HSP-nefrit.</li>'
+      + '</ul>'}
+    ]},
+
+    /* ────────────────────────────────────────────────────────────────────
+       TAB 4: CAKUT
+       ────────────────────────────────────────────────────────────────────*/
+    { label:'CAKUT', grid:[
+      {l:'CAKUT &mdash; definition (PW slide 32)', hl:true, c:'<b>Congenital Anomalies of Kidney and Urinary Tract.</b><br><br>'
+        + 'Spektrum af medf&oslash;dte misdannelser i nyrer og urinveje.<ul>'
+        + '<li><b>Hyppigste medf&oslash;dte misdannelse hos nyf&oslash;dte</b></li>'
+        + '<li><b>~50 % af b&oslash;rn med terminal nyreinsufficiens har CAKUT</b></li>'
+        + '<li>Incidens ~1:500 levendef&oslash;dte (Signe, suppl)</li>'
+        + '<li>Oftest p&aring;vises antenatalt ved UL i uge 20-21</li>'
+      + '</ul>'},
+
+      {l:'CAKUT-spektrum (PW slide 33)', c:'<table class="nst">'
+        + '<tr><th>Patogenese</th><th>Entitet</th></tr>'
+        + '<tr><td>Manglende apoptose / fusion</td><td>Hydroureter, megaureter, hesteskonyre, b&aelig;kkennyre, renal duplex</td></tr>'
+        + '<tr><td>Dysplasi</td><td>Multicystisk nyredysplasi (MCDK), nyrehypoplasi</td></tr>'
+        + '<tr><td>Manglende migration</td><td>Nyreagenesi, ektopisk nyre</td></tr>'
+        + '<tr><td>Obstruktion</td><td>Ureteropelvin obstruktion, ureterovesikal obstruktion, posteriore urethralklapper (PUV)</td></tr>'
+        + '<tr><td>Refluks</td><td>Vesikoureteral refluks (VUR)</td></tr>'
+        + '<tr><td>Cilie-defekter</td><td>Cystiske nyresygdomme (ARPKD, ADPKD)</td></tr>'
+      + '</table>'},
+
+      {l:'Antenatal hydronefrose &mdash; gradering (PW slide 34)', c:'<b>Gradering efter dilatation:</b><ul>'
+        + '<li><b>Pyelektasi</b> &mdash; mild dilatation &lt; 7 mm</li>'
+        + '<li><b>Mild hydronefrose</b> &mdash; 7-10 mm</li>'
+        + '<li><b>Sv&aelig;r hydronefrose</b> &mdash; &gt; 10 mm</li>'
+      + '</ul>'
+        + '<b>Epidemiologi:</b><ul>'
+        + '<li>Antenatal UL i uge 20-21 viser hydronefrose i ~1:100</li>'
+        + '<li>Drenge:piger 2:1</li>'
+        + '<li>Kan diagnostiseres allerede i 14-15. gestationsuge</li>'
+        + '<li>Ofte associeret med andre misdannelser i nyreparenkym/urinveje</li>'
+      + '</ul>'},
+
+      {l:'Hydronefrose &mdash; &aring;rsager + forl&oslash;b (PW slide 35-37)', c:'<b>&Aelig;tiologi:</b><ul>'
+        + '<li>1) <b>Ureteropelvin obstruktion (UPJ)</b> &mdash; 35 %</li>'
+        + '<li>2) <b>Ureterovesikal obstruktion (UVJ)</b></li>'
+        + '<li>3) Vesikoureteral refluks (VUR)</li>'
+        + '<li>4) Posteriore urethralklapper (drenge)</li>'
+      + '</ul>'
+        + '<b>Opf&oslash;lgning:</b><ul>'
+        + '<li>UL: nyrernes l&aelig;ngde-v&aelig;kst + dilatationsgrad af nyrebakken/calyxhalse/ureter</li>'
+        + '<li><b>MAG3-renografi</b> ved progredierende hydronefrose &mdash; m&aring;ler funktionsfordeling</li>'
+        + '<li><b>Lateralisering af nyrefunktionen &lt; 40 % p&aring; den hydronefrotiske nyre &rarr; overvej operation</b></li>'
+        + '<li>Overvej forebyggende antibiotika</li>'
+      + '</ul>'},
+
+      {l:'Posteriore urethralklapper (PUV) (PW slide 40-42)', warn:true, c:'<b>Obstruerende klapper i bageste urethra &mdash; KUN drenge (1:8000 levendef&oslash;dte).</b><br><br>'
+        + '<b>Prenatalt:</b><ul>'
+        + '<li>Sv&aelig;r, ofte tiltagende <b>bilateral hydronefrose</b></li>'
+        + '<li>Stor, tykv&aelig;gget, sv&aelig;rt dilateret bl&aelig;re</li>'
+        + '<li>Evt. <b>oligohydramnion</b> &mdash; risiko for lungehypoplasi</li>'
+        + '<li><b>"Key hole sign"</b> p&aring; f&oslash;tal UL</li>'
+      + '</ul>'
+        + '<b>Postnatalt:</b><ul>'
+        + '<li>Slap str&aring;le, d&aring;rlig bl&aelig;ret&oslash;mning</li>'
+        + '<li>Abnorme nyretal (&uarr; kreatinin)</li>'
+        + '<li>Hypertension</li>'
+        + '<li>Evt. inkontinens, lungehypoplasi</li>'
+      + '</ul>'
+        + '<b>Behandling:</b><ul>'
+        + '<li>Akut: aflastning af bl&aelig;re med <b>Foley-/topkateter eller vesikostomi</b></li>'
+        + '<li>Korrektion af urethra inden skolestart</li>'
+        + '<li>L&aelig;ngere obs af nyrefunktion; <b>normal kreatinin efter aflastning &rarr; ringe risiko for sv&aelig;r CKD/transplantation</b></li>'
+        + '<li>Evt. intrauterin aflastning (avanceret center)</li>'
+      + '</ul>'},
+
+      {l:'Hypodysplastiske nyrer (PW slide 38-39)', c:'<ul>'
+        + '<li><b>"Sm&aring; nyrer"</b> &mdash; uni- eller bilateralt</li>'
+        + '<li>Normal renal arkitektur, men <b>nedsat nefronantal</b></li>'
+        + '<li>Kontralateral nyre hypertrofierer hvis den er rask</li>'
+        + '<li><b>Risiko:</b> tidlig hypertension, kronisk nyreinsufficiens (s&aelig;rligt bilateralt)</li>'
+        + '<li><b>Behandling:</b> ingen kurativ; f&oslash;lg trivsel + behandl HT og metaboliske komplikationer; GFR &lt; 60 ml/min/1,73m&sup2; &rarr; oftest d&aring;rlig trivsel</li>'
+      + '</ul>'},
+
+      {l:'Renal duplex / dobbeltanl&aelig;g (PW slide 44)', c:'<ul>'
+        + '<li>Nyren er delt p&aring; midten, ofte lidt l&aelig;ngere end normal</li>'
+        + '<li><b>2 nyrebakkner og 2 ureteres</b></li>'
+        + '<li>Ureter fra det &oslash;vre anl&aelig;g kan ende mere distalt (ektopisk udmunding) eller fusionere med den nedre nord for bl&aelig;ren</li>'
+        + '<li>Oftest asymptomatisk; kan give UVI, obstruktion eller refluks</li>'
+        + '<li>Diagnose: UL + evt. MCU/MAG3</li>'
+      + '</ul>'},
+
+      {l:'Cystiske nyresygdomme (PW slide 45-49)', full:true, c:'<table class="nst">'
+        + '<tr><th></th><th>MCDK (Multicystisk dysplasi)</th><th>ARPKD (autosomal recessiv)</th><th>ADPKD (autosomal dominant)</th></tr>'
+        + '<tr><th>Lateralitet</th><td>Unilateral</td><td>Bilateral</td><td>Bilateral</td></tr>'
+        + '<tr><th>Incidens</th><td>~1:4000</td><td>1:16000 (3 b&oslash;rn/&aring;r i DK, Signe)</td><td>Hyppig (voksen)</td></tr>'
+        + '<tr><th>Cystestruktur</th><td>Ikke-kommunikerende cyster af varierende st&oslash;rrelse; udifferentieret stroma; INGEN fysiologisk funktion</td><td>Multiple <b>mikrocyster</b>; bilateral <b>nyreforst&oslash;rrelse</b></td><td>Store cyster, oftest voksen-debut</td></tr>'
+        + '<tr><th>Ledsage-fund</th><td>Ingen typisk</td><td><b>Caroli syndrom</b> (galdegangs-cyster i lever)</td><td>Lever-/pankreas-cyster, intrakranielle aneurismer</td></tr>'
+        + '<tr><th>Antenatal UL</th><td>Cyster p&aring; &eacute;n nyre</td><td>Meget store <b>hyperekkoiske nyrer</b> + d&aring;rlig corticomedull&aelig;r differentiering</td><td>Oftest normal</td></tr>'
+        + '<tr><th>Klinik nyf&oslash;dt</th><td>Oftest asymptomatisk; store cyster kan give smerter/bl&oslash;dning</td><td><b>Hyponatriem&aelig;mi, hypertension, store nyrer</b>, evt. nyre-/lungeinsufficiens</td><td>Sj&aelig;ldent symptomatisk i barndom</td></tr>'
+        + '<tr><th>Behandling</th><td>Observation; <b>fjernes ved symptomer</b></td><td>Underst&oslash;ttende; behandl HT + CKD; transplantation</td><td>Voksen-omr&aring;de</td></tr>'
+        + '</table>'},
+
+      {l:'Vesikoureteral refluks (VUR) (Excel + Signe, suppl)', c:'<b>Tilbagel&oslash;b af urin fra bl&aelig;ren til ureter/nyrebakken.</b><br><br>'
+        + '<b>Gradering (I-V, Signe):</b><ul>'
+        + '<li><b>Grad I:</b> refluks kun i ureter</li>'
+        + '<li><b>Grad II:</b> refluks op i nyrebakken uden dilatation</li>'
+        + '<li><b>Grad III-IV:</b> dilatation af ureter + nyrebakken/calyces</li>'
+        + '<li><b>Grad V:</b> sv&aelig;r dilatation; refluks ind i nyreparenkymet</li>'
+      + '</ul>'
+        + '<b>Klinik:</b> recidiverende febril UVI; risiko for <b>refluksnefropati / arv&aelig;v &rarr; hypertension &rarr; CKD</b><br><br>'
+        + '<b>Udredning:</b><ul>'
+        + '<li><b>MCU</b> (miktions-cystouretrografi) &mdash; graderer refluks I-V</li>'
+        + '<li>Nyre-UL</li>'
+        + '<li><b>DMSA-skintigrafi</b> &mdash; arv&aelig;v efter pyelonefritis</li>'
+      + '</ul>'
+        + '<b>Behandling:</b><ul>'
+        + '<li>Lavgrad: observation &plusmn; forebyggende antibiotika</li>'
+        + '<li>H&oslash;jgrad/recidiv: AB-profylakse, evt. kirurgi</li>'
+        + '<li>Behandl ledsagende obstipation og bl&aelig;redysfunktion</li>'
+      + '</ul>'
+        + '<i>Note: VUR-gradering ikke specificeret p&aring; PW-slides &mdash; suppleret fra Signe/Excel.</i>'}
+    ]},
+
+    /* ────────────────────────────────────────────────────────────────────
+       TAB 5: UVI & vandladning
+       ────────────────────────────────────────────────────────────────────*/
+    { label:'UVI & vandladning', grid:[
+      {l:'UVI &mdash; symptomer er alders-afh&aelig;ngige (PW slide 51)', hl:true, full:true, c:'<b>Jo yngre alder, des mere uspecifikke!</b><br><br>'
+        + '<table class="nst">'
+        + '<tr><th>&lt; 2 &aring;r (uspecifik)</th><th>&gt; 2 &aring;r (lokaliseret)</th></tr>'
+        + '<tr><td>Feber</td><td>Dysuri, pollakisuri, urge</td></tr>'
+        + '<tr><td>Opkast</td><td>Pludselig inkontinens</td></tr>'
+        + '<tr><td>Tr&aelig;thed / irritabilitet</td><td>Mave- eller flankesmerter</td></tr>'
+        + '<tr><td>Nedsat f&oslash;deindtag / v&aelig;gttab</td><td>Feber + tr&aelig;thed</td></tr>'
+        + '<tr><td><b>Prolongeret ikterus</b></td><td>Kvalme, nedsat appetit</td></tr>'
+        + '<tr><td>Sepsis</td><td>Makroskopisk h&aelig;maturi</td></tr>'
+        + '<tr><td>Feberkramper (&gt; 6 mdr.)</td><td>Feberkramper</td></tr>'
+        + '<tr><td>Gylp kan ogs&aring; v&aelig;re symptom</td><td>(Ildelugtende urin)</td></tr>'
+        + '</table>'},
+
+      {l:'Diagnose (PW slide 52)', c:'<ol>'
+        + '<li><b>Anamnese</b> &mdash; udeluk andre infektionsfoci</li>'
+        + '<li><b>Objektiv unders&oslash;gelse</b> &mdash; udeluk andre &aring;rsager</li>'
+        + '<li><b>Urinstix + urin D+R</b></li>'
+        + '<li><b>Infektionstal</b> (leukocytter, neutrofile, CRP, trombocytter, kreatinin)</li>'
+        + '<li><b>Bloddyrkning</b> ved mistanke om pyelonefritis/urosepsis</li>'
+      + '</ol>'},
+
+      {l:'Urinstix-validitet (PW slide 53)', warn:true, c:'<ul>'
+        + '<li><b>Leukocyt-esterase positiv</b> &rarr; indikerer bakteriuri &mdash; men positiv ogs&aring; ved feber alene</li>'
+        + '<li><b>Nitrit positiv</b> &rarr; meget sandsynlig bakteriuri</li>'
+        + '<li><b>F&AElig;LDE:</b> Sm&aring; drenge med fysiologisk fimose har Proteus "gemt" under forhuden &mdash; reng&oslash;ring er umulig, urinen ofte kontamineret med Proteus, der danner nitratesterase &rarr; <b>falsk positiv nitrit</b></li>'
+        + '<li><b>Blod og protein</b> p&aring; stix er d&aring;rlige indikatorer for UVI alene</li>'
+      + '</ul>'},
+
+      {l:'Urinopsamling &mdash; koloniantal-tabel (PW slide 54-55)', full:true, c:'<b>Der kr&aelig;ves ukontamineret urin &mdash; et stort problem hos b&oslash;rn.</b><br><br>'
+        + '<table class="nst">'
+        + '<tr><th>Opsamlingsmetode</th><th>Koloniantal (kolonier/ml)</th><th>Sandsynlighed for infektion</th></tr>'
+        + '<tr><td><b>Suprapubisk punktur</b></td><td>Enhver v&aelig;kst</td><td><b>&gt; 99 %</b></td></tr>'
+        + '<tr><td><b>Kateterisation</b></td><td>&gt; 10&#x2075;<br>10&#x2074; - 10&#x2075;</td><td>95 %<br>Infektion sandsynlig</td></tr>'
+        + '<tr><td><b>Midtstr&aring;le-urin (MSU)</b></td><td>&gt; 10&#x2074; (dreng)<br>&gt; 10&#x2075; (pige)</td><td>Infektion sandsynlig:<br>95 % ved 3&times; MSU<br>90 % ved 2&times; MSU<br>80 % ved 1&times; MSU</td></tr>'
+        + '</table>'
+        + '<b>CAVE: Poseurin kan IKKE anvendes &mdash; for h&oslash;j kontaminationsrate.</b>'},
+
+      {l:'Urinvejspatogener (PW slide 56)', c:'<b>Prim&aelig;rt tarmbakterier hos normale b&oslash;rn:</b><ul>'
+        + '<li><b>E. coli (90 %)</b></li>'
+        + '<li>Enterococcus</li>'
+        + '<li>Klebsiella</li>'
+        + '<li>Proteus</li>'
+        + '<li><b>Pseudomonas</b> &mdash; ses oftest hos b&oslash;rn med <b>sv&aelig;re urinvejsmisdannelser</b></li>'
+        + '<li>Streptococcus faecalis</li>'
+      + '</ul>'
+        + '<i>Nyf&oslash;dte og immundefekte b&oslash;rn kan have andre "s&aelig;re" (apatogene) bakterier.</i>'},
+
+      {l:'CAKUT og UVI &mdash; sammenh&aelig;ng (PW slide 57)', c:'<ul>'
+        + '<li>B&oslash;rn med CAKUT har ofte <b>stase i urinvejene</b></li>'
+        + '<li>Kan ofte ikke t&oslash;mme bl&aelig;re/urinveje ordentligt ved vandladning</li>'
+        + '<li>S&aring;ledes kan selv lavvirulente bakterier overleve og for&aring;rsage UVI</li>'
+        + '<li><b>R&oslash;dt flag:</b> recidiverende UVI hos barn &rarr; udred for CAKUT (UL + evt. MCU)</li>'
+      + '</ul>'},
+
+      {l:'Behandling af pyelonefritis (PW slide 58)', warn:true, full:true, c:'<b>Behandlingsl&aelig;ngde: oftest 10 dage.</b>'
+        + '<table class="nst">'
+        + '<tr><th>Peroral (PO) AB</th><th>Intraven&oslash;s (IV) AB</th></tr>'
+        + '<tr><td><b>B&oslash;rn &gt; 6 m&aring;neder</b><br>+ ingen opkast<br>+ ingen CAKUT<br>+ ingen sepsis</td><td><b>B&oslash;rn &lt; 6 m&aring;neder</b><br>eller<br><b>kendt CAKUT</b><br>eller<br><b>sepsis</b></td></tr>'
+        + '<tr><td><b>Amoxicillin/clavulansyre</b> eller <b>pivmecillinam</b> (indtil resistenssvar)</td><td><b>Ampicillin + gentamycin</b> (indtil resistenssvar)</td></tr>'
+        + '<tr><td>Skiftes til IV ved manglende effekt eller d&aring;rligt indtag</td><td>Skiftes til PO efter klinisk respons + resistenssvar</td></tr>'
+        + '</table>'
+        + '<b>Husk:</b> bloddyrkning F&Oslash;R AB ved mistanke om urosepsis.'},
+
+      {l:'Behandling af cystitis (PW slide 59)', c:'<ul>'
+        + '<li><b>Behandlingen afventer resistens-svaret!</b></li>'
+        + '<li>Bakteriostatiske antibiotika kan anvendes &mdash; <b>Trimopan (trimetoprim)</b>, <b>Nitrofurantoin</b></li>'
+        + '<li><b>Varighed: 5-7 dage</b> &mdash; aldrig &lt; 5 dage som hos voksne kvinder</li>'
+      + '</ul>'},
+
+      {l:'Recidiverende UVI &mdash; risikofaktorer + udredning', hl:true, full:true, c:'<b>Risikofaktorer for recidiverende UVI (V2022 eksamen):</b><ul>'
+        + '<li><b>Drenge</b> + alder (sm&aring;b&oslash;rn)</li>'
+        + '<li>Asymptomatisk bakteriuri</li>'
+        + '<li>Urininkontinens (alle typer)</li>'
+        + '<li><b>D&aring;rlig bl&aelig;ret&oslash;mning</b> (urinretention)</li>'
+        + '<li><b>Obstipation</b> &mdash; trykker p&aring; bl&aelig;ren, reducerer t&oslash;mning</li>'
+        + '<li><b>Obstruktion / VUR / CAKUT</b></li>'
+      + '</ul>'
+        + '<b>Udredningsprogram efter 2. UVI hos pige eller 1. UVI hos dreng:</b><ul>'
+        + '<li><b>Drikke- + vandladnings-skema (VVS)</b></li>'
+        + '<li><b>Uroflow + residualurin-bestemmelse</b> &mdash; bl&aelig;ret&oslash;mning</li>'
+        + '<li><b>UL af nyrer + urinveje</b></li>'
+        + '<li><b>MCU</b> &mdash; refluksunders&oslash;gelse</li>'
+        + '<li>Evt. DMSA-skintigrafi &mdash; ar fra tidligere pyelonefritis</li>'
+      + '</ul>'},
+
+      {l:'Urininkontinens &mdash; typer (PW slide 61-62)', c:'<b>Inddeling efter timing:</b><ul>'
+        + '<li><b>Daginkontinens</b></li>'
+        + '<li><b>Dag + nat-inkontinens</b></li>'
+        + '<li><b>Natinkontinens</b> (enuresis nocturna)</li>'
+      + '</ul>'
+        + '<b>&Aring;rsager:</b><ul>'
+        + '<li><b>Overaktiv bl&aelig;re (OAB)</b> &mdash; urge, hyppige sm&aring; portioner</li>'
+        + '<li><b>Retentiv adf&aelig;rd / underaktiv bl&aelig;re</b> &mdash; "holder p&aring; det"</li>'
+        + '<li><b>Dysfunktionel vandladning</b> &mdash; ej koordineret detrusor/sfinkter</li>'
+        + '<li>Grineinkontinens</li>'
+        + '<li>Vaginal tisning</li>'
+        + '<li>~10-15 % vokser sig fra det om &aring;ret</li>'
+        + '<li><b>Anatomisk:</b> obstruktion, ektopisk udmundende ureter, vesikovaginal/-rektal fistel</li>'
+        + '<li><b>Neurologisk:</b> myelomeningocele, spinale tumorer</li>'
+      + '</ul>'},
+
+      {l:'Dyselimination &mdash; tarm/bl&aelig;re-sammenh&aelig;ng (PW slide 64)', warn:true, c:'<ul>'
+        + '<li><b>"B&oslash;rn som holder p&aring; det ene &mdash; holder ogs&aring; p&aring; det andet"</b> (retentiv adf&aelig;rd)</li>'
+        + '<li>F&oslash;lger: <b>obstipation</b> + f&aelig;kal inkontinens + urininkontinens</li>'
+        + '<li><b>Mange f&aring;r UVI</b> oveni</li>'
+        + '<li>Behandl tarmen f&oslash;rst &mdash; det l&oslash;ser ofte ogs&aring; bl&aelig;ren</li>'
+      + '</ul>'},
+
+      {l:'Supplerende udredning (PW slide 65)', c:'<ul>'
+        + '<li><b>V&aelig;ske/vandladningsskema (VVS)</b> &mdash; objektivt belyse vaner</li>'
+        + '<li><b>Uroflow</b> &mdash; m&aring;ler str&aring;le-kurve</li>'
+        + '<li><b>Residualurin-bestemmelse</b> (UL post-miktion)</li>'
+        + '<li>Unders&oslash;gelse af reflekser, sensibilitet, muskelstyrke (neurologisk &aring;rsag)</li>'
+      + '</ul>'},
+
+      {l:'Behandling &mdash; inkontinens/UVI-profylakse (PW slide 66)', c:'<ul>'
+        + '<li><b>Drikke rigeligt</b> &mdash; men ikke aften/nat</li>'
+        + '<li><b>Vandladninger efter skema</b> &mdash; ej kun ved tr&aelig;ngning</li>'
+        + '<li><b>"Double voiding"</b> &mdash; t&oslash;m bl&aelig;ren, vent, t&oslash;m igen</li>'
+        + '<li><b>Antiobstipationsbehandling</b> &mdash; movicol/lactulose</li>'
+      + '</ul>'},
+
+      {l:'Enuresis nocturna (PW slide 67)', hl:true, c:'<b>Behandling:</b><ul>'
+        + '<li><b>Ringeapparat</b> &mdash; konditionerings-baseret, h&oslash;jest effektiv lang-tids</li>'
+        + '<li><b>Desmopressin</b> (DDAVP) &mdash; reducerer natlig urinproduktion</li>'
+        + '<li>Kombination af de to</li>'
+      + '</ul>'
+        + '<b>VIGTIGT:</b> nat-urininkontinens behandles <i>normalt ikke</i> s&aring; l&aelig;nge der er dag-symptomer. <b>Behandl dag-symptomer + obstipation f&oslash;rst.</b>'}
+    ]}
+
+  ],
+  caseRefs:['uvi_cakut']
 }
 
 ];

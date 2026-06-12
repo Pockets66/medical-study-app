@@ -73,6 +73,7 @@ Tracks the status of every note card in `notesData`.
 | peds_3 | Præmaturitet og dens komplikationer | `[D]` | New note, 5 tabs (Definitioner+årsager / Lunger / Hjerte+CNS / Tarm+øjne / Prognose). GZ-slides + kvalitetsdatabase + Excel. Partially closes apnø/lungemodning gap. Awaiting verification. |
 | peds_4 | Infektioner hos det nyfødte barn | `[D]` | New note, 5 tabs (Oversigt+klinik / GBS / HSV / Andre+LOS / Det skal I kunne). GZ+RMP-slides + DPS HSV-retningslinje + Excel + S2020. Awaiting verification. |
 | peds_5 | Medfødte hjertesygdomme (CHD) | `[D]` | New note, 5 tabs (Oversigt+klassifikation / Acyanotisk / Cyanotisk / Obstruktive+ductus-afh / Behandling+mislyde+arytmier). HA-slides (dec 2025) + Excel + S2018 (VSD-Alberte) + Signe (suppl). Awaiting verification. |
+| peds_6 | Nyre- og urinvejssygdomme hos børn | `[D]` | New note, 5 tabs (Nyrefunktion+AKI/CKD+HT / Nefrotisk syndrom / GN+hæmaturi+HSP / CAKUT / UVI+vandladning). PW-slides (autoritativ) + Excel + V2022 Pyelonefritis + Signe (suppl, frekvenser). Awaiting verification. |
 
 ---
 
@@ -86,6 +87,7 @@ Tracks the status of every note card in `notesData`.
 | praematur | Det meget præmature barn | `[D]` | New case, 6 steps (organ for organ: lunger/hjerte/hjerne/tarm/øjne/prognose). GZ running case (GA 25+0). Cross-linked to peds_3. Awaiting verification. |
 | neonatal_infektion | Neonatal infektion (GBS / HSV) | `[D]` | New case, 6 steps. GZ Case 1 (GBS-meningit) + Case 2 (HSV-encephalit) + S2020 framing. Cross-linked to peds_4. Awaiting verification. |
 | hjertebarn | Hjertebarn (CHD med inkompensation) | `[D]` | New case, 6 steps. S2018 Alberte-VSD som skabelon + HA-slides + Excel. Cross-linked to peds_5. Awaiting verification. |
+| uvi_cakut | UVI/pyelonefritis hos pige med CAKUT | `[D]` | New case, 6 steps. V2022 Pyelonefritis (skriftlig) som template + PW-slides UVI-block. Cross-linked to peds_6. Awaiting verification. |
 
 ## Backlog — topics not yet in the app
 
@@ -162,3 +164,5 @@ Files that would unlock blocked topics:
 | 2026-06-11 | peds_5 | New note — Medfødte hjertesygdomme (CHD) fra HA-slides (autoritativ) + Excel + S2018. Femte PEDS note; dækker pink/blue/ductus-afh/obstruktive + ABCD + prostaglandin + mislyde + SVT. |
 | 2026-06-11 | case:hjertebarn | New PEDS case (S2018 Alberte-VSD); Pædiatri-card spliced; cross-linked to peds_5. |
 | 2026-06-11 | flow:hjertesygdom_barn | New PEDS flow tree (mistanke om hjertesygdom); 7 terminaler omkring de 4 præsentationsformer; vsd-terminal → case hjertebarn. |
+| 2026-06-12 | peds_6 | New note — Nyre- og urinvejssygdomme hos børn fra PW-slides (autoritativ) + Excel + V2022. Sjette PEDS note; dækker nyrefunktion/AKI/CKD/HT, nefrotisk syndrom, GN+HSP+hæmaturi, CAKUT-spektret, UVI+vandladning. |
+| 2026-06-12 | case:uvi_cakut | New PEDS case (UVI/pyelonefritis hos 8-årig pige med CAKUT, modelleret efter V2022 Pyelonefritis skriftlig); Pædiatri-card spliced; cross-linked to peds_6. |
