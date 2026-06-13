@@ -9253,6 +9253,681 @@ var flowData = [
   }
 },
 
+{
+  id:'mavesmerter_barn',
+  spec:'PEDS',
+  title:'Mavesmerter hos barn — akut vs recidiverende',
+  src:'F24 stand 1 (funktionel) + F23 stand 7 (cøliaki/vækst) + E23 stand 3 (DKA-maven) + Signe Pædiatri + Excel. Bygger oven på cases funktionelle_mavesmerter, coeliaki_vaekst, dka, uvi_cakut.',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'Mavesmerter hos barn — sortér akut vs recidiverende, screen røde flag.',
+      why:'Mavesmerter er en af de hyppigste pædiatriske præsentationer. Først: <b>akut vs recidiverende</b>, derefter <b>røde flag-screening</b>. Akutte mavesmerter med peritoneale tegn er kirurgisk eller livstruende; recidiverende mavesmerter uden røde flag er oftest funktionel — men cøliaki, IBD og obstipation skal udelukkes.',
+      redflag:'<b>Akut svær mavesmerte med slipømhed, defense eller peritoneale tegn → akut kirurgisk vurdering.</b> <b>Galdefarvet opkast → volvulus indtil modsat bevist.</b> <b>Mavesmerter + Kussmaul + dehydrering + acetonelugt → DKA.</b> <b>Mavesmerter + palpabel purpura + ledsmerter → HSP (Henoch-Schönlein-vaskulit).</b>',
+      ask:[
+        '<b>Smerter:</b> akut vs recidiverende (≥2 mdr.), lokalisation (periumbilikal = ofte funktionel; off-the-centerline = ofte organisk), karakter, varighed, døgnvariation, måltidsrelation',
+        '<b>Vækst og trivsel:</b> følger barnet sin vækstkurve? (vægttab/vækstvigning = rødt flag)',
+        '<b>Afføring:</b> Bristol-skala, frekvens, blod, slim, "redcurrant jelly" (invagination)',
+        '<b>GI:</b> kvalme, opkast (galdefarvet = volvulus), diare, obstipation, oppustethed',
+        '<b>Almene:</b> feber, vægttab, nattesvedudbrud',
+        '<b>Eksterne:</b> ledsmerter, udslæt (purpura = HSP), urinvejs-symptomer',
+        '<b>Psykosocialt:</b> skoletilfredshed, kammerater, mobning, stress',
+        '<b>Familieanamnese:</b> IBD, cøliaki, IBS, diabetes',
+        '<b>Objektivt:</b> vækstkurve, almen, abdomen (blødt? slipømhed? defense? udfyldninger?), perianalt (fissurer?), hud (purpura?)'
+      ],
+      opts:[
+        { lead:'Akut svær eller progressiv mavesmerte (timer–dage)', hint:'Kirurgisk eller livstruende ætiologi skal udelukkes', next:'q_akut' },
+        { lead:'Recidiverende mavesmerter ≥2 mdr.', hint:'Funktionel vs organisk — røde flag styrer', next:'q_recidiverende' }
+      ]
+    },
+
+    q_akut:{
+      q:'Hvilket klinisk billede dominerer ved den akutte mavesmerte?',
+      why:'Akut mavesmerte hos barn har et bredt DDX-felt. Fem akutte billeder dominerer: <b>appendicit</b> (klassisk teenager + skolealder, sjælden &lt;3 år men sværere at diagnosticere); <b>invagination</b> (3 mdr.–3 år, kolikagtige + "redcurrant jelly" afføring); <b>DKA-mavesmerter</b> (Kussmaul + dehydrering — feilopereres lejlighedsvis); <b>UVI/pyelonefritis</b> (feber + flankesmerter, men hos spædbørn ofte uspecifik); <b>akut gastroenterit</b> (hyppigste — selvbegrænsende, opkast + diare).',
+      opts:[
+        { lead:'Slipømhed + defense + højre nedre kvadrant (McBurney-punkt) ± feber', hint:'Appendicit indtil modsat bevist', next:'t_appendicit' },
+        { lead:'Kolikagtige + "redcurrant jelly" afføring + alder 3 mdr.–3 år ± palpabel "sausage" i højre hyper', hint:'Invagination — radiologisk vurdering + evt. lufts-reduktion', next:'t_invagination' },
+        { lead:'Kussmaul-respiration + dehydrering + acetonelugt + ketoner i urinstix', hint:'Diabetisk ketoacidose præsenterer ofte som akut maven', next:'t_dka' },
+        { lead:'Feber + dysuri/pollakisuri + flankesmerter (eller uspecifikke symptomer hos spædbarn)', hint:'UVI/pyelonefritis — urinstix + dyrkning', next:'t_uvi' },
+        { lead:'Diare + opkast + mild krampe ± feber, ingen røde flag', hint:'Akut viral gastroenterit — selvbegrænsende', next:'t_gastroenterit' }
+      ]
+    },
+
+    q_recidiverende:{
+      q:'Er der røde flag eller vækstvigning?',
+      why:'Recidiverende mavesmerter sorteres efter <b>røde flag</b>. Hovedreglen: ingen røde flag + normal vækst + periumbilikal smerte = funktionel. Røde flag (vægttab, vækstvigning, natlig opvågning af smerter, GI-blødning, ledsmerter, hudforandringer, vedvarende diare/opkast) = organisk indtil modsat bevist.',
+      ask:[
+        '<b>Vækstkurve gennemgås:</b> følger barnet sin egen kurve? Vægt før højde = malabsorption (cøliaki/IBD)',
+        '<b>Cøliaki-antistoffer:</b> transglutaminase-IgA + total IgA (udeluk IgA-mangel)',
+        '<b>Basal screening:</b> Hgb, CRP, lever-/nyretal, BS, urinstix, evt. F-calprotectin',
+        '<b>Obstipation-tegn:</b> hård sjælden afføring, smertefuld defækation, retentiv adfærd, fissurer perianalt'
+      ],
+      opts:[
+        { lead:'Vækstvigning (vægt før højde) + diare/obstipation + træthed', hint:'Cøliaki — transglutaminase-IgA + total IgA', next:'t_coeliaki' },
+        { lead:'Obstipation-mønster (hård sjælden afføring, smertefuld defækation, retentiv adfærd)', hint:'Funktionel obstipation — den hyppigste organiske årsag', next:'t_obstipation' },
+        { lead:'Ingen røde flag + normal vækst + periumbilikal + Rome IV-kriterier opfyldt', hint:'Funktionelle mavesmerter — positiv diagnose, ikke udelukkelses', next:'t_funktionel' }
+      ]
+    },
+
+    /* ===== TERMINALER — AKUT ===== */
+
+    t_appendicit:{
+      dx:'Akut appendicit',
+      dxsub:'Hyppigste kirurgiske mavesmerte hos børn skole/teenager. Mere atypisk og hurtigere komplikationer hos småbørn',
+      urgency:'akut',
+      findings:[
+        'Klassisk sekvens: anorexi → periumbilikal smerte → flytter til højre nedre kvadrant + opkast',
+        'Smerten forværres ved bevægelse, hop, hoste',
+        'Lavgradig feber (typisk &lt;38,5°)',
+        'McBurney-punkt-ømhed, defense, slipømhed (Blumberg)',
+        'Psoas-tegn (smerte ved højre hofteekstension), obturator-tegn (smerte ved indadrotation)',
+        'Laboratorie: forhøjet CRP, leukocytose (kan være normal tidligt)',
+        'Pædiatriske scores: Alvarado, PAS (Pediatric Appendicitis Score)'
+      ],
+      ddx:[
+        { d:'Mesenterial lymfadenit', r:'Viral, mild — ingen progression, ofte selvbegrænsende' },
+        { d:'Gastroenterit', r:'Diare dominerer; ingen slipømhed' },
+        { d:'Ovarie-cyste/-torsion (piger)', r:'UL bækken' },
+        { d:'Akut ileitis (Crohn, Yersinia)', r:'Diare, kronisk forløb, vægttab' },
+        { d:'UVI', r:'Urinstix' },
+        { d:'Pneumoni (basal højre lap)', r:'Refereret smerte; rtg thorax' }
+      ],
+      behandling:[
+        '<b>Akut kirurgisk vurdering</b>',
+        'IV adgang, fastende, IV væske',
+        'UL af abdomen (førstevalg hos børn — undgår CT-stråling). CT ved usikker UL',
+        'Smertestillende (morfin titreres) — maskerer IKKE diagnosen ved børn',
+        '<b>Præoperativ AB:</b> cefuroxim + metronidazol (eller pip-tazo)',
+        'Laparoskopisk appendektomi førstevalg; åben hvis perforation/abscess',
+        'Postoperativt: AB 3–5 dage ved perforation, smertelindring, ambulant kontrol'
+      ],
+      ki:[
+        '<b>Børn &lt;3 år</b>: appendicit er sjælden men progredierer hurtigt til perforation (50% perforeret ved op) — lav tærskel for udredning',
+        'Perforation → peritonit → sepsis: forsink ikke operation',
+        'Pige + akutte mavesmerter: tænk altid ovarie-torsion også (kirurgisk akut)'
+      ],
+      prognose:'Med tidlig operation: udmærket, minimal komplikationsrisiko. Perforeret appendicit: 20–40% komplikationer (abscess, sårinfektion, postop. ileus), længere indlæggelse.',
+      caseRef:null
+    },
+
+    t_invagination:{
+      dx:'Invagination (tarminvagination)',
+      dxsub:'3 mdr.–3 år (top 5–9 mdr.). Ileokolisk = hyppigste. Hyppigste ætiologi: lead point efter viral infektion (Peyerske plaque-hypertrofi)',
+      urgency:'akut',
+      findings:[
+        'Spædbarn 3 mdr.–3 år (>90% &lt;2 år)',
+        'Klassisk trias (sjældent komplet): kolikagtige mavesmerter (kraftige anfald, derefter helt rolig) + opkast + blodig slimet afføring ("redcurrant jelly")',
+        'Mellem anfaldene: bleg, sløv, klam — kan ligne sepsis',
+        'Palpabel "sausage"-formet udfyldning i højre hypokondrium (40–60%)',
+        'Sent: tegn på obstruktion/perforation, peritonit',
+        'UL: target/donut-sign — diagnostisk + terapeutisk overvågning'
+      ],
+      ddx:[
+        { d:'Akut gastroenterit', r:'Diare dominerer, ikke kolik-pattern' },
+        { d:'HSP (Henoch-Schönlein) med GI-affektion', r:'Palpabel purpura + ledsmerter + nefrit' },
+        { d:'Malrotation med volvulus', r:'Galdefarvet opkast, abdominal distension' },
+        { d:'Meckels divertikel', r:'Smertefri rectal blødning' },
+        { d:'Sepsis (mellem kolikker)', r:'Hvis "stille fase" tolkes som sløvhed' }
+      ],
+      behandling:[
+        'IV adgang, fastende, væske',
+        'Kontakt kirurg + radiolog',
+        '<b>Førstelinje: lufts-/saltvands-reduktion under rtg-vejledning</b> (succesrate 75–90%)',
+        'Hvis luftreduktion mislykkes ELLER tegn på peritonit/perforation: <b>kirurgisk reduktion ± resektion</b>',
+        'Antibiotika hvis kirurgi (ceftriaxon + metronidazol)',
+        'Post-reduktion: observation 24 t for re-invagination'
+      ],
+      ki:[
+        '<b>Kontraindikation for lufts-reduktion:</b> peritonit, perforation, kredsløbschok, &gt;48 t symptomer',
+        'Re-invagination i 5–15% inden for de første 24 t',
+        'Hos &gt;2 år: lead point (lymfom, Meckels, polyp) skal mistænkes — kirurgisk udredning'
+      ],
+      prognose:'God ved tidlig diagnose (≤24 t). Forsinket diagnose → tarmnekrose → resektion, sepsis. Mortalitet &lt;1% i Danmark.',
+      caseRef:null
+    },
+
+    t_dka:{
+      dx:'Diabetisk ketoacidose (DKA) — akut maven-præsentation',
+      dxsub:'Insulin-mangel → ketogenese → metabolisk acidose. Mavesmerter er hyppig præsentation hos kendt eller nyopdaget T1D',
+      urgency:'akut',
+      findings:[
+        '<b>Mavesmerter ofte fremtrædende</b> — kan ligne akut abdomen, patienter er blevet feilopereret',
+        'Kussmaul-respiration (dyb takypnø)',
+        'Acetonelugt i udånding',
+        'Dehydrering, takykardi, kapillærrespons forhøjet',
+        'Bevidsthedspåvirkning (let → svær)',
+        'Forudgående polyuri, polydipsi, vægttab',
+        'BS &gt;20 mmol/l, blodketoner &gt;3, pH &lt;7,3, HCO3 &lt;15'
+      ],
+      ddx:[
+        { d:'Appendicit', r:'Localiseret højre nedre kvadrant, lokal defense — men mål altid BS bedside!' },
+        { d:'Akut gastroenterit', r:'Diare + opkast — men ingen Kussmaul, ingen ketose' },
+        { d:'Sepsis', r:'Kan trigge DKA — udred parallelt' },
+        { d:'Pankreatit', r:'Sjælden hos børn; amylase/lipase forhøjet' }
+      ],
+      behandling:[
+        '<b>Mål BS bedside på alle børn med akutte mavesmerter</b> — afgørende for at undgå feiloperation',
+        'IV adgang (to perifere venflon)',
+        'Iso NaCl bolus 10–20 ml/kg over 1 t hvis kredsløbschok',
+        'Kaliumtilskud fra start',
+        '<b>Insulin IV 1–2 timer EFTER væske</b> (cerebralt ødem-risiko)',
+        'Langsom BS-korrektion ≤5 mmol/l/t',
+        'Glukose 5% tilsættes når BS &lt;12–15',
+        'HCO3 ikke rutinemæssigt'
+      ],
+      ki:[
+        'Cerebralt ødem er den frygtede komplikation under behandling',
+        'Hurtig BS-korrektion eller hurtig osmolaritetsændring øger risiko',
+        '<b>Eksamen-fælde: mavesmerter + Kussmaul + acetonelugt ÷ BS-måling → feildiagnose</b>'
+      ],
+      prognose:'God ved adekvat behandling. Cerebralt ødem (~1%) har mortalitet ~25%.',
+      caseRef:'dka'
+    },
+
+    t_uvi:{
+      dx:'Urinvejsinfektion / pyelonefritis',
+      dxsub:'Hyppig årsag til akut maven hos spædbørn (uspecifikt) og småpiger (dysuri + flanke)',
+      urgency:'haster',
+      findings:[
+        'Spædbørn: feber, irritabilitet, dårlig trivsel, opkast, sløv — lokale symptomer mangler',
+        'Større børn: dysuri, pollakisuri, mavesmerter (suprapubisk eller flanke), evt. urge',
+        'Urinstix: leukocytter + nitrit (nitrit kan mangle hos spædbørn)',
+        'Urindyrkning: signifikant vækst',
+        'Pyelonefritis: feber + flankesmerter + CRP forhøjet'
+      ],
+      ddx:[
+        { d:'Vulvovaginitis', r:'Småpiger med dysuri uden positiv urindyrkning' },
+        { d:'Appendicit', r:'Ofte forveksles hos pige med højre nedre kvadrant — UL kan afgøre' },
+        { d:'Nyrestensanfald', r:'Akut kolik + makrohæmaturi (sjælden hos børn)' }
+      ],
+      behandling:[
+        'Spædbørn &lt;3 mdr.: indlæggelse + IV ampicillin + gentamicin (eller cefotaxim)',
+        '&gt;3 mdr. cystit: pivmecillinam eller trimethoprim PO 5 dage',
+        '&gt;3 mdr. pyelonefritis: cefuroxim PO eller IV 7–10 dage',
+        'Tilstrækkelig væske, smertestillende',
+        '<b>UL nyrer ved første pyelonefritis</b>; MAG3/DMSA ved recidiv eller obstrukton'
+      ],
+      ki:[
+        'Husk CAKUT som underliggende: VUR, pyeloureteral overgangsstenose, dobbeltanlæg',
+        'Recidiverende UVI: vandladningsmønster, obstipation, hygiejne — udred bredt'
+      ],
+      prognose:'God ved tidlig behandling. Risiko for nyrearvæv ved gentagne pyelonefritter med VUR → HT/CKD risiko.',
+      caseRef:'uvi_cakut'
+    },
+
+    t_gastroenterit:{
+      dx:'Akut viral gastroenterit',
+      dxsub:'Hyppigste årsag til akut mavesmerte + opkast/diare hos børn. Selvbegrænsende. Rotavirus, norovirus, adenovirus',
+      urgency:'rolig',
+      findings:[
+        'Akut indsættende opkast (1–2 dage) → diare (3–7 dage)',
+        'Krampeagtige mavesmerter, oftest milde, distribueret',
+        'Lavgradig feber (kan mangle)',
+        'Ingen slipømhed, blødt abdomen, normale tarmlyde',
+        'Risiko for dehydrering — særligt &lt;2 år',
+        'Eksposition: dagpleje, syge søskende, rotavirus-epidemi (vinter/forår)'
+      ],
+      ddx:[
+        { d:'Bakteriel gastroenterit (Salmonella, Campylobacter, Shigella, EHEC)', r:'Blodig diare, høj feber — dyrkning' },
+        { d:'Appendicit (tidlig fase)', r:'Smerten progredierer, ingen diare; revurder' },
+        { d:'Invagination', r:'Kolik-pattern, blodig slimet afføring' },
+        { d:'Hæmolytisk-uræmisk syndrom (HUS)', r:'EHEC + blodig diare → HUS: anæmi + trombo + AKI' }
+      ],
+      behandling:[
+        '<b>Rehydrering er kernen:</b> oral rehydreringsopløsning (ORS) i små hyppige sip',
+        'IV væske ved svær dehydrering eller persisterende opkast (10–20 ml/kg bolus, derefter vedligehold)',
+        'Ondansetron PO 0,1–0,15 mg/kg kan reducere opkast (off-label men evidensbaseret hos børn)',
+        'Probiotika kan forkorte forløb (begrænset evidens)',
+        'Tidlig genoptag af kost — ikke "BRAT-diet" restriktioner',
+        '<b>Ikke loperamid hos børn &lt;6 år</b>',
+        'Antibiotika: KUN ved specifik patogen (Shigella, svær Salmonella, immunsupprimerede)'
+      ],
+      ki:[
+        '<b>EHEC + AB → øget HUS-risiko</b>: undgå AB ved blodig diare uden definitiv ætiologi',
+        'Anmeldelse ved Salmonella, Shigella, Campylobacter (regionsfunktion)',
+        'Hold barnet ude af dagpleje/skole indtil 48 t symptomfri'
+      ],
+      prognose:'Selvbegrænsende, fuld restitution typisk inden for 1 uge. Komplikationer: dehydrering (særligt spædbørn), elektrolytforstyrrelse, HUS (EHEC), post-infektiøs IBS.',
+      caseRef:null
+    },
+
+    /* ===== TERMINALER — RECIDIVERENDE ===== */
+
+    t_coeliaki:{
+      dx:'Cøliaki',
+      dxsub:'Autoimmun reaktion mod gluten hos HLA-DQ2/8-disponerede. Mavesmerter + vækstvigning + GI-symptomer',
+      urgency:'haster',
+      findings:[
+        'Vækstvigning — vægt før højde på vækstkurven',
+        'Mavesmerter, diare eller obstipation, oppustethed',
+        'Træthed, anæmi (jernmangel)',
+        'Dermatitis herpetiformis (klassisk men sjælden hos børn)',
+        'Stærkt forhøjede transglutaminase-IgA + deamideret gliadin',
+        'Tyndtarmsbiopsi: krypthypertrofisk villusatrofi (Marsh 3a-c)'
+      ],
+      ddx:[
+        { d:'Funktionelle mavesmerter', r:'Normal vækst, ingen røde flag, normale antistoffer' },
+        { d:'IBD (Crohn, colitis ulcerosa)', r:'Blodig diare, ledsmerter, forhøjet F-calprotectin' },
+        { d:'IgA-mangel (selektiv)', r:'Falsk negativ transglutaminase-IgA — mål total IgA' },
+        { d:'Laktoseintolerance', r:'Oppustethed efter mælk; laktose-belastningstest' }
+      ],
+      behandling:[
+        '<b>Livslang glutenfri diæt</b> — komplet undgåelse af byg, hvede, rug (havre er ofte tolereret)',
+        'Diætist-vejledning er central',
+        'Vækst-catch-up over 1–2 år; antistof-normalisering over 6–12 mdr.',
+        'Suppler ved mangel: D-vitamin, jern, B12, folat',
+        'Klinisk kontrol + transglutaminase-AB hver 3.–6. mdr. (compliance)',
+        'Familiescreening: 1.grads har ~10% risiko'
+      ],
+      ki:[
+        'Total IgA-mangel: brug deamideret gliadin-IgG eller transglutaminase-IgG som backup',
+        'Associerede autoimmune sygdomme: T1D, autoimmun thyroidea, Addison — screen ved symptomer',
+        'Ubehandlet: vækstforsink, osteoporose, infertilitet, tarmlymfom-risiko (langtid)'
+      ],
+      prognose:'Udmærket ved god compliance. Catch-up vækst + normalisering af symptomer. Ved manglende compliance: komplikationer som ovenfor.',
+      caseRef:'coeliaki_vaekst'
+    },
+
+    t_obstipation:{
+      dx:'Funktionel obstipation',
+      dxsub:'Hyppigste organiske årsag til recidiverende mavesmerter. Rome IV-kriterier; oftest funktionel, sjældent organisk (Hirschsprung, hypothyreose)',
+      urgency:'rolig',
+      findings:[
+        '&lt;3 afføringer pr. uge, hård afføring, smertefuld defækation',
+        'Retentiv adfærd (krydsede ben, gemmer sig under defækation)',
+        'Inkontinens for afføring (encoprese) — paradoksal lækage rundt om hård retineret klump',
+        'Mavesmerter (periumbilikal eller venstre nedre kvadrant), oppustethed',
+        'Anale fissurer fra hård afføring',
+        'Palpation: fyldt rectum, evt. palpabel skybalum',
+        'Vækst normal, almentilstand god'
+      ],
+      ddx:[
+        { d:'Hirschsprung sygdom', r:'Manglende mekoniumafgang &lt;48 t efter fødsel; trang rectalampul, eksplosiv afgang ved touche — biopsi' },
+        { d:'Hypothyreose', r:'Vækstvigning, kuldetolerance, træthed — TSH/T4' },
+        { d:'Cøliaki (paradoxalt obstipation-præsentation)', r:'Transglutaminase-IgA' },
+        { d:'Anal stenose/fissur', r:'Lokal smerte, frisk blod på papir' },
+        { d:'Medikamentel (opioid, jern)', r:'Anamnese' }
+      ],
+      behandling:[
+        '<b>1. Tømning ("disimpaction"):</b> macrogol (PEG) højdosis 1–1,5 g/kg/dag i 3–6 dage',
+        '<b>2. Vedligehold:</b> macrogol 0,4–0,8 g/kg/dag titreret til 1–2 bløde afføringer dgl. — fortsat i mdr. til år',
+        'Toiletvaner: regelmæssig (5–10 min efter måltider), god siddestilling (taburet til fødder)',
+        'Kost: tilstrækkeligt vand, fiber (frugt, grøntsager) — men ikke restriktiv fiber-diæt',
+        'Motion',
+        'Forældre-information: encoprese er ikke barnets skyld; "no blame approach"'
+      ],
+      ki:[
+        '<b>Behandl længere end forventet</b> — typisk 6–24 mdr. for at undgå recidiv (rectum skal "huske" normal størrelse)',
+        'Stimulanslakserende (senna, picosulfat) kan bruges kortvarigt men ikke som førstelinje hos børn',
+        'Manuel rectal tømning kun ved svigt af PO macrogol; under sedation'
+      ],
+      prognose:'90% af børn med funktionel obstipation behandlet adækvat bliver kontinensorent og obstipationsfri. Risiko for kronisk obstipation hvis ikke behandlet konsekvent.',
+      caseRef:null
+    },
+
+    t_funktionel:{
+      dx:'Funktionelle mavesmerter',
+      dxsub:'Rome IV-kriterier: gentagne abdominalsmerter ≥4 dage/måned i ≥2 mdr., ikke fuldt forklaret af anden medicinsk tilstand. Positiv diagnose, ikke udelukkelses',
+      urgency:'rolig',
+      findings:[
+        'Periumbilikal smerte, recidiverende',
+        '<b>Ingen røde flag:</b> normal vækst, ingen natlig opvågning af smerter, ingen GI-blødning, ingen vægttab, ingen feber',
+        'Normal objektiv us, normal vækstkurve',
+        'Normale basale parakliniske prøver (Hgb, CRP, lever-/nyretal, BS, cøliaki-AB, urinstix)',
+        'Ofte psykosocial belastning: skolestress, social konflikt, perfektionisme, søvnmangel',
+        'Familiær mønster (mor med IBS eller "lignende klager") hyppigt'
+      ],
+      ddx:[
+        { d:'Cøliaki', r:'Vækstvigning + diare/obstipation + positiv transglutaminase-IgA' },
+        { d:'IBD (Crohn, colitis ulcerosa)', r:'Blodig diare, ledsmerter, F-calprotectin forhøjet' },
+        { d:'Laktoseintolerance', r:'Måltidsrelateret, oppustethed' },
+        { d:'Obstipation', r:'Hård afføring-mønster, fyldt rectum' },
+        { d:'UVI', r:'Urinstix' },
+        { d:'Helicobacter pylori', r:'Recidiverende epigastrisk smerte, ulcus' }
+      ],
+      behandling:[
+        '<b>Validere:</b> smerterne er REELLE, ikke "i hovedet"',
+        '<b>Reframe:</b> hjerne-tarm-akse, visceral hypersensibilitet — ikke struktural sygdom',
+        'Livsstil: regelmæssig varieret kost (IKKE restriktiv), væske, fiber, motion, søvnhygiejne',
+        '<b>Stop unødvendige eliminationsdiæter</b>',
+        'Psykosocial vurdering: skole-stress, mobning, familieforhold; tilbyd skolepsykolog',
+        'CBT ved væsentlig angst',
+        'Symptomatisk: paracetamol p.n. (sjældent), pebermynteolje (svag evidens), probiotika (svag evidens)',
+        'Opfølgning 2–3 mdr.'
+      ],
+      ki:[
+        '<b>Ikke gentage blodprøver eller udvide udredning uden nye røde flag</b> — forværrer sygdomsidentitet',
+        'Eksamen-fælde: gastroskopi/koloskopi/CT/MR uden røde flag = dump',
+        'Restriktive diæter uden indikation forværrer ofte hos børn'
+      ],
+      prognose:'Variabelt. 30–50% bliver symptomfri inden for 1 år; resten kan have persisterende symptomer ind i voksenalder (IBS-spectrum). God prognose ved tidlig validering + livsstil-intervention + psykosocial støtte.',
+      caseRef:'funktionelle_mavesmerter'
+    }
+
+  }
+},
+
+{
+  id:'vejrtraekning_barn',
+  spec:'PEDS',
+  title:'Vejrtrækningsproblemer hos barn — øvre vs nedre, akut vs kronisk',
+  src:'E23 stand 6 (astma/atopi) + S2021 skriftlig + Signe Pædiatri + Excel. Bygger oven på case astma_atopi.',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'Vejrtrækningsproblem hos barn — først ABCD, derefter karakteristik.',
+      why:'Børn med respiratorisk distress sorteres efter <b>to akser</b>: <b>øvre vs nedre luftveje</b> (stridor = øvre obstruktion; ekspiratorisk hvæsen = nedre obstruktion; krepitation = parenkym) og <b>akut vs kronisk</b>. Hertil <b>alder</b> (epiglottit historisk hos småbørn men næsten elimineret post-Hib-vaccinen; pseudokrup hyppigst 6 mdr.–3 år; bronkiolit hyppigst 1.–6. levemåned i vintertiden).',
+      redflag:'<b>Stridor + drikker ikke + sittende foroverbøjet + savl → epiglottit</b>; INGEN larynx-inspektion uden anæstesi-/ØNH-beredskab. <b>Pludselig debut efter spise/leg → fremmedlegeme</b>. <b>Cyanose, udmattelse, eller normaliseret pCO2 ved astmaanfald = kritisk tegn</b> — akut behandling. <b>Spædbarn med apnø → ALTID indlæggelse</b>.',
+      ask:[
+        '<b>ABCD:</b> A frie luftveje + lyde (stridor? grynten?) · B RF + indtrækninger + alae nasi + SAT · C farver + kapillærrespons + puls · D bevidsthed + udmattelse',
+        '<b>Debut:</b> pludselig (timer) eller snigende (dage–uger)?',
+        '<b>Karakter:</b> stridor (inspiratorisk øvre) vs ekspiratorisk hvæsen (nedre) vs krepitation (parenkym)',
+        '<b>Ledsagende:</b> feber, hoste (karakter — bjæffende? paroksystisk?), savl, fødeindtag',
+        '<b>Disposition + eksponering:</b> kendt astma, atopisk dermatit, høfeber i familien, tobaksrøg, dagpleje',
+        '<b>Vaccinationsstatus:</b> Hib, kighoste',
+        '<b>Vinter-/sommer-pattern:</b> bronkiolit + croup-vinter, kighoste-sommer/efterår'
+      ],
+      opts:[
+        { lead:'Akut stridor (inspiratorisk hvæsen, øvre luftvejs-obstruktion)', hint:'Epiglottit, pseudokrup eller fremmedlegeme — afgør efter karakter', next:'q_stridor' },
+        { lead:'Ekspiratorisk hvæsen (nedre luftvejs-obstruktion)', hint:'Astma vs bronkiolit — alder og forhistorie afgør', next:'q_hvaesen' },
+        { lead:'Feber + krepitation + takypnø + indtrækninger', hint:'Pneumoni (bakteriel eller viral)', next:'t_pneumoni' },
+        { lead:'Paroksystisk hoste + "kighoste"-lyd ± apnø hos spædbørn', hint:'Pertussis (kighoste) — Bordetella pertussis', next:'t_kighoste' }
+      ]
+    },
+
+    q_stridor:{
+      q:'Hvad karakteriserer stridorbilledet?',
+      why:'Akut stridor hos barn er klinisk skarpt karakteriseret. <b>Pseudokrup</b> (laryngotrakeobronkitis) er langt hyppigste — viral, sæson, bjæffende hoste, værre om natten, normalt drikker. <b>Epiglottit</b> er nu sjælden (Hib-vaccinen virkede) men dødelig — sittende foroverbøjet, savl, drikker ikke, dramatisk syg, hurtigt forløb. <b>Fremmedlegeme</b> debuterer pludseligt under spise/leg.',
+      opts:[
+        { lead:'Bjæffende hoste + hæshed + værst om natten, alder 6 mdr.–3 år, viral periode', hint:'Pseudokrup (akut laryngotrakeobronkitis)', next:'t_pseudokrup' },
+        { lead:'Akut, drikker ikke, sittende foroverbøjet, savl, høj feber, dramatisk syg, dyb stridor', hint:'Epiglottit — akut anæstesi-/ØNH-tilkald, INGEN larynx-inspektion uden beredskab', next:'t_epiglottit' },
+        { lead:'Pludselig debut under spise eller leg + hoste/stridor', hint:'Fremmedlegeme — akut bronkoskopi', next:'t_fremmedlegeme' }
+      ]
+    },
+
+    q_hvaesen:{
+      q:'Er det kendt astma eller første episode hos spædbarn?',
+      why:'Hvæsende vejrtrækning hos børn har to hovedscenarier: <b>astma</b> (skolealder + atopisk baggrund + recidiverende) og <b>bronkiolit</b> (spædbarn + viral epidemi + 1. episode). Småbørn kan have "astmatisk bronkitis" (infektionsudløst hvæsen uden interkurrente symptomer) — 1/3 udvikler ægte astma.',
+      opts:[
+        { lead:'Kendt astma eller atopisk disposition (eksem + familiær atopi)', hint:'Astma-anfald eller astma-debut', next:'t_astma' },
+        { lead:'Spædbarn (1.–6. levemåned), 1. episode, vinter/forår, viral epidemi', hint:'Bronkiolit (RSV typisk; også metapneumovirus, parainfluenza)', next:'t_bronkiolit' }
+      ]
+    },
+
+    /* ===== TERMINALER ===== */
+
+    t_pseudokrup:{
+      dx:'Pseudokrup (akut laryngotrakeobronkitis)',
+      dxsub:'Viral, alder 6 mdr.–3 år, oftest efterår/vinter. Parainfluenza hyppigst',
+      urgency:'haster',
+      findings:[
+        '<b>Bjæffende ("sælagtig") hoste</b>, hæshed, inspiratorisk stridor',
+        'Forværring om natten + ved gråd/agitation',
+        'Lav-moderat feber, oftest let nasalstenose forudgående',
+        'Westley-score: stridor + indtrækninger + luftbevægelse + cyanose + bevidsthed (mild &lt;3, moderat 3–7, svær &gt;7)',
+        'Almenpåvirket — men typisk drikker, ikke svært syg',
+        'IKKE savl, IKKE dysfagi (vs epiglottit)'
+      ],
+      ddx:[
+        { d:'Epiglottit', r:'Hurtigere debut, savl, sittende foroverbøjet, høj feber, dramatisk syg' },
+        { d:'Fremmedlegeme', r:'Pludselig debut, ensidigt' },
+        { d:'Bakteriel trakeit', r:'Sjælden men alvorlig — purulent sekret, høj feber, dårligt respons på adrenalin' },
+        { d:'Anafylaksi', r:'Urticaria, allergeneksposition' }
+      ],
+      behandling:[
+        '<b>Hold barnet roligt</b> — gråd forværrer (større pres-gradient over forsnævringen)',
+        '<b>Mild:</b> dexamethason PO 0,15–0,6 mg/kg engangsdosis (eller prednisolon) — hjem efter observation',
+        '<b>Moderat-svær:</b> dexamethason PO/IV + <b>inhaleret adrenalin</b> (racemisk adrenalin 0,5 ml af 2,25% i 3 ml NaCl, eller 1:1000 adrenalin 0,5 mg/kg max 5 ml)',
+        'Ilt ved SAT &lt;92%',
+        'Observation 2–4 t efter adrenalin (rebound-fare)',
+        'Indlæggelse ved: behov for &gt;1 adrenalin, vedvarende stridor i hvile, SAT &lt;92%, dårlig respons'
+      ],
+      ki:[
+        'Forsink ikke steroid — virker over 1–2 t men halverer indlæggelser',
+        'Bemærk rebound efter adrenalin (varighed ~2 t)',
+        '<b>Bakteriel trakeit-mistanke</b> hvis dårligt respons + purulent sekret: AB + intubation-beredskab'
+      ],
+      prognose:'Udmærket. Selvbegrænsende, oftest 3–5 dages forløb. Recidiv hyppig under småbørnsåren.',
+      caseRef:null
+    },
+
+    t_epiglottit:{
+      dx:'Akut epiglottit',
+      dxsub:'Bakteriel cellulitis af epiglottis. Klassisk Hib (Haemophilus influenzae type b); nu sjælden post-vaccination. Stadig set hos uvaccinerede, voksne, immunsupprimerede',
+      urgency:'akut',
+      findings:[
+        '<b>Akut indsættende</b> over timer (vs pseudokrup over dage)',
+        'Høj feber (&gt;39°), toksisk udseende',
+        '<b>Sittende foroverbøjet ("tripod"-position)</b> + savl + drikker ikke',
+        'Dyb inspiratorisk stridor, ikke bjæffende hoste',
+        'Dysfagi, dyspnø, dysfoni ("hot potato voice")',
+        'Hurtig progression til luftvejsobstruktion'
+      ],
+      ddx:[
+        { d:'Pseudokrup', r:'Bjæffende hoste, drikker, ikke savl, sværere stridor om natten' },
+        { d:'Bakteriel trakeit', r:'Purulent sekret, hoste fremtrædende' },
+        { d:'Anafylaksi med larynxødem', r:'Urticaria, allergeneksposition' },
+        { d:'Retrofaryngeal abscess', r:'Stiv hals, dysfagi, kan ligne — UL/CT' }
+      ],
+      behandling:[
+        '<b>INGEN larynx-inspektion uden anæstesi- og ØNH-beredskab</b> — kan udløse fatal spasme/obstruktion',
+        '<b>Hold barnet roligt</b> — i forældres arme, undgå iv-stik / kanyler indtil luftveje sikret',
+        '<b>Akut anæstesi + ØNH</b> — overflytning til OP for kontrolleret intubation under inhalationsanæstesi',
+        'IV adgang OG bloddyrkning + AB EFTER intubation',
+        '<b>Empirisk AB:</b> cefuroxim eller ceftriaxon IV',
+        'Intuberet typisk 1–2 dage; ekstubation når lækage rundt om tube + klinisk bedring',
+        'Vaccinationsstatus + Hib-vaccination kontaktpersoner ved bekræftet Hib'
+      ],
+      ki:[
+        '<b>Aldrig undersøg svælget med spatel hos mistænkt epiglottit</b>',
+        'Anmeldelsespligt ved Hib (invasiv)',
+        'Husk: post-Hib-vaccinationsalder er meningokok B og pneumokok serotyper en større andel af tilfældene'
+      ],
+      prognose:'Med tidlig intubation: god (mortalitet &lt;1%). Forsinket diagnose → respiratorisk arrest → hjerneskade eller død.',
+      caseRef:null
+    },
+
+    t_fremmedlegeme:{
+      dx:'Fremmedlegeme i luftvejene',
+      dxsub:'Hyppigst 6 mdr.–3 år (oral exploration). Klassisk: peanuts, plastikdele, små legetøjsdele',
+      urgency:'akut',
+      findings:[
+        '<b>Pludselig debut</b> under spise eller leg',
+        'Hoste, eventuelt midlertidig kvælningsfase',
+        'Stridor (hvis larynx/trakea) eller ekspiratorisk hvæsen (hvis bronkus)',
+        '<b>Ensidigt nedsat respirationslyd</b> ved bronkial impaktion',
+        'Rtg thorax: kan se direkte (radiopaque) eller indirekte (atelektase, ventilation-mismatch på in-/eksspiratorisk billede)',
+        'Kan også være "stille fase" hvis bronkial — pas på',
+        'Hos småbørn: ofte forveksles med bronkit eller astma initialt'
+      ],
+      ddx:[
+        { d:'Astma', r:'Recidiverende, atopi-baggrund — men førstegangs hvæsen + pludselig debut: tænk fremmedlegeme' },
+        { d:'Pneumoni (post-aspiration)', r:'Hvis ikke fjernes: post-stenotisk pneumoni eller bronkiektasi-udvikling' },
+        { d:'Pseudokrup', r:'Snigende, bjæffende hoste — ikke pludselig pulserende' }
+      ],
+      behandling:[
+        '<b>Lille spædbarn (&lt;1 år):</b> 5 ryg-slag i fremoverbøjet position + 5 brystkompressioner — ALTERNERENDE indtil objekt udstødt eller barnet bevidstløst',
+        '<b>Større barn (≥1 år):</b> Heimlich-manøvre (abdominal-stød) hvis stadig ved bevidsthed; hvis bevidstløst: HLR + se i munden mellem indblæsninger',
+        '<b>Stabil med mistanke om bronkial impaktion:</b> indlæggelse + akut bronkoskopi (stiv bronkoskopi førstevalg hos børn)',
+        'Ilt + monitorering under transport',
+        'Postoperativt: rtg kontrol, bronkial toilette',
+        'Antibiotika hvis post-stenotisk pneumoni'
+      ],
+      ki:[
+        '<b>Aldrig blind finger-sweep i munden hos barn</b> (kan trykke objektet dybere)',
+        'Heimlich-manøvre er KONTRAINDICERET hos spædbørn (&lt;1 år)',
+        'Mistanke om bronkial fremmedlegeme selv ved "stille fase" → bronkoskopi (forebyg sekundær pneumoni/bronkiektasi)'
+      ],
+      prognose:'God ved rettidig fjernelse. Komplikationer ved forsinkelse: post-stenotisk pneumoni, atelektase, bronkiektasi, kronisk hoste.',
+      caseRef:null
+    },
+
+    t_astma:{
+      dx:'Astma (anfald eller debut)',
+      dxsub:'Reversibel bronkial obstruktion + bronkial hyperreaktivitet. Hyppigste kroniske luftvejssygdom hos børn',
+      urgency:'haster',
+      findings:[
+        'Anfaldsvis hvæsende vejrtrækning (piben/hvæsen), ekspiratorisk',
+        'Hoste (særligt om natten + ved anstrengelse)',
+        'Forlænget ekspirium, ronchi, evt. nedsat luftskifte',
+        'Indtrækninger, alae nasi, takypnø, takykardi',
+        'Atopisk baggrund: eksem, høfeber, familiær atopi',
+        'Udløsende faktorer: virusinfektion, allergeneksposition, fysisk aktivitet, kulde, tobaksrøg',
+        'Spirometri (≥5–6 år): reversibilitet (FEV1 ↑ ≥12% efter SABA)',
+        '<b>Kritiske tegn ved svær anfald:</b> cyanose, sløret sensorium, udmatning, tyst thorax, paradoks respiration, normal/forhøjet pCO2 (udmattet)'
+      ],
+      ddx:[
+        { d:'Bronkiolit (spædbarn, 1. episode)', r:'Viral, &lt;6 mdr., RSV-sæson' },
+        { d:'Fremmedlegeme', r:'Pludselig debut, ensidigt fund' },
+        { d:'Pneumoni', r:'Krepitation + feber + dårligt respons på SABA' },
+        { d:'Cystisk fibrose', r:'Vækstvigning + recidiverende pneumonier + GI-symptomer' },
+        { d:'Allergisk rhinit + postnasal drip', r:'Hoste uden bronkial obstruktion' }
+      ],
+      behandling:[
+        '<b>Akut anfald:</b>',
+        '— SABA inh. (Ventoline) — 2–10 puff via spacer hver 20 min × 3',
+        '— Ilt ved SAT &lt;92%',
+        '— Systemisk steroid: prednisolon PO 1–2 mg/kg (max 40 mg) — 3–5 dage',
+        '— Ved svær: ipratropium inh. tilføjet, IV magnesiumsulfat 25–50 mg/kg over 20 min, IV B2-agonist',
+        '— Intubation ved udmattelse, ikke i sig selv ved svær anfald (børn håndterer ofte respiratorisk arrest pludseligt)',
+        '<b>Fast forebyggende behandling:</b>',
+        '— Inhalationssteroid (ICS) — dæmper bronkial inflammation, basisbehandling',
+        '— SABA p.n.',
+        '— Step-up: LABA-kombi, LTRA (montelukast), højere ICS',
+        '<b>Atopisk dermatit:</b> daglig fed creme + topical steroid ved opblussen',
+        '<b>Allergisanering:</b> husstøvmider, pelsdyr, tobaksrøg',
+        '<b>Allergiudredning:</b> priktest eller spec-IgE'
+      ],
+      ki:[
+        '<b>"Tyst thorax" er IKKE bedring — det er udmattelse</b>',
+        '<b>Normal eller forhøjet pCO2 ved astma-anfald er kritisk</b> (oprindelig hyperventilation udvasker CO2; udmattelse → normal/høj pCO2)',
+        'Højdosis ICS kan dæmpe vækst — monitor højdekurve. Skyl mund efter inhalation',
+        'Compliance: skolebørn tager ~50% korrekt — verify teknik + brug'
+      ],
+      prognose:'God ved adekvat kontrol. ~50% af børn med astma vokser ud af det inden voksenalder; resten har persisterende astma. Akut svær anfald: mortalitet meget lav i Danmark med moderne behandling.',
+      caseRef:'astma_atopi'
+    },
+
+    t_bronkiolit:{
+      dx:'Bronkiolit',
+      dxsub:'Viral nedre luftvejsinfektion hos spædbarn. RSV hyppigst (også metapneumovirus, parainfluenza). Vinter/forår',
+      urgency:'haster',
+      findings:[
+        'Spædbarn 1.–12. levemåned (top 2–6 mdr.)',
+        'Forudgående 1–3 dages øvre luftvejsinfektion (snue, hoste, let feber)',
+        'Tiltagende takypnø, indtrækninger, alae nasi',
+        'Ekspiratorisk hvæsen, krepitation (fugtige fine), eventuelt forlænget ekspirium',
+        'Fødeindtag faldende (takypnø udmatter)',
+        '<b>Apnø kan være første symptom hos &lt;3 mdr.</b> — særligt ex-præmature',
+        'Risikofaktorer for svær forløb: alder &lt;3 mdr., præmaturitet (særligt med BPD), CHD, immunodefekt, kronisk lungesygdom'
+      ],
+      ddx:[
+        { d:'Pneumoni', r:'Mere fokal krepitation, ikke ekspiratorisk hvæsen' },
+        { d:'Astma (sjælden &lt;1 år)', r:'Recidiverende, atopisk baggrund' },
+        { d:'Kighoste', r:'Paroksystisk hoste + kighoste-lyd' },
+        { d:'Hjertesvigt (CHD-debut)', r:'Hepatomegali, dårlig trivsel, mislyd' }
+      ],
+      behandling:[
+        '<b>Støttende:</b> dette er hovedbehandlingen',
+        '— Ilt ved SAT &lt;92%',
+        '— Mindre måltider (eller sondemad/IV væske ved fødeindtag &lt;50% af normalt)',
+        '— Næsesugning før måltider og søvn',
+        '— Højdosis ilttilskud via high-flow nasal cannula (HFNC) ved moderat-svær',
+        '— Monitorering: SAT, RF, respirationsarbejde, fødeindtag',
+        '<b>Indikation for indlæggelse:</b> SAT &lt;92%, RF &gt;70, indtrækninger, fødeindtag &lt;50%, apnø, &lt;3 mdr. med klinisk distress, social risiko',
+        '<b>IKKE rutinemæssigt:</b> antibiotika (viralt), inhalationssteroid (virker ikke ved RSV), SABA (svag evidens, kun forsøg ved atopisk baggrund), systemisk steroid (ikke evidensbaseret)',
+        '<b>Palivizumab</b> (RSV-monoklonalt) — profylaktisk månedligt i RSV-sæson for høj-risiko-spædbørn (præmature, BPD, CHD)',
+        '<b>Nirsevimab</b> (siden 2024 i DK) — engangsdosis ved fødsel/RSV-sæsonstart, universel mulighed'
+      ],
+      ki:[
+        'Bronkiolit + bakteriel superinfektion: lav tærskel for AB hvis vedvarende feber + krepitation + forhøjet CRP',
+        'Spædbarn &lt;3 mdr. + apnø → ALTID indlæggelse + monitorering',
+        '"Bronchiolitis revisited" — guidelines har gradvist fjernet ikke-evidensbaserede behandlinger (SABA, steroid, fysioterapi, antibiotika)'
+      ],
+      prognose:'Selvbegrænsende — fuld restitution typisk inden for 1–2 uger. Komplikationer: dehydrering, respiratorisk svigt (særligt høj-risiko-spædbørn), sekundær bakteriel infektion. Senere: øget risiko for recidiverende hvæsende vejrtrækning og astma-debut.',
+      caseRef:null
+    },
+
+    t_pneumoni:{
+      dx:'Pneumoni',
+      dxsub:'Bakteriel (pneumokok hyppigst) eller viral (RSV, influenza, parainfluenza); Mycoplasma hos skolebørn',
+      urgency:'haster',
+      findings:[
+        'Feber + <b>takypnø</b> (RF over alderstærsklen — vigtigste enkelttegn)',
+        'Indtrækninger, alae nasi, brug af accessoriske muskler',
+        'Stetoskopi: krepitation, nedsat luftskifte, bronkial respiration',
+        'Hoste (kan mangle hos spædbørn)',
+        'Mavesmerter (refereret fra diafragma, særligt basal-lap)',
+        'Rtg thorax: infiltrat — men beslutningen er klinisk, ikke rtg alene'
+      ],
+      ddx:[
+        { d:'Bronkiolit (RSV, &lt;2 år)', r:'Ekspiratorisk hvæsen + sæson + spædbarn — viral' },
+        { d:'Astma + superinfektion', r:'Tidligere astma, hvæsen, reversibilitet' },
+        { d:'Fremmedlegeme', r:'Pludselig debut, ensidig fund' },
+        { d:'Hjertesvigt', r:'Sjælden hos rask barn; kendt hjertesygdom' },
+        { d:'Empyem (post-pneumoni komplikation)', r:'Vedvarende feber + nedsat luftskifte + dump perkussion' }
+      ],
+      behandling:[
+        'Ilt ved SAT &lt;92%',
+        '<b>Førstelinje:</b> amoxicillin PO 40–80 mg/kg/døgn delt × 3 ved typisk bakteriel pneumoni',
+        '<b>Indlæggelse</b> ved: &lt;6 mdr., SAT &lt;92%, kredsløbspåvirkning, indtrækninger, manglende fødeindtag, social risiko',
+        'IV penicillin/ampicillin ved indlagt sværere pneumoni; cefuroxim ved manglende respons',
+        '<b>Atypisk pneumoni</b> (Mycoplasma, skolebørn): makrolid (azithromycin)',
+        'Symptomatisk: paracetamol, væske',
+        'Sikkerhedsnet: forværring → kontakt'
+      ],
+      ki:[
+        'Bronkiolit ligner pneumoni hos spædbørn — antibiotika hjælper ikke ved ren viral infektion',
+        'Dårligt respons på AB efter 48 t → revurder DDX (atypisk, fremmedlegeme, empyem, TB hos risiko-grupper)',
+        'Komplikationer: parapneumonisk ekssudat → empyem (drænage), abscess (sjælden)'
+      ],
+      prognose:'Udmærket ved tidlig behandling. Komplikationer: empyem (1–5%), parapneumoniske ekssudater. Mortalitet i Danmark meget lav.',
+      caseRef:null
+    },
+
+    t_kighoste:{
+      dx:'Kighoste (pertussis)',
+      dxsub:'Bordetella pertussis. Hyppighed steget i Danmark — vaccination-immunitet aftager med tiden. Farligst hos uvaccinerede spædbørn',
+      urgency:'haster',
+      findings:[
+        'Klassisk tre faser:',
+        '1. <b>Katarralfase</b> (1–2 uger): mild øvre luftvejsinfektion, snue, mild hoste — smitter mest',
+        '2. <b>Paroksystisk fase</b> (2–6 uger): paroksystiske hosteanfald (10–30 hoste-stød i træk) efterfulgt af inspiratorisk "whoop" (kighoste-lyd), opkast efter anfald, post-tussive cyanose',
+        '3. <b>Rekonvalescens</b> (uger–måneder): aftagende anfald',
+        '<b>Spædbørn (&lt;3 mdr.):</b> ofte INGEN klassisk kighoste — i stedet apnø, cyanose-anfald, bradykardi → livstruende',
+        'Leukocytose med lymfocytose (uspecifikt men karakteristisk)',
+        'PCR fra nasofarynx — guldstandard'
+      ],
+      ddx:[
+        { d:'Pseudokrup', r:'Bjæffende hoste + stridor + nattefokus' },
+        { d:'Fremmedlegeme', r:'Pludselig debut' },
+        { d:'Mycoplasma pneumoni', r:'Hoste + atypisk pneumoni-billede' },
+        { d:'RSV-bronkiolit', r:'Hvæsen + spædbarn + vinter' },
+        { d:'Astma', r:'Hvæsen + atopi-baggrund' }
+      ],
+      behandling:[
+        '<b>Makrolid:</b> azithromycin 10 mg/kg dag 1, derefter 5 mg/kg × 4 dage (eller clarithromycin/erythromycin)',
+        'Reducerer smitsomhed (ikke nødvendigvis varighed af symptomer hvis startet efter katarralfasen)',
+        'Indlæggelse ved: &lt;3 mdr., apnø-anfald, cyanose, fødeindtag-problemer, respiratorisk svigt',
+        'Spædbørn på intensiv ved svær: monitor for apnø/bradykardi',
+        '<b>Tæt-kontakt-profylakse</b> med samme AB-regime — særligt for spædbørn og gravide',
+        'Anmeldelsespligt (individuelt + generelt)',
+        '<b>Booster-vaccination</b> til ikke-immune kontaktpersoner; "cocooning"-strategi (vaccination af forældre + plejepersonale af nye spædbørn)'
+      ],
+      ki:[
+        '<b>Spædbarn med apnø-anfald + lymfocytose → kighoste indtil modsat bevist</b>',
+        'Hostestillende (kodein, dextromethorphan) virker IKKE og er kontraindiceret hos småbørn',
+        'Vaccination beskytter delvist — boostre med tiden (Tdap-vaccination i graviditet anbefales nu i DK)'
+      ],
+      prognose:'Skolebørn/voksne: oftest fuldt rest, ofte 6+ ugers symptomer. <b>Spædbørn &lt;6 mdr.:</b> komplikationer: apnø, sekundær pneumoni, encefalopati, kramper, intrakraniel blødning, mortalitet ~1% globalt. Tidlig vaccinationsstart + cocooning er hovedforebyggelse.',
+      caseRef:null
+    }
+
+  }
+},
+
 // === end PEDS flows ===
 ];
 

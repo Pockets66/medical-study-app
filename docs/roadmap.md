@@ -64,6 +64,8 @@ Tracks the status of every note card in `notesData`.
 | haematuri_barn | Hæmaturi hos barn | `[D]` | New PEDS flow tree. 6 terminaler (PSGN / HSP-nefrit / IgA-nefropati / UVI / urolitiase / benign isoleret mikrohæmaturi). caseRef→uvi_cakut + hsp_nefrit. PW-slides + Excel + Signe (suppl). Awaiting verification. |
 | feber_barn | Det febrile barn (alvorlighedsgrad + fokusjagt) | `[D]` | New PEDS flow tree. 7 terminaler (meningokok / sepsis / otitis / pneumoni / UVI / Kawasaki / viral uden fokus). caseRefs → meningokoksepsis, uvi_cakut, febrilt_barn. Awaiting verification. |
 | bevidsthedspaavirket_barn | Det bevidsthedspåvirkede barn (DDX og akut handling) | `[D]` | New PEDS flow tree. 9 terminaler (meningokok / hypoglykæmi / traume / battered / DKA / ICP-tumor / meningit / postiktal / intox). caseRefs → meningokoksepsis, battered_child, dka, hjernetumor_icp. Awaiting verification. |
+| mavesmerter_barn | Mavesmerter hos barn (akut vs recidiverende) | `[D]` | New PEDS flow tree. 8 terminaler (5 akut: appendicit / invagination / DKA / UVI / gastroenterit; 3 recidiverende: cøliaki / obstipation / funktionel). caseRefs → dka (cross med batch 26), uvi_cakut, coeliaki_vaekst, funktionelle_mavesmerter. Awaiting verification. |
+| vejrtraekning_barn | Vejrtrækningsproblemer hos barn (øvre vs nedre, akut vs kronisk) | `[D]` | New PEDS flow tree. 7 terminaler (pseudokrup / epiglottit / fremmedlegeme / astma / bronkiolit / pneumoni / kighoste). caseRef → astma_atopi. Awaiting verification. |
 
 ---
 
@@ -187,3 +189,5 @@ Files that would unlock blocked topics:
 | 2026-06-13 | cases:peds (10 new) | Ten new PEDS cases covering F23-F25 + E23-E24 + målbeskrivelse. peds_7..peds_12 are placeholder caseRefs (notes follow in separate task). |
 | 2026-06-13 | flow:feber_barn | New PEDS flow tree (Task 26 batch 1). 7 terminaler; cross-links to meningokoksepsis + uvi_cakut + febrilt_barn. |
 | 2026-06-13 | flow:bevidsthedspaavirket_barn | New PEDS flow tree (Task 26 batch 1). 9 terminaler; cross-links to meningokoksepsis + dka + hjernetumor_icp + battered_child. Shares t_meningokok with feber_barn (cross-pollination intentional). |
+| 2026-06-13 | flow:mavesmerter_barn | New PEDS flow tree (Task 27 batch 2). 8 terminaler; cross-pollination med batch 26 på t_dka (caseRef:'dka') og t_uvi (caseRef:'uvi_cakut'). |
+| 2026-06-13 | flow:vejrtraekning_barn | New PEDS flow tree (Task 27 batch 2). 7 terminaler; caseRef → astma_atopi. Cross-pollination med batch 26 på t_pneumoni (uden case). |
