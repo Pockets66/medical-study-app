@@ -8590,6 +8590,670 @@ var flowData = [
 
   }
 }
+
+{
+  id:'feber_barn',
+  spec:'PEDS',
+  title:'Det febrile barn — alvorlighedsgrad og fokusjagt',
+  src:'F25 stand 6 (almen praksis) + S2017 + V2016 + Signe Pædiatri + DPS-pejlemærker. Bygger oven på case febrilt_barn og meningokoksepsis.',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'Vurdér alvorlighedsgrad — INDEN du jagter fokus.',
+      why:'Hos det febrile barn er den første beslutning <b>altid alvorlighedsgrad</b>; fokusjagten kommer derefter. Brug akut pædiatrisk vurdering (ABCD) + NICE trafiklys + alders-tærskler. <b>Børn &lt;1 mdr.</b> med feber indlægges altid. <b>1–3 mdr.</b> lægevurderes altid; indlægges ved påvirket alment eller manglende fokus. <b>3 mdr.–3(5) år</b> vurderes med NICE-trafiklys.',
+      redflag:'<b>Petekkier + feber = meningokoksygdom indtil modsat bevist</b> → 112 / akut indlæggelse, IV penicillin straks (forsink ikke for dyrkning). <b>Spædbarn &lt;3 mdr.</b> med feber kræver altid lægevurdering — kan have purulent meningit uden nakkestivhed.',
+      ask:[
+        '<b>ABCD-børn:</b> A frie luftveje · B RF efter alder (0–1 mdr. &gt;60, 2–11 mdr. &gt;50, 1–4 år &gt;40, ≥5 år &gt;20) + indtrækninger + SAT · C farver + kapillærrespons (&gt;3s = forsinket) + puls + BT · D AVPU + kontakt + fontanelle',
+        '<b>NICE trafiklys:</b> farver (bleg/cyanotisk), aktivitetsniveau, respiration, hydrering, andre tegn (utrøstbar gråd, &lt;3 mdr.)',
+        '<b>Feberforløb:</b> varighed (specielt &gt;5 dage), max-temp, hvordan målt',
+        '<b>Eksposition:</b> rejser, syge søskende, dagpleje',
+        '<b>Fokus-symptomer:</b> luftveje, GI, urinveje, hud (klæd barnet helt af — petekkier), ører, svælg',
+        '<b>Hydrering:</b> drikker, våde bleer, slimhinder',
+        '<b>Vaccinationsstatus</b> + tidligere sygdomme'
+      ],
+      opts:[
+        { lead:'Akut påvirket eller røde flag', hint:'NICE rød/gul, ABCD-svigt, petekkier, &lt;1 mdr. med feber, &lt;3 mdr. med påvirket AT', next:'q_paavirket' },
+        { lead:'Velvirkende uden røde flag', hint:'NICE grøn, vågen, drikker, trøstbar, fokus skal afsøges', next:'q_fokus' }
+      ]
+    },
+
+    q_paavirket:{
+      q:'Hvilket akut billede dominerer?',
+      why:'Det akut påvirkede febrile barn skal stabiliseres FØR komplet udredning. To billeder dominerer: <b>meningokoksygdom</b> (petekkier ± nakkestivhed ± kredsløbschok) og <b>sepsis af anden ætiologi</b> (kredsløbschok uden petekkier).',
+      opts:[
+        { lead:'Petekkier (ikke-blanching, glasprøve positiv) ± nakkestivhed', hint:'Meningokoksygdom — feber + petekkier indtil modsat bevist', next:'t_meningokok' },
+        { lead:'Sepsis-billede uden petekkier', hint:'Takykardi, kapillærrespons &gt;3 sek, hypoton, GI-symptomer, abnorm temperatur', next:'t_sepsis_andre' }
+      ]
+    },
+
+    q_fokus:{
+      q:'Hvor sidder fokus?',
+      why:'Hos velvirkende barn afsøges fokus systematisk: ører, svælg, luftveje, urinveje, hud. Hvis IKKE fokus efter klinisk undersøgelse, er to scenarier vigtige: <b>5+ dages feber uden fokus → Kawasaki + okkulte fokus (UVI, knogle/led, dyb infektion)</b>; <b>kort varighed uden fokus + velvirkende → viral infektion</b>.',
+      ask:[
+        '<b>Otoskopi</b> — hyppigste skjulte fokus hos småbørn',
+        '<b>Svælg + tonsiller</b> — belægninger, fauces',
+        '<b>St.p.</b> — krepitation, ronchi, indtrækninger, RF, SAT',
+        '<b>Urinstix</b> — særligt &lt;3 mdr. og småpiger',
+        '<b>Abdomen + nyreloger</b>',
+        '<b>Hud, led, ekstremiteter</b>'
+      ],
+      opts:[
+        { lead:'Otitis media / tonsillit / faryngit', hint:'Hyppigste fokus; otoskopi + svælg-inspektion', next:'t_otitis_tonsillitis' },
+        { lead:'Respiratoriske symptomer (takypnø, indtrækninger, krepitation)', hint:'Mistanke om pneumoni; rtg thorax ved klinisk mistanke', next:'t_pneumoni' },
+        { lead:'Urinvejssymptomer eller spædbarn med uforklaret feber', hint:'UVI/pyelonefritis — særligt &lt;3 mdr., småpiger, mistanke om okkult fokus', next:'t_uvi' },
+        { lead:'Feber ≥5 dage uden fokus', hint:'Tænk Kawasaki, okkult fokus (knogle/led, dyb infektion)', next:'t_kawasaki' },
+        { lead:'Ingen fokus + kort varighed + velvirkende', hint:'Mest sandsynligt viral; sikkerhedsnet til forældre', next:'t_viral_uden_fokus' }
+      ]
+    },
+
+    /* ===== TERMINALER ===== */
+
+    t_meningokok:{
+      dx:'Meningokoksygdom (sepsis ± meningitis)',
+      dxsub:'Neisseria meningitidis — feber + petekkier hos påvirket barn',
+      urgency:'akut',
+      findings:[
+        'Feber + <b>ikke-blanching petekkialt udslæt</b> (glasprøve positiv), oftest underben/fødder først',
+        'Påvirket bevidsthed, irritabilitet, vil ikke have kontakt',
+        'Bleg, takykard, takypnø, kapillærrespons &gt;3 sek',
+        'Evt. nakkestivhed (kan mangle hos spædbørn med meningit)',
+        '<b>Laboratorie:</b> CRP forhøjet eller paradoksalt lav, leukocytter forhøjede eller lave (fulminant), forhøjet laktat, evt. DIC-tegn (lav trombo, forhøjet INR/APTT, forhøjet D-dimer, lav fibrinogen)'
+      ],
+      ddx:[
+        { d:'Henoch-Schönlein purpura (IgA-vaskulit)', r:'Palpabel purpura, fordeling på ben/balder, oftest ikke påvirket AT' },
+        { d:'ITP (idiopatisk trombocytopeni)', r:'Trombocytopeni, oftest ikke alment påvirket' },
+        { d:'Septisk shock af anden ætiologi', r:'GAS, pneumokokker — ikke specifikke for petekkier' },
+        { d:'Viral exantematisk sygdom', r:'Udslæt blancherer for tryk, oftest ikke alment påvirket' }
+      ],
+      behandling:[
+        '<b>Forsink ikke for dyrkning.</b> Akut: 112 / kør 1 hvis ude',
+        'Frie luftveje + ilt på maske med reservoir',
+        'IV adgang (eller intraossøs i tibia) — to perifere venflon',
+        'Iso NaCl bolus 20 ml/kg over 5–10 min, kan gentages 1–2 gange',
+        '<b>IV penicillin G 50 mg/kg straks</b> (eller IM ceftriaxon 50 mg/kg hvis ingen IV)',
+        'Solumedrol (methylprednisolon) IV før/med første AB-dosis (dæmper cytokin-storm)',
+        'Bloddyrkning ± petekkieaspirat samtidig — men ikke før AB',
+        'Pædiatrisk intensiv overflytning'
+      ],
+      ki:[
+        '<b>Lumbalpunktur er KONTRAINDICERET</b> ved kredsløbschok, DIC-tegn eller forhøjet ICP — udskyd til stabilisering',
+        '<b>Vent IKKE på dyrkningssvar</b> før AB ved klinisk mistanke',
+        '<b>Anmeldelsespligt</b> (individuel + generel; SSI + embedslæge) på klinisk mistanke',
+        '<b>Tæt-kontakt-profylakse:</b> husstand + intim-kontakter sidste 7 dage → ciprofloxacin engangsdosis (voksne), rifampicin 2 dage (børn), ceftriaxon engangsdosis (gravide)'
+      ],
+      prognose:'Mortalitet 5–10% samlet, op til 40% ved fulminant sepsis. Sequelae 5–15%: hørenedsættelse (rutinescreen ved udskrivelse), epilepsi, kognitiv nedsættelse, ekstremitetstab (purpura fulminans), kronisk nyresvigt.',
+      caseRef:'meningokoksepsis'
+    },
+
+    t_sepsis_andre:{
+      dx:'Sepsis (ikke-meningokok ætiologi)',
+      dxsub:'Hyppigste: pneumokok, GAS, E. coli, S. aureus — beh empirisk indtil dyrkningssvar',
+      urgency:'akut',
+      findings:[
+        'Feber eller hypotermi + påvirket AT',
+        'Takykardi, takypnø, kapillærrespons &gt;3 sek, hypotension (sent tegn hos børn)',
+        'Bleghed, marmorering, kold periferi',
+        'Påvirket bevidsthed, irritabilitet, GI-symptomer',
+        'Laboratorie: forhøjet CRP, forhøjet eller lav leukocytter, forhøjet laktat, evt. acidose'
+      ],
+      ddx:[
+        { d:'Meningokoksygdom', r:'Petekkier + kredsløbschok — udeluk altid ved akut påvirket febrilt barn' },
+        { d:'Toxic shock syndrome', r:'S. aureus eller GAS, hududslæt + diffust shock' },
+        { d:'Anafylaksi', r:'Akut indsættende ± urticaria/angioødem + kredsløbskollaps' },
+        { d:'Akut binyrebarkinsufficiens', r:'Addison-krise — sjælden men kan ligne sepsis' }
+      ],
+      behandling:[
+        'Akut ABCD-stabilisering: frie luftveje + ilt',
+        'IV adgang + bolus iso NaCl 20 ml/kg, gentages efter behov',
+        '<b>Empirisk bredspektret AB inden for 1 time:</b> ceftriaxon 50 mg/kg IV (± vancomycin ved mistanke om S. aureus eller penicillin-resistente kokker)',
+        'Bloddyrkning + relevante øvrige dyrkninger FØR AB hvis det forsinker behandling &lt;5 min',
+        'Vasopressor (noradrenalin) ved persisterende shock trods volumen',
+        'Pædiatrisk intensiv overflytning'
+      ],
+      ki:[
+        'Forsink ikke AB for udredning — "hour-1 bundle" gælder også børn',
+        'Pas på hyperhydrering — pædiatrisk septisk shock håndterer ikke ubegrænsede væskebolusser'
+      ],
+      prognose:'Mortalitet 5–20% afhængigt af ætiologi og rettidighed. God prognose ved tidlig genkendelse + behandling.',
+      caseRef:null
+    },
+
+    t_otitis_tonsillitis:{
+      dx:'Otitis media / tonsillit',
+      dxsub:'Hyppigste fokus hos småbørn med feber',
+      urgency:'rolig',
+      findings:[
+        '<b>Otitis media:</b> rødt, buende trommehinde, evt. otorré ved perforation; ørepille-/næb-tendens',
+        '<b>Tonsillit:</b> rød/hævede tonsiller, evt. belægninger; halssmerter, dysfagi',
+        'Feber, irritabilitet, nedsat fødeindtag',
+        'Centor-kriterier ved tonsillit (alder ≥3 år): eksudat + ømme cervikale lymfeknuder + feber + ingen hoste'
+      ],
+      ddx:[
+        { d:'Mononukleose (EBV)', r:'Belægninger + hepatosplenomegali + generaliseret lymfadenopati' },
+        { d:'Adenoid hypertrofi med superinfektion', r:'Recidiverende, nasalt åndedræt' },
+        { d:'Difteri', r:'Sjælden, men membran-belægninger' }
+      ],
+      behandling:[
+        '<b>Otitis media:</b> oftest viral; afvent 48–72 t hvis &gt;2 år og let-moderat. Antibiotika (penicillin V) ved &lt;2 år, perforation, bilateralt, eller manglende bedring',
+        '<b>Tonsillit:</b> halsprøve (Strep A) — ved positiv eller stærk klinisk mistanke: penicillin V 10 dage',
+        'Symptomatisk: paracetamol for komfort, rigeligt væske',
+        'Sikkerhedsnet til forældre — ved forværring eller komplikationer (mastoiditis, peritonsillær abscess)'
+      ],
+      ki:[
+        '<b>Amoxicillin undgås ved mistanke om mononukleose</b> — udløser exanthem',
+        'Mastoiditis (rødme/hævelse bag øre, øre fremstående): akut indlæggelse'
+      ],
+      prognose:'Udmærket ved adekvat behandling. Recidiv kan forekomme; otitis-prone børn følges.',
+      caseRef:null
+    },
+
+    t_pneumoni:{
+      dx:'Pneumoni',
+      dxsub:'Bakteriel (pneumokok hyppigst) eller viral (RSV, influenza, parainfluenza)',
+      urgency:'haster',
+      findings:[
+        'Feber + <b>takypnø</b> (RF over alderstærsklen — vigtigste enkelttegn)',
+        'Indtrækninger, alae nasi, brug af accessoriske muskler',
+        'Stetoskopi: krepitation, nedsat luftskifte, evt. bronkial respiration',
+        'Hoste (kan mangle hos spædbørn), evt. mavesmerter (refereret fra diafragma)',
+        'Rtg thorax: infiltrat (men kliniske fund + paraklinik styrer beslutningen, ikke rtg alene)'
+      ],
+      ddx:[
+        { d:'Bronkiolit (RSV)', r:'&lt;2 år, ekspiratorisk hvæsen, vinter — viral' },
+        { d:'Astma med superinfektion', r:'Tidligere astma, hvæsen, reversibilitet' },
+        { d:'Fremmedlegeme', r:'Pludselig debut, ensidig fund' },
+        { d:'Hjertesvigt', r:'Sjælden hos rask barn; kendt hjertesygdom' }
+      ],
+      behandling:[
+        'Ilt ved SAT &lt;92%',
+        '<b>Førstelinje:</b> amoxicillin PO (40–80 mg/kg/døgn delt) ved typisk bakteriel pneumoni',
+        'Indlæggelse ved: &lt;6 mdr., SAT &lt;92%, kredsløbspåvirkning, indtrækninger, manglende fødeindtag, social risiko',
+        'IV penicillin/ampicillin ved indlagt sværere pneumoni; cefuroxim ved manglende respons',
+        'Symptomatisk: paracetamol, væske',
+        'Atypisk pneumoni (Mycoplasma) overvejes hos skolebørn — makrolid (azithromycin)'
+      ],
+      ki:[
+        'Husk RSV-bronkiolit ligner pneumoni hos spædbørn — antibiotika hjælper ikke ved ren viral infektion',
+        'Hvis dårlig respons på AB efter 48 t: revurder DDX (atypisk, fremmedlegeme, empyem)'
+      ],
+      prognose:'Udmærket ved tidlig behandling. Komplikationer: empyem, parapneumoniske ekssudater, sepsis (sjældent).',
+      caseRef:null
+    },
+
+    t_uvi:{
+      dx:'Urinvejsinfektion / pyelonefritis',
+      dxsub:'Hyppig okkult årsag til feber hos spædbørn og småpiger; obs CAKUT',
+      urgency:'haster',
+      findings:[
+        '<b>Spædbørn:</b> ofte uspecifikt — feber, irritabilitet, dårlig trivsel, opkast, sløv. Lokale symptomer mangler',
+        '<b>Større børn:</b> dysuri, pollakisuri, mavesmerter, flankesmerter, evt. urge-inkontinens',
+        'Urinstix: leukocytter + nitrit (nitrit mangler ved kortvarig blæreophold hos spædbørn)',
+        'Urindyrkning: signifikant vækst (&gt;10⁵ CFU/mL ved MSU, &gt;10⁴ ved kateter, enhver vækst ved blærepunktur)',
+        'Hos &lt;3 mdr.: blod-CRP + leukocytter + dyrkning + blærepunktur for steril urin'
+      ],
+      ddx:[
+        { d:'Vulvovaginitis', r:'Småpiger med dysuri uden positiv urindyrkning' },
+        { d:'Vulvovaginal kandidiasis', r:'Kløe + udflåd + dysuri' },
+        { d:'Appendicit', r:'Højresidig nedre mavesmerte, atypiske præsentationer hos børn' }
+      ],
+      behandling:[
+        'Spædbørn &lt;3 mdr.: indlæggelse + IV ampicillin + gentamicin (eller cefotaxim)',
+        '&gt;3 mdr. cystit: pivmecillinam eller trimethoprim PO 5 dage',
+        '&gt;3 mdr. pyelonefritis: cefuroxim PO eller IV efter klinik; 7–10 dages varighed',
+        'Tilstrækkelig væske + smertestillende',
+        '<b>Billeddiagnostisk opfølgning:</b> UL af nyrer ved første pyelonefritis, MAG3/DMSA ved gentagne UVI eller obstrukton'
+      ],
+      ki:[
+        'Husk CAKUT som underliggende: vesikoureteral refluks (VUR), pyeloureteral overgangsstenose, dobbeltanlæg',
+        'Recidiverende UVI hos småpiger: vandladningsmønster (dysfunktional micturition), obstipation, hygiejne — udred bredt',
+        'Antibiotikaprofylakse er omdiskuteret — individuelt'
+      ],
+      prognose:'God ved tidlig behandling. Risiko for nyrearvæv (renal scarring) ved gentagne pyelonefritter, særligt med VUR — øger risiko for HT og CKD som voksen.',
+      caseRef:'uvi_cakut'
+    },
+
+    t_kawasaki:{
+      dx:'Kawasaki sygdom',
+      dxsub:'Akut febril systemisk vaskulit hos barn; risiko for koronararterie-aneurismer',
+      urgency:'akut',
+      findings:[
+        '<b>Diagnosekriterier:</b> feber &gt;5 dage + ≥4 af følgende 5:',
+        '1. Bilateral non-eksudativ konjunktivit',
+        '2. Mund-/læbeforandringer: røde sprukne læber, jordbær-tunge, røde/inflammerede slimhinder',
+        '3. Polymorft udslæt (ikke vesikulært)',
+        '4. Hånd-/fodforandringer: ødem + erytem, senere afskalning fra fingerspidserne',
+        '5. Cervikal lymfadenopati &gt;1,5 cm (ofte unilateral)',
+        'Laboratorie: forhøjet CRP/SR, leukocytose, trombocytose (sen), let anæmi, lever-/galde-værdier let forhøjet',
+        '<b>EKKO/UL af koronararterier OBLIGATORISK</b> ved diagnose + opfølgning'
+      ],
+      ddx:[
+        { d:'Skarlagensfeber', r:'GAS — pos halsprøve, mere typisk udslæt' },
+        { d:'Adenovirus-infektion', r:'Konjunktivit + feber, men ikke fuld trias' },
+        { d:'Mæslinger', r:'Koplikske pletter, ikke-vaccineret barn' },
+        { d:'Steven-Johnson syndrom / toxic shock', r:'Slimhinde-bullae, anden ætiologi' }
+      ],
+      behandling:[
+        '<b>Behandling skal startes inden for de første 10 dage</b> for at minimere risikoen for koronararterie-aneurismer',
+        '<b>IVIG 2 g/kg som engangsinfusion</b> over 8–12 timer',
+        '<b>Højdosis acetylsalicylsyre (ASA) 30–50 mg/kg/døgn</b> i akut fase; nedtrappes til lav-dosis 3–5 mg/kg/døgn til EKKO-normalisering eller op til 6–8 uger',
+        'EKKO ved diagnose, 1–2 uger og 6–8 uger',
+        'Indlæggelse på pædiatrisk afdeling med erfaring'
+      ],
+      ki:[
+        '<b>ASA-paradoks hos børn:</b> Reye-syndrom-risiko ved virale infektioner — men ved Kawasaki opvejer fordelen risikoen',
+        'IVIG-resistens (manglende afebrilitet 36 t efter første dosis): 2. IVIG-dosis, evt. kortikosteroid eller infliximab',
+        'Ubehandlet: 25% udvikler koronararterie-aneurismer'
+      ],
+      prognose:'Med tidlig behandling: koronararterie-aneurismer i &lt;5%. Ubehandlet: 25% — risiko for myokardieinfarkt og pludselig hjertedød senere i livet.',
+      caseRef:null
+    },
+
+    t_viral_uden_fokus:{
+      dx:'Viral infektion uden specifikt fokus',
+      dxsub:'Hyppigste årsag til feber hos velvirkende barn — selvbegrænsende',
+      urgency:'rolig',
+      findings:[
+        'Velvirkende barn, NICE grøn',
+        'Feber af kort varighed (&lt;5 dage)',
+        'Ingen fokus ved klinisk us',
+        'Normal hydrering, vågen, leger, drikker, trøstbar',
+        'Evt. let øvre luftvejssymptomer eller forudgående virus i familien'
+      ],
+      ddx:[
+        { d:'Tidlig bakteriel infektion uden synligt fokus', r:'Følg op klinisk — sikkerhedsnet' },
+        { d:'Okkult UVI (særligt &lt;3 mdr., småpiger)', r:'Lavtærskel for urinstix' },
+        { d:'Roseola infantum', r:'Spædbørn — feber 3–4 dage, derefter exanthem' },
+        { d:'Hånd-mund-fod', r:'Coxsackie A — typiske vesikler' },
+        { d:'Tidlig Kawasaki', r:'Genkendes ikke før dag 5+ — sikkerhedsnet kritisk' }
+      ],
+      behandling:[
+        'Symptomatisk: paracetamol for komfort (ikke aggressiv febernedsættelse)',
+        'Afklædning, kølige omgivelser, rigeligt væske',
+        'Forældre-information om forventet forløb',
+        'Sikkerhedsnet'
+      ],
+      ki:[
+        '<b>Sikkerhedsnet er kritisk:</b> hvad forældrene SKAL reagere på — påvirket bevidsthedsniveau, petekkier eller udslæt der ikke svinder for tryk, påvirket vejrtrækning, vedvarende utrøstbar gråd, tegn på dehydrering, kramper, feber &gt;5 dage uden bedring, led-/ekstremitetstegn',
+        'Aftale om opfølgning — barnet ses igen ved ovenstående eller hvis tilstanden ikke forbedres'
+      ],
+      prognose:'Udmærket — selvbegrænsende. Studenten dumper ved ukritisk antibiotika eller stort udredningsprogram på et velvirkende barn uden røde flag.',
+      caseRef:'febrilt_barn'
+    }
+
+  }
+},
+
+{
+  id:'bevidsthedspaavirket_barn',
+  spec:'PEDS',
+  title:'Det bevidsthedspåvirkede barn — DDX og akut handling',
+  src:'E23 stand 3 + E24 stand 7 + F24 stand 3 (battered) + Signe Pædiatri. Bygger oven på cases dka, hjernetumor_icp, battered_child, meningokoksepsis.',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'Bevidsthedspåvirket barn — først ABCD og bedside-screening, derefter DDX.',
+      why:'Det bevidsthedspåvirkede barn er et bredt DDX-felt. Først <b>ABCD-stabilisering</b>, derefter <b>fire bedside-tests</b> der hurtigt indsnævrer: <b>bedside-BS</b> (hypoglykæmi?), <b>temperatur</b> (infektion?), <b>petekkier</b> (meningokok?), <b>traumeanamnese</b> (intrakraniel/battered?). Derefter dominerende billede.',
+      redflag:'<b>Hypoglykæmi → glukose IV straks.</b> <b>Petekkier + feber → meningokok, IV penicillin straks.</b> <b>Cushing-respons (HT + bradykardi + uregelmæssig RF) eller anisokori → akut ICP — head-up, mannitol/hyperton NaCl, neurokirurgi.</b> <b>Implausibel traume-anamnese → underretningspligt.</b>',
+      ask:[
+        '<b>ABCD:</b> luftveje · respiration (Kussmaul? takypnø? apnø?) · cirkulation (BT, puls, kapillærrespons) · bevidsthed (AVPU/GCS, pupiller, NRS)',
+        '<b>Bedside:</b> blodsukker · temperatur · klæd barnet af (petekkier?) · udåndingslugt (acetone? alkohol?)',
+        '<b>Anamnese — fokuseret:</b> akut eller progredierende? feber? traume? kendt sygdom? medicin/intox? kendt epilepsi? hovedpine eller opkast forud? vægttab eller polyuri (DKA)? sygehistorien sammenhængende?',
+        '<b>Tidlige tegn på ICP:</b> morgenhovedpine, opkast, fokale kramper, abducensparese, pupildifferens'
+      ],
+      opts:[
+        { lead:'Petekkier + feber', hint:'Meningokoksygdom indtil modsat bevist — straks IV penicillin', next:'t_meningokok' },
+        { lead:'Lav BS bedside', hint:'Hypoglykæmi — straks glukose IV', next:'t_hypoglykaemi' },
+        { lead:'Traume / mistænkelig sygehistorie', hint:'Sortér plausibel ulykke vs ikke-plausibel forklaring', next:'q_traume' },
+        { lead:'Ingen petekkier, normal BS, ingen traume', hint:'Videre med DDX efter dominerende klinisk billede', next:'q_metabolisk_struktural' }
+      ]
+    },
+
+    q_traume:{
+      q:'Passer traumemekanismen med skadens omfang og barnets alder?',
+      why:'Disproportion mellem forklaring og skade er klassisk rødt flag ved <b>battered child</b>. Spørg om: alderssvarende motorisk udvikling (kan barnet selv have udført handlingen?), tidsforløb (forsinket lægekontakt?), skiftende forklaringer, tidligere skadestuekontakter, sociale faktorer.',
+      opts:[
+        { lead:'Plausibel mekanisme (faldulykke med vidner, bilulykke, sportsskade matchende kraft)', hint:'Standard traumeudredning', next:'t_traume_accidentel' },
+        { lead:'Implausibel mekanisme, disproportion eller skiftende forklaring', hint:'Battered child indtil modsat bevist — underretningspligt', next:'t_battered' }
+      ]
+    },
+
+    q_metabolisk_struktural:{
+      q:'Hvilket klinisk billede dominerer?',
+      why:'Når infektion (petekkier+feber), hypoglykæmi og traume er udelukket, er fire billeder hyppigste: <b>Kussmaul + dehydrering + acetonelugt → DKA</b>; <b>fokale kramper, morgenhovedpine, opkast → forhøjet ICP (tumor/blødning/hydrocephalus)</b>; <b>feber + nakkestiv → meningit/encefalit</b>; <b>kendt epilepsi / postiktalt → epilepsi-spektrum</b>; <b>uden andet — overvej intox</b>.',
+      opts:[
+        { lead:'Kussmaul-respiration + dehydrering + acetonelugt ± kendt eller nyopdaget diabetes', hint:'Diabetisk ketoacidose', next:'t_dka' },
+        { lead:'Fokale kramper, morgenhovedpine, opkast, fokale neurologiske udfald', hint:'Forhøjet ICP fra tumor, blødning eller hydrocephalus', next:'t_icp_tumor' },
+        { lead:'Feber + nakke-/rygstivhed', hint:'Meningit / encefalit (bakteriel eller viral)', next:'t_meningit_encefalit' },
+        { lead:'Kendt epilepsi / postiktal fase / status epilepticus', hint:'Epilepsi-spektrum — afklar varighed og typer', next:'t_postiktal_epilepsi' },
+        { lead:'Ingen åbenlys årsag — overvej intoksikation', hint:'Medicin, alkohol, stoffer, svampe — anamnese fra hjemmet + tox-screen', next:'t_intox' }
+      ]
+    },
+
+    /* ===== TERMINALER ===== */
+
+    t_meningokok:{
+      dx:'Meningokoksygdom (sepsis ± meningitis)',
+      dxsub:'Feber + petekkier hos bevidsthedspåvirket barn — meningokok indtil modsat bevist',
+      urgency:'akut',
+      findings:[
+        'Feber + ikke-blanching petekkier (glasprøve positiv)',
+        'Bevidsthedspåvirkning, irritabilitet, evt. nakkestivhed (kan mangle hos spædbørn)',
+        'Kredsløbschok: takykardi, kapillærrespons &gt;3 sek, hypoton, kold periferi',
+        'Evt. DIC-tegn (trombocytopeni, INR/APTT forhøjet, fibrinogen lav, D-dimer høj)'
+      ],
+      ddx:[
+        { d:'Anden bakteriel meningit (pneumokok, Hib)', r:'Uden klassiske petekkier; behandling overlappende' },
+        { d:'Septisk shock af anden ætiologi', r:'GAS, S. aureus — uden petekkier' },
+        { d:'Herpes simplex encefalit', r:'Fokale udfald, fokale kramper — anden behandling (aciclovir)' }
+      ],
+      behandling:[
+        'Akut: ABCD-stabilisering, ilt, IV adgang (eller intraossøs)',
+        'Bolus iso NaCl 20 ml/kg, kan gentages',
+        '<b>IV penicillin G 50 mg/kg straks</b> (eller IM ceftriaxon 50 mg/kg)',
+        'Solumedrol IV før/med første AB-dosis',
+        'Bloddyrkning + petekkieaspirat samtidig — forsink ikke AB',
+        'Pædiatrisk intensiv overflytning'
+      ],
+      ki:[
+        'LP kontraindiceret ved kredsløbschok, DIC eller forhøjet ICP',
+        'Anmeldelsespligt + tæt-kontakt-profylakse'
+      ],
+      prognose:'Mortalitet 5–10% samlet, op til 40% ved fulminant sepsis. Sequelae 5–15%.',
+      caseRef:'meningokoksepsis'
+    },
+
+    t_hypoglykaemi:{
+      dx:'Hypoglykæmi',
+      dxsub:'BS &lt;2,6 mmol/l hos barn, &lt;2,2 mmol/l hos nyfødt — neurologisk truende',
+      urgency:'akut',
+      findings:[
+        'Bedside-BS lav',
+        'Påvirket bevidsthed, sløvhed, irritabilitet',
+        'Bleghed, sved, tremor, takykardi (adrenerg reaktion)',
+        'Eventuelt fokale kramper, generelle kramper',
+        'Hos spædbørn: dårligt sutteafkast, apnø, hypotermi'
+      ],
+      ddx:[
+        { d:'Hyperinsulinisme (kongenit eller insulinoma)', r:'Sjælden — gentagne hypo uden klare triggers' },
+        { d:'Binyrebarkinsufficiens (Addison)', r:'Hyperpigmentering + elektrolytforstyrrelse' },
+        { d:'Inborn errors of metabolism (fedtsyreoxidations-/glykogenose)', r:'Spædbørn, fastemodulerede episoder' },
+        { d:'Insulinmedicinerings-fejl hos T1D', r:'Kendt diabetes' },
+        { d:'Alkoholintox', r:'Ungdomsalder, lugt' },
+        { d:'Sepsis', r:'Hypoglykæmi kan være sekundær' }
+      ],
+      behandling:[
+        '<b>Glukose IV bolus straks:</b> 0,2 g/kg (= 2 ml/kg af 10% glukose) over 5 min',
+        'Derefter glukose-infusion 6–8 mg/kg/min (= 10% glukose 4–5 ml/kg/time)',
+        'Følg BS hvert 15.–30. minut til stabilt',
+        'Bloddyrkning + væsketal + insulin/C-peptid + binyrebark-hormoner (kortisol, ACTH) FØR glukose hvis muligt (kritisk for udredning)',
+        'Endokrinologisk konsulent ved gentagne hypo eller ung alder'
+      ],
+      ki:[
+        'Glukagon-injektion (IM) kan bruges som førstehjælp, men virker IKKE ved leversvigt eller hyperinsulinisme uden glykogen',
+        'Bevidstløs patient → IV adgang er førstevalg, ikke oral glukose'
+      ],
+      prognose:'God ved hurtig korrektion. Vedvarende eller gentagen svær hypoglykæmi kan give kognitive sequelae.',
+      caseRef:null
+    },
+
+    t_traume_accidentel:{
+      dx:'Accidentelt hovedtraume',
+      dxsub:'Plausibel ulykkesmekanisme — standard traumeudredning',
+      urgency:'haster',
+      findings:[
+        'Anamnese om vidnet faldulykke, bilulykke eller anden plausibel kraft',
+        'Bevidsthedspåvirkning eller bevidsthedstab efter traumet',
+        'Ydre tegn: hudblødning, hævelse, blødning fra øre/næse',
+        'Fokale neurologiske udfald (afhænger af læsion)',
+        'Vurdér GCS, pupiller, lateraliserende tegn'
+      ],
+      ddx:[
+        { d:'Battered child', r:'Hvis mekanismen IKKE matcher skaden — gå tilbage til q_traume' },
+        { d:'Intoksikation', r:'Kan ledsage traumet (særligt teenagere)' },
+        { d:'Postiktal fase efter krampe sekundært til traumet', r:'Posttraumatisk anfald' }
+      ],
+      behandling:[
+        'ABCD-stabilisering, head-up 30°',
+        '<b>CT cerebrum</b> ved bevidsthedspåvirkning, fokale udfald, opkastninger, krampe, eller stort kraftindgreb',
+        'Rtg/CT af columna ved mistanke om nakkeskade — immobilisering',
+        'Observation med GCS, pupiller, vitalparametre',
+        'Neurokirurgisk vurdering ved intrakraniel blødning, fraktur eller udvidet kontusion',
+        'Mannitol/hyperton NaCl ved akut ICP'
+      ],
+      ki:[
+        'Hvis sygehistorien ikke matcher → battered child-udredning (se separat terminal)',
+        'Forsinket bevidsthedspåvirkning efter trivielt fald: tænk epidural blødning (sjælden, men klassisk "lucid interval")'
+      ],
+      prognose:'Afhænger af læsion og GCS ved ankomst. Mild hjernerystelse: oftest fuld restitution. Sværere TBI: kognitive og motoriske sequelae, epilepsi-debut.',
+      caseRef:null
+    },
+
+    t_battered:{
+      dx:'Mistanke om børnemishandling (battered child)',
+      dxsub:'Disproportion mellem forklaring og skade — underretningspligt',
+      urgency:'akut',
+      findings:[
+        'Sygehistorien matcher ikke skadens omfang eller barnets udvikling',
+        'Skiftende forklaringer, forsinket lægekontakt',
+        'Hudblødninger af forskellig alder, brændemærker, bidmærker, tungebåndsrev',
+        'Retinale blødninger (shaken baby), subdurale blødninger, costafrakturer',
+        'Andre frakturer i forskellige callus-stadier på skeletscreening'
+      ],
+      ddx:[
+        { d:'Osteogenesis imperfecta', r:'Blå sclerae, familieanamnese — udeluk ved knogletest' },
+        { d:'Rachitis (D-vitamin mangel)', r:'Metafysiske ændringer på rtg, mørklødede børn' },
+        { d:'Koagulopati (ITP, hæmofili, vWB)', r:'Normaliseres ved koagulationsprøver' },
+        { d:'Accidentelt traume', r:'Plausibel mekanisme + matchende biomekanik' }
+      ],
+      behandling:[
+        '<b>Barnet INDLÆGGES</b> — sikker observation, ikke send hjem',
+        '<b>Kontakt socialforvaltning</b> (Børn-Unge-vagt) — skærpet underretningspligt §153',
+        'Embedslæge ved akut/komplekse situationer',
+        'Klinisk fotodokumentation + præcis journalføring (forklaringsuoverensstemmelser)',
+        'Skeletscreening NU + gentaget efter 14 dage (callus-dannelse)',
+        'Øjenundersøgelse, MR cerebrum, blodprøver (koagulation, Ca/D-vitamin/basisk fosfatase)',
+        'Søskende: overvej også deres sikkerhed'
+      ],
+      ki:[
+        '<b>Anmeld ved mindste mistanke</b> — det er ikke vores opgave at bevise mishandling',
+        'Skærpet underretningspligt overgår tavshedspligten',
+        'Hvis forældre nægter undersøgelser → embedslæge / politi via socialforvaltning'
+      ],
+      prognose:'Højrisiko for gentagen mishandling og død hvis ikke afbrudt. Tidlig intervention er afgørende. Shaken baby: 60% dør eller får svære handicap.',
+      caseRef:'battered_child'
+    },
+
+    t_dka:{
+      dx:'Diabetisk ketoacidose (DKA)',
+      dxsub:'Insulin-mangel → ketogenese → metabolisk acidose. Kendt eller nyopdaget T1D',
+      urgency:'akut',
+      findings:[
+        'Bevidsthedspåvirkning, sløvhed',
+        '<b>Kussmaul-respiration</b> (dyb takypnø — respiratorisk kompensation)',
+        '<b>Acetonelugt</b> i udånding',
+        'Dehydrering: tørre slimhinder, hudturgor, forhøjet kapillærrespons, takykardi',
+        'Forudgående polyuri, polydipsi, vægttab, mavesmerter, opkast',
+        'BS &gt;20 mmol/l, blodketoner &gt;3, pH &lt;7,3, HCO3 &lt;15, BE &lt;−10'
+      ],
+      ddx:[
+        { d:'Hyperosmolær hyperglykæmisk tilstand', r:'T2D, voksen-pattern, ekstrem hyperglykæmi uden ketose' },
+        { d:'Akut abdomen', r:'DKA-mavesmerter ligner; mål altid BS bedside!' },
+        { d:'Sepsis', r:'Kan trigge DKA — udred parallelt' },
+        { d:'Encefalit / meningit', r:'Feber + bevidsthedspåvirkning' }
+      ],
+      behandling:[
+        '<b>1.</b> IV adgang (to perifere venflon)',
+        '<b>2.</b> Iso NaCl bolus 10–20 ml/kg over 1 t hvis kredsløbschok',
+        '<b>3.</b> Kaliumtilskud fra start (insulin driver K ind i celler → hypokaliæmi)',
+        '<b>4.</b> Insulin IV 0,05–0,1 IE/kg/t — opstartes <b>1–2 timer EFTER væske</b>',
+        '<b>5.</b> Langsom korrektion af BS — ikke &gt;5 mmol/l/t',
+        '<b>6.</b> Når BS &lt;12–15: tilsæt 5% glukose; fortsæt insulin for at lukke ketogenesen',
+        '<b>7.</b> HCO3 anvendes IKKE rutinemæssigt'
+      ],
+      ki:[
+        '<b>Cerebralt ødem</b> er den frygtede komplikation — forværret bevidsthed, abducensparese, Cushing-respons → mannitol/hyperton NaCl, head-up, neurokirurgi',
+        'Hurtig BS-korrektion (&gt;5 mmol/l/t) eller hurtig osmolaritetsændring øger risiko for cerebralt ødem',
+        'DKA-mavesmerter kan ligne akut abdomen — patienter er blevet feilopereret'
+      ],
+      prognose:'God ved adekvat behandling. Cerebralt ødem (~1%) har mortalitet ~25% + neurologiske sequelae.',
+      caseRef:'dka'
+    },
+
+    t_icp_tumor:{
+      dx:'Forhøjet intrakranielt tryk (ICP) — tumor, blødning eller hydrocephalus',
+      dxsub:'Rumforstyrrende læsion — akut neurokirurgisk problem',
+      urgency:'akut',
+      findings:[
+        '<b>Trias:</b> morgenhovedpine + morgenopkast + bevidsthedspåvirkning',
+        'Progredierende symptomer over uger (tumor) eller akut (blødning)',
+        'Fokale kramper (sekundært generaliseret) — tegn på fokal læsion',
+        'Fokale neurologiske udfald (lateraliserende, kranienerver)',
+        'Pushing signs: forhøjet BT + bradykardi + uregelmæssig RF (Cushing-respons), abducensparese, pupildifferens, papilødem',
+        'Pylret/irritabel, ændret adfærd, koncentrationsbesvær'
+      ],
+      ddx:[
+        { d:'Idiopatisk intrakraniel hypertension (pseudotumor)', r:'Overvægtige teenagepiger, papilødem uden tumor på MR' },
+        { d:'Meningit/encefalit', r:'Feber + nakkestivhed' },
+        { d:'Migræne med komplikationer', r:'Familieanamnese, episodisk, fokale aura' },
+        { d:'Battered child med intrakraniel blødning', r:'Disproportion i traumeanamnese' }
+      ],
+      behandling:[
+        '<b>Head-up 30°</b>',
+        'Sikr respiration (undgå hyperkapni)',
+        'Undgå hypovolæmi (sikr CPP)',
+        '<b>Mannitol 0,25–0,5 g/kg IV</b> ELLER <b>hyperton NaCl 3% 3–5 ml/kg IV</b> ved akut ICP',
+        'Dexamethason ved tumor-relateret ødem (4–8 mg IV initialt)',
+        '<b>Akut CT cerebrum</b> — hurtigt og tilstrækkeligt til tumor/blødning/hydrocephalus',
+        'MR cerebrum efter stabilisering for vævsopløsning',
+        'Akut neurokirurgisk vurdering',
+        'Krampe-behandling: diazepam rektalt &gt;3 min, fenemal IV ved status'
+      ],
+      ki:[
+        '<b>Lumbalpunktur er KONTRAINDICERET</b> ved forhøjet ICP — kan udløse herniation. Billede FØRST',
+        'Hvis pupiller udvides akut → akut inkarceration: hyperton beh straks + neurokirurgi-alarm',
+        'Forhøjet BT ved ICP er kompensatorisk — sænk den ikke (det forværrer cerebral perfusion)'
+      ],
+      prognose:'Afhænger af læsion. Hjernetumorer hos børn: 2.-hyppigste cancer (efter leukæmi). Sequelae: kognitive, motoriske, epilepsi, endokrin (hypofyse-involvering).',
+      caseRef:'hjernetumor_icp'
+    },
+
+    t_meningit_encefalit:{
+      dx:'Bakteriel meningit / viral encefalit',
+      dxsub:'Feber + nakkestivhed + bevidsthedspåvirkning (klassisk trias — kan mangle elementer)',
+      urgency:'akut',
+      findings:[
+        'Feber + nakkerygstivhed + bevidsthedspåvirkning (klassisk trias hos større børn)',
+        'Spædbørn: irritabilitet, dårlig kontakt, spændt fontanelle, kramper — mangler ofte nakkestivhed',
+        'Kernigs/Brudzinskis tegn (hos større børn)',
+        'Hovedpine, kvalme, lysoverfølsomhed',
+        'Eventuelt fokale udfald, fokale kramper (encefalit — særligt HSV)',
+        'LP: bakteriel = neutrofile, glukose lav, protein høj; viral = lymfocytter, glukose normal, protein let forhøjet'
+      ],
+      ddx:[
+        { d:'Meningokoksygdom med petekkier', r:'Se separat terminal' },
+        { d:'HSV-encefalit', r:'Fokale udfald, fokale kramper, temporallaps-fund — aciclovir straks!' },
+        { d:'Subaraknoidal blødning', r:'Pludselig "thunderclap"-hovedpine' },
+        { d:'TB-meningit', r:'Snigende, hos immunsupprimerede eller endemiske områder' }
+      ],
+      behandling:[
+        'ABCD-stabilisering + IV adgang',
+        '<b>Empirisk antibiotika straks</b> (efter blod-/dyrkningsprøver hvis mulig &lt;5 min): ceftriaxon 50 mg/kg + ampicillin (yngste) eller dexamethason 0,15 mg/kg før AB',
+        '<b>Empirisk aciclovir IV</b> ved mistanke om HSV-encefalit (fokale udfald, fokale kramper, dysfasi)',
+        'LP når stabilt OG udelukket forhøjet ICP (CT først ved fokale udfald, papilødem, kramper, GCS lav)',
+        'Pædiatrisk intensiv overflytning',
+        'Hørelsestest ved udskrivelse — sequela-screening'
+      ],
+      ki:[
+        'LP-kontraindikationer: forhøjet ICP, koagulopati, lokal infektion, kredsløbschok',
+        'HSV-mistanke: vent ikke på PCR-svar før aciclovir startes',
+        'Profylakse til tæt-kontakter ved Hib og meningokok (rifampicin/ciprofloxacin)'
+      ],
+      prognose:'Bakteriel meningit: mortalitet 5–15%, sequelae 25–50% (hørenedsættelse, epilepsi, kognitiv). HSV-encefalit ubehandlet: 70% mortalitet; behandlet: 30% — fortsat svære sequelae.',
+      caseRef:null
+    },
+
+    t_postiktal_epilepsi:{
+      dx:'Epilepsi-spektrum (postiktal eller status epilepticus)',
+      dxsub:'Kendt eller debuterende anfaldslidelse — afklar varighed, type og udløsende faktor',
+      urgency:'haster',
+      findings:[
+        'Anfaldsanamnese: hvordan startede? fokalt eller generaliseret? varighed? bevidsthed under anfald?',
+        'Postiktalt: forvirret, sløv, motorisk udmattelse — vågner gradvist over minutter til timer',
+        'Status epilepticus: anfald &gt;5 min eller gentagne uden mellemliggende opvågning',
+        'Todd-paralyse: passager fokalt udfald efter anfald, normaliseres over timer',
+        'Vurdér ABCD, BS, temp, evt. fokale udfald, traumetegn (bidsår på tunge?)'
+      ],
+      ddx:[
+        { d:'Feberkramper (6 mdr.–6 år)', r:'Feber + simpel generaliseret kramp &lt;15 min — godartet' },
+        { d:'Strukturel årsag (tumor, blødning)', r:'Fokal start, nyt anfald, postiktale fokale udfald — billeddiagnostik' },
+        { d:'Hypoglykæmi-relateret kramp', r:'Lav BS' },
+        { d:'Elektrolytforstyrrelse (Na, Ca)', r:'Sjælden — målt' },
+        { d:'Intox', r:'Toksikologisk screen' },
+        { d:'Psykogene non-epileptiske anfald', r:'Atypisk præsentation, normal EEG' }
+      ],
+      behandling:[
+        '<b>Krampebehandling — trinvis:</b>',
+        '1. Anfald &gt;3–5 min: <b>diazepam rektalt</b> (0,4 mg/kg) eller <b>midazolam buccalt</b> (Buccolam 0,3 mg/kg)',
+        '2. Persisterende: gentag benzodiazepin OG <b>fenemal IV</b> (15–20 mg/kg over 20 min)',
+        '3. Status epilepticus: tilkald anæstesi, evt. midazolam-infusion eller propofol',
+        'BS bedside + væsketal + temp',
+        'EEG senere (ikke akut)',
+        'Billeddiagnostik (CT/MR) ved første fokale anfald, postiktale fokale udfald, eller kendt patologi',
+        'Antiepileptika opstart efter neurolog-vurdering (typisk valproat eller levetiracetam ved generaliseret, levetiracetam eller carbamazepin ved fokal)'
+      ],
+      ki:[
+        'Forsink ikke krampebehandling — neurologisk skade øges med anfaldsvarighed',
+        'Pas på respiratorisk depression efter benzodiazepin — ha ilt og evt. ambu klar',
+        'Første anfald uden feber + fokal start eller postiktale udfald → billeddiagnostik for at udelukke strukturel årsag'
+      ],
+      prognose:'Idiopatisk epilepsi: 60–70% bliver anfaldsfri med medicin. Strukturel årsag: afhænger af læsion. Status epilepticus &gt;30 min: betydelig neurologisk skade-risiko.',
+      caseRef:null
+    },
+
+    t_intox:{
+      dx:'Intoksikation',
+      dxsub:'Medicin, alkohol, stoffer, husholdningskemi, svampe — typisk teenagere eller småbørn (curiosity)',
+      urgency:'akut',
+      findings:[
+        'Anamnese: tilgængelig medicin/kemi/alkohol i hjemmet, kendt forbrug, tomme blister',
+        'Småbørn: smag-curiosity, paracetamol/jern/blodtryksmedicin er hyppigste',
+        'Teenagere: alkohol, paracetamol-overdosis (selvskade), stoffer',
+        '<b>Toxidromer:</b> antikolinergt (varm, rød, tør, mydriasis, takykardi) · kolinergt (SLUDGE: salivation, lacrimation, urination, defecation, GI, emesis) · sympatomimetisk (takykardi, HT, hyperthermi, mydriasis, agitation) · opioid (miosis, bradypnø, sedation) · sedativ-hypnotisk (sedation, normal pupiller)',
+        'Udånding (alkohol, sødligt → ketose, pesticid → hvidløg)'
+      ],
+      ddx:[
+        { d:'Hypoglykæmi (særligt alkohol)', r:'Mål BS bedside' },
+        { d:'Hovedtraume', r:'Anamnese, ydre tegn' },
+        { d:'Encefalit / meningit', r:'Feber + nakkestivhed' },
+        { d:'Endokrin krise (DKA, Addison)', r:'Specifik klinisk og laboratorie' },
+        { d:'Sepsis', r:'Feber + kredsløbschok' }
+      ],
+      behandling:[
+        'ABCD-stabilisering',
+        'BS bedside, temp, EKG (QT-forlængelse?)',
+        '<b>Specifik antidot</b> hvis kendt: naloxon (opioid), flumazenil (benzo — kun ved isoleret intox), N-acetylcystein (paracetamol), atropin + pralidoxim (kolinerg)',
+        'Aktivt kul inden for 1 t efter indtag — kun ved samarbejdsvilligt eller sikret luftveje',
+        'Mavetømning IKKE rutinemæssigt — kun ved livstruende toksisk ingestion &lt;1 t',
+        '<b>Kontakt Giftlinjen (Bispebjerg Hospital, 82 12 12 12) ved tvivl</b>',
+        'Tox-screen i blod og urin (paracetamol-niveau ALTID ved selvskade-mistanke)',
+        'Psykiatrisk konsulent ved selvskade-mistanke (≥10 år)'
+      ],
+      ki:[
+        'Flumazenil contraindiceret ved blandet intox med tricykliske antidepressiva (kan udløse kramper)',
+        'Forsink ikke specifik antidot for venten på toxikologiske svar',
+        'Paracetamol-niveau er ofte falsk negativ &lt;4 t efter indtag — gentag ved klinisk mistanke',
+        '<b>Underretningspligt ved børn med adgang til ikke-sikret medicin/kemi</b> — vurder hjemmemiljø'
+      ],
+      prognose:'Stærkt varierende. Tidlig genkendelse + specifik antidot + støttebehandling redder de fleste. Paracetamol-overdosis &gt;200 mg/kg uden N-acetylcystein: leversvigt-risiko.',
+      caseRef:null
+    }
+
+  }
+},
+
+// === end PEDS flows ===
 ];
 
 

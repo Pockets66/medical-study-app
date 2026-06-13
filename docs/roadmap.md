@@ -62,6 +62,8 @@ Tracks the status of every note card in `notesData`.
 | neonatal_infektion | Infektionsmistanke hos det nyfødte barn | `[D]` | New PEDS flow tree. 4 terminaler (GBS-sepsis EOS / GBS-meningitis EOS / LOS / HSV). caseRef→neonatal_infektion. GZ+RMP-slides + DPS HSV-retningslinje. Awaiting verification. |
 | hjertesygdom_barn | Mistanke om hjertesygdom hos barnet | `[D]` | New PEDS flow tree. 7 terminaler (vsd / tga / tof / ductus_afh_cyanose [PA+HLHS] / coarctatio / svt / fysiologisk_mislyd). Start node = 4 præsentationsformer. caseRef→hjertebarn. HA-slides + Excel + S2018. Awaiting verification. |
 | haematuri_barn | Hæmaturi hos barn | `[D]` | New PEDS flow tree. 6 terminaler (PSGN / HSP-nefrit / IgA-nefropati / UVI / urolitiase / benign isoleret mikrohæmaturi). caseRef→uvi_cakut + hsp_nefrit. PW-slides + Excel + Signe (suppl). Awaiting verification. |
+| feber_barn | Det febrile barn (alvorlighedsgrad + fokusjagt) | `[D]` | New PEDS flow tree. 7 terminaler (meningokok / sepsis / otitis / pneumoni / UVI / Kawasaki / viral uden fokus). caseRefs → meningokoksepsis, uvi_cakut, febrilt_barn. Awaiting verification. |
+| bevidsthedspaavirket_barn | Det bevidsthedspåvirkede barn (DDX og akut handling) | `[D]` | New PEDS flow tree. 9 terminaler (meningokok / hypoglykæmi / traume / battered / DKA / ICP-tumor / meningit / postiktal / intox). caseRefs → meningokoksepsis, battered_child, dka, hjernetumor_icp. Awaiting verification. |
 
 ---
 
@@ -183,3 +185,5 @@ Files that would unlock blocked topics:
 | 2026-06-12 | case:hsp_nefrit | New PEDS case (IgA-vaskulit med nefrit, klassisk PW-slide-narrativ); cross-linked to peds_6 + haematuri_barn t_hsp. |
 | 2026-06-12 | case:nefrotisk_sndr | New PEDS case (idiopatisk nefrotisk syndrom hos 3-årig dreng; MCD-præsentation; ISKDC-prednisolon; relaps); Pædiatri-card spliced; cross-linked to peds_6. |
 | 2026-06-13 | cases:peds (10 new) | Ten new PEDS cases covering F23-F25 + E23-E24 + målbeskrivelse. peds_7..peds_12 are placeholder caseRefs (notes follow in separate task). |
+| 2026-06-13 | flow:feber_barn | New PEDS flow tree (Task 26 batch 1). 7 terminaler; cross-links to meningokoksepsis + uvi_cakut + febrilt_barn. |
+| 2026-06-13 | flow:bevidsthedspaavirket_barn | New PEDS flow tree (Task 26 batch 1). 9 terminaler; cross-links to meningokoksepsis + dka + hjernetumor_icp + battered_child. Shares t_meningokok with feber_barn (cross-pollination intentional). |
