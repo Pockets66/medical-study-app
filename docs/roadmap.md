@@ -66,6 +66,8 @@ Tracks the status of every note card in `notesData`.
 | bevidsthedspaavirket_barn | Det bevidsthedspåvirkede barn (DDX og akut handling) | `[D]` | New PEDS flow tree. 9 terminaler (meningokok / hypoglykæmi / traume / battered / DKA / ICP-tumor / meningit / postiktal / intox). caseRefs → meningokoksepsis, battered_child, dka, hjernetumor_icp. Awaiting verification. |
 | mavesmerter_barn | Mavesmerter hos barn (akut vs recidiverende) | `[D]` | New PEDS flow tree. 8 terminaler (5 akut: appendicit / invagination / DKA / UVI / gastroenterit; 3 recidiverende: cøliaki / obstipation / funktionel). caseRefs → dka (cross med batch 26), uvi_cakut, coeliaki_vaekst, funktionelle_mavesmerter. Awaiting verification. |
 | vejrtraekning_barn | Vejrtrækningsproblemer hos barn (øvre vs nedre, akut vs kronisk) | `[D]` | New PEDS flow tree. 7 terminaler (pseudokrup / epiglottit / fremmedlegeme / astma / bronkiolit / pneumoni / kighoste). caseRef → astma_atopi. Awaiting verification. |
+| lav_hojde_barn | Lav højde hos barn (vækstkurve-tolkning + DDX) | `[D]` | New PEDS flow tree. 8 terminaler (familiær/konstitutionel / cøliaki / IBD-kronisk / GH-mangel / hypothyreose / Cushing / Turner / SGA). caseRef → coeliaki_vaekst (cross med batch 27). Awaiting verification. |
+| pubertet_afvigelser | Pubertets-afvigelser (for tidlig vs for sen) | `[D]` | New PEDS flow tree. 8 terminaler (CPP idiopatisk / CPP sekundær / præmatur thelarche / præmatur adrenarche / perifer PP-AGS / konstitutionel forsinket / hypogonadotrop / primær gonad-svigt). caseRef → pubertas_praecox. Awaiting verification. |
 
 ---
 
@@ -191,3 +193,5 @@ Files that would unlock blocked topics:
 | 2026-06-13 | flow:bevidsthedspaavirket_barn | New PEDS flow tree (Task 26 batch 1). 9 terminaler; cross-links to meningokoksepsis + dka + hjernetumor_icp + battered_child. Shares t_meningokok with feber_barn (cross-pollination intentional). |
 | 2026-06-13 | flow:mavesmerter_barn | New PEDS flow tree (Task 27 batch 2). 8 terminaler; cross-pollination med batch 26 på t_dka (caseRef:'dka') og t_uvi (caseRef:'uvi_cakut'). |
 | 2026-06-13 | flow:vejrtraekning_barn | New PEDS flow tree (Task 27 batch 2). 7 terminaler; caseRef → astma_atopi. Cross-pollination med batch 26 på t_pneumoni (uden case). |
+| 2026-06-13 | flow:lav_hojde_barn | New PEDS flow tree (Task 28 batch 3). 8 terminaler; cross-pollination med batch 27 på t_coeliaki (caseRef:'coeliaki_vaekst'). Turner deles indirekte med pubertet_afvigelser's t_primaer_gonad. |
+| 2026-06-13 | flow:pubertet_afvigelser | New PEDS flow tree (Task 28 batch 3). 8 terminaler; caseRef → pubertas_praecox. PEDS flow-bibliotek nu komplet (12 træer total). |

@@ -9928,6 +9928,788 @@ var flowData = [
   }
 },
 
+{
+  id:'lav_hojde_barn',
+  spec:'PEDS',
+  title:'Lav højde hos barn — vækstkurve-tolkning og DDX',
+  src:'F23 stand 7 (cøliaki/vækst) + Signe Pædiatri + Excel PÆD (endokrinologi/vækst). Bygger oven på case coeliaki_vaekst.',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'Lav højde hos barn — vækstkurven er det vigtigste enkeltværktøj.',
+      why:'Lav højde (under -2 SD eller under 3-percentilen) udredes med vækstkurven som styrende redskab. <b>Pattern på vækstkurven afslører ofte ætiologien:</b><ul><li><b>Vægt vinger før højde</b> = malabsorption eller kronisk sygdom (cøliaki, IBD)</li><li><b>Højde vinger før vægt</b> = endokrin årsag (GH-mangel, hypothyreose, Cushing)</li><li><b>Parallelt med egen kurve + normal proportion</b> = familiær eller konstitutionel</li><li><b>Dysmorfe træk eller IUGR/SGA</b> = syndrom eller perinatal årsag</li></ul>Targetheight (TH) = (mor + far ± 13) / 2; potentiale TH ± 9 cm.',
+      redflag:'<b>Højde &lt;-3 SD</b> eller <b>krydsning af percentiler</b> eller <b>lav væksthastighed</b> eller <b>dysmorfe træk</b> = kræver udredning. <b>Alle piger med uforklaret lav højde → karyotype (Turner-screening)</b>. Astma med højdoseret inhalationssteroid eller systemisk glukokortikoid = vurder længe-dynamik.',
+      ask:[
+        '<b>Vækstdata:</b> højde + vægt + hovedomfang tilbage i tiden (fra sundhedsplejerske + skole) — plot på kurve',
+        '<b>Targetheight beregning:</b> (mor + far ± 13)/2; potentiale TH ± 9 cm',
+        '<b>Dispositioner:</b> forældrenes højde + tidspunkt for pubertet, søskendes vækst, sygdomme i familien (cøliaki, IBD, Turner, hypothyreose, GH-mangel)',
+        '<b>Perinatal:</b> gestationsalder, fødselsvægt + -længde, IUGR/SGA, præmaturitet',
+        '<b>Aktuelt:</b> almene (træthed, lethargi), GI (mavesmerter, diare, obstipation, blod/slim), ledsmerter, hud, kuldetolerance, vandladning, koncentration',
+        '<b>Ernæring + KRAM:</b> kostsammensætning, restriktioner, motion (hård træning kan dæmpe pubertet)',
+        '<b>Medicin:</b> inhalationssteroid (astma), prednisolon, methylphenidat',
+        '<b>Psykosocialt:</b> omsorgssvigt-tegn, skoletilfredshed, mobning',
+        '<b>Objektivt:</b> dysmorfe træk (Turner: bred nakkefold, cubitus valgus, tøndeformet thorax), proportioner, struma, pubertetsstadie (Tanner), trunkal fedme/striae (Cushing), hud (atopisk dermatit, dermatitis herpetiformis = cøliaki)'
+      ],
+      opts:[
+        { lead:'Parallelt med egen kurve + normal proportion + targetheight matcher', hint:'Familiær lav højde eller konstitutionel forsinket vækst', next:'t_familiaer_konstitutionel' },
+        { lead:'Faldende kurve — vægt vinger FØR højde', hint:'Malabsorption-mønster — cøliaki øverst, IBD/kronisk sygdom også', next:'q_malabsorption' },
+        { lead:'Faldende kurve — højde vinger FØR vægt', hint:'Endokrin årsag — GH-mangel, hypothyreose, Cushing', next:'q_endokrin' },
+        { lead:'Dysmorfe træk eller IUGR/SGA-baggrund', hint:'Syndrom eller perinatal årsag — Turner-screen alle piger', next:'q_syndrom' }
+      ]
+    },
+
+    q_malabsorption:{
+      q:'Hvilken malabsorption-/kronisk-årsag passer mønstret?',
+      why:'Vægttab eller -vigning før højde-tab er klassisk for malabsorption. Cøliaki er den hyppigste — også i "stille" form uden klare GI-symptomer. IBD præsenterer typisk med blodig diare, ledsmerter, perianalt fund. Andre kroniske sygdomme (cystisk fibrose, leversygdom, kronisk infektion) skal også overvejes.',
+      ask:[
+        '<b>Cøliaki-antistoffer:</b> transglutaminase-IgA + total IgA (udeluk IgA-mangel) + deamideret gliadin',
+        '<b>F-calprotectin:</b> IBD-screen ved GI-symptomer eller blodig afføring',
+        '<b>Basal screening:</b> Hgb, CRP, lever-/nyretal, albumin, ferritin, B12, folat, D-vitamin',
+        '<b>Svedtest</b> ved mistanke om cystisk fibrose (recidiverende pneumonier + GI-symptomer)'
+      ],
+      opts:[
+        { lead:'Vækstvigning + mavesmerter/diare/obstipation + positiv transglutaminase-IgA', hint:'Cøliaki — tyndtarmsbiopsi eller ESPGHAN no-biopsy ved meget høje AB', next:'t_coeliaki' },
+        { lead:'Blodig diare + ledsmerter + forhøjet F-calprotectin + perianalt fund', hint:'Inflammatorisk tarmsygdom (Crohn / colitis ulcerosa) eller anden kronisk sygdom', next:'t_ibd_kronisk' }
+      ]
+    },
+
+    q_endokrin:{
+      q:'Hvilken endokrin årsag?',
+      why:'Endokrin lav højde rammer typisk højde først, vægt normal eller endda over (særligt GH-mangel og hypothyreose giver "kort og lidt buttet"). Cushing giver klassisk trunkal fedme + striae. <b>Knoglealder er central</b>: forsinket ved GH-mangel og hypothyreose, normal eller fremskudt ved Cushing.',
+      ask:[
+        '<b>Knoglealder:</b> rtg af venstre håndled',
+        '<b>Vækstfaktorer:</b> IGF-1, IGF-BP3 (begge lave ved GH-mangel)',
+        '<b>Stofskifte:</b> TSH, T3, T4 (forhøjet TSH + lav T4 = primær hypothyreose)',
+        '<b>Cushing-screen:</b> 24-t kortisol i urin, dexamethason-suppressionstest, morgen ACTH/kortisol',
+        '<b>Provokationstest for GH</b>: clonidin- eller arginin-test (efter screening med IGF-1)'
+      ],
+      opts:[
+        { lead:'Proportional lav højde + normal eller over BMI + lav væksthastighed + lave IGF-1/IGF-BP3', hint:'Væksthormonmangel (GH-mangel) — isoleret eller del af hypopituitarisme', next:'t_gh_mangel' },
+        { lead:'Lethargi + kuldetolerance + tør hud + obstipation + struma + bradykardi + forhøjet TSH', hint:'Primær hypothyreose (oftest autoimmun: Hashimoto)', next:'t_hypothyreose' },
+        { lead:'Trunkal fedme + striae + buffalo hump + måneansigt + hypertension + (eksogen steroid eller endogen)', hint:'Cushing syndrom — sjælden hos børn, ofte iatrogen', next:'t_cushing' }
+      ]
+    },
+
+    q_syndrom:{
+      q:'Hvilket syndrom eller perinatalt mønster?',
+      why:'Dysmorfe træk og perinatal anamnese er nøglen. <b>Turner syndrom</b> er den hyppigste enkeltårsag til lav højde hos piger og opdages ofte sent — alle piger med uforklaret lav højde skal have karyotype. <b>SGA uden catch-up</b> (Small for Gestational Age uden indhentning af vægt/højde inden 2-års-alder) er en hyppig årsag der ofte overses.',
+      opts:[
+        { lead:'Pige + dysmorfe træk (bred nakkefold, cubitus valgus, tøndeformet thorax, lavt hårline bagtil)', hint:'Turner syndrom (45,X) — karyotype + EKKO + UL nyrer + TSH', next:'t_turner' },
+        { lead:'IUGR/SGA-baggrund (fødselsvægt eller -længde under -2 SD for gestationsalder) UDEN catch-up inden 2 år', hint:'SGA uden catch-up — GH-behandling kan tilbydes hvis lav højde fortsætter', next:'t_sga' }
+      ]
+    },
+
+    /* ===== TERMINALER ===== */
+
+    t_familiaer_konstitutionel:{
+      dx:'Familiær lav højde eller konstitutionel forsinket vækst',
+      dxsub:'Den hyppigste årsag til lav højde — variant af normal',
+      urgency:'rolig',
+      findings:[
+        '<b>Familiær lav højde:</b> barnet følger egen kurve under -2 SD; targetheight er også lav; normal proportion og udvikling; normal væksthastighed; normal pubertet',
+        '<b>Konstitutionel forsinket vækst:</b> barnet er "sen blomst" — normal kurve men på lave percentiler; pubertet starter sent (drenge ofte mest mærkbar); knoglealder forsinket ift. kronologisk alder; familieanamnese med "sen udvikler"',
+        'Normal proportion, ingen dysmorfe træk',
+        'Normal almentilstand, normal udvikling',
+        'Sluthøjde ofte normal ved konstitutionel forsinkelse (når pubertet endelig kommer)'
+      ],
+      ddx:[
+        { d:'Tidlig endokrin sygdom (GH-mangel, hypothyreose)', r:'Knoglealder + IGF-1 + TSH for at udelukke' },
+        { d:'Cøliaki ("stille" form)', r:'Transglutaminase-IgA — lav tærskel for screening' },
+        { d:'Turner (piger)', r:'Karyotype hvis pige med uforklaret lav højde' },
+        { d:'Idiopatisk lav højde', r:'Hvis alle udredninger normale, sluthøjde lav uden klar årsag' }
+      ],
+      behandling:[
+        '<b>Oftest ingen behandling</b> — informer familien om forventet forløb',
+        'Vækstkurven følges hver 6.–12. mdr.',
+        'Beregn sluthøjde-prognose ved hjælp af knoglealder + targetheight',
+        'Ved konstitutionel forsinkelse + svær psykosocial belastning: kort behandling med testosteron (drenge) eller østrogen (piger) kan overvejes for at "kick-starte" pubertet — sjældent indiceret',
+        'Hos meget kort, idiopatisk: GH-behandling kan tilbydes hvis sluthøjde-prognose &lt;-2,5 SD (specialist-vurdering)'
+      ],
+      ki:[
+        'Vækstvigning, krydsning af percentiler, dysmorfe træk = IKKE familiær — udred organisk årsag',
+        'Lav væksthastighed (&lt;5 cm/år hos 5–10-årige) = abnorm uanset position på kurven',
+        'Familiehistorik med "sen udvikler" støtter konstitutionel — men udelukker ikke endokrin sygdom hvis vækstpattern ikke passer'
+      ],
+      prognose:'God. Familiær: sluthøjde matcher targetheight. Konstitutionel: sluthøjde ofte normal når pubertet endelig kommer. Idiopatisk lav højde: sluthøjde lav men ikke patologisk.',
+      caseRef:null
+    },
+
+    t_coeliaki:{
+      dx:'Cøliaki',
+      dxsub:'Autoimmun reaktion mod gluten hos HLA-DQ2/8-disponerede. Klassisk "vægt før højde"-mønster',
+      urgency:'haster',
+      findings:[
+        'Vækstvigning — vægt vinger før højde på vækstkurven',
+        'Mavesmerter, diare eller obstipation, oppustethed, kvalme',
+        'Træthed, jernmangel-anæmi, koncentrationsbesvær',
+        'Dermatitis herpetiformis (klassisk men sjælden hos børn)',
+        'Stærkt forhøjede transglutaminase-IgA + deamideret gliadin (og total IgA normal — udeluk IgA-mangel)',
+        'Tyndtarmsbiopsi: krypthypertrofisk villusatrofi (Marsh 3a–c). ESPGHAN tillader no-biopsy diagnose ved tTG-IgA &gt;10× øvre referenceværdi + positiv endomysium-AB + HLA-DQ2/8'
+      ],
+      ddx:[
+        { d:'Funktionelle mavesmerter', r:'Normal vækst, ingen røde flag, normale antistoffer' },
+        { d:'Inflammatorisk tarmsygdom', r:'Blodig diare, ledsmerter, forhøjet F-calprotectin' },
+        { d:'IgA-mangel (selektiv)', r:'Falsk negativ transglutaminase-IgA — mål total IgA' },
+        { d:'Laktoseintolerance', r:'Postprandialt, ingen vækstvigning' }
+      ],
+      behandling:[
+        '<b>Livslang glutenfri diæt</b> — komplet undgåelse af byg, hvede, rug (havre er ofte tolereret)',
+        'Diætist-vejledning central',
+        'Vækst-catch-up over 1–2 år; antistof-normalisering over 6–12 mdr.',
+        'Suppler ved mangel: D-vitamin, jern, B12, folat',
+        'Klinisk kontrol + transglutaminase-AB hver 3.–6. mdr. (compliance)',
+        'Familiescreening: 1.grads-slægtninge har ~10% risiko'
+      ],
+      ki:[
+        'Total IgA-mangel: brug deamideret gliadin-IgG eller transglutaminase-IgG som backup',
+        'Associerede autoimmune sygdomme: T1D, autoimmun thyroidea, Addison',
+        'Ubehandlet: vækstforsink, osteoporose, infertilitet, tarmlymfom-risiko (langtid)'
+      ],
+      prognose:'Udmærket ved god compliance. Catch-up vækst + normalisering af symptomer. Ved manglende compliance: komplikationer.',
+      caseRef:'coeliaki_vaekst'
+    },
+
+    t_ibd_kronisk:{
+      dx:'Inflammatorisk tarmsygdom (IBD) eller anden kronisk sygdom',
+      dxsub:'Crohn / colitis ulcerosa hos skolebørn/teenagere; også cystisk fibrose, kronisk leversygdom, kronisk infektion',
+      urgency:'haster',
+      findings:[
+        '<b>IBD:</b> blodig eller slimet diare, mavesmerter, ledsmerter, vægttab, træthed',
+        'Perianalt fund (fissurer, fistler, tags) — særligt Crohn',
+        'Ekstraintestinale manifestationer: erythema nodosum, ledsmerter, sklerit, primær skleroserende cholangit',
+        '<b>Cystisk fibrose:</b> recidiverende pneumonier + steatoré + dårlig trivsel + svedtest positiv (Cl &gt;60 mmol/l)',
+        'F-calprotectin forhøjet (IBD)',
+        'Forhøjet CRP, anæmi, hypoalbuminæmi',
+        'Endoskopi + biopsi til konfirmation af IBD'
+      ],
+      ddx:[
+        { d:'Cøliaki', r:'Transglutaminase-IgA — kan koeksistere med IBD' },
+        { d:'Akut gastroenterit (langtrukken)', r:'Selvbegrænsende, ikke kronisk' },
+        { d:'Funktionelle mavesmerter', r:'Normal vækst + ingen røde flag' },
+        { d:'Lactose-/fruktose-intolerance', r:'Postprandial-relateret' }
+      ],
+      behandling:[
+        'Pædiatrisk gastroenterolog ved mistanke',
+        '<b>IBD-trin:</b>',
+        '— Eksklusiv enteral ernæring (EEN, 6–8 uger) som førstelinje for at inducere remission ved Crohn hos børn',
+        '— 5-ASA (mesalazin) ved lette UC',
+        '— Steroid (prednisolon) ved moderat-svær flares — IKKE vedligehold',
+        '— Immunmodulerende: azathioprin, methotrexat',
+        '— Biologisk: anti-TNF (infliximab, adalimumab) ved sværere',
+        '<b>Cystisk fibrose:</b> CFTR-modulator (Trikafta), pancreas-enzymer, antibiotika ved infektion, fysioterapi',
+        'Ernæringsstatus + vitaminer (særligt fedtopløselige)',
+        'Vækstkurve som outcome'
+      ],
+      ki:[
+        'Forsink ikke skopi ved blodig diare hos barn — IBD-debut kan komme akut',
+        'Steroid som vedligehold giver væksthæmning — undgå',
+        'Manglende vækst-catch-up under behandling = utilstrækkelig sygdomskontrol'
+      ],
+      prognose:'IBD: kronisk forløb med flares/remission. Tidlig effektiv behandling = bedre vækst + remission. CF: livstidsforventning forbedret markant med moderne CFTR-modulatorer.',
+      caseRef:null
+    },
+
+    t_gh_mangel:{
+      dx:'Væksthormonmangel (GH-deficiency)',
+      dxsub:'Isoleret eller del af multiple pituitarymangler. Kongenit eller erhvervet (tumor, kraniel radioterapi, traume)',
+      urgency:'rolig',
+      findings:[
+        'Proportional lav højde',
+        'Normal eller over BMI ("kort og lidt buttet")',
+        'Lav væksthastighed (&lt;5 cm/år hos prepubertale, &lt;25-percentil for alder)',
+        'Forsinket knoglealder',
+        'Eventuelt mikrofallus, hypoglykæmi (nyfødt-debut)',
+        '<b>Lav IGF-1 og IGF-BP3 for alder</b>',
+        '<b>GH-provokationstest:</b> manglende stigning &gt;7 µg/L efter 2 forskellige stimuli (clonidin, arginin, insulin)',
+        'MR hypofyse: pituitary hypoplasi, tumor, gennemskåret stilk (PSIS), tomt sella'
+      ],
+      ddx:[
+        { d:'Konstitutionel forsinkelse', r:'Familieanamnese, normal IGF-1 hvis testet senere i pubertet' },
+        { d:'Familiær lav højde', r:'Normal væksthastighed, parallelt kurve' },
+        { d:'Hypothyreose', r:'TSH/T4 — kan koeksistere med GH-mangel som del af hypopituitarisme' },
+        { d:'Idiopatisk lav højde', r:'Normal GH-provokation' },
+        { d:'Småbørns-cøliaki', r:'Transglutaminase-IgA' }
+      ],
+      behandling:[
+        '<b>Rekombinant human GH (somatropin)</b> daglig s.c. injektion',
+        'Dosering startes lavt og titreres til IGF-1 i øvre normalområde + adekvat væksthastighed',
+        'Behandling fortsætter indtil sluthøjde nås eller knoglealder lukket',
+        'Ved hypopituitarisme: erstat også andre mangler (kortisol, thyroxin, DDAVP, kønshormoner)',
+        'Monitorering: højde + vægt hver 3 mdr., IGF-1, TSH, knoglealder årligt',
+        'Skleritisk ophthalmoskopi (pseudotumor cerebri-risiko ved start)'
+      ],
+      ki:[
+        'GH-behandling forværrer ikke neoplasme-risiko hos rask barn, men screen for malign sygdom inden start',
+        'Pseudotumor cerebri / benign intrakraniel hypertension: nyopstået hovedpine + papilødem → pause GH',
+        'Slipped capital femoral epiphysis (SCFE): hofte-/knæsmerter + halten — særligt under hurtig vækst',
+        'GH-behandling ophører nær sluthøjde — voksen-GH-mangel kan kræve livslang substitution (lavere dosis)'
+      ],
+      prognose:'God ved tidlig start. Sluthøjde tæt på targetheight ved isoleret GH-mangel og adekvat dosering. Hypopituitarisme: prognose afhænger af andre mangler.',
+      caseRef:null
+    },
+
+    t_hypothyreose:{
+      dx:'Primær hypothyreose',
+      dxsub:'Oftest autoimmun (Hashimoto-thyroidit) hos større børn; kongenit screenes ved PKU-prøve',
+      urgency:'haster',
+      findings:[
+        '<b>Lav væksthastighed + forsinket knoglealder</b> = pejlemærke',
+        'Lethargi, kuldetolerance, tør hud, obstipation',
+        'Bradykardi, langsom afspænding af reflekser',
+        '<b>Struma</b> (Hashimoto giver typisk diffus, ikke-øm struma)',
+        'Vægtstigning (men ikke svær fedme)',
+        'Koncentrationsbesvær, dårlig skolepræstation',
+        'Forsinket pubertet eller paradoksalt pubertet-fremskydelse (svær hypothyreose)',
+        '<b>Forhøjet TSH + lav T4</b> = primær. <b>Forhøjet TSH + normal T4</b> = subklinisk',
+        'Anti-TPO og anti-tireoglobulin antistoffer (Hashimoto)'
+      ],
+      ddx:[
+        { d:'Sekundær hypothyreose', r:'Lav TSH + lav T4 — fra hypofysesvigt; kræver MR hypofyse' },
+        { d:'GH-mangel', r:'Kan koeksistere (multiple pituitary mangler)' },
+        { d:'Cushing', r:'Trunkal fedme + striae — modsat hypothyreoses lethargi' },
+        { d:'Depression hos teenager', r:'Symptom-overlap; mål TSH' }
+      ],
+      behandling:[
+        '<b>Levothyroxin (T4) PO én gang dagligt</b>',
+        'Dosering 1,5–3 µg/kg/dag afhængig af alder; titreret til TSH i normalområdet',
+        'Bedring inden for uger; vækst-catch-up over 1–2 år',
+        'Kontrol: TSH + T4 efter 6–8 uger ved opstart/dosisjustering, derefter hver 3.–6. mdr.',
+        'Knoglealder + vækstkurve følges',
+        'Hashimoto: screen for andre autoimmune (T1D, cøliaki, Addison) og tilbyd familiescreening'
+      ],
+      ki:[
+        'Tag levothyroxin på tom mave 30 min før mad — absorberes dårligt sammen med calcium, jern, soja',
+        'Initial dosis ved svær hypothyreose: start lavt og titrér op for at undgå pseudotumor cerebri',
+        'Kontrol af BS hos diabetes-patienter — behandlet hypothyreose ændrer insulinbehov'
+      ],
+      prognose:'Udmærket ved adekvat substitution. Ubehandlet svær hypothyreose hos småbørn → kognitive sequelae. Forsinket diagnose hos større børn: vækst-catch-up tager længere.',
+      caseRef:null
+    },
+
+    t_cushing:{
+      dx:'Cushing syndrom',
+      dxsub:'Glukokortikoid-overskud. Hos børn oftest <b>iatrogen</b> (eksogen steroid); endogen er sjælden (binyrebark-tumor, ACTH-producerende hypofyse-adenom, ektopisk ACTH)',
+      urgency:'haster',
+      findings:[
+        '<b>Lav væksthastighed + vægtstigning</b> = klassisk Cushing-mønster hos børn',
+        'Trunkal fedme + spinkle ekstremiteter',
+        'Måneansigt, buffalo hump',
+        'Violacée striae (lyske, abdomen, lår)',
+        'Hypertension',
+        'Hirsutisme, akne (særligt androgen-producerende læsioner)',
+        'Forsinket pubertet (binyrebark-tumor kan også give virilisering)',
+        'Glukoseintolerance, hypokaliæmi',
+        'Hovedpine, myopati, osteoporose',
+        'Psykiske symptomer: irritabilitet, depression, søvnforstyrrelser'
+      ],
+      ddx:[
+        { d:'Eksogen fedme', r:'Normal væksthastighed eller forhøjet højde — Cushing GIVER LAV højde-hastighed' },
+        { d:'Hypothyreose', r:'Vægtstigning + lav væksthastighed; TSH normal udelukker' },
+        { d:'PCOS hos teenagepige', r:'Hirsutisme + acne + insulinresistens, men ikke høj kortisol' },
+        { d:'Pseudo-Cushing (kronisk stress, alkohol)', r:'Sjælden hos børn' }
+      ],
+      behandling:[
+        '<b>Iatrogen:</b> langsom nedtrapning af steroid hvis muligt — aldrig akut seponering (binyrebarkinsufficiens)',
+        '<b>Endogen — udredning:</b>',
+        '— Kortisol i 24-t urin (forhøjet)',
+        '— 1-mg natlig dexamethason-suppressionstest (mangelfuld suppression)',
+        '— Sen-nat spyt-kortisol (forhøjet)',
+        '— Bekræftet hyperkortisolisme: ACTH-niveau (lav = binyrebark; høj = ACTH-driven)',
+        '— MR hypofyse / CT binyrer',
+        '<b>Behandling:</b>',
+        '— Endogen: kirurgisk fjernelse af tumor (transsfenoidal hypofyseektomi eller binyrebark-tumor-resektion)',
+        '— Postoperativ kortisol-substitution (binyrebark-akslen suppreseret)',
+        '— Strålebehandling / medikamentel (ketoconazol, metyrapon) ved persisterende eller ikke-resectabel'
+      ],
+      ki:[
+        '<b>Stress-dosering kortisol</b> ved akut sygdom/operation/traume hos patienter på langtid-prednisolon eller efter post-Cushing-substitution',
+        'Pseudotumor cerebri-risiko ved hurtig steroid-seponering',
+        'Vækst-catch-up efter behandling er begrænset hvis langvarig Cushing — knoglealderen kan være modnet'
+      ],
+      prognose:'Iatrogen: god ved gradvis seponering. Endogen efter resektion: bedring over 1–2 år men sluthøjde ofte reduceret. Cushing er forbundet med øget kardiovaskulær mortalitet hvis ikke behandlet.',
+      caseRef:null
+    },
+
+    t_turner:{
+      dx:'Turner syndrom',
+      dxsub:'45,X (eller mosaik) — kun piger. Hyppigste enkeltårsag til lav højde hos piger',
+      urgency:'haster',
+      findings:[
+        'Karakteristiske træk (alle ikke nødvendige):',
+        '— Bred nakkefold (webbed neck)',
+        '— Lav hårline bagtil',
+        '— Tøndeformet thorax + bredt anlagte brystvorter',
+        '— Cubitus valgus (øget bære-vinkel ved albue)',
+        '— Lymfedem på hænder/fødder ved fødslen',
+        '— Korte 4. metakarpaler/metatarsaler',
+        '— Pigmenterede nevi',
+        'Lav højde fra spædbarn (under -2 SD; sluthøjde ~143 cm ubehandlet)',
+        'Primær amenoré + manglende thelarche (gonad-svigt — "streak gonads")',
+        '<b>Associerede sygdomme:</b>',
+        '— Hjertemisdannelse i 30–50%: bicuspid aortaklap, coarctatio aortae, aortadilatation',
+        '— Nyremisdannelse i 30–40%: hesteskonyre, dobbeltanlæg, ectopisk',
+        '— Autoimmun thyroidea (Hashimoto)',
+        '— Cøliaki (øget risiko)',
+        '— Hørelsesnedsættelse (sensorineural + recidiverende otitis)',
+        '— Inelærings-/eksekutiv-funktionsudfordringer',
+        '<b>Karyotype</b> bekræfter diagnosen — alle piger med uforklaret lav højde skal have karyotype'
+      ],
+      ddx:[
+        { d:'Konstitutionel forsinket vækst', r:'Normal proportion, familiehistorik' },
+        { d:'GH-mangel', r:'IGF-1 lav, GH-provokationstest abnorm' },
+        { d:'Noonan syndrom', r:'Lignende fænotype, men autosomal dominant (oftest PTPN11-mutation); kan også ramme drenge' },
+        { d:'Idiopatisk lav højde', r:'Diagnose ved eksklusion' }
+      ],
+      behandling:[
+        '<b>Vækstbehandling:</b> rekombinant GH s.c. dgl. fra ~5–6-års-alderen — øger sluthøjde med ~5–10 cm',
+        'Eventuelt tilføj oxandrolon (lav-dosis androgen) hvis utilstrækkelig respons',
+        '<b>Pubertet:</b> østrogen-substitution startes typisk omkring 12–13-års-alderen (lavdosering) og titreres op for at imitere fysiologisk pubertet; senere kombination med progestogen for menstruation',
+        '<b>Multidisciplinær opfølgning:</b>',
+        '— Kardiologi: EKKO ved diagnose + årligt; MR cor ved aortadilatation',
+        '— Nefrologi: UL nyrer ved diagnose',
+        '— Endokrinologi: TSH, cøliaki-AB, BS, lipider — hver 1–2 år',
+        '— ØNH: audiometri',
+        '— Gynækologi: fertilitetsplanlægning (kun ~1% spontan graviditet; ægdonation er hovedoption)',
+        'Skole-/psykologisk støtte ved indlæringsudfordringer'
+      ],
+      ki:[
+        '<b>Aortadissektion-risiko</b> ved aortadilatation + graviditet — pre-konception kardio-vurdering obligatorisk',
+        'Otitis-monitorering vigtig — kan give kronisk hørelsesnedsættelse',
+        'Mosaik-form (45,X/46,XX) har ofte mildere fænotype og kan have spontan pubertet/fertilitet — individuel udredning'
+      ],
+      prognose:'Sluthøjde med GH-behandling: 145–155 cm (uden: ~143 cm). Forventet levetid let reduceret pga. kardiovaskulær sygdom. Livskvalitet generelt god ved adekvat multidisciplinær opfølgning.',
+      caseRef:null
+    },
+
+    t_sga:{
+      dx:'SGA uden catch-up (Small for Gestational Age)',
+      dxsub:'Fødselsvægt eller -længde under -2 SD for gestationsalder. ~90% catch-up inden 2-års-alder; resterende 10% har persisterende lav højde',
+      urgency:'rolig',
+      findings:[
+        'Fødselsvægt eller -længde under -2 SD for gestationsalder (IUGR = intrauterin væksthæmning)',
+        'Manglende catch-up til mindst -2 SD inden 2-års-alder',
+        'Proportional lav højde (nogle gange relativ stort hoved)',
+        'Normal pubertet, men ofte fremskudt',
+        '<b>Ætiologi-DDX (vigtig at adressere):</b>',
+        '— Placental insufficiens (præeklampsi, hypertension, ryger-/rusmiddelbrug)',
+        '— Multiple pregnancy (tvillinger)',
+        '— Intrauterin infektion (CMV, rubella, toxoplasmose)',
+        '— Genetisk: Russell-Silver, Bloom, Seckel — flag ved dysmorfe træk',
+        '— Maternal underernæring',
+        '— Idiopatisk'
+      ],
+      ddx:[
+        { d:'Familiær lav højde', r:'Targetheight matcher; ikke nødvendigvis IUGR-baggrund' },
+        { d:'Konstitutionel forsinket vækst', r:'Normal fødselsstørrelse, senere lav highdde + sen pubertet' },
+        { d:'GH-mangel', r:'Erhverveet senere; IGF-1 lav' },
+        { d:'Specifikt syndrom (Russell-Silver)', r:'Klassiske dysmorfe træk + asymmetri + lav fødselsvægt + svær lav højde' }
+      ],
+      behandling:[
+        '<b>GH-behandling kan tilbydes</b> hvis:',
+        '— Højde &lt;-2,5 SD ved 4-års-alder',
+        '— Manglende catch-up til mindst -2 SD',
+        '— Targetheight væsentligt under aktuel højde',
+        'Dosering højere end ved GH-mangel (typisk 0,035 mg/kg/dag)',
+        'Behandling fortsætter indtil sluthøjde',
+        'Monitorer for insulinresistens og BS-stigning under behandling',
+        'Pubertet kan komme tidligt — overvej GnRH-analog hvis sluthøjde-prognose lav',
+        'Multidisciplinær opfølgning hvis specifikt syndrom'
+      ],
+      ki:[
+        'Russell-Silver og lignende syndromer: dysmorfe træk + asymmetri + frontal bossing + lav-sat ører — henvis til klinisk genetik',
+        'SGA + tidlig pubertet er en hyppig kombination — vækst-prognose forværres hvis ikke håndteret',
+        'Fertilitet er typisk ikke påvirket ved isoleret SGA — modsat ved Turner'
+      ],
+      prognose:'Med GH-behandling: sluthøjde-gevinst 5–10 cm. Uden: sluthøjde ofte 1–2 SD under targetheight. Øget risiko for metabolisk syndrom + T2D + kardiovaskulær sygdom som voksen.',
+      caseRef:null
+    }
+
+  }
+},
+
+{
+  id:'pubertet_afvigelser',
+  spec:'PEDS',
+  title:'Pubertets-afvigelser — for tidlig eller for sen pubertet',
+  src:'F25 stand 4 (pubertas præcox) + Signe Pædiatri + Excel PÆD (endokrinologi/pubertet). Bygger oven på case pubertas_praecox.',
+  start:'start',
+  nodes:{
+
+    start:{
+      q:'Pubertets-afvigelser — afgrænsninger og første sortering.',
+      why:'<b>Afgrænsninger (DPS-standard):</b><ul><li><b>For tidlig pubertet:</b> pubertetstegn før <b>8 år hos piger</b>, <b>9 år hos drenge</b></li><li><b>For sen pubertet:</b> manglende pubertet ved <b>13 år hos piger</b>, <b>14 år hos drenge</b></li></ul>Hos piger er idiopatisk central pubertas præcox langt hyppigste (&gt;90% af CPP). Hos drenge skal CNS-årsag altid mistænkes ved CPP (hamartom, opticus-gliom). <b>Tanner-rækkefølgen</b> er nøglen: ægte central pubertet følger normal rækkefølge (thelarche → pubarche → menarche hos piger; testikel-volumen → pubarche → vækstaccel → vox mutans hos drenge); afvigelser fra rækkefølgen tyder på perifer årsag.',
+      redflag:'<b>Drenge med CPP → MR hypofyse er obligatorisk</b> (sekundær CPP er langt hyppigere end hos piger). <b>Pige med virilisering (klitoromegali, hirsutisme, akne, lavt mæleret stemmeskifte) → udeluk AGS (21-hydroxylase-mangel) eller androgen-producerende tumor</b>. <b>Pubertas tarda med anosmi → tænk Kallmann syndrom</b>.',
+      ask:[
+        '<b>Pubertetstegnenes debut + rækkefølge:</b> thelarche (piger), testikel-volumen (drenge), pubarche, adrenarche (akselhår, akne, kropslugt), menarche, vox mutans',
+        '<b>Vækstacceleration:</b> hop på vækstkurven?',
+        '<b>Forældrenes pubertet:</b> mor menarche-alder, fars pubertet (genetisk dispositionsskøn)',
+        '<b>Tidligere sygdomme:</b> traume mod CNS, infektion, kraniel radioterapi, kemoterapi',
+        '<b>Medicineksposition:</b> eksogen østrogen (mors hormoncreme), slik/diætpiller med østrogener',
+        '<b>Adoption fra udland</b> (kan udløse central PP via ernæringsændring)',
+        '<b>Symptomer på CNS-proces:</b> hovedpine, synsforstyrrelser, kramper',
+        '<b>Symptomer på syndrom:</b> dysmorfe træk, anosmi (Kallmann), syndromal stigma',
+        '<b>Objektivt:</b> højde + vægt + Tanner-stadier (B og PH 1-5; testikel-volumen med Prader-orchidometer), genital us, neurologisk us, hud (café-au-lait pletter = McCune-Albright)'
+      ],
+      opts:[
+        { lead:'For tidlig pubertet (piger &lt;8 år, drenge &lt;9 år)', hint:'Sortér ægte central vs isoleret thelarche/adrenarche vs perifer (AGS, McCune-Albright)', next:'q_for_tidlig' },
+        { lead:'For sen pubertet (piger ≥13 år, drenge ≥14 år uden tegn)', hint:'Konstitutionel forsinkelse vs hypogonadotrop hypogonadisme vs primær gonad-svigt', next:'q_for_sen' }
+      ]
+    },
+
+    q_for_tidlig:{
+      q:'Hvilket pubertetsbillede præsenterer barnet med?',
+      why:'For tidlig pubertet sorteres efter <b>fuldstændighed</b> (alle elementer = ægte pubertet) og <b>rækkefølge</b>. Isoleret thelarche (kun bryst) eller isoleret adrenarche (kun pubeshår + akne) er ofte benigne varianter. Ægte central pubertet (CPP) viser progressiv Tanner + vækstaccel + fremskudt knoglealder. Virilisering hos pige eller hurtigt forløb peger på perifer årsag (AGS, McCune-Albright, tumor).',
+      opts:[
+        { lead:'Alle pubertetselementer i normal rækkefølge + vækstaccel + fremskudt knoglealder', hint:'Central pubertas præcox (CPP) — videre MR for at udelukke CNS-årsag', next:'q_central' },
+        { lead:'Kun brystudvikling (thelarche) UDEN vækstaccel eller progression til andre pubertetstegn', hint:'Præmatur thelarche — oftest benign, særligt &lt;3 år', next:'t_thelarche' },
+        { lead:'Kun pubarche + akne + kropslugt UDEN brystudvikling eller virilisering', hint:'Præmatur adrenarche — oftest benign, særligt hos overvægtige', next:'t_adrenarche' },
+        { lead:'Virilisering hos pige (klitoromegali, hirsutisme, lavt mæleret stemmeskifte) eller hurtig pubarche hos dreng under 9 år', hint:'AGS (21-hydroxylase-mangel) eller androgen-producerende tumor — eller McCune-Albright', next:'t_perifer' }
+      ]
+    },
+
+    q_central:{
+      q:'Er CPP idiopatisk eller sekundær?',
+      why:'Når CPP er bekræftet (pubertal LH-respons på GnRH-test + fremskudt knoglealder + forhøjede LH/FSH/østradiol + pubertal uterus på UL), skal <b>MR hypothalamus/hypofyse</b> udelukke CNS-årsag. <b>Hos piger:</b> 90%+ er idiopatisk. <b>Hos drenge:</b> 40–75% har påviselig CNS-årsag (hamartom, opticus-gliom, hydrocephalus, tumor) — MR er obligatorisk.',
+      opts:[
+        { lead:'Normal MR hypofyse — ingen påviselig CNS-årsag', hint:'Idiopatisk central pubertas præcox — GnRH-analog behandling', next:'t_cpp_idiopatisk' },
+        { lead:'Påvist CNS-læsion på MR (hamartom, opticus-gliom, hydrocephalus, tumor)', hint:'Sekundær CPP — neurokirurgisk/onkologisk plan + GnRH-analog', next:'t_cpp_sekundaer' }
+      ]
+    },
+
+    q_for_sen:{
+      q:'Hvilken type forsinket pubertet?',
+      why:'For sen pubertet (pubertas tarda) sorteres efter <b>FSH/LH-niveau</b>: <b>lav (hypogonadotrop)</b> = central (hypofyse-/hypothalamus-defekt — konstitutionel forsinkelse, Kallmann, panhypopituitarisme); <b>høj (hypergonadotrop)</b> = primær gonad-svigt (Turner, Klinefelter, gonad-dysgenese, kemoterapi/strålingsskade). Konstitutionel forsinkelse er hyppigste, særligt drenge med "sen blomst" + familiehistorik + forsinket knoglealder.',
+      ask:[
+        '<b>Familieanamnese:</b> mor menarche-alder, far pubertets-tidspunkt, "sen blomst" i familien',
+        '<b>Anosmi-screening:</b> Kallmann syndrom = hypogonadotrop hypogonadisme + anosmi',
+        '<b>Sygdomshistorie:</b> kemoterapi, kraniel radioterapi, autoimmun ophiritis',
+        '<b>Hormoner:</b> FSH, LH, østradiol/testosteron, prolactin, TSH',
+        '<b>Karyotype</b> ved hypergonadotrop billede (Turner-/Klinefelter-screen)',
+        '<b>Knoglealder</b>'
+      ],
+      opts:[
+        { lead:'Familiær "sen blomst" + forsinket knoglealder + ellers normal + lav-normal LH/FSH', hint:'Konstitutionel forsinket pubertet — observation eller kort hormonal "kick-start"', next:'t_konstitutionel_forsinket' },
+        { lead:'Lav LH/FSH + lav østradiol/testosteron + (anosmi → Kallmann)', hint:'Hypogonadotrop hypogonadisme — hormonsubstitution', next:'t_hypogonadotrop' },
+        { lead:'Høj LH/FSH + lav østradiol/testosteron (gonad-svigt) + dysmorfe træk evt.', hint:'Primær gonad-svigt — Turner (45,X), Klinefelter (47,XXY), gonadedysgenese, postkemoterapi', next:'t_primaer_gonad' }
+      ]
+    },
+
+    /* ===== TERMINALER ===== */
+
+    t_cpp_idiopatisk:{
+      dx:'Idiopatisk central pubertas præcox',
+      dxsub:'GnRH-afhængig for tidlig aktivering af hypothalamus-hypofyse-aksen uden påviselig CNS-årsag. Hyppigste hos piger (&gt;90% af CPP)',
+      urgency:'haster',
+      findings:[
+        'Pubertetstegn i normal rækkefølge før 8 år (piger) eller 9 år (drenge)',
+        'Vækstacceleration ("hop" på vækstkurven)',
+        'Fremskudt knoglealder (&gt;2 SD over kronologisk alder)',
+        'Forhøjet basal LH (oftest LH &gt; FSH) + østradiol/testosteron',
+        '<b>GnRH-stimulationstest:</b> LH peak &gt;5 IU/L (pubertal respons)',
+        'Pubertal uterus på UL (&gt;3,5–4 cm, endometrium proliferation hos piger)',
+        '<b>Normal MR hypothalamus/hypofyse</b>'
+      ],
+      ddx:[
+        { d:'Sekundær CPP', r:'Påvist CNS-læsion på MR' },
+        { d:'Præmatur thelarche', r:'Isoleret brystudvikling, ingen vækstaccel, præpubertal GnRH-respons' },
+        { d:'Perifer pubertas præcox', r:'GnRH-respons præpubertal; perifer hormonproduktion (AGS, McCune-Albright, tumor)' },
+        { d:'Eksogen østrogen-eksposition', r:'Anamnese' }
+      ],
+      behandling:[
+        '<b>GnRH-analog</b> (triptorelin/decapeptyl) som depot-injektion s.c./i.m. hver måned eller hver 3. måned',
+        'Mekanisme: konstant GnRH-stimulering desensibiliserer hypofysen → LH/FSH falder → gonade-funktion på pause',
+        '<b>Behandlingsmål:</b>',
+        '— Bevare sluthøjde-potentiale (knoglealder-modning bremses)',
+        '— Psykosocial tilpasning',
+        '— Undgå tidlig menarche',
+        '<b>Behandlingsvarighed:</b> indtil aldersnormal pubertetsstart (~10–11 år), derefter seponering',
+        'Monitorering: højde + Tanner hver 3.–6. mdr., hormoner (LH-suppression), knoglealder årligt'
+      ],
+      ki:[
+        'Behandlingsstop omkring 10–11 år — pubertet genoptages naturligt',
+        'Behandling påvirker IKKE fertilitet langtidsmæssigt',
+        'Knogletæthed kan falde let under behandling — Ca/D-vitamin-tilskud',
+        'Hot flushes + mild hovedpine kan ses som bivirkning'
+      ],
+      prognose:'God ved tidlig start. Sluthøjde tæt på targetheight. Pubertet starter normalt efter seponering med normal fertilitet.',
+      caseRef:'pubertas_praecox'
+    },
+
+    t_cpp_sekundaer:{
+      dx:'Sekundær central pubertas præcox (CNS-årsag)',
+      dxsub:'CPP udløst af intrakraniel proces — hamartom, opticus-gliom, hydrocephalus, postinfektiøs, kraniel radioterapi-bivirkning',
+      urgency:'akut',
+      findings:[
+        'Pubertetspræsentation som CPP (alle elementer + vækstaccel + fremskudt knoglealder)',
+        '<b>Påvist CNS-læsion på MR hypothalamus/hypofyse</b>',
+        'Eventuelt ledsagende symptomer: hovedpine, synsforstyrrelser, neurologiske udfald, kramper',
+        'Hamartom i tuber cinereum er hyppigste isolerede ætiologi hos drenge — godartet, men kan give kramper',
+        'Opticus-gliom oftest associeret med neurofibromatose type 1',
+        'Kraniopharyngiom kan også give CPP (efter resektion oftest panhypopituitarisme)',
+        'Hyppigt hos drenge med CPP (40–75% har CNS-årsag) — sjældnere hos piger (5–10%)'
+      ],
+      ddx:[
+        { d:'Idiopatisk CPP', r:'Normal MR' },
+        { d:'Perifer PP', r:'Præpubertal LH-respons, perifer hormonproduktion' }
+      ],
+      behandling:[
+        '<b>To-track behandling:</b>',
+        '<b>1. Underliggende CNS-læsion:</b>',
+        '— Hamartom: oftest observation (uden vækst); kirurgi kun ved kramper eller ICP',
+        '— Opticus-gliom: kemoterapi (carboplatin/vinkristin) ved progression eller synsforstyrrelser',
+        '— Kraniopharyngiom: kirurgisk resektion ± stråling',
+        '<b>2. CPP-behandling:</b>',
+        '— GnRH-analog samme som ved idiopatisk CPP',
+        'Multidisciplinær: pædiatrisk endokrinolog + neurokirurg + onkolog + ophthalmolog'
+      ],
+      ki:[
+        'Kraniopharyngiom-resektion → ofte panhypopituitarisme: erstat GH, TSH, kortisol, ADH',
+        'Kraniel radioterapi-bivirkning kan først vise sig år senere',
+        'Synsfeltsundersøgelse + ophthalmoskopi obligatorisk ved suprasellær læsion'
+      ],
+      prognose:'Afhænger af læsion. Hamartom: god (godartet, ikke-progressiv). Opticus-gliom: variabel — synsbevarelse + livskvalitet er hovedmål. Kraniopharyngiom: kirurgi har høj risiko for hypopituitarisme.',
+      caseRef:null
+    },
+
+    t_thelarche:{
+      dx:'Præmatur thelarche',
+      dxsub:'Isoleret brystudvikling før 8 år UDEN vækstaccel eller anden pubertets-progression. Oftest godartet og selvbegrænsende',
+      urgency:'rolig',
+      findings:[
+        'Isoleret bilateral (eller unilateral) brystudvikling — Tanner B2',
+        '<b>Ingen vækstacceleration</b>',
+        '<b>Ingen pubarche/menarche</b>',
+        'Normal eller let forhøjet østradiol; <b>præpubertal GnRH-respons</b> (LH peak &lt;5)',
+        'Normal knoglealder eller let forhøjet',
+        'Hyppigt &lt;3 år, men kan ses senere',
+        'Ofte fluktuerende — kan komme og gå'
+      ],
+      ddx:[
+        { d:'Central PP (begyndende)', r:'Vil typisk progredieree til andre Tanner-tegn; følg op' },
+        { d:'Lipomastia hos overvægtige piger', r:'Falsk brystudvikling — palper for kirtelvæv' },
+        { d:'Gynaecomasti hos dreng', r:'Anden ætiologi — Klinefelter, anabolska, eksogen østrogen' },
+        { d:'McCune-Albright', r:'Café-au-lait pletter + autonome ovarie-cyster' }
+      ],
+      behandling:[
+        '<b>Ingen behandling ved klassisk præmatur thelarche</b>',
+        'Klinisk kontrol hver 6 mdr.',
+        'Vækstkurve + Tanner følges',
+        '<b>Reassurance til forældre:</b> typisk benignt forløb, oftest spontant regression eller stabilisering',
+        'Hvis progression til andre pubertets-tegn ELLER vækstacceleration → revurder for CPP'
+      ],
+      ki:[
+        'Følg op for at fange overgang til CPP',
+        'Spørg om eksogen østrogen-eksposition — særligt mors hormoncreme, slikkepinde med østrogener',
+        'Bilateral er hyppigst; unilateral skal udelukke brystknude (sjælden men findes)'
+      ],
+      prognose:'Udmærket. ~90% har spontant regress eller stabilisering. ~10% progredierer til CPP — derfor opfølgning.',
+      caseRef:null
+    },
+
+    t_adrenarche:{
+      dx:'Præmatur adrenarche',
+      dxsub:'Isoleret pubarche + akne + kropslugt + aksellært hår før 8 år (piger) eller 9 år (drenge) UDEN brystudvikling, vækstaccel eller virilisering. Hyppigt hos overvægtige børn',
+      urgency:'rolig',
+      findings:[
+        'Pubarche (Tanner PH2), akne, kropslugt, aksellært hår',
+        '<b>Ingen brystudvikling, ingen vækstaccel, ingen virilisering (klitoromegali, stemmeskifte)</b>',
+        'Forhøjet DHEAS for alder',
+        'Normal LH/FSH/østradiol/testosteron',
+        'Normal eller let forhøjet knoglealder',
+        'Hyppigt hos overvægtige børn, særligt piger',
+        'Marker for senere PCOS-risiko hos piger'
+      ],
+      ddx:[
+        { d:'AGS (21-hydroxylase-mangel, non-klassisk form)', r:'17-OH-progesteron forhøjet, særligt efter ACTH-stimulation' },
+        { d:'Binyrebark-tumor', r:'Voksende abdominal udfyldning, virilisering, abnorm DHEAS' },
+        { d:'CPP', r:'Andre pubertetselementer + vækstaccel + LH peak pubertal' },
+        { d:'Eksogen androgen-eksposition', r:'Anamnese' }
+      ],
+      behandling:[
+        '<b>Ingen behandling ved klassisk præmatur adrenarche</b>',
+        'Klinisk kontrol hver 6 mdr.',
+        'Vægthåndtering ved overvægt — reducerer risiko for senere PCOS + metabolisk syndrom',
+        '<b>Reassurance til forældre:</b> typisk godartet, ofte progression til normal pubertet ved normal alder',
+        'Følg op for senere PCOS-screening hos piger (menstruationsforstyrrelse, hirsutisme, insulinresistens)'
+      ],
+      ki:[
+        'Virilisering ELLER hurtig progression → udred for AGS / binyrebark-tumor / androgen-producerende ovarie-tumor',
+        'Insulinresistens-screening hos overvægtige (HOMA-IR, BS, lipider)',
+        'Hos drenge er præmatur adrenarche mere uvanlig og kræver bredere udredning'
+      ],
+      prognose:'Generelt god. Forhøjet risiko for senere PCOS + metabolisk syndrom hos piger, særligt overvægtige. Pubertet starter ofte i normalt tidsvindue.',
+      caseRef:null
+    },
+
+    t_perifer:{
+      dx:'Perifer pubertas præcox (PPP) — AGS, McCune-Albright eller tumor',
+      dxsub:'GnRH-uafhængig — hormonproduktion fra binyrer, ovarier, testikler, eller eksogen kilde. Kræver specifik udredning',
+      urgency:'haster',
+      findings:[
+        '<b>AGS (21-hydroxylase-mangel, non-klassisk):</b>',
+        '— Pige: virilisering, klitoromegali, hirsutisme, pubarche, akne, lavt mæleret stemmeskifte',
+        '— Dreng: pubarche + vækstaccel UDEN testikel-vækst (testes præpubertale, &lt;4 mL)',
+        '— Forhøjet 17-OH-progesteron, særligt efter ACTH-stimulationstest',
+        '<b>McCune-Albright syndrom:</b>',
+        '— Trias: café-au-lait pletter (ujævne kanter "coast of Maine") + polyostotisk fibros dysplasi + autonom hormonproduktion (oftest ovarie-cyster med østrogen)',
+        '— Piger: tidlig menarche, ofte før thelarche',
+        '<b>Androgen-producerende tumor:</b>',
+        '— Binyrebark-tumor (oftest virilisering) eller ovarie/testikel-tumor',
+        '— Hurtigt forløb, palpabel udfyldning, abnorm DHEAS/testosteron',
+        '<b>Eksogen østrogen-eksposition:</b>',
+        '— Mors hormoncreme, slikkepinde med østrogener, kosmetiske produkter — anamnese'
+      ],
+      ddx:[
+        { d:'CPP (central)', r:'Pubertal LH-respons + normal MR; modsat PPP er præpubertal' },
+        { d:'Præmatur adrenarche', r:'Mild pubarche/akne uden virilisering' },
+        { d:'Eksogen androgen', r:'Anamnese' }
+      ],
+      behandling:[
+        '<b>Behandl underliggende:</b>',
+        '<b>AGS:</b>',
+        '— Hydrokortison (glukokortikoid) — undertrykker ACTH og dermed androgen-produktion',
+        '— Fludrokortison ved salt-tab-form',
+        '— Genetik + familiescreening',
+        '<b>McCune-Albright:</b>',
+        '— Aromatase-hæmmer (letrozol) eller østrogen-receptor-modulator (tamoxifen) for at blokere østrogen-virkning',
+        '— Cyster oftest reseres spontant — observation',
+        '<b>Tumor:</b> kirurgisk resektion, evt. kemoterapi/stråling',
+        '<b>Eksogen:</b> fjern eksposition',
+        '<b>GnRH-analog virker IKKE ved perifer PP</b> — problemet er ikke hypofyse-aktivitet',
+        '<b>Hvis sekundær aktivering af hypofyse-aksen</b> (langvarig PPP kan trigge CPP): kombinationsbehandling med både GnRH-analog + sygdomsspecifik'
+      ],
+      ki:[
+        'AGS-børn har risiko for binyrekrise ved sygdom/operation/traume — stress-dosering glukokortikoid',
+        'McCune-Albright kan også involvere skjoldbruskkirtel (hyperthyroidisme), binyrer (Cushing), hypofyse (acromegali) — udred',
+        'Eksogen østrogen er en undervurderet årsag — spørg eksplicit'
+      ],
+      prognose:'Afhænger af underliggende. AGS godt behandlet: normal pubertet og fertilitet. McCune-Albright: variabel afhængig af endokrin-involvering. Tumor: afhænger af type + resektabilitet.',
+      caseRef:null
+    },
+
+    t_konstitutionel_forsinket:{
+      dx:'Konstitutionel forsinket pubertet',
+      dxsub:'"Sen blomst" — variant af normal. Hyppigste årsag til pubertas tarda, særligt hos drenge med familiehistorik',
+      urgency:'rolig',
+      findings:[
+        'Manglende pubertetstegn ved 13 år (piger) eller 14 år (drenge)',
+        '<b>Forsinket knoglealder</b> (&gt;1 SD under kronologisk alder) = nøgle-fund',
+        'Familieanamnese med "sen blomst" (mor menarche &gt;14 år, far skægvækst sent)',
+        'Normal eller lav-normal højde for kronologisk alder',
+        'Normal væksthastighed (eller let nedsat før pubertet)',
+        'Normal proportion',
+        '<b>Lav-normal LH/FSH og lav østradiol/testosteron</b> for kronologisk alder, men <b>passende til knoglealder</b>',
+        'Pubertet starter spontant når knoglealder når ~11 år (piger) eller 12 år (drenge)'
+      ],
+      ddx:[
+        { d:'Hypogonadotrop hypogonadisme', r:'Lav LH/FSH der ikke kicker — kræver hormonsubstitution. GnRH-test eller "kim-test" kan hjælpe differentiere' },
+        { d:'Primær gonad-svigt (Turner, Klinefelter)', r:'Høj LH/FSH' },
+        { d:'Kronisk sygdom (cøliaki, IBD, hypothyreose)', r:'Screen' },
+        { d:'Anorexia nervosa / overdreven motion', r:'Anamnese; lav GnRH-pulsation pga. lav fedtmasse' }
+      ],
+      behandling:[
+        '<b>Observation</b> ved klar diagnose + ingen psykosocial belastning — pubertet starter spontant',
+        '<b>Kort hormonal "kick-start"</b> ved svær psykosocial belastning eller ved drenge med kort sluthøjde-prognose:',
+        '— Drenge: testosteron-injektion (Sustanon 100–250 mg månedligt i 3–6 mdr.) for at fremskynde pubertet',
+        '— Piger: lav-dosis østradiol oralt eller transdermal i 3–6 mdr.',
+        '— Re-evaluering efter 6 mdr. — oftest er egen pubertet kommet i gang',
+        'Reassurance og forklaring til barn + familie — vigtigt for selvtillid'
+      ],
+      ki:[
+        '<b>Diagnosen er retroperspektiv</b> — kan ikke definitivt stilles før pubertet faktisk starter; differentialdiagnostik er svær fra hypogonadotrop hypogonadisme',
+        'Familieanamnese er stærkt suggestiv men ikke diagnostisk',
+        'Hvis efter "kick-start" ingen videre egen-pubertet — reklassificer som hypogonadotrop hypogonadisme'
+      ],
+      prognose:'Udmærket. Pubertet og fertilitet normal. Sluthøjde ofte normal (kan endda være lidt højere pga. forlænget vækst-vindue).',
+      caseRef:null
+    },
+
+    t_hypogonadotrop:{
+      dx:'Hypogonadotrop hypogonadisme',
+      dxsub:'Hypofyse-/hypothalamus-defekt → utilstrækkelig GnRH/LH/FSH. <b>Kallmann syndrom</b> (anosmi + hypogonadisme) er klassisk; også panhypopituitarisme, kraniel radioterapi, tumor',
+      urgency:'haster',
+      findings:[
+        'Manglende pubertetstegn ved 13 år (piger) eller 14 år (drenge)',
+        '<b>Lav LH og FSH</b> + lav østradiol/testosteron',
+        '<b>Anosmi/hyposmi → Kallmann syndrom</b> (KAL1, KAL2/FGFR1, andre gener)',
+        'Microfallus + cryptorkisme hos drenge med kongenit form',
+        'Ledsagende endokrine mangler ved panhypopituitarisme (GH, TSH, ACTH, ADH)',
+        'Mulig CNS-årsag: kraniopharyngiom, tumor, hypofysitis, kraniel radioterapi, traume',
+        'MR hypothalamus/hypofyse til billedlig udredning'
+      ],
+      ddx:[
+        { d:'Konstitutionel forsinket pubertet', r:'Familiehistorik + forsinket knoglealder — pubertet starter spontant; svær at differentiere initialt' },
+        { d:'Primær gonad-svigt', r:'Høj LH/FSH' },
+        { d:'Funktionel hypogonadotrop (anorexia, motion, kronisk sygdom)', r:'Anamnese' }
+      ],
+      behandling:[
+        '<b>Hormonsubstitution</b> for at imitere fysiologisk pubertet og opnå normal pubertetsprogression:',
+        '— Piger: østradiol oralt eller transdermal, gradvist optitreret over 2–3 år; senere kombineret med progestogen for menstruation',
+        '— Drenge: testosteron-injektion (Sustanon) eller transdermal gel, gradvist optitreret',
+        '<b>Fertilitet:</b> kræver pulsatil GnRH-pumpe eller LH/FSH-substitution (hCG + FSH) — sjældent indiceret før voksenalder',
+        '<b>Kallmann:</b> familiescreening, genetisk rådgivning',
+        '<b>Panhypopituitarisme:</b> erstat også GH, TSH, kortisol, ADH efter behov',
+        'Multidisciplinær: endokrinologi + neurologi (Kallmann) + genetik'
+      ],
+      ki:[
+        'Hypogonadotrop hypogonadisme + ledsagende GH-/TSH-mangler = panhypopituitarisme — screen for alle akser',
+        'Stress-dosering kortisol ved akut sygdom hos patienter med ACTH-mangel',
+        'Knogletæthed-monitorering — hypogonadisme giver lav peak bone mass uden behandling'
+      ],
+      prognose:'Med hormonsubstitution: normal pubertet + sluthøjde + livskvalitet. Fertilitet kræver mere intensiv behandling men er ofte opnåelig.',
+      caseRef:null
+    },
+
+    t_primaer_gonad:{
+      dx:'Primær gonad-svigt (hypergonadotrop hypogonadisme)',
+      dxsub:'Defekt i gonaden selv → høj LH/FSH (negativ feedback væk). <b>Turner (45,X)</b> hos piger; <b>Klinefelter (47,XXY)</b> hos drenge; gonad-dysgenese; postkemoterapi/postraditiv',
+      urgency:'haster',
+      findings:[
+        'Manglende pubertet ved 13 år (piger) eller 14 år (drenge)',
+        '<b>Høj LH og FSH</b> + lav østradiol/testosteron',
+        '<b>Turner syndrom:</b>',
+        '— Lav højde + dysmorfe træk (se også t_turner i lav_hojde_barn)',
+        '— Primær amenoré + manglende thelarche',
+        '— "Streak gonads"',
+        '— Karyotype 45,X (eller mosaik 45,X/46,XX)',
+        '<b>Klinefelter syndrom:</b>',
+        '— Høj højde med eunukoid kropsbygning (lang underkrop)',
+        '— Små faste testikler (&lt;6 mL i voksen) trods normal pubertet-start hos nogle',
+        '— Gynaecomasti, læringsudfordringer, infertilitet',
+        '— Karyotype 47,XXY',
+        '<b>Erhvervet gonad-svigt:</b> kemoterapi (særligt alkyleringsmidler), kraniel/gonad-stråling, autoimmun ophiritis, traume'
+      ],
+      ddx:[
+        { d:'Hypogonadotrop hypogonadisme', r:'Lav LH/FSH' },
+        { d:'Konstitutionel forsinkelse', r:'Pubertet starter spontant; LH/FSH lav-normal' },
+        { d:'Androgen-resistens (CAIS hos genotypisk dreng)', r:'46,XY karyotype + fenotype kvinde + primær amenoré' }
+      ],
+      behandling:[
+        '<b>Turner:</b>',
+        '— GH-behandling fra ~5–6-års-alderen for sluthøjde',
+        '— Østrogen-substitution fra ~12–13-års-alderen, titreret op',
+        '— Multidisciplinær opfølgning: EKKO + UL nyrer + TSH + audiometri + cøliaki-AB',
+        '<b>Klinefelter:</b>',
+        '— Testosteron-substitution fra teenagealder',
+        '— Læringsstøtte',
+        '— Brystkirtelvurdering (gynaecomasti behandles ofte med kirurgi)',
+        '— Fertilitet: testikulær sperm-ekstraktion (TESE) + IVF i nogle tilfælde',
+        '<b>Erhvervet:</b> hormonsubstitution som ved kongenit; pre-kemoterapi ovarie-/sperm-kryopræservering bør tilbydes alle relevante patienter'
+      ],
+      ki:[
+        '<b>Turner + aortadilatation</b> = stor risiko for dissektion ved graviditet; pre-konception kardiologisk vurdering',
+        '<b>Turner + spontan graviditet</b> (~1%, primært mosaik) = højrisiko-graviditet',
+        '<b>Klinefelter + testosteron</b> = monitorer Hgb (polycytæmi) + prostata-PSA hos voksne',
+        'Fertilitetsbevarelse: alle børn/teenagere før kemoterapi skal informeres om ovarie-/sperm-kryopræservering'
+      ],
+      prognose:'Variabel. Turner: god ved adekvat opfølgning; let reduceret forventet levetid pga. kardiovaskulær sygdom. Klinefelter: normal levetid; livskvalitet god ved adekvat testosteron-substitution. Erhvervet: afhænger af underliggende sygdom.',
+      caseRef:null
+    }
+
+  }
+},
+
 // === end PEDS flows ===
 ];
 
