@@ -91,6 +91,16 @@ Tracks the status of every note card in `notesData`.
 | uvi_cakut | UVI/pyelonefritis hos pige med CAKUT | `[D]` | New case, 6 steps. V2022 Pyelonefritis (skriftlig) som template + PW-slides UVI-block. Cross-linked to peds_6. Awaiting verification. |
 | hsp_nefrit | IgA-vaskulit (HSP) med nefrit hos pige | `[D]` | New case, 6 steps. PW-slides 16-18 (autoritativ) + Signe (suppl, frekvenser). Cross-linked to peds_6 + haematuri_barn-flow (t_hsp). Awaiting verification. |
 | nefrotisk_sndr | Nefrotisk syndrom hos småbarn | `[D]` | New case, 6 steps. PW-slides 13-14 + ISKDC-protokol (flagget). Klassisk MCD/SSNS-narrativ med relaps. Cross-linked to peds_6. Awaiting verification. |
+| febrilt_barn | Febrilt barn uden fokus | `[D]` | New case, 6 steps. F25 stand 6 + S2017 + V2016. Placeholder caseRef to peds_7 (note not yet created). Awaiting verification. |
+| meningokoksepsis | Meningokoksepsis med petekkier | `[D]` | New case, 6 steps. F23 stand 6. Placeholder caseRef to peds_7. Awaiting verification. |
+| astma_atopi | Astma + atopisk dermatit | `[D]` | New case, 6 steps. E23 stand 6 + S2021 skriftlig. Placeholder caseRef to peds_8. Awaiting verification. |
+| dka | Diabetisk ketoacidose | `[D]` | New case, 6 steps. E23 stand 3 + V2020. Placeholder caseRef to peds_9. Awaiting verification. |
+| nyopdaget_t1d | Nyopdaget T1D uden DKA | `[D]` | New case, 6 steps. E24 stand 4. Placeholder caseRef to peds_9. Awaiting verification. |
+| hjernetumor_icp | Krampende barn → hjernetumor/ICP | `[D]` | New case, 6 steps. E24 stand 7. Placeholder caseRef to peds_10. Awaiting verification. |
+| pubertas_praecox | Pubertas præcox | `[D]` | New case, 6 steps. F25 stand 4. Placeholder caseRef to peds_9. Awaiting verification. |
+| coeliaki_vaekst | Lav højde → cøliaki | `[D]` | New case, 6 steps. F23 stand 7. Placeholder caseRef to peds_11. Awaiting verification. |
+| battered_child | Mistanke om børnemishandling | `[D]` | New case, 6 steps. F24 stand 3. Placeholder caseRef to peds_12. Awaiting verification. |
+| funktionelle_mavesmerter | Funktionelle mavesmerter | `[D]` | New case, 6 steps. F24 stand 1. Placeholder caseRef to peds_11. Awaiting verification. |
 
 ## Backlog — topics not yet in the app
 
@@ -172,3 +182,4 @@ Files that would unlock blocked topics:
 | 2026-06-12 | flow:haematuri_barn | New PEDS flow tree (hæmaturi-DDX); 6 terminaler; caseRef→uvi_cakut. Lukker tab 3 (GN/hæmaturi) i peds_6 ind i en symptomudredning. |
 | 2026-06-12 | case:hsp_nefrit | New PEDS case (IgA-vaskulit med nefrit, klassisk PW-slide-narrativ); cross-linked to peds_6 + haematuri_barn t_hsp. |
 | 2026-06-12 | case:nefrotisk_sndr | New PEDS case (idiopatisk nefrotisk syndrom hos 3-årig dreng; MCD-præsentation; ISKDC-prednisolon; relaps); Pædiatri-card spliced; cross-linked to peds_6. |
+| 2026-06-13 | cases:peds (10 new) | Ten new PEDS cases covering F23-F25 + E23-E24 + målbeskrivelse. peds_7..peds_12 are placeholder caseRefs (notes follow in separate task). |

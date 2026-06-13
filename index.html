@@ -401,6 +401,86 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
       <span class="arrow-icon">&rarr;</span>
     </div>
 
+<div class="case-card" onclick="openCase('febrilt_barn')">
+          <span class="specialty-badge badge-paed">Pædiatri</span>
+          <h3>Febrilt barn uden fokus</h3>
+          <p>Den klassiske almenpraksis-vinkel: alvorlighedsgrad, fokusjagt, sikkerhedsnet og forældrekommunikation</p>
+          <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F25 stand 6, S2017, V2016</div>
+          <span class="arrow-icon">→</span>
+        </div>
+
+        <div class="case-card" onclick="openCase('meningokoksepsis')">
+          <span class="specialty-badge badge-paed">Pædiatri</span>
+          <h3>Meningokoksepsis med petekkier</h3>
+          <p>Feber + ikke-blanching udslæt — 112-casen. Pre-hospital benzylpenicillin, ABCD, LP-timing, smitteopsporing</p>
+          <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F23 stand 6</div>
+          <span class="arrow-icon">→</span>
+        </div>
+
+        <div class="case-card" onclick="openCase('astma_atopi')">
+          <span class="specialty-badge badge-paed">Pædiatri</span>
+          <h3>Astma + atopisk dermatit</h3>
+          <p>7-årig dreng med anstrengelsesudløst hoste og eksem. Spirometri+reversibilitet, ICS+SABA, allergisanering</p>
+          <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · E23 stand 6, S2021 skriftlig</div>
+          <span class="arrow-icon">→</span>
+        </div>
+
+        <div class="case-card" onclick="openCase('dka')">
+          <span class="specialty-badge badge-paed">Pædiatri</span>
+          <h3>Diabetisk ketoacidose</h3>
+          <p>Bevidsthedspåvirket 14-årig med Kussmaul-respiration. ABCD, NaCl, K, forsinket insulin, cerebralt ødem</p>
+          <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · E23 stand 3, V2020</div>
+          <span class="arrow-icon">→</span>
+        </div>
+
+        <div class="case-card" onclick="openCase('nyopdaget_t1d')">
+          <span class="specialty-badge badge-paed">Pædiatri</span>
+          <h3>Nyopdaget T1D uden DKA</h3>
+          <p>10-årig Alma — polyuri, polydipsi, BS 24. Den kritiske kontrast til DKA-casen: basal-bolus s.c., IKKE IV-insulin</p>
+          <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · E24 stand 4</div>
+          <span class="arrow-icon">→</span>
+        </div>
+
+        <div class="case-card" onclick="openCase('hjernetumor_icp')">
+          <span class="specialty-badge badge-paed">Pædiatri</span>
+          <h3>Krampende barn → hjernetumor</h3>
+          <p>Fokal krampe efter 14 dages hovedpine og morgenopkast. ABCD, krampebehandling, akut MR/CT, ICP-røde flag</p>
+          <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · E24 stand 7</div>
+          <span class="arrow-icon">→</span>
+        </div>
+
+        <div class="case-card" onclick="openCase('pubertas_praecox')">
+          <span class="specialty-badge badge-paed">Pædiatri</span>
+          <h3>Pubertas præcox</h3>
+          <p>7-årig pige med brystudvikling. Tanner-stadier, GnRH-test, central vs perifer, GnRH-analog behandling</p>
+          <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F25 stand 4</div>
+          <span class="arrow-icon">→</span>
+        </div>
+
+        <div class="case-card" onclick="openCase('coeliaki_vaekst')">
+          <span class="specialty-badge badge-paed">Pædiatri</span>
+          <h3>Lav højde → cøliaki</h3>
+          <p>Mette 8 år med vigende vækstkurve. Targetheight, DDX lav højde, transglutaminase, livslang glutenfri diæt</p>
+          <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F23 stand 7</div>
+          <span class="arrow-icon">→</span>
+        </div>
+
+        <div class="case-card" onclick="openCase('battered_child')">
+          <span class="specialty-badge badge-paed">Pædiatri</span>
+          <h3>Mistanke om børnemishandling</h3>
+          <p>Femurfraktur hos 7-mdr. ikke-gående dreng. Skeletscintigrafi, retinale blødninger, underretning, skærpet anmeldepligt</p>
+          <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F24 stand 3</div>
+          <span class="arrow-icon">→</span>
+        </div>
+
+        <div class="case-card" onclick="openCase('funktionelle_mavesmerter')">
+          <span class="specialty-badge badge-paed">Pædiatri</span>
+          <h3>Funktionelle mavesmerter</h3>
+          <p>Lauge 8 år, recidiverende mavesmerter uden organiske fund. DDX, Rome IV-ramme, forældrekommunikation</p>
+          <div class="case-meta"><span class="difficulty diff-high"></span> Høj prioritet · F24 stand 1</div>
+          <span class="arrow-icon">→</span>
+        </div>
+
 <p class="section-label" style="margin-top:28px">Gynækologi</p>
   <div class="case-grid">
     <div class="case-card" onclick="openCase('antikonception')">
@@ -3426,6 +3506,1741 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
   <div class="case-nav"><button class="back-btn" onclick="closeCase()">&larr; Tilbage til oversigt</button></div>
 </div>
 
+<div id="case-febrilt_barn" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Febrilt barn uden fokus</h2>
+    <p>Eksamenssæt: F25 stand 6 (almen praksis), S2017, V2016</p>
+    <p><b>Silke, 8 mdr.</b> Feber 38,9° gennem 24 timer. Pjevset men trøstbar, fin trivsel, vaccinationsprogrammet fulgt. Ingen kataralsk forkølelse. Forældre kontakter vagtlæge fra bekymring.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="fb-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="fb-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-fb-1">
+    <div class="step-header" onclick="toggleStep('fb',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Hvad er din første vurdering, og hvilke alders-tærskler bruger du til at afgøre, om barnet skal indlægges?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Først: alvorlighedsgrad — ikke fokusjagt.</b> Brug akut pædiatrisk vurdering / ABCD:</p>
+      <ul>
+        <li><b>A — luftveje:</b> frie? lyde på respirationen (stridor, grynten)?</li>
+        <li><b>B — respiration:</b> RF (0–1 mdr. &gt;60, 2–11 mdr. &gt;50, 1–4 år &gt;40, ≥5 år &gt;20), indtrækninger, alae nasi, SAT</li>
+        <li><b>C — cirkulation:</b> farver, kapillærrespons (&gt;3 sek = forsinket), puls, BT</li>
+        <li><b>D — bevidsthed:</b> AVPU, kontakt, irritabilitet, NRS, fontanelle</li>
+      </ul>
+      <p><b>Alders-tærskler ("det febrile barn for dummies"):</b></p>
+      <ul>
+        <li><b>&lt;1 måned med feber:</b> altid indlægges</li>
+        <li><b>1–3 måneder:</b> altid lægevurderes; ikke-kataralske og kataralske med påvirket fødeindtag indlægges</li>
+        <li><b>3 mdr.–3(5) år:</b> vurderes med trafiklys-risikoestimat (NICE)</li>
+      </ul>
+      <div class="answer-highlight">Silke er 8 mdr., vågen, drikker, trøstbar — hun ligger i NICE grøn/gul, ikke rød. Det styrer resten af casen: vi udelukker røde flag, men bruger ikke kanonen mod en spurv.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-fb-2">
+    <div class="step-header" onclick="toggleStep('fb',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Optag fokuseret anamnese.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Eksposition:</b> rejser, syge søskende/dagpleje, kontakt til kendte smittekilder</li>
+        <li><b>Feberforløbet:</b> varighed, døgnvariation, max-temperatur, hvordan målt</li>
+        <li><b>Almen tilstand:</b> kontakt, vågenhed, leg, vedvarende gråd, trøstbarhed, bleghed, adfærdsændring</li>
+        <li><b>Luftveje:</b> forkølelse, hoste, stødende eller hvæsende vejrtrækning, takypnø</li>
+        <li><b>Væske/ernæring/vandladning:</b> drikker hun? spiser? våde bleer? — proxy for hydrering</li>
+        <li><b>GI:</b> opkastninger, diarré, mavesmerter, ændring i afføring</li>
+        <li><b>Smerte:</b> søvnmønster, tager hun sig til ørerne, gråd ved bleskift</li>
+        <li><b>Hud:</b> udslæt, petekkier — har forældrene kigget?</li>
+        <li><b>Forældrenes bekymring og håndtering:</b> hvad har de selv prøvet?</li>
+        <li><b>Tidligere:</b> fødsel, neonatalt forløb, vaccinationer, sygdomme, allergi, medicin</li>
+      </ul>
+      <div class="answer-highlight">Lyt til forældrene. "Hun er ikke sig selv" fra en mor der kender barnet er et reelt klinisk fund.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-fb-3">
+    <div class="step-header" onclick="toggleStep('fb',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvad vil du lægge vægt på ved den objektive undersøgelse, og hvilke målte værdier vil du have?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Systematisk top-til-tå med fokus på alvorlighedsgrad og fokusjagt:</b></p>
+      <ul>
+        <li><b>Almentilstand:</b> vågen/kontakt/interesseret? bleg? smertepåvirket? trøstbar?</li>
+        <li><b>Hydrering:</b> slimhinder, hudturgor, fontanelle (indsunken? spændt?), kapillærrespons</li>
+        <li><b>Luftveje + respiration:</b> stridor, indtrækninger, alae nasi, RF, stetoskopi (krepitation, ronchi)</li>
+        <li><b>Cirkulation:</b> hjertestetoskopi, perifere pulse, BT</li>
+        <li><b>Otoskopi:</b> hyppigste skjulte fokus hos småbørn</li>
+        <li><b>Cavum oris + svælg:</b> belægninger, fauces, hydrering</li>
+        <li><b>Collum:</b> glandelsvulst, nakke-rygstivhed (NB: kan mangle hos spædbørn ved meningit)</li>
+        <li><b>Abdomen:</b> blød? udfyldninger? nyreloger? leverstørrelse?</li>
+        <li><b>Ekstremiteter:</b> ledhævelse, bevæger barnet alt symmetrisk?</li>
+        <li><b>Hud:</b> <b>klæd barnet helt af</b> — udslæt, petekkier, mongolpletter, brandsår</li>
+      </ul>
+      <p><b>Målte værdier:</b> temperatur, puls, RF, SAT, kapillærrespons, BT, vægt.</p>
+      <div class="answer-warn">Pas på "ikke synligt udslæt" — petekkier opdages kun hvis barnet er afklædt. Glasprøven (udslæt der ikke svinder for tryk) er bedside-test for ikke-blanching udslæt → meningokok.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-fb-4">
+    <div class="step-header" onclick="toggleStep('fb',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Vil du tage parakliniske undersøgelser? Hvornår er det indiceret — og hvornår er det IKKE?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Ved velvirkende barn med ikke-fokuseret feber kort varighed:</b> klinisk vurdering er ofte nok. Urinstix evt., især hos småpiger (UVI som okkult fokus).</p>
+      <p><b>Indikation for blodprøver / videre udredning:</b></p>
+      <ul>
+        <li>Påvirket almentilstand (NICE rød/gul)</li>
+        <li>Alder &lt;3 mdr.</li>
+        <li>Feber &gt;5 dage uden fokus → tænk Kawasaki, urinvejs-, knogle-/ledinfektion</li>
+        <li>Mistanke om sepsis/meningit/dyb infektion</li>
+        <li>Tegn til dehydrering</li>
+      </ul>
+      <p><b>Hvad bestilles så:</b> hæmatologi, infektionstal (CRP, leukocytter + diff), væske/nyretal, blodsukker, syre-base, evt. bloddyrkning. Urinstix + steril urin (blærepunktur eller MSU) ved &lt;3 mdr. eller mistanke om UVI. Røntgen thorax ved respiratoriske symptomer. LP ved meningit-mistanke (efter ABC-stabilisering).</p>
+      <div class="answer-highlight">Eksamen-fælde: studenten dumper, hvis hun ukritisk ordinerer antibiotika eller iværksætter stort udredningsprogram (lumbalpunktur, CT, bredspektret AB) på et velvirkende barn uden røde flag. Klinisk vurdering først.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-fb-5">
+    <div class="step-header" onclick="toggleStep('fb',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Hvilke differentialdiagnoser og røde flag tænker du i — og hvilke kan du ikke ignorere?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Hyppige (banale) fokus:</b></p>
+      <ul>
+        <li>Viral øvre luftvejsinfektion (langt det hyppigste)</li>
+        <li>Otitis media</li>
+        <li>Tonsillitis</li>
+        <li>Viral gastroenterit</li>
+        <li>UVI (især småpiger, spædbørn)</li>
+        <li>Roseola, varicella, hånd-mund-fod</li>
+      </ul>
+      <p><b>Må ikke overses (røde flag):</b></p>
+      <ul>
+        <li><b>Sepsis</b> — bleghed, hypotoni, takykardi, takypnø, kapillærrespons &gt;3 sek, GI-symptomer, abnorm temperaturregulering</li>
+        <li><b>Meningitis</b> — irritabilitet, hyperton, skingert skrig, sitren, opistotonus, spændt fontanelle, NRS (mangler hos spædbørn!)</li>
+        <li><b>Meningokoksygdom</b> — feber + petekkier → 112 (se separat case)</li>
+        <li><b>Pneumoni</b> — takypnø, indtrækning, alae nasi, knirken</li>
+        <li><b>Pyelonefritis hos spædbarn</b> — opkast, nedsat fødeindtag, irritabilitet</li>
+        <li><b>HSV-encefalit</b> — fokale udfald, fokale kramper, bevidsthedspåvirkning</li>
+        <li><b>Kawasaki</b> — feber &gt;5 dage + 4/5 kriterier (konjunktivit, mund-/læbeforandringer, polymorft udslæt, hånd-/fodødem, lymfadenit colli)</li>
+        <li><b>Knogle-/ledinfektion</b> — barn der ikke vil støtte eller bruge en ekstremitet</li>
+      </ul>
+      <div class="answer-warn">Børn &lt;3 mdr. kan have purulent meningit UDEN nakkestivhed. Spændt fontanelle og irritabilitet er det vigtigste fysiske tegn i den aldersgruppe.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-fb-6">
+    <div class="step-header" onclick="toggleStep('fb',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvordan håndterer du barnet og kommunikerer med forældrene? Hvad er sikkerhedsnettet?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>I dette tilfælde (velvirkende barn, intet fokus, ingen røde flag):</b></p>
+      <ul>
+        <li>Informer om, at den objektive undersøgelse er normal og at der ikke er indikation for antibiotika (normal CRP, intet fokus)</li>
+        <li>Sandsynligvis viral infektion — selvbegrænsende</li>
+        <li>Symptomatisk: paracetamol ved temperatur/utilpashed (komfort, ikke for at slå feberen ned)</li>
+        <li>Afklædning, kølige omgivelser, rigeligt væske</li>
+      </ul>
+      <p><b>Sikkerhedsnettet — det forældrene SKAL reagere på:</b></p>
+      <ul>
+        <li>Påvirket bevidsthedsniveau, sløvhed, svær at vække</li>
+        <li>Petekkier eller udslæt der ikke svinder for tryk</li>
+        <li>Påvirket vejrtrækning (takypnø, indtrækninger, cyanose)</li>
+        <li>Vedvarende uforklarlig gråd, utrøstbarhed</li>
+        <li>Tegn på dehydrering: tørre bleer, tørre slimhinder</li>
+        <li>Kramper</li>
+        <li>Vedvarende feber over de næste dage uden bedring</li>
+        <li>Led-hævelser, ekstremitet der ikke bruges</li>
+      </ul>
+      <p><b>Aftale om opfølgning</b> — barnet ses igen ved ovenstående eller hvis tilstanden ikke forbedres.</p>
+      <div class="answer-highlight">Eksamen-fælde: studenten dumper, hvis hun IKKE giver forældrene tydelige pejlemærker (sikkerhedsnet) eller helt ureflekteret beslutter at indlægge. Grænsetilfælde hvis almentilstand, respiration og hydrering ikke er beslutningsgrundlaget.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('fb',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<div id="case-meningokoksepsis" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Meningokoksepsis med petekkier</h2>
+    <p>Eksamenssæt: F23 stand 6 (meningitis-stand)</p>
+    <p><b>1 år 9 mdr. pige.</b> Vækkes af forældre med høj feber 40°, intermitterende kulderystelser, blegfarvet og påvirket. Indlagt akut under diagnosen "feber uden fokus". Ved afklædning bemærkes pinpoint røde elementer på krop, underben og fødder, der ikke svinder for tryk.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="msep-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="msep-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-msep-1">
+    <div class="step-header" onclick="toggleStep('msep',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Hvad er din første-vurdering, og hvad genkender du som røde flag?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>ABCD-vurdering på modtagelsen:</b></p>
+      <ul>
+        <li><b>A:</b> Frie luftveje, ingen stridor</li>
+        <li><b>B:</b> RF 32/min (let takypnø, lydløs), SAT 90%</li>
+        <li><b>C:</b> BT 98/56, puls 172/min (svær takykardi), kapillærrespons 4–5 sek (svært forsinket)</li>
+        <li><b>D:</b> Sovende, vækkes ved undersøgelse, falder hurtigt i søvn igen — påvirket bevidsthedsniveau. Let nakkerygstiv.</li>
+      </ul>
+      <p><b>Røde flag der råber sepsis/meningokoksygdom:</b></p>
+      <ul>
+        <li>Feber 40° + bleghed + utrøstbar</li>
+        <li>Takykardi ude af proportion med febertal</li>
+        <li>Kapillærrespons &gt;3 sek</li>
+        <li>SAT 90% uden klart respiratorisk fokus</li>
+        <li>Påvirket bevidsthed</li>
+        <li><b>Petekkier / ikke-blanching udslæt</b> — det patognomoniske fund</li>
+      </ul>
+      <div class="answer-warn">Feber + petekkier hos barn = meningokoksygdom indtil det modsatte er bevist. Behandling før diagnose: IV penicillin må IKKE afventes på dyrkningssvar.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-msep-2">
+    <div class="step-header" onclick="toggleStep('msep',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Hvilke akutte tiltag igangsætter du, INDEN du har stillet diagnosen formelt?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Parallel håndtering, ikke sekventiel:</b></p>
+      <ul>
+        <li><b>Tilkald hjælp:</b> anæstesi/intensiv, evt. 112 hvis i præhospital setting</li>
+        <li><b>Ilt</b> via maske med reservoir (SAT 90% → opjuster)</li>
+        <li><b>IV-adgang × 2</b> (evt. intraossøs hvis &gt; 60 sek uden adgang)</li>
+        <li><b>Væskebolus:</b> isoton NaCl 20 ml/kg over 5–10 min, gentag op til 60 ml/kg, herefter inotropi-overvejelser</li>
+        <li><b>Empirisk antibiotika omgående efter bloddyrkning</b> — må ikke forsinkes:
+          <ul>
+            <li>Førstevalg: <b>benzylpenicillin IV</b> 50.000 IE/kg (alternativt cefotaxim/ceftriaxon ved penicillin-allergi eller mistanke om andre agens)</li>
+            <li>Ved manglende IV-adgang: <b>ceftriaxon IM</b> 50 mg/kg</li>
+          </ul>
+        </li>
+        <li><b>Solumedrol</b> overvejes før første penicillin-dosis (cytokin-storm-attenuering) — lokal praksis varierer</li>
+        <li><b>Monitorering:</b> kontinuerlig EKG, SAT, BT, puls, kapillærrespons, urinproduktion, bevidsthedsniveau</li>
+      </ul>
+      <div class="answer-highlight">Eksamen-pointen: præhospital opdager du feber + petekkier → ring 112 + giv IV penicillin (eller ceftriaxon IM hvis ikke IV). Sygehusforvagten gør det samme på modtagelsen før dyrkning. Forsinkelse koster liv.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-msep-3">
+    <div class="step-header" onclick="toggleStep('msep',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvilke prøver tager du, og hvad er rationale for hvert valg?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Bloddyrkning</b> (× 2 helst, før AB) — afgørende for at identificere agens og resistens</li>
+        <li><b>Petekkie-aspirat</b> til dyrkning — kan være positiv selv efter antibiotika er givet</li>
+        <li><b>Hæmatologi, infektionstal:</b> CRP, leukocytter + diff (kan være lave ved overvældende sepsis), trombocytter (DIC)</li>
+        <li><b>Koagulation:</b> INR, APTT, D-dimer — DIC er hyppig komplikation</li>
+        <li><b>Syre-base + laktat</b> — metabolisk acidose og forhøjet laktat er sepsis-markører</li>
+        <li><b>Væske/nyretal, blodsukker, elektrolytter</b></li>
+        <li><b>Lumbalpunktur</b> — OVERVEJES når barnet er kredsløbsstabiliseret, IKKE før ABC. Kan udskydes hvis fontanelle er spændt, fokale neurologiske udfald, kredsløb ustabilt eller koagulopati</li>
+      </ul>
+      <p><b>Tolkning af spinalvæske:</b> ved purulent meningitis er den skyet, celletal &gt;1000 (overvejende neutrofile), glukose &lt;1/3 af BS, forhøjet protein.</p>
+      <div class="answer-warn">LP er ikke en hastesag. Det er behandling, der er hastesagen. Giv penicillin før LP hvis der er nogen tvivl om sikkerhed.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-msep-4">
+    <div class="step-header" onclick="toggleStep('msep',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hvilke differentialdiagnoser overvejer du ved feber + petekkier?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Meningokoksygdom</b> (sepsis ± meningit) — top af listen ved feber + petekkier hos akut sygt barn</li>
+        <li><b>Anden bakteriel sepsis</b> — pneumokokker, GAS, H. influenzae b (sjælden post-vaccination)</li>
+        <li><b>HSP (Henoch-Schönlein purpura / IgA-vaskulit)</b> — palpabel purpura især på baller og underben, ofte uden feber, ledsmerter, mavesmerter, evt. nefrit. <b>Velvirkende barn</b> = vigtigste skel mod meningokok</li>
+        <li><b>ITP (idiopatisk trombocytopenisk purpura)</b> — petekkier + slimhindeblødning hos velvirkende barn, oftest efter viral infektion</li>
+        <li><b>Viralt exanthem med tilfældig overlap</b> — sjældent ægte petekkier</li>
+        <li><b>Leukæmi</b> — petekkier + bleghed + glandelsvulst + organomegali; debut kan være snigende</li>
+        <li><b>Mekaniske petekkier</b> — fra hosten/opkast på ansigt/hals; ses kun over halsen, ikke generaliseret</li>
+      </ul>
+      <div class="answer-highlight">Klinikken afgør, ikke udslættet alene: meningokoksygdom = SYG barn med petekkier. HSP = velvirkende barn med palpabel purpura på baller/underben. ITP = velvirkende barn med trombocytopeni.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-msep-5">
+    <div class="step-header" onclick="toggleStep('msep',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Hvilke komplikationer skal du være opmærksom på, og hvilke organer overvåger du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Akutte komplikationer:</b></p>
+      <ul>
+        <li><b>Septisk shock</b> — kredsløbskollaps med multiorgansvigt</li>
+        <li><b>DIC</b> — koagulopati, blødningstendens, store hudblødninger</li>
+        <li><b>Waterhouse-Friderichsen syndrom</b> — binyrebarkblødning → akut binyreinsufficiens; tilskud af hydrokortison ved manglende BT-respons på væske + inotropi</li>
+        <li><b>Hudnekrose / purpura fulminans</b> — kan kræve hudtransplantation, evt. amputation</li>
+        <li><b>Meningitis-komplikationer</b> ved samtidig CNS-involvering: hjerneødem, kramper, sequelae</li>
+      </ul>
+      <p><b>Subakutte/sene sequelae:</b></p>
+      <ul>
+        <li>Døvhed (især efter purulent meningit)</li>
+        <li>Epilepsi, mental retardering, cerebral parese, hydrocephalus</li>
+        <li>Amputation efter perifere nekroser</li>
+        <li>Posttraumatisk stress (familien)</li>
+      </ul>
+      <div class="answer-warn">Døv-screening efter purulent meningit er obligatorisk inden udskrivelse — fanger sequela tidligt nok til at iværksætte høreapparat/CI.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-msep-6">
+    <div class="step-header" onclick="toggleStep('msep',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvilke anmeldelses- og folkesundhedstiltag igangsætter du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Anmeldelse til Statens Serum Institut (SSI)</b> som individuelt anmeldelsespligtig sygdom — sker på <b>klinisk mistanke</b>, ikke efter dyrkningssvar</li>
+        <li><b>Smitteopsporing</b> via embedslægen / SSI:
+          <ul>
+            <li>Husstandskontakter</li>
+            <li>Tætte kontakter (kys, deling af bestik, sovet i samme seng, samme dagpleje/børnehavestue) inden for de seneste 7 dage</li>
+            <li>Sundhedspersonale der har haft mund-til-mund-kontakt (intubation uden maske)</li>
+          </ul>
+        </li>
+        <li><b>Profylaktisk AB til kontakter</b> — typisk ciprofloxacin engangsdosis (eller rifampicin til børn/gravide). Igangsættes af embedslægen.</li>
+        <li><b>Vaccination</b> — gennemgang af risikogrupper. Meningokok B og C indgår i børnevaccinationsprogrammet i mange lande; risiko-individer (asplenikere, komplement-mangel) tilbydes ekstra vaccination.</li>
+        <li><b>Information til forældrene</b> om at familiekontakter får profylakse, og om sygdommens forløb og prognose</li>
+      </ul>
+      <div class="answer-highlight">Eksamen-pointen: anmeldelse er ikke "noget der sker hvis det viser sig at være meningokok" — anmeldelse sker på klinisk mistanke for at smitteopsporing og profylakse kan starte parallelt med dyrkningen.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('msep',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<div id="case-astma_atopi" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Astma + atopisk dermatit</h2>
+    <p>Eksamenssæt: E23 stand 6, S2021 skriftlig</p>
+    <p><b>Lukas, 7-årig dreng.</b> Henvist fra egen læge pga. anstrengelses- og natlig hoste, sæsonbetonet forværring og forværring i støvet sommerhus. Klinisk har han eksematøse forandringer i albuebøjninger og knæhaser. Familiær disposition for høfeber.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="atop-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="atop-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-atop-1">
+    <div class="step-header" onclick="toggleStep('atop',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Optag fokuseret anamnese. Hvad spørger du om?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Kendt allergi:</b> lægemidler, kendte inhalations- eller fødevareallergener</li>
+        <li><b>Familiær disposition:</b> astma, rhinoconjunctivitis, atopisk dermatit hos søskende/forældre</li>
+        <li><b>Astma-symptomer:</b>
+          <ul>
+            <li>Anfaldsvis åndenød (piben, hvæsen)</li>
+            <li>Hoste — dag/nat/ved fysisk aktivitet</li>
+            <li>Sæsonrelateret (pollen)</li>
+            <li>Udløsende faktorer: infektioner, irritanter (tobaksrøg, parfyme), allergener, fysisk aktivitet</li>
+            <li>Nedsat energiniveau</li>
+          </ul>
+        </li>
+        <li><b>Rhinoconjunctivitis-symptomer:</b> kløe i øjne/næse, rinde, nysen, nasalstenose, løbenæse</li>
+        <li><b>Atopisk dermatit:</b> eksem-lokalisation, behandling, opblussen-mønster</li>
+        <li><b>Boligforhold:</b> husdyr, fugt, rygning i hjemmet, gulv-/sengeforhold (husstøvmider)</li>
+        <li><b>Medicin og tidligere behandling</b></li>
+      </ul>
+      <div class="answer-highlight">Atopi-triaden er astma + atopisk dermatit + allergisk rhinoconjunctivitis. Optaget anamnesen skal aktivt screene for alle tre — de hænger sammen og styrker diagnosen.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-atop-2">
+    <div class="step-header" onclick="toggleStep('atop',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Hvad lægger du vægt på ved den objektive undersøgelse?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Almentilstand:</b> vågen, alderssvarende, pæn vækstkurve (NB: dårlig vækst kan tyde på CF eller dårligt kontrolleret astma)</li>
+        <li><b>Vækstkurve:</b> hent højde- og vægtdata fra børneundersøgelser; følger sin egen kurve?</li>
+        <li><b>St.p. (lunger):</b> i ro ofte normal — auskultér efter forlænget ekspirium, ekspiratoriske ronchi, evt. nedsat luftskifte. Tegn på obstruktion kan være intermitterende.</li>
+        <li><b>St.c.</b> — udeluk hjerteårsag til hoste/dyspnø</li>
+        <li><b>Hud:</b> eksem-lokalisation
+          <ul>
+            <li>Hos større børn (skolealder): albuebøjninger, knæhaser, ankel/håndled, hals</li>
+            <li>Hos småbørn: kinder, ekstensorside af ekstremiteter</li>
+            <li>Lichenificering ved kronisk eksem (fortykket, tør hud med understregede hudlinjer)</li>
+          </ul>
+        </li>
+        <li><b>Næse/svælg:</b> tegn på allergisk rhinit — bleg, hævet næseslimhinde, "allergi-shiners" (mørke ringe under øjnene), Dennie-Morgan-folder</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-atop-3">
+    <div class="step-header" onclick="toggleStep('atop',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvilke parakliniske undersøgelser bestiller du for at bekræfte astma og udrede allergi?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Astma-udredning:</b></p>
+      <ul>
+        <li><b>Peakflow-registrering</b> hjemme 2–4 uger med dagbog — variabilitet &gt;15% (morgen vs. aften) støtter astma</li>
+        <li><b>Spirometri</b> (fra omkring 5–6-års alderen) med <b>reversibilitetstest</b> — FEV1-stigning &gt;10–12% efter β2-agonist støtter astma. NB: børn kan have normal FEV1 og stadig være astmatikere — sammenhold med reversibilitet og klinik.</li>
+        <li><b>Provokationstest</b> (løbetest, mannitol, metakolin) — hvis hvilespirometri er normal og diagnosen er usikker</li>
+        <li><b>FeNO-måling</b> — markør for eosinofil luftvejsinflammation</li>
+      </ul>
+      <p><b>Allergiudredning:</b></p>
+      <ul>
+        <li><b>Priktest</b> for inhalationsallergener (husstøvmider, pelsdyr, pollen, svampesporer)</li>
+        <li>ELLER <b>specifik IgE</b> blodprøve for samme panel — sidestillet med priktest</li>
+        <li>Fødevareallergener overvejes ved småbørn med samtidig anden atopi</li>
+      </ul>
+      <p><b>Behandlingsforsøg:</b> 8 ugers inhalationssteroid kan bruges som diagnostisk test ved usikkerhed.</p>
+      <div class="answer-highlight">Astma-diagnose hos børn = karakteristiske symptomer + bevist reversibel obstruktion (spirometri/PEF) + udelukkelse af DD. Diagnosen kan stilles før spirometri-alderen (5–6 år) på klinisk grundlag og behandlingsrespons hvis nødvendigt.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-atop-4">
+    <div class="step-header" onclick="toggleStep('atop',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hvilke differentialdiagnoser overvejer du før du fastslår diagnosen?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Astmatisk bronkitis / småbørnsastma</b> — kun symptomer ved virusinfektioner; afgrænset af alder &lt;3 år og fravær af interkurrente symptomer</li>
+        <li><b>Recidiverende luftvejsinfektioner</b></li>
+        <li><b>Cystisk fibrose</b> — gentagne lungeinfektioner + dårlig trivsel + malabsorption; svedtest hvis mistanke</li>
+        <li><b>Pneumoni</b> — akut, fokal, feber</li>
+        <li><b>Kighoste</b> — paroksystisk, kighoste-lyd, evt. apnø</li>
+        <li><b>Fremmedlegeme</b> — pludseligt indsættende, fokale fund</li>
+        <li><b>Hjertesygdom</b> — kongenit, ved samtidig vækst-/trivsel-påvirkning</li>
+        <li><b>Anatomiske misdannelser</b> (aberrante kar, ringer)</li>
+        <li><b>Hyperventilation / angst</b> (større børn)</li>
+        <li><b>Dårlig fysisk form</b></li>
+        <li><b>Allergisk rhinit alene</b> — kan give hoste uden bronkial astma</li>
+      </ul>
+      <div class="answer-warn">Hos småbørn med recidiverende astmatisk bronkitis udvikler 1/3 sand astma. Tidlig debut + atopi-disposition = dårligere prognose. Følg dem op selv om de er symptomfri lige nu.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-atop-5">
+    <div class="step-header" onclick="toggleStep('atop',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Redegør for den medicinske astmabehandling — hvad starter du med, og hvorfor?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Fast forebyggende behandling:</b></p>
+      <ul>
+        <li><b>Inhalationssteroid (ICS)</b> — dæmper bronkial inflammation. Tages dagligt (1–2 gange dgl.) selv i symptomfri perioder. Virker over uger.</li>
+      </ul>
+      <p><b>Anfaldsmedicin / symptombehandling:</b></p>
+      <ul>
+        <li><b>Korttidsvirkende β2-agonist (SABA)</b> — bronkodilaterende, virker indenfor minutter, tages efter behov</li>
+      </ul>
+      <p><b>Inhalationsdevice efter alder:</b></p>
+      <ul>
+        <li><b>&lt;3 år:</b> spray med spacer + ansigtsmaske</li>
+        <li><b>3–5 år:</b> spray med spacer</li>
+        <li><b>&gt;5–6 år:</b> pulverinhalator (kræver dyb hurtig inhalation)</li>
+        <li><b>&gt;7 år:</b> autohaler + sprayaerosol kan også bruges</li>
+      </ul>
+      <p><b>Step-up hvis utilstrækkelig kontrol:</b></p>
+      <ul>
+        <li>Højere ICS-dosis</li>
+        <li>Tilføj langtidsvirkende β2-agonist (LABA) som kombinationspræparat</li>
+        <li>Leukotrienreceptor-antagonist (montelukast) — især ved samtidig allergisk rhinit eller anstrengelsesudløst astma</li>
+      </ul>
+      <p><b>Hvis behandlingen ikke virker — tjek først:</b></p>
+      <ul>
+        <li>Compliance (skolebørn ~50% non-compliance)</li>
+        <li>Inhalationsteknik</li>
+        <li>Provokerende faktorer (tobaksrøg, eksposition)</li>
+        <li>Allergeneksposition</li>
+        <li>Korrekt diagnose?</li>
+      </ul>
+      <div class="answer-warn">Inhalationssteroid kan give væksthæmning ved høje doser — følg vækstkurven. Lokale bivirkninger (svampeinfektion, hæshed) reduceres ved at skylle mund efter inhalation.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-atop-6">
+    <div class="step-header" onclick="toggleStep('atop',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvordan håndterer du eksemet, og hvilke ikke-medicinske tiltag anbefaler du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Atopisk dermatit-behandling:</b></p>
+      <ul>
+        <li><b>Daglig påsmøring af fed creme</b> (emollient) — grundbehandling, også når huden ser fin ud</li>
+        <li><b>Ved opblussen:</b> topikalt steroid 1 × dagligt i 1–2 uger, styrke afpasset eksem-grad og lokalisation (mild i ansigt/hud, kraftigere på krop/ekstremiteter)</li>
+        <li><b>Undgå udløsende faktorer:</b> ulden tøj, sæbe, varme bade</li>
+        <li><b>Allergisanering</b> ved samtidig allergi (se nedenfor)</li>
+      </ul>
+      <p><b>Allergisanering i hjemmet:</b></p>
+      <ul>
+        <li><b>Husstøvmider:</b> tilstrækkelig ventilation, undgå fugt, vask af dyne/pude/madras min. hver 3. måned ved &gt;55°, vask af "sovedyr", allergent madrasbetræk</li>
+        <li><b>Pelsdyr:</b> reduktion/fjernelse, ikke i soveværelse</li>
+        <li><b>Tobaksrøg:</b> fjern eksposition (rygning hjemme, i bil)</li>
+        <li><b>Fugt:</b> ventilation, undgå skimmel</li>
+      </ul>
+      <p><b>Allergisk rhinit-behandling</b> (hvis det er en del af billedet):</p>
+      <ul>
+        <li>Nasalsteroid dagligt i sæson</li>
+        <li>Antihistamin oralt p.n.</li>
+        <li>Allergen-immunterapi (subkutan eller sublingual) overvejes ved svære symptomer der dårligt kontrolleres</li>
+      </ul>
+      <p><b>Opfølgning:</b></p>
+      <ul>
+        <li>Klinisk kontrol + ny spirometri om 3–6 mdr.</li>
+        <li>Vurder symptom-kontrol, behov for anfaldsmedicin, vækst, inhalationsteknik</li>
+        <li>Astma-skoleplan: hvad eleven og lærer skal vide</li>
+      </ul>
+      <div class="answer-highlight">Behandling af atopi er aldrig "kun medicin". Allergisanering, anti-eksem-creme og forældreundervisning er lige så vigtige som ICS-recepten — og er det, der oftest bliver glemt i den korte konsultation.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('atop',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     CASE 4: dka — Diabetisk ketoacidose
+============================================================ -->
+
+<div id="case-dka" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Diabetisk ketoacidose</h2>
+    <p>Eksamenssæt: E23 stand 3, V2020</p>
+    <p><b>14-årig dreng.</b> Tiltagende bevidsthedspåvirket, mavesmerter og opkastninger gennem et døgn. På akutmodtagelsen er han bleg, dehydreret, takykard, takypnøisk med Kussmaul-respiration, med foetor ex ore. Ingen feber, ingen nakkestivhed.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="dka-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="dka-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-dka-1">
+    <div class="step-header" onclick="toggleStep('dka',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Angiv mulige årsager til bevidsthedspåvirkning hos en 14-årig dreng.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Infektion:</b> meningitis, encefalit, sepsis</li>
+        <li><b>Intrakraniel årsag:</b> blødning, infarkt, hydrocephalus, tumor</li>
+        <li><b>Traume:</b> ulykke eller vold</li>
+        <li><b>Endokrint/metabolisk:</b> <b>diabetisk ketoacidose</b>, hypoglykæmi, binyrebarkinsufficiens (Addison-krise), akut leversvigt, akut nyresvigt, hyponatriæmi</li>
+        <li><b>Epilepsi:</b> status epilepticus, postiktal fase</li>
+        <li><b>Kredsløbskollaps:</b> sepsis, anafylaksi, hypovolæmi, svær dehydrering</li>
+        <li><b>Intoksikation:</b> alkohol, medicin, stoffer, svampe</li>
+      </ul>
+      <div class="answer-highlight">Drengens præsentation (mavesmerter + opkast + Kussmaul + foetor ex ore + dehydrering) peger meget kraftigt på DKA — men gennemgå hele listen før du låser dig fast.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-dka-2">
+    <div class="step-header" onclick="toggleStep('dka',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Redegør for din objektive gennemgang af patienten.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>ABCD systematisk:</b></p>
+      <ul>
+        <li><b>A — luftveje:</b> obstruktion? lyde på respirationen?</li>
+        <li><b>B — respiration:</b> RF, SAT, indtrækninger, <b>Kussmaul-respiration</b> (dyb takypnø — kompensation for metabolisk acidose)</li>
+        <li><b>C — cirkulation:</b> BT, puls, kapillærrespons (dehydrering), perifere pulse</li>
+        <li><b>D — bevidsthed:</b> GCS / AVPU, pupiller (størrelse, lysreaktion), NRS, neurologi</li>
+      </ul>
+      <p><b>Alment + fokuseret:</b></p>
+      <ul>
+        <li>Farver (bleg, cyanose, ictericus), hudturgor, slimhinder (tørre = dehydrering)</li>
+        <li>Udåndingslugt: <b>acetone</b> (DKA) eller alkohol</li>
+        <li>St.p. et c.</li>
+        <li>Hud: petekkier eller andre udslæt</li>
+        <li>Ekstremiteter: bevægemønster, kraft, tonus, reflekser</li>
+        <li>Abdomen: ømhed (DKA kan ligne akut abdomen — pas på at sende til kirurgi)</li>
+      </ul>
+      <div class="answer-warn">DKA-mavesmerter kan ligne kirurgisk akut abdomen — patienter er blevet feilopereret. Mål altid blodsukker bedside ved bevidsthedspåvirket barn med mavesmerter.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-dka-3">
+    <div class="step-header" onclick="toggleStep('dka',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvilke parakliniske undersøgelser bestiller du akut, og hvordan tolker du svarene?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Akut bedside og blodprøver:</b></p>
+      <ul>
+        <li><b>Blodsukker bedside</b> — oftest &gt;20 mmol/l ved DKA</li>
+        <li><b>Syre-base + væsketal:</b> pH &lt;7,3, HCO3 &lt;15, BE −10 eller lavere, lav pCO2 (resp. kompensation = Kussmaul), Na ofte lav (osmotisk diurese), K varierende (total deplete, men plasma kan være normal/lav/høj), kreatinin forhøjet (dehydrering)</li>
+        <li><b>Blodketoner</b> &gt;3 mmol/l = DKA</li>
+        <li><b>HbA1c</b> — forhøjet (kronisk hyperglykæmi forud)</li>
+        <li><b>Hæmatologi + CRP</b> (udeluk infektion som trigger)</li>
+        <li><b>Urinstix:</b> 3+ glukose, 3+ ketoner</li>
+        <li><b>EKG</b> hvis svær hyper-/hypokaliæmi</li>
+        <li>Evt. LP eller CT hvis bevidsthedspåvirket trods korrektion</li>
+      </ul>
+      <p><b>Patogenese (forklar tolkningen):</b> insulinmangel → cellerne kan ikke optage glukose → modregulatoriske hormoner (glucagon, kortisol, GH, adrenalin) → lipolyse → frie fede syrer → ketogenese (acetoacetat, β-hydroxybutyrat, acetone) → metabolisk acidose. Glukose stiger → osmotisk diurese → dehydrering + Na/K/fosfat-tab.</p>
+      <div class="answer-highlight">Lavt natrium ved DKA er typisk pseudohyponatriæmi pga. høj glukose (osmotisk fortrængning). Korriger formelt: målt Na + (BS − 5,5) × 0,3.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-dka-4">
+    <div class="step-header" onclick="toggleStep('dka',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Skitsér principperne for den akutte behandling — i den rækkefølge du udfører den.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ol>
+        <li><b>IV adgang</b> (to perifere venflon)</li>
+        <li><b>Iso NaCl IV</b>: bolus 10–20 ml/kg over 1 time hvis kredsløbschok. Derefter vedligehold over 24–48 timer (langsom rehydrering for at minimere cerebralt ødem)</li>
+        <li><b>Kaliumtilskud</b> tilsat IV-væsken fra start (total K dybt depleteret selv ved normal plasma-K; insulin driver K ind i celler → hypokaliæmi-risiko)</li>
+        <li><b>Insulin IV</b> (0,05–0,1 IE/kg/time) — <b>opstartes først 1–2 timer EFTER væske</b> for at minimere cerebralt ødem</li>
+        <li><b>Langsom korrektion af BS</b> — ikke &gt;5 mmol/l/time. Når BS falder under 12–15 mmol/l: tilsæt 5% glukose til væsken (fortsat insulin for at lukke ketogenesen)</li>
+        <li><b>HCO3 anvendes IKKE rutinemæssigt</b> — kun ved persisterende pH &lt;6,9 og kredsløbsanstrengelse</li>
+        <li><b>Monitorering</b> hver time: BS, blodketoner, syre-base, væsketal, neurologisk status, urinproduktion</li>
+      </ol>
+      <div class="answer-warn">Studenten dumper, hvis DKA ikke angives som endelig diagnose, hvis insulin gives FØR væske/kalium, eller hvis HCO3 ordineres rutinemæssigt.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-dka-5">
+    <div class="step-header" onclick="toggleStep('dka',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Hvilken komplikation under behandlingen frygter du mest, og hvordan håndteres den?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Cerebralt ødem</b> — livstruende komplikation under DKA-behandling, særligt hos børn (op til 1% af DKA-episoder, mortalitet ~25%).</p>
+      <p><b>Tegn:</b></p>
+      <ul>
+        <li>Forværret bevidsthed under behandling (efter initial bedring)</li>
+        <li>Pludselig hovedpine</li>
+        <li>Abducensparese (n. VI)</li>
+        <li>Pupildifferens, abnorm lysrespons</li>
+        <li>Cushing-respons: HT + bradykardi + uregelmæssig RF</li>
+        <li>Faldende SAT, nyopstået apnø</li>
+      </ul>
+      <p><b>Akut behandling:</b></p>
+      <ul>
+        <li>Hovedet eleveret 30°</li>
+        <li><b>Mannitol</b> 0,25–0,5 g/kg IV over 20 min ELLER <b>hyperton NaCl 3%</b> 3–5 ml/kg over 20 min</li>
+        <li>Sænk væskerate</li>
+        <li>Akut neurokirurgisk konsulent + intensiv-overflytning</li>
+      </ul>
+      <p><b>Risikofaktorer for cerebralt ødem:</b> hurtig BS-korrektion (&gt;5 mmol/l/time), hurtig fald i osmolaritet, ung alder, høj initial BS, høj initial dehydrering, manglende stigning i Na under rehydrering.</p>
+      <div class="answer-warn">Hvis et barn i DKA-behandling pludseligt forværres efter timer med bedring → tænk cerebralt ødem FØRST, ikke "nu giver vi mere insulin".</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-dka-6">
+    <div class="step-header" onclick="toggleStep('dka',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvad er den videre plan efter DKA er korrigeret? Hvad informerer du barn og familie om?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Overgang fra akut til subakut:</b></p>
+      <ul>
+        <li>Når patienten kan spise + BS stabilt + acidose ophævet (pH &gt;7,3, HCO3 &gt;15, ketoner falder) → overgang fra IV til <b>subkutan basal-bolus insulin</b></li>
+        <li>Indlæggelse på pædiatrisk afdeling 5–10 dage til oplæring</li>
+        <li>Tilknytning til diabetes-team (pædiater, diabetessygeplejerske, diætist, evt. psykolog)</li>
+      </ul>
+      <p><b>Oplæring af barn + familie:</b></p>
+      <ul>
+        <li>Insulin-injektion: basal-bolus med Levemir (langtid, lår) + Novorapid (hurtig, abdomen)</li>
+        <li>Kulhydrattælling (KHR) + insulinfølsomhed (IF)</li>
+        <li>Blodsukkermåling: glukosesensor i underhud (kontinuerlig)</li>
+        <li>Hypoglykæmi-symptomer + behandling (juice, druesukker, glukagon)</li>
+        <li><b>Sygedage-regel:</b> ved sygdom STIGER insulindosis (ikke fald), tjek BS oftere, mål ketoner, kontakt diabetes-team</li>
+      </ul>
+      <p><b>Senkomplikationer + screening:</b></p>
+      <ul>
+        <li>Øjne (retinopati), nyrer (mikroalbuminuri), kredsløb, nerver — øget risiko ved dysreguleret BS</li>
+        <li>Andre autoimmune sygdomme: cøliaki (transglutaminase-IgA hvert 1–2 år), thyroidea (TSH)</li>
+      </ul>
+      <div class="answer-highlight">Hvor DKA og nyopdaget T1D uden DKA adskiller sig: DKA kræver IV-protokol (væske → kalium → insulin med 1–2 t forsinkelse). Den nyopdagede uden DKA går direkte til subkutan basal-bolus. Den distinktion er den centrale eksamensskillelinje.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('dka',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     CASE 5: nyopdaget_t1d — Nyopdaget T1D uden DKA
+============================================================ -->
+
+<div id="case-nyopdaget_t1d" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Nyopdaget T1D uden ketoacidose</h2>
+    <p>Eksamenssæt: E24 stand 4</p>
+    <p><b>Alma, 10 år.</b> Akut henvist af egen læge på mistanke om diabetes. 2–3 ugers polyuri, polydipsi, træthed og uforklaret vægttab (32 → 33 kg habituelt 35 kg). Egen læge har målt BS 24 mmol/l. Ingen familiær disposition; forældrene har meget begrænset kendskab til sygdommen.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="t1d-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="t1d-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-t1d-1">
+    <div class="step-header" onclick="toggleStep('t1d',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Hvordan vurderer du Alma initialt? Hvad er det første du skal afgøre?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Det første kritiske spørgsmål:</b> Har Alma diabetisk ketoacidose eller ej? Det afgør hele behandlingssporet.</p>
+      <p><b>Primær ultrakort overblik (ABCD):</b></p>
+      <ul>
+        <li><b>Bevidsthed:</b> vågen og med god kontakt (Alma: ja)</li>
+        <li><b>Respiration:</b> Kussmaul (dyb takypnø)? Normal RF? SAT? (Alma: upåfaldende, normal RF, SAT 98%, ej Kussmaul)</li>
+        <li><b>Cirkulation:</b> farver, kapillærrespons, puls, BT (Alma: pæne farver, normohydreret, normalt kapillærrespons, normal puls og BT)</li>
+        <li>St.p. et c.: i.a.</li>
+        <li>Temperatur: 37,3°; vægt 33 kg (habituelt 35 kg)</li>
+      </ul>
+      <div class="answer-highlight">Almas kliniske billede UDELUKKER DKA. Det betyder direkte at hun ikke skal have IV NaCl + IV insulin (DKA-protokollen). Hun skal til subkutan basal-bolus. Den distinktion er den vigtigste i hele casen.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-t1d-2">
+    <div class="step-header" onclick="toggleStep('t1d',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Hvilke parakliniske undersøgelser bestiller du for at bekræfte og typebestemme diabetes?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Væsketal:</b> Na, K, kreatinin (let dehydrering forventes)</li>
+        <li><b>Syre-base + blodketoner</b> — bekræfter <b>INGEN DKA</b></li>
+        <li><b>Blodsukker + HbA1c</b> — HbA1c bekræfter kronisk hyperglykæmi gennem uger</li>
+        <li><b>Beta-celle antistoffer:</b> GAD65-antistoffer (autoimmun proces — T1D-markør)</li>
+        <li><b>C-peptid</b> — proinsulin-spaltprodukt; lavt ved T1D (manglende endogen insulin), normalt/højt ved T2D</li>
+        <li><b>Hæmatologi + CRP</b> (udeluk infektion som trigger)</li>
+        <li>Urinstix: glukose + ketoner</li>
+      </ul>
+      <p><b>Forventede svar hos Alma (eksempel-værdier fra E24 standen):</b></p>
+      <ul>
+        <li>Na 138, K 4,1 (normale)</li>
+        <li>Kreatinin 56 (let forhøjet — let dehydrering, vægttab)</li>
+        <li>BS 26,2 (forhøjet)</li>
+        <li>pH 7,35, HCO3 22, BE −1,2 → <b>NORMAL syre-base = ingen DKA</b></li>
+        <li>Blodketoner 2,4 (let forhøjet, men ikke DKA-niveau &gt;3)</li>
+        <li>HbA1c 98 mmol/mol (svært forhøjet — kronisk hyperglykæmi i flere uger)</li>
+        <li>GAD65-antistoffer 44 (positive, normal &lt;5) → autoimmun</li>
+        <li>C-peptid 190 (lavt; normal 380–1630) → endogen insulinproduktion tabt</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-t1d-3">
+    <div class="step-header" onclick="toggleStep('t1d',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvordan orienterer du forældrene om blodprøvesvarene?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Blodprøverne bekræfter diabetes (forhøjet blodsukker; "langtidsblodsukker" HbA1c viser, at Alma har haft høje blodsukre gennem længere tid; let forhøjede blodketoner)</li>
+        <li><b>Ingen syreforgiftning</b> (normal syrebasestatus) — vigtigt at italesætte</li>
+        <li>Måske let dehydrering (let forhøjet kreatinin, vægttab 2 kg)</li>
+        <li>Ingen tegn til infektion (normale leukocytter, CRP)</li>
+        <li>Det drejer sig om <b>type 1 diabetes</b> (positive GAD65-antistoffer, lavt C-peptid) — den autoimmune type, hvor egen insulinproduktion er gået tabt</li>
+      </ul>
+      <p><b>Forældrene vil ofte stille spørgsmål som:</b> "Ved I hvilken slags diabetes vores pige har? Jeg har mest hørt om det, man kalder gammelmandsdiabetes." — Forklar at type 1 er den autoimmune form (uden sammenhæng med livsstil), modsat type 2 (hyppigst hos voksne, ofte koblet til overvægt).</p>
+      <div class="answer-highlight">Forældrenes mest belastende misforståelse er ofte at deres barn har "fået diabetes af for meget slik". Korriger eksplicit og medfølende — T1D er ikke deres fejl eller barnets.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-t1d-4">
+    <div class="step-header" onclick="toggleStep('t1d',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Skitsér behandlingen og monitoreringen af Alma — uden DKA-protokol.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Normal syrebasestatus → IKKE i.v. ketoacidose-behandling.</b> I stedet umiddelbart subkutant basal-bolus regime:</p>
+      <ul>
+        <li><b>Levemir</b> (langsomtvirkende basisinsulin) — s.c. injektion i låret 2 gange dagligt</li>
+        <li><b>Novorapid</b> (hurtigtvirkende) — s.c. injektion i abdomen ifm. måltider og til korrektion af forhøjede blodsukre</li>
+      </ul>
+      <p><b>Dosering af Novorapid:</b></p>
+      <ul>
+        <li><b>Til måltider:</b> kulhydrattælling — kulhydratratio (KHR) angiver hvor mange kulhydrater dækkes af 1 IE insulin</li>
+        <li><b>Til korrektion:</b> insulinfølsomhed (IF) — hvor meget falder BS på 1 IE insulin</li>
+      </ul>
+      <p><b>Ikke behov for særlig diætkost</b> — almindelig sund og varieret kost.</p>
+      <p><b>Monitorering:</b></p>
+      <ul>
+        <li>Blodsukre kan måles via fingerprik, men det er belastende for et barn → påsæt en <b>glukosesensor</b> (kontinuerlig måling i underhuden)</li>
+        <li>Senere mulighed for <b>insulinpumpe</b> (nemmere dosering, færre stik)</li>
+      </ul>
+      <div class="answer-warn">Studenten dumper, hvis hun ikke italesætter at Alma IKKE har ketoacidose, og samtidig kun redegør for behandling af nyopdaget diabetes MED ketoacidose.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-t1d-5">
+    <div class="step-header" onclick="toggleStep('t1d',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Hvilke generelle risici skal forældrene kende til ved diabetes?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Risiko for syreforgiftning (DKA):</b> fx ved sygdom, dårlig compliance, bøjet pumpekateter. Sygdomsregler: ved sygdom STIGER insulindosis, mål ketoner, kontakt diabetes-team.</li>
+        <li><b>Risiko for hypoglykæmi:</b>
+          <ul>
+            <li>Fx ved motion, glemte måltider, for meget insulin</li>
+            <li>Symptomer: bleghed, irritation, tremor, hjertebanken, sultfornemmelse, sløvhed</li>
+            <li>Behandling: hurtige kulhydrater (juice, saft, brød, druesukker, hypogit). Glukagon-injektion ved bevidstløshed</li>
+          </ul>
+        </li>
+        <li><b>Senkomplikationer</b> (langsigtet): øjne (retinopati), kredsløb, nyrer (mikroalbuminuri), nerver. Øget risiko ved dysreguleret diabetes — god kontrol minimerer risikoen.</li>
+        <li><b>Risiko for andre autoimmune sygdomme:</b> cøliaki (screen med transglutaminase-IgA hvert 1–2 år), autoimmun thyroidea (TSH), evt. binyrebark</li>
+      </ul>
+      <p><b>Forældrene vil have praktiske spørgsmål:</b></p>
+      <ul>
+        <li>"Hvad gør vi, når Alma bliver syg?" — sygdomsregler</li>
+        <li>"Hvad sker der, hvis vi glemmer at give medicinen en dag?" — kortvarigt hyperglykæmi, korriger og fortsæt</li>
+        <li>"Kan Alma fortsætte med at spille håndbold?" — ja; obs hypoglykæmi-risiko, snack før/under, justér insulin</li>
+        <li>"Hvordan går det på lang sigt?" — med god kontrol er livskvalitet og forventet levetid tæt på normalbefolkningen</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-t1d-6">
+    <div class="step-header" onclick="toggleStep('t1d',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvordan ser indlæggelsen og det videre forløb ud?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Indlæggelse 5–10 dage</b> til oplæring af Alma og forældre:</p>
+      <ul>
+        <li>Insulin-injektionsteknik</li>
+        <li>Blodsukkermåling + glukosesensor</li>
+        <li>Kulhydrattælling og dosering</li>
+        <li>Mad og motion</li>
+        <li>Hypoglykæmi-håndtering</li>
+        <li>Sygedage-regler</li>
+      </ul>
+      <p><b>Diabetes-team:</b> pædiater, diabetessygeplejerske, diætist, fodterapeut, evt. psykolog (særligt for transition gennem teenagealder).</p>
+      <p><b>Skole-information:</b> hvilke lærere skal vide hvad. Insulin-skema. Adgang til snack ved hypoglykæmi-symptomer.</p>
+      <p><b>Ambulant kontrol:</b> hver 3. måned. HbA1c-mål typisk &lt;58 mmol/mol (afhænger af alder og kontekst).</p>
+      <p><b>Familie- og selvhjælpsstøtte:</b> Diabetesforeningens børnegrupper, sommerlejre, peer-to-peer.</p>
+      <div class="answer-highlight">Eksamen-fælde: Studenten dumper, hvis hun starter IV insulin/NaCl-DKA-protokol på et velhydreret barn UDEN DKA. Korrekt behandling = subkutan basal-bolus fra start.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('t1d',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     CASE 6: hjernetumor_icp — Krampende barn → hjernetumor med ICP
+============================================================ -->
+
+<div id="case-hjernetumor_icp" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Krampende barn → hjernetumor med ICP</h2>
+    <p>Eksamenssæt: E24 stand 7</p>
+    <p><b>Tidligere rask barn.</b> Indlagt akut efter et fokalt krampeanfald startende i venstre hånd og spredende sig til hele kroppen, varighed ca. 5 min. Anfaldet er ophørt før ankomst, men barnet er ikke vågnet helt op. 14 dages forudgående hovedpine, en uge med pylret adfærd, 2 dages irritabilitet og opkastninger denne morgen.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="tumor-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="tumor-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-tumor-1">
+    <div class="step-header" onclick="toggleStep('tumor',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Foretag den første vurdering af barnet (ABCD).</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>A — luftveje:</b> frie luftveje</li>
+        <li><b>B — respiration:</b> sufficient — normal SAT, normal RF</li>
+        <li><b>C — cirkulation:</b> sufficient — BT og puls normale, normalt kapillærrespons, pæne farver</li>
+        <li><b>D — bevidsthed:</b> reagerer kun på smertepåvirkning</li>
+        <li><b>E:</b> normal temperatur, ingen udslæt, ingen blødning eller sår</li>
+        <li><b>Blodsukker (fingerprøve):</b> normalt</li>
+      </ul>
+      <p>Barnet er stabilt vital-mæssigt, men persistent bevidsthedspåvirket efter krampen — ikke "blot postiktal".</p>
+      <div class="answer-warn">Vedvarende bevidsthedspåvirkning &gt;30 min efter et anfald er IKKE forventet postiktalt fund hos et tidligere rask barn. Tænk strukturel årsag, ikke "vi venter på at han vågner".</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tumor-2">
+    <div class="step-header" onclick="toggleStep('tumor',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Hvilke emner i anamnesen er vigtige at få afdækket?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ol>
+        <li>Tidligere rask barn? Indtil hvornår begyndte symptomerne?</li>
+        <li>Normal psykomotorisk udvikling?</li>
+        <li>Ingen fast medicin?</li>
+        <li>Feber? (her: nej — udeluk feberkramper og bakteriel meningit som primær)</li>
+        <li>Hvordan begyndte krampen? Var den fokal eller generaliseret fra start? (her: venstre hånd → spredtes til hele kroppen = <b>sekundært generaliseret fokalt anfald</b>)</li>
+        <li>Varighed af krampen (her: ca. 5 minutter)</li>
+        <li>Tidligere krampetilfælde? (her: nej)</li>
+        <li>Trivsel og udvikling frem til krampen (her: <b>14 dages hovedpine, pylret seneste uge, irritabel i 2 dage, kvalme/opkastning i dag → derefter krampen</b>)</li>
+        <li>Tilstand efter krampen (her: ikke sig selv trods ophør af krampe)</li>
+        <li>Dispositioner — herunder epilepsi (her: ingen)</li>
+      </ol>
+      <div class="answer-highlight">Mønstret <b>14 dages hovedpine + opkastninger om morgenen + pylret/irritabel + fokalt anfald</b> er klassisk for langsomt voksende intrakraniel proces med forhøjet ICP. Det er ikke ny-debut idiopatisk epilepsi.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tumor-3">
+    <div class="step-header" onclick="toggleStep('tumor',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvilke differentialdiagnoser overvejer du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Hjernetumor med forhøjet ICP</b> (mest sandsynlig her — progredierende symptomer, morgenhovedpine, opkast, fokalt anfald)</li>
+        <li><b>Anden intrakraniel rumforstyrrende læsion:</b> abscess, blødning, hydrocephalus, AVM</li>
+        <li><b>Intrakraniel blødning</b> — traume (incl. battered child obs hvis sygehistorien ikke hænger sammen)</li>
+        <li><b>Infektion:</b> meningitis, encefalit (men ingen feber her — taler imod)</li>
+        <li><b>Epilepsi-debut</b> — fokalt anfald → mistænk fokal læsion → IKKE bare idiopatisk</li>
+        <li><b>Feberkramper</b> — udelukket (ingen feber)</li>
+        <li><b>Hypoglykæmi</b> — udelukket (normalt BS)</li>
+        <li><b>Elektrolyt-derrangement</b> (Na, Ca)</li>
+        <li><b>Intoksikation</b></li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tumor-4">
+    <div class="step-header" onclick="toggleStep('tumor',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hvilke kliniske tegn på forhøjet ICP undersøger du for, og hvad er "pushing signs"?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Pushing signs (Cushing-respons og lokale tegn på ICP):</b></p>
+      <ul>
+        <li><b>BT:</b> høj</li>
+        <li><b>Puls:</b> lav (bradykardi)</li>
+        <li><b>RF:</b> uregelmæssig</li>
+        <li><b>Pupiller:</b> størrelse, lysreaktion, anisokori (uneven pupiller — risiko for inkarceration)</li>
+        <li><b>Abducensparese</b> (n. VI) — hvis akut isoleret abducensparese uden andet → ICP-tegn pga. den lange forløb og sårbarhed</li>
+        <li><b>Papilødem</b> (fundoskopi)</li>
+        <li><b>Fontanelle</b> (efter alder) — spændt, bulende</li>
+      </ul>
+      <p><b>Yderligere neurologisk us:</b></p>
+      <ul>
+        <li>Kranienerver</li>
+        <li>Motorik (kraft, tonus, reflekser, sensorik)</li>
+        <li>Postiktal neuro deficit (<b>Todd-paralyse</b> — passager fokalt udfald efter anfald, normaliseres over timer; her venstresidig efter højresidig fokal kramp)</li>
+        <li>Koordination, gangfunktion (hvis muligt)</li>
+      </ul>
+      <div class="answer-warn">Hvis pupillerne udvides akut → akut inkarceration. Hyperton NaCl/mannitol bolus + neurokirurgi-alarm NU.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tumor-5">
+    <div class="step-header" onclick="toggleStep('tumor',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Hvilke parakliniske undersøgelser bestiller du — og i hvilken rækkefølge?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ol>
+        <li><b>AKUT CT cerebrum</b> — hurtigt + tilstrækkeligt til at se tumor, blødning, hydrocephalus, midline shift. Førstevalg ved akut bevidsthedspåvirket barn med kramper.</li>
+        <li><b>MR cerebrum</b> — bedre vævsopløsning og karakterisering; vælges efter CT når patienten er stabil.</li>
+        <li><b>Blodprøver:</b> Hgb, infektionstal (CRP, leukocytter — udeluk meningit), elektrolytter (Na, Ca), BS, koagulationsparametre (hvis op-relevant)</li>
+        <li><b>Lumbalpunktur — IKKE før billeddiagnostik er udført!</b> Kontraindiceret ved forhøjet ICP → risiko for herniation.</li>
+        <li><b>EEG</b> senere, ikke akut — efter billede er taget. Hjælper med epilepsi-håndtering og anfaldsklassifikation.</li>
+      </ol>
+      <div class="answer-warn">LP før CT/MR ved barn med bevidsthedspåvirkning + fokalt anfald = potentielt fatal fejl. Forhøjet ICP + lumbal trykkliring → herniation. Billede først.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-tumor-6">
+    <div class="step-header" onclick="toggleStep('tumor',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">CT bekræfter rumforstyrrende læsion. Hvordan behandler du akut, og hvad informerer du forældrene om?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Generel ICP-management indtil definitiv behandling:</b></p>
+      <ul>
+        <li>Hovedet eleveret 30°</li>
+        <li>Sikr respiration (undgå hyperkapni — øger CBF og ICP)</li>
+        <li>Undgå hypovolæmi (sikr cerebral perfusionstryk CPP)</li>
+        <li>Normotermi (undgå feber)</li>
+      </ul>
+      <p><b>Medikamentel ICP-sænkning:</b></p>
+      <ul>
+        <li><b>Mannitol</b> 0,25–0,5 g/kg IV ELLER <b>hyperton NaCl 3%</b> 3–5 ml/kg IV ved akut ICP</li>
+        <li><b>Dexamethason</b> ved tumor-relateret ødem (4–8 mg IV initialt, dæmper peritumoralt ødem)</li>
+      </ul>
+      <p><b>Krampebehandling — trinvis:</b></p>
+      <ul>
+        <li>Anfald &gt;3 min: <b>diazepam rektalt</b> (0,4 mg/kg) — buccal Buccolam (midazolam) som alternativ</li>
+        <li>Persisterende: <b>fenemal (phenobarbital) IV</b> som første-linje status</li>
+        <li>Hvis status epilepticus → anæstesi til stede, evt. midazolam infusion</li>
+      </ul>
+      <p><b>Akut overflytning:</b> neurokirurgisk vurdering. Biopsi/resektion → patologi. Onkologisk plan: kirurgi + (kemoterapi ± strålebehandling — afhængig af type og alder).</p>
+      <p><b>Information til forældre:</b> alvorlig livstruende tilstand, intrakraniel proces med forhøjet tryk. Akut overflytning til specialafdeling. Yderligere udredning og behandling. Sequela-mulighed: kognitiv, motorisk, epilepsi-debut, endokrin (hypofyse-involvering).</p>
+      <div class="answer-highlight">Hjernetumorer hos børn er den 2.-hyppigste cancer efter leukæmi. Hyppigste typer: medulloblastom (cerebellum), astrocytom, ependymom. Lokalisationen styrer kliniske billede — supratentorielle giver fokale udfald og kramper, infratentorielle giver gang/koordinationsudfald + hydrocephalus.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('tumor',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     CASE 7: pubertas_praecox — Pubertas præcox
+============================================================ -->
+
+<div id="case-pubertas_praecox" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Pubertas præcox</h2>
+    <p>Eksamenssæt: F25 stand 4</p>
+    <p><b>7-årig pige.</b> Forældrene har bemærket brystudvikling gennem ca. 6 måneder og begyndende pubeshåring de seneste uger. Forældrene er bekymrede og henvender sig til egen læge, der henviser akut til børneendokrinologisk ambulatorium.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="pubp-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="pubp-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-pubp-1">
+    <div class="step-header" onclick="toggleStep('pubp',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Hvornår taler vi om pubertas præcox, og hvad spørger du om ved anamnesen?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Definition:</b></p>
+      <ul>
+        <li><b>Piger:</b> pubertetstegn (thelarche eller pubarche) før <b>8 år</b></li>
+        <li><b>Drenge:</b> pubertetstegn (testis-volumen &gt;4 mL) før <b>9 år</b></li>
+      </ul>
+      <p><b>Anamnese:</b></p>
+      <ul>
+        <li><b>Pubertetstegnenes debut og rækkefølge:</b>
+          <ul>
+            <li>Thelarche (brystudvikling)</li>
+            <li>Pubarche (pubeshår)</li>
+            <li>Adrenarche (aksellært hår, akne, kropslugt)</li>
+            <li>Menarche</li>
+          </ul>
+        </li>
+        <li><b>Vækstacceleration:</b> hop på vækstkurven? (forældrene oplever ofte "hun voksede ud af tøjet på 3 mdr.")</li>
+        <li><b>Forældrenes pubertetsstart</b> — tidlig pubertet i familien? Mor menarche-alder?</li>
+        <li><b>Tidligere sygdomme:</b> traume mod CNS, infektion, kraniel radioterapi</li>
+        <li><b>Medicineksposition:</b> eksogen østrogen (mors hormoncreme, slik-/diætpiller med østrogener)</li>
+        <li><b>Adoption fra udland</b> (kan udløse central PP via dramatisk ændring af ernærings-/leveforhold)</li>
+        <li><b>Symptomer på CNS-proces:</b> hovedpine, synsforstyrrelser, kramper</li>
+        <li><b>Psykosocial belastning</b></li>
+      </ul>
+      <div class="answer-highlight">Rækkefølgen i pubertets-tegnene afslører meget. Ved <b>ægte (central) PP</b> kommer tegnene i normal rækkefølge (thelarche → pubarche → menarche). Hvis pubarche kommer FØR thelarche → tænk perifer årsag (binyre — AGS, tumor).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pubp-2">
+    <div class="step-header" onclick="toggleStep('pubp',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Hvad ser du efter ved den objektive undersøgelse?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Højde + vægt</b> ind på vækstkurve — vækstacceleration? Targetheight beregning</li>
+        <li><b>Tanner-stadier:</b>
+          <ul>
+            <li><b>B (Breast)</b> 1–5: B1 præpubertal, B2 begyndende brystknop, B3 yderligere brystvækst, B4 areola-projektion, B5 voksen kontur</li>
+            <li><b>PH (Pubic Hair)</b> 1–5</li>
+          </ul>
+        </li>
+        <li><b>Genital us:</b> ekstern inspektion, vurder slimhinde (østrogen-effekt → bleg lyserød i stedet for rødfarvet præpubertal)</li>
+        <li><b>Neurologisk us</b> (udeluk CNS-tumor som årsag): hjernenerver, motorik, refleksi, synsfelt (chiasma opticum)</li>
+        <li><b>BT</b> (binyre-/Cushing-screening)</li>
+        <li><b>Hud:</b> café-au-lait pletter (McCune-Albright?), aksellær striae (Cushing)</li>
+        <li><b>Thyroidea:</b> struma (svær hypothyreose kan paradoksalt give pubertet-fremskydning)</li>
+        <li><b>Abdomen:</b> palpation for adnex-udfyldning (ovariecyste/tumor)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pubp-3">
+    <div class="step-header" onclick="toggleStep('pubp',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Skitsér differentialdiagnoserne — central vs perifer pubertas præcox vs benigne varianter.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Central pubertas præcox (CPP — GnRH-afhængig):</b></p>
+      <ul>
+        <li>Hypothalamus-hypofyse aktiveret tidligt → "ægte" pubertet (alle elementer i normal rækkefølge)</li>
+        <li><b>Idiopatisk CPP</b> — langt hyppigste hos piger (&gt;90%)</li>
+        <li><b>Sekundær CPP</b> — fra CNS-tumor (hamartom, opticus-gliom), hydrocephalus, traume, postinfektiøs, kraniel radioterapi</li>
+      </ul>
+      <p><b>Perifer pubertas præcox (PPP — GnRH-uafhængig):</b></p>
+      <ul>
+        <li>Hormonproduktion uafhængigt af hypofysen</li>
+        <li>Ovariecyste/-tumor (granulosa, theca)</li>
+        <li>Binyre-tumor</li>
+        <li><b>McCune-Albright syndrom</b> (café-au-lait pletter + polyostotisk fibros dysplasi + autonom hormonproduktion)</li>
+        <li><b>Adrenogenitalt syndrom (AGS, 21-hydroxylase mangel)</b> — primært virilisering (pubarche, akne, klitoromegali)</li>
+        <li>Eksogen østrogen-eksposition</li>
+      </ul>
+      <p><b>Benigne varianter:</b></p>
+      <ul>
+        <li><b>Præmatur thelarche</b> — isoleret brystudvikling uden vækstacceleration eller Tanner-progression. Hyppigst &lt;3 år; oftest benign og selvbegrænsende</li>
+        <li><b>Præmatur adrenarche</b> — isoleret pubarche + akne + kropslugt uden brystudvikling. Hyppigt hos overvægtige børn; oftest benign</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pubp-4">
+    <div class="step-header" onclick="toggleStep('pubp',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hvilke parakliniske undersøgelser ordinerer du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Knoglealder</b> — rtg af venstre håndled. Fremskudt knoglealder (&gt;2 SD over kronologisk alder) støtter ægte pubertet. Hos en 7-årig pige med CPP forventes knoglealder typisk ~8–9 år.</li>
+        <li><b>Basale hormoner:</b>
+          <ul>
+            <li>LH og FSH (forhøjede ved CPP, præpubertale ved præmatur thelarche)</li>
+            <li>Østradiol (forhøjet ved CPP og PPP)</li>
+            <li>Testosteron, DHEAS (forhøjede ved binyre-årsager)</li>
+          </ul>
+        </li>
+        <li><b>GnRH-stimulationstest</b> — guldstandard: indgift af GnRH (gonadorelin) og måling af LH-respons. <b>LH peak &gt;5 IU/L = pubertal respons</b> = CPP. &lt;5 = præpubertal eller PPP.</li>
+        <li><b>TSH, T4</b> (udeluk hypothyreose-induceret pubertet)</li>
+        <li><b>17-OH-progesteron</b> (udeluk AGS — særligt ved isoleret pubarche/virilisering)</li>
+        <li><b>Bækken-UL:</b> ovarier (volumen, follikler) og uterus (størrelse, endometrium-tykkelse — proliferation = østrogen-effekt). Pubertal uterus &gt;3,5–4 cm</li>
+        <li><b>MR hypothalamus/hypofyse</b> — hvis CPP bekræftet, <b>obligatorisk</b> for at udelukke intrakraniel proces (hamartom, opticus-gliom, hydrocephalus)</li>
+      </ul>
+      <div class="answer-warn">Hos drenge er sekundær (CNS) CPP meget hyppigere end hos piger — MR ved alle drenge med CPP. Hos piger er idiopatisk hyppigst, men MR er stadig indiceret ved bekræftet CPP.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pubp-5">
+    <div class="step-header" onclick="toggleStep('pubp',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Resultaterne peger på idiopatisk central pubertas præcox. Hvad er behandlingen — og hvad er målet?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Behandling: GnRH-analog</b> (triptorelin/decapeptyl) som depot-injektion s.c./i.m. hver måned eller hver 3. måned.</p>
+      <p><b>Mekanisme:</b> konstant GnRH-stimulering desensibiliserer hypofysen → LH/FSH falder → gonade-funktion sættes på pause → pubertet standses → vækstacceleration sættes på pause.</p>
+      <p><b>Behandlingsmål:</b></p>
+      <ul>
+        <li>Bevare den potentielle sluthøjde (fremskudt knoglealder forkorter slutvæksten — behandling lader skelettet "vente")</li>
+        <li>Psykosocial tilpasning — undgå at barnet udvikler sig fysisk langt foran jævnaldrende</li>
+        <li>Undgå tidlig menarche (psykologisk byrde, social stigma)</li>
+      </ul>
+      <p><b>Behandlingsvarighed:</b> indtil aldersnormal pubertetsstart (~10–11 år). Derefter seponering → puberteten genoptages naturligt.</p>
+      <p><b>Monitorering under behandling:</b></p>
+      <ul>
+        <li>Højde + vægt + Tanner hver 3.–6. måned</li>
+        <li>Hormoner (LH, FSH) for at bekræfte suppression</li>
+        <li>Knoglealder årligt</li>
+      </ul>
+      <p><b>Behandling af PPP:</b> behandl underliggende — fjern ovarie-/binyretumor, behandl AGS med hydrokortison, fjern eksogen østrogen. GnRH-analog virker IKKE her (problemet er ikke hypofyse-aktivitet).</p>
+      <p><b>Præmatur thelarche/adrenarche:</b> typisk ingen behandling, klinisk kontrol hver 6 mdr.</p>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-pubp-6">
+    <div class="step-header" onclick="toggleStep('pubp',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvordan informerer du familien, og hvad forventer du af det videre forløb?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Information til forældrene:</b></p>
+      <ul>
+        <li>Diagnosen er "ægte tidlig pubertet" — barnets hjerne har bare startet tidligere end normalt</li>
+        <li>Ikke nogen åbenlys årsag (idiopatisk hos piger i langt de fleste tilfælde)</li>
+        <li>Vi har undersøgt om der er en bagvedliggende årsag (MR af hjernen) og fundet intet</li>
+        <li>Behandling med en månedlig injektion sætter puberteten på pause</li>
+        <li>Sluthøjden bliver typisk tæt på den genetiske potentiale</li>
+        <li>Når vi stopper behandlingen omkring 10–11 år, fortsætter puberteten som hos jævnaldrende</li>
+      </ul>
+      <p><b>Information til barnet (alderssvarende):</b></p>
+      <ul>
+        <li>Forklar at kroppen "skynder sig lidt" og at medicinen hjælper med at vente</li>
+        <li>Inddrag barnet i beslutninger om injektioner — det skal være tryghedsgivende</li>
+      </ul>
+      <p><b>Familievejledning:</b></p>
+      <ul>
+        <li>Skole-information — vigtigt hvis tidlig fysisk udvikling skaber sociale udfordringer</li>
+        <li>Psykologisk støtte ved behov</li>
+        <li>Ambulant kontrol hver 3.–6. måned</li>
+      </ul>
+      <div class="answer-highlight">Forældre frygter ofte at deres barn "vil få menstruation tidligt". Tydeliggør at behandlingen netop forhindrer dette. Tidlig menarche uden behandling har psykosociale (mobning, kropsligt selvbillede) og potentielt sluthøjde-konsekvenser.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('pubp',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     CASE 8: coeliaki_vaekst — Lav højde → cøliaki
+============================================================ -->
+
+<div id="case-coeliaki_vaekst" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Lav højde → cøliaki</h2>
+    <p>Eksamenssæt: F23 stand 7</p>
+    <p><b>Mette, 8 år.</b> Henvist fra egen læge pga. lav højde. Vækstkurven viser et bemærkelsesværdigt forløb: pigen lå omkring −0,5 SD frem til 5-års alderen, hvorefter vægten gradvist er faldet til −2 SD og længden til −1,5 SD. Vægten begynder at vige før højden.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="coel-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="coel-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-coel-1">
+    <div class="step-header" onclick="toggleStep('coel',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Hvilke årsager kan der være til lav højde hos børn? Nævn mindst 6.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Familiær lav højde</b> (genetisk: forældre lav)</li>
+        <li><b>Konstitutionel forsinket vækst</b> (sen pubertet, "blomstrer sent")</li>
+        <li><b>Enhver kronisk sygdom</b> (kan dæmpe vækst uden at være primær årsag)</li>
+        <li><b>Malabsorption:</b> <b>cøliaki</b>, inflammatorisk tarmsygdom (Mb. Crohn, colitis ulcerosa), cystisk fibrose</li>
+        <li><b>Turner syndrom (45,X)</b> — alle piger med uforklaret lav højde → karyotype-us.</li>
+        <li><b>Hypothyreose</b></li>
+        <li><b>Væksthormonmangel (GH)</b></li>
+        <li><b>Cushing syndrom</b> (sjælden hos børn — typisk fra eksogen glukokortikoid eller endogen binyretumor)</li>
+        <li><b>IUGR / præmaturitet / SGA uden catch-up</b></li>
+        <li><b>Skeletdysplasi</b> (fx akondroplasi — uproportional)</li>
+        <li><b>Rachitis</b> (D-vitamin mangel)</li>
+        <li><b>Astma med højdoseret inhalationssteroid</b></li>
+        <li><b>Psykosocial belastning</b> / omsorgssvigt</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-coel-2">
+    <div class="step-header" onclick="toggleStep('coel',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Beskriv vækstkurven og hvad mønstret fortæller dig.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li>Pigen fulgte sin egen kurve omkring −0,5 SD frem til 5-års alderen (normalområde)</li>
+        <li>Herefter <b>gradvist faldende vægt</b> til nu −2 SD</li>
+        <li><b>Gradvist faldende højde</b> til nu −1,5 SD — men senere end vægtfaldet</li>
+        <li>Pigen begynder altså at vige <b>på vægten først</b>, senere på højdekurven</li>
+      </ul>
+      <p><b>Hvad det betyder klinisk:</b></p>
+      <ul>
+        <li><b>Vægttab før højdetab → tænk malabsorption eller anden kronisk sygdom</b></li>
+        <li>Endokrin årsag (GH-mangel, hypothyreose) rammer typisk <b>HØJDE først</b>, ikke vægt</li>
+        <li>Vægttab + faldende højde + tegn på malabsorption (mavesmerter, obstipation, træthed) = <b>cøliaki øverst på listen</b></li>
+      </ul>
+      <p><b>Targetheight (TH):</b></p>
+      <ul>
+        <li>(mors højde + fars højde ± 13) / 2 — minus 13 hvis pige, plus 13 hvis dreng</li>
+        <li><b>Target height potentiale:</b> TH ± 9 cm (det genetiske spænd)</li>
+      </ul>
+      <p><b>Advarselssignaler ved lav højde:</b></p>
+      <ul>
+        <li>Højde under −2 SD eller under 3-percentilen</li>
+        <li>Højden krydser percentiler (afviger fra egen kurve)</li>
+        <li>Lav væksthastighed ift. alder</li>
+        <li>Højde væsentligt under targetheight potentialet</li>
+      </ul>
+      <div class="answer-highlight">Vækstkurven er det vigtigste enkeltværktøj i pædiatrisk vækstudredning. Et enkelt målepunkt fortæller dig intet — mønstret på tværs af tid afslører diagnosen.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-coel-3">
+    <div class="step-header" onclick="toggleStep('coel',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvad vil du spørge ind til under anamneseoptagelsen?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Dispositioner:</b> forældres højde + tidspunkt for pubertet, søskendes vækst, sygdomme i familien (cøliaki, IBD, autoimmune sygdomme)</li>
+        <li><b>Perinatal:</b> gestationsalder, fødselsvægt og -længde</li>
+        <li><b>Tidligere sygdomme</b></li>
+        <li><b>Aktuelle symptomer:</b>
+          <ul>
+            <li>Almene: træthed, koncentration, humør</li>
+            <li>Neurologiske: hovedpine</li>
+            <li>Gastrointestinale: mavesmerter, kvalme, diare, obstipation, oppustethed, blod/slim i afføring</li>
+            <li>Bevægeapparat: ledsmerter, ledhævelse</li>
+            <li>Hud: udslæt, atopi, dermatitis herpetiformis (cøliaki-relateret)</li>
+          </ul>
+        </li>
+        <li><b>Ernæring:</b> kostsammensætning, restriktioner, appetit</li>
+        <li><b>Medicin</b> (særligt inhalationssteroid, prednisolon)</li>
+        <li><b>Allergi</b></li>
+        <li><b>Fysisk aktivitet</b> (hård træning kan dæmpe pubertet)</li>
+        <li><b>Psykosociale forhold</b> (omsorgssvigt, mobning, stress)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-coel-4">
+    <div class="step-header" onclick="toggleStep('coel',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hvilke undersøgelser vil du herefter bestille for at komme en evt. diagnose nærmere?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Objektiv us:</b></p>
+      <ul>
+        <li>Proportioner (overkrop/underkrop ratio — akondroplasi), siddehøjde, armspan (Marfan)</li>
+        <li>Kronisk præg, dysmorfe træk (Turner: bred nakkefold, cubitus valgus, stor papilafstand, tøndeformet thorax)</li>
+        <li>Struma</li>
+        <li>Pubertetsstadie (Tanner)</li>
+        <li>Trunkal fedme, striae, buffalo hump (Cushing)</li>
+        <li>Hud (dermatitis herpetiformis, atopisk dermatit)</li>
+      </ul>
+      <p><b>Paraklinik:</b></p>
+      <ul>
+        <li><b>Almene parametre:</b> hæmatologi, lever-/nyretal, CRP</li>
+        <li><b>Stofskifte:</b> TSH, T3, T4</li>
+        <li><b>Vækstfaktorer:</b> IGF-1, IGF-BP3</li>
+        <li><b>Cøliaki-antistoffer:</b> transglutaminase-IgA + deamideret gliadin + <b>total IgA</b> (udeluk IgA-mangel — 1/40 cøliaki-patienter har det)</li>
+        <li><b>Knogle/D-vitamin:</b> Ca, fosfat, basisk fosfatase, PTH, D-vitamin</li>
+        <li><b>Kønshormoner:</b> FSH, LH, østrogen</li>
+        <li><b>(Karyotype)</b> — hos piger med uforklaret lav højde for at udelukke Turner</li>
+        <li><b>Knoglealder</b> — rtg af venstre håndled</li>
+        <li>(F-calprotectin ved GI-symptomer — IBD-screen)</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-coel-5">
+    <div class="step-header" onclick="toggleStep('coel',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Antistofferne er stærkt positive. Redegør for diagnosen — ætiologi, patogenese, symptomer.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Diagnose: Cøliaki.</b></p>
+      <p><b>Ætiologi/patogenese:</b></p>
+      <ul>
+        <li>Autoimmun reaktion mod gluten (i byg, hvede, rug — evt. havre)</li>
+        <li>Hos genetisk disponerede (HLA-DQ2 eller HLA-DQ8 — næsten alle cøliakipatienter har en af disse)</li>
+        <li>Gluten → T-celle-medieret skade på tyndtarmsslimhinde → <b>krypthypertrofisk villusatrofi</b> (Marsh-grader, typisk Marsh 3a–3c)</li>
+        <li>Resultat: malabsorption af makro- og mikronæringsstoffer → vægttab, vækstvigning, anæmi, knoglemineraliseringsforstyrrelse</li>
+      </ul>
+      <p><b>Diagnose-konfirmation (ESPGHAN-tilgang hos børn):</b></p>
+      <ul>
+        <li>Meget høje transglutaminase-IgA (typisk &gt;10× øvre referenceværdi) + positive endomysium-antistoffer + symptomer = diagnose kan stilles UDEN biopsi</li>
+        <li>Ellers: <b>tyndtarmsbiopsi</b> (gastroskopisk multipel duodenum-biopsi) er endelige standard</li>
+      </ul>
+      <p><b>Symptomer:</b></p>
+      <ul>
+        <li>Klassisk: vægttab, dårlig trivsel, vækstvigning, mavesmerter, diare ELLER obstipation, oppustethed</li>
+        <li>Træthed, dårligt humør, koncentrationsbesvær</li>
+        <li>Dermatitis herpetiformis (klassisk men sjælden i barnealder)</li>
+        <li>"Stille" cøliaki — kun lab-fund, få symptomer (hyppigt)</li>
+      </ul>
+      <div class="answer-warn">Tag IgA-mangel-screening med — ved selektiv IgA-mangel er transglutaminase-IgA falsk negativ. Brug deamideret gliadin-IgG eller transglutaminase-IgG som backup.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-coel-6">
+    <div class="step-header" onclick="toggleStep('coel',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvad er behandlingen, hvordan følger du Mette op, og hvilke komplikationer skal du have øje for?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Behandling: livslang glutenfri diæt.</b></p>
+      <ul>
+        <li>Komplet undgåelse af gluten i byg, hvede, rug</li>
+        <li>Havre — kommercielt rent havre er typisk tolereret hos de fleste, men individuel vurdering</li>
+        <li>Diætist-vejledning er central — gluten gemmer sig mange steder (saucer, krydderier, medicin)</li>
+        <li>Mette vil typisk vise normalisering af antistoffer over 6–12 mdr. og vækst-catch-up over 1–2 år</li>
+      </ul>
+      <p><b>Opfølgning:</b></p>
+      <ul>
+        <li>Klinisk kontrol + vækstkurve hver 3.–6. måned første år</li>
+        <li>Transglutaminase-AB ved kontrol — normalisering = compliance-indikator</li>
+        <li>Vitamin D, jern, B12, folat — suppler ved mangel</li>
+        <li>Knogletæthed (DXA) hvis prolongeret ubehandlet</li>
+      </ul>
+      <p><b>Familiescreening:</b> 1.gradsslægtninge har ~10% risiko (autosomal disponering) — screening ved symptomer eller hver 5 år.</p>
+      <p><b>Komplikationer ved ubehandlet cøliaki:</b></p>
+      <ul>
+        <li>Vækst- og pubertetsforsinkelse</li>
+        <li>Anæmi (jern, B12, folat)</li>
+        <li>Osteoporose</li>
+        <li>Infertilitet senere i livet</li>
+        <li>Tarmlymfom (langtidsrisiko, sjælden)</li>
+        <li>Associerede autoimmune sygdomme: T1D, autoimmun thyroidea, Addison — forhøjet risiko</li>
+      </ul>
+      <div class="answer-highlight">Cøliaki kan diagnosticeres som "stille" — kun fundet på familiescreening eller udredning af lav højde/anæmi, uden klare GI-symptomer. Tærsklen for screening er lav: jern-/folatmangel, vækstvigning, T1D, autoimmun thyroidea, Down syndrom, Turner syndrom og 1.gradsslægtninge.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('coel',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     CASE 9: battered_child — Mistanke om børnemishandling
+============================================================ -->
+
+<div id="case-battered_child" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Mistanke om børnemishandling</h2>
+    <p>Eksamenssæt: F24 stand 3</p>
+    <p><b>Lauge, 7 mdr.</b> Ortopædkirurgisk vagthavende konfererer akut: drengen er netop diagnosticeret med en venstresidig femurfraktur efter at forældrene henvendte sig på skadestuen i går grundet hævelse omkring venstre lår og øget gråd. Forældrenes forklaring: drengen sover i tremmeseng og må have fået benet i klemme.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="bch-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="bch-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-bch-1">
+    <div class="step-header" onclick="toggleStep('bch',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Hvorfor involverer den ortopædkirurgiske læge børneafdelingen i denne patient?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Mistanke om børnemishandling</b> — traumemekanismen hænger ikke sammen med traumet</li>
+        <li>Det er <b>højst usandsynligt</b>, at en 7-måneders dreng kan få benet i klemme i en tremmeseng og pådrage sig en femurfraktur. Det kræver betydelig krafteksposition (faldhøjde, vridning, slag)</li>
+        <li><b>Femurfraktur er sjælden hos et ikke-gående barn</b> — børn under 1 år bevæger sig ikke selvstændigt nok til at få denne type fraktur ved tilfælde</li>
+        <li><b>Disproportion mellem forklaring og skade</b> — klassisk rødt flag</li>
+        <li>Skærpet underretningspligt for sundhedspersonale aktiveres</li>
+      </ul>
+      <div class="answer-warn">Vi skal ikke "bevise" mishandling — det er ikke vores opgave. Vores opgave er at underrette ved <b>mindste mistanke</b>. Bevisførelsen ligger hos socialforvaltning, politi og retsmedicin.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-bch-2">
+    <div class="step-header" onclick="toggleStep('bch',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Foretag en fokuseret anamnese.</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Barnets almene velbefindende:</b> udvikling (sociale smil, vending, sidning, pludrer), grædemønster (irritabel? utrøstbar?), søvn</li>
+        <li><b>Trivsel:</b> FL + FV (fødselslængde + fødselsvægt) sammenholdt med aktuelle længde + vægt — har Lauge fulgt sin kurve?</li>
+        <li><b>Ernæring:</b> amning, modermælkserstatning, overgangskost, hvor godt spiser han</li>
+        <li><b>Neonatale problemer</b> — komplikationer ved fødsel, osteogenesis imperfecta-mistanke (familieanamnese for tidligere frakturer, blå sclerae, hørenedsættelse)</li>
+        <li><b>Tidligere sygdomme</b>, skadestuekontakter (mønster? hyppige besøg på forskellige hospitaler?)</li>
+        <li><b>Sociale forhold:</b>
+          <ul>
+            <li>Samlevende forældre? Alder, uddannelse, arbejdsstatus</li>
+            <li>Antal børn (er der yngre eller ældre søskende også berørte?)</li>
+            <li>Forældrenes psykiske helbred (fødselsdepression, misbrug)</li>
+            <li>Andre omsorgspersoner (ny kæreste, bedsteforældre, dagpleje)</li>
+            <li>Bolig, økonomi, støtteapparat</li>
+          </ul>
+        </li>
+        <li><b>Forældrenes reaktion og forklaringer</b> — sammenhæng? Ændrer forklaringen sig undervejs?</li>
+      </ul>
+      <div class="answer-highlight">Anamnesen optages med ro og uden anklage. Vi er læger, ikke politi. Men noter præcist hvad der siges, særligt hvis forklaringen ændres mellem samtaler.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-bch-3">
+    <div class="step-header" onclick="toggleStep('bch',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvad vil du kigge efter ved en fokuseret objektiv undersøgelse?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Top-til-tå undersøgelse:</b></p>
+      <ul>
+        <li><b>Almentilstand:</b> smertepåvirket? irritabelt? alderssvarende kontakt + motorik?</li>
+        <li><b>Trivsel:</b> vægt + længde + hovedomfang ind på vækstkurve</li>
+        <li><b>Kranium + fontanelle:</b> frakturer? spændt eller bulende fontanelle?</li>
+        <li><b>Mundhule:</b> slimhindeforandringer (tegn på tvangsoral indføring), <b>intakt tungebånd?</b> (revet tungebånd er klassisk ved mishandling — opstår når omsorgsperson tvinger flaske ind)</li>
+        <li><b>Øjne:</b> blødning i sclerae (shaken baby — retinale blødninger findes med oftalmoskop), blå sclerae (osteogenesis imperfecta-mistanke)</li>
+        <li><b>Ekstremiteter:</b> hævelse, asymmetri, bevæger barnet alle ekstremiteter, kraft, lokal smerte</li>
+        <li><b>Hud:</b>
+          <ul>
+            <li>Hudblødninger <b>af forskellig alder</b> (frisk rød + grøn-gul + gul = forskellige stadier)</li>
+            <li>Bidmærker (afgrænsede ovaler)</li>
+            <li>Brændemærker (kontrast forskellige steder — "handske-/sokke-mønster" fra dyppning i varmt vand)</li>
+            <li>Kradse- og håndmærker (formede aftryk)</li>
+          </ul>
+        </li>
+        <li><b>Genitalia, perianalt:</b> tegn på seksuelle overgreb</li>
+        <li><b>Neurologisk:</b> tonus, refleksi, fontanelle</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-bch-4">
+    <div class="step-header" onclick="toggleStep('bch',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hvilke parakliniske undersøgelser bestiller du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Blodprøver:</b>
+          <ul>
+            <li>Hgb, trombocytter, <b>koagulationsparametre</b> (PT/INR, APTT) — udeluk koagulopati som DDX</li>
+            <li>Ca, fosfat, basisk fosfatase, D-vitamin, PTH — udeluk rachitis/D-vitaminmangel</li>
+          </ul>
+        </li>
+        <li><b>Skeletscreening:</b> <b>rtg af hele skelettet</b> (kranium, columna, thorax, alle ekstremiteter, hænder, fødder)
+          <ul>
+            <li>Tages <b>nu</b> og <b>gentaget efter 14 dage</b> — callus-dannelse omkring nyere brud kan afsløre tidligere skjult mishandling</li>
+            <li>Klassiske mønstre: metaphyseale corner fractures, posterior costa-frakturer, spiral-/skraktrafrakturer i lange knogler hos ikke-gående børn</li>
+          </ul>
+        </li>
+        <li><b>Øjenundersøgelse:</b> retinale blødninger (shaken baby), evt. spinkel hjernehindeblødning</li>
+        <li><b>MR cerebrum:</b> subdural blødning (venøs, fra shaken baby), kraniefraktur, hjernekontusion</li>
+        <li><b>Klinisk fotodokumentation</b> af alle læsioner — samme dag, og igen efter 24–48 timer for at se progression af blødninger</li>
+      </ul>
+      <div class="answer-highlight">Skeletscreeningen er afgørende. Hos et 7-måneders barn med uforklaret femurfraktur findes ofte tegn på tidligere frakturer (forskellige callus-stadier) — det er det stærkeste objektive bevis for gentagen vold.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-bch-5">
+    <div class="step-header" onclick="toggleStep('bch',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Hvilke differentialdiagnoser skal du udelukke før battered child kaldes?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Osteogenesis imperfecta (OI)</b> — blå sclerae, dovne tænder, familieanamnese, recidiverende frakturer over normal vækstforløb. Sjælden (~1/15.000). Knogletest (DXA, genetisk DNA-test).</li>
+        <li><b>Rachitis (D-vitamin mangel)</b> — mørklødede børn, manglende solbestråling, dårlig kost. Rtg viser karakteristiske metafysiske ændringer.</li>
+        <li><b>Koagulopati:</b> ITP, hæmofili, von Willebrand. Koagulationsprøver normale → udelukket.</li>
+        <li><b>Andre knoglesygdomme</b> (Caffey, Menkes — sjældne).</li>
+        <li><b>Trovkærdig single hændelse:</b> bilulykke med vidner, faldulykke der matcher skaden i biomekanik.</li>
+      </ul>
+      <p><b>Mønstre der KLART peger på mishandling (ikke til at forklare bort):</b></p>
+      <ul>
+        <li>Flere frakturer i forskellige callus-stadier</li>
+        <li>Retinale blødninger + subdurale blødninger ± costa-frakturer (shaken baby triade)</li>
+        <li>Metaphyseale corner fractures (vridning)</li>
+        <li>Skadens biomekanik passer ikke med oplyste mekanisme</li>
+        <li>Forsinket lægekontakt</li>
+        <li>Skiftende forklaringer</li>
+        <li>Hudblødninger i forskellige farvestadier</li>
+      </ul>
+      <div class="answer-warn">Shaken Baby Syndrom (rystet barn) — kardinalfund er <b>retinale blødninger + subdurale blødninger + costa-frakturer</b>. 60% dør eller overlever med svære handicap (mental retardering, spastisk tetraplegi, epilepsi, blindhed).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-bch-6">
+    <div class="step-header" onclick="toggleStep('bch',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvilke foranstaltninger skal du iværksætte nu?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ol>
+        <li><b>Barnet INDLÆGGES</b> — sikker observation, ikke send hjem. Brug påskud om undersøgelser ("vi skal se hævelsen igen", "blodprøvesvar afventes") for at holde barnet inde.</li>
+        <li><b>Kontakt socialforvaltningen</b> — kommunens Børn-Unge-vagt (uden for åbningstider er der vagttelefon). Servicelovens §153 (skærpet underretningspligt for sundhedspersonale).</li>
+        <li><b>Embedslægen</b> kan involveres ved akut indlæggelse eller komplekse situationer.</li>
+        <li>Eventuelt <b>politianmeldelse</b> — men socialforvaltning er den primære vej.</li>
+        <li><b>Klinisk fotodokumentation</b> af alle læsioner. Dokumentation af præcise anamneseuoverensstemmelser i journalen.</li>
+        <li><b>Samarbejde med Barnets Hus</b> / specialiseret børnepsykolog / socialrådgiver.</li>
+        <li><b>Søskende:</b> er der yngre eller ældre søskende? Overvej også deres sikkerhed — de skal vurderes.</li>
+      </ol>
+      <p><b>Information til forældre</b> (uden anklage):</p>
+      <ul>
+        <li>Forklar at "i vores procedure ved frakturer hos så små børn skal vi altid undersøge bredt af hensyn til barnet"</li>
+        <li>Hvis forældre nægter undersøgelser → kontakt embedslæge eller politi via socialforvaltning</li>
+      </ul>
+      <div class="answer-highlight">Anmeld ved <b>mindste mistanke</b>. Det er IKKE vores opgave at bevise mishandling — det gør socialforvaltning, politi og retsmedicin. Vores rolle er at sikre barnet og udløse systemet. Skærpet underretningspligt overgår tavshedspligten.</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('bch',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     CASE 10: funktionelle_mavesmerter — Funktionelle mavesmerter
+============================================================ -->
+
+<div id="case-funktionelle_mavesmerter" class="case-pane" style="display:none">
+  <div class="case-header">
+    <button class="back-btn" onclick="closeCase()">← Tilbage til oversigt</button>
+    <span class="specialty-badge badge-paed" style="margin-top:16px">Pædiatri</span>
+    <h2>Funktionelle mavesmerter</h2>
+    <p>Eksamenssæt: F24 stand 1</p>
+    <p><b>Lauge, 8 år.</b> Henvist af egen læge efter at forældrene har bestilt tid for at "vide om der er noget galt med maven". Mavesmerter omkring navlen 1–2 gange om ugen i et års tid, mest om morgenen, ikke måltidsrelaterede, ikke natlige. Familien har forsøgt gluten- og laktoseelimination uden effekt. Lauge har normalt afføringsmønster og normal vækstkurve.</p>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="funk-progress" style="width:0%"></div></div>
+  <p class="progress-label" id="funk-progress-label">0 / 6 afsløret</p>
+
+  <div class="step-card" id="step-funk-1">
+    <div class="step-header" onclick="toggleStep('funk',1)">
+      <div><div class="step-num">Trin 1</div><div class="step-q">Hvad spørger du om i den fokuserede anamnese?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Smerter:</b> lokalisation (navleregion = typisk funktionel), karakter (krampende, brændende, dump), varighed pr. episode, døgnvariation (morgen er ofte funktionel), måltidsrelation (post-prandialt → obs IBD, pancreas)</li>
+        <li><b>Vækst og trivsel:</b> følger Lauge sin egen vækstkurve? — afgørende røde flag-screening</li>
+        <li><b>Afføring:</b> Bristol-skala, frekvens, blod, slim, mucus</li>
+        <li><b>Tarm-symptomer:</b> kvalme, opkast, diare, obstipation, oppustethed, flatulens</li>
+        <li><b>Eksterne symptomer:</b> træthed, ledsmerter, udslæt, øjenforandringer (IBD-associerede)</li>
+        <li><b>Vandladning:</b> dysuri, hyppighed (UVI), nattelækage</li>
+        <li><b>Almene:</b> vægttab? feber? nattesvedudbrud?</li>
+        <li><b>Psykosocialt:</b> skoletilfredshed, kammerater, mobning, familieforhold, søvn, stress, angst — <b>kritisk</b> ved funktionelle smerter</li>
+        <li><b>Kost + væske:</b> tilstrækkelig fiber? regelmæssighed?</li>
+        <li><b>Familieanamnese:</b> IBD, cøliaki, IBS (mor's tilstand er relevant!)</li>
+        <li><b>Forældrenes forklaringsmodeller</b> — hvad mistænker de?</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-funk-2">
+    <div class="step-header" onclick="toggleStep('funk',2)">
+      <div><div class="step-num">Trin 2</div><div class="step-q">Hvilke røde flag screener du for? Og er der nogle hos Lauge?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Røde flag (alarmsymptomer der kræver organisk udredning):</b></p>
+      <ul>
+        <li>Vægttab eller vækstvigning</li>
+        <li>Natlig opvågning <b>af smerter</b> (ikke smerter når i forvejen vågen)</li>
+        <li>Gastrointestinal blødning (synlig eller okult)</li>
+        <li>Anæmi</li>
+        <li>Vedvarende opkast (særligt galdefarvet)</li>
+        <li>Vedvarende diare (&gt;2 uger)</li>
+        <li>Feber + mavesmerter</li>
+        <li>Ledsmerter, udslæt (HSP, IBD)</li>
+        <li>"Off-the-centerline" smerter — særligt højre nedre kvadrant (appendicit-mistanke)</li>
+        <li>Familieanamnese for IBD eller cøliaki</li>
+      </ul>
+      <p><b>Lauges præsentation:</b></p>
+      <ul>
+        <li>Smerter periumbilikalt — typisk funktionel lokalisation</li>
+        <li>Ikke nat-vækninger AF smerter</li>
+        <li>Intet vægttab</li>
+        <li>Ingen vækstvigning</li>
+        <li>Ingen GI-blødning</li>
+        <li>Normalt afføringsmønster</li>
+      </ul>
+      <div class="answer-highlight"><b>Ingen røde flag</b> hos Lauge → peger stærkt mod funktionelle mavesmerter. Det er en positiv diagnose (Rome IV-kriterier), ikke en udelukkelsesdiagnose efter omfattende negativ udredning.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-funk-3">
+    <div class="step-header" onclick="toggleStep('funk',3)">
+      <div><div class="step-num">Trin 3</div><div class="step-q">Hvad lægger du vægt på ved den objektive undersøgelse?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <ul>
+        <li><b>Vækstkurve:</b> følger Lauge sin egen kurve? Normal vækst (125 cm, 25 kg ved 8 år) styrker funktionel diagnose</li>
+        <li><b>Almentilstand:</b> sundt, alderssvarende udseende, pæne farver, normal kropsbygning, normal respiration</li>
+        <li><b>Stetoskopi:</b> st.p. et c. i.a.</li>
+        <li><b>Abdomen:</b> blødt overalt, symmetrisk, indolent, ingen palpable patologiske udfyldninger, normale tarmlyde, ingen organomegali, ingen slipømhed</li>
+        <li><b>Hud:</b> intet synligt eksem, ingen udslæt (særligt dermatitis herpetiformis udelukkes — cøliaki)</li>
+        <li><b>Inspektion + palpation perianalt:</b> fissurer (obstipation-tegn)? sphincter-spændighed?</li>
+        <li><b>Almindelig top-til-tå</b> — ører, øjne, hals, lymfeknuder</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-funk-4">
+    <div class="step-header" onclick="toggleStep('funk',4)">
+      <div><div class="step-num">Trin 4</div><div class="step-q">Hvilke parakliniske undersøgelser bestiller du — og hvor stopper du?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Princip:</b> begrænset screening for "rød fanen"-organiske sygdomme. <b>IKKE</b> omfattende udredning.</p>
+      <ul>
+        <li><b>Hgb, infektionstal (CRP), lever-/nyretal, blodsukker</b></li>
+        <li><b>Cøliaki-antistoffer:</b> transglutaminase-IgA + total IgA (udeluk IgA-mangel)</li>
+        <li><b>Urinstix</b> — leukocytter, nitrit, glucose, protein (UVI-screen)</li>
+        <li>(<b>F-calprotectin</b> — IBD-screen — kun hvis nogen klinisk mistanke; ikke rutinemæssigt ved klassiske funktionelle smerter)</li>
+      </ul>
+      <p><b>Hvis basale prøver er normale → STOP.</b></p>
+      <ul>
+        <li>Gastroskopi/koloskopi/CT/MR er IKKE indiceret ved Lauges præsentation</li>
+        <li>Omfattende udredning på et barn UDEN røde flag forværrer ofte sygdomsidentitet og forældrenes bekymring</li>
+        <li>Restriktive diæter uden indikation skal undgås — de signalerer "der er noget galt" og kan give næringsmangel</li>
+      </ul>
+      <div class="answer-warn">Eksamen-fælde: studenten dumper, hvis hun igangsætter omfattende organisk udredning (gastroskopi, koloskopi, CT, MR) på et barn UDEN røde flag, eller anbefaler restriktive diæter uden indikation.</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-funk-5">
+    <div class="step-header" onclick="toggleStep('funk',5)">
+      <div><div class="step-num">Trin 5</div><div class="step-q">Resultaterne er normale. Hvad er diagnosen, og hvordan forklarer du den?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Diagnose: Funktionelle mavesmerter</b> (Rome IV-kriterier):</p>
+      <ul>
+        <li>Recidiverende abdominalsmerter ≥4 dage pr. måned i ≥2 mdr.</li>
+        <li>Ikke fuldt forklaret af anden medicinsk tilstand</li>
+        <li>Ofte centreret om navlen</li>
+        <li>Ingen røde flag</li>
+      </ul>
+      <p><b>Ætiologi / patogenese:</b></p>
+      <ul>
+        <li><b>Hjerne-tarm-akse:</b> bidirektionel kommunikation mellem centralt nervesystem og enteralt nervesystem</li>
+        <li><b>Visceral hypersensibilitet:</b> børn med funktionelle smerter har lavere smertetærskel for normale tarmreflekser/-strækninger</li>
+        <li>Modulerende faktorer: stress, angst, søvnmangel, social konflikt, skoleudfordringer, perfektionisme</li>
+        <li>Familiær mønster ofte (mors lignende klager hos Lauge)</li>
+        <li>Hyppighed: 10–15% af skolebørn, top 4–12 år, F≈M</li>
+      </ul>
+      <div class="answer-highlight">Det vigtigste at tydeliggøre for forældrene: <b>smerterne er REELLE</b>, ikke "i hovedet" eller indbildning. Mekanismen er fysiologisk (overaktiv hjerne-tarm-akse), men ikke struktural (tarmen er ikke syg).</div>
+    </div></div>
+  </div>
+
+  <div class="step-card" id="step-funk-6">
+    <div class="step-header" onclick="toggleStep('funk',6)">
+      <div><div class="step-num">Trin 6</div><div class="step-q">Hvad er behandlingen, og hvordan kommunikerer du med familien?</div></div>
+      <span class="reveal-indicator">↓</span>
+    </div>
+    <div class="step-answer"><div class="answer-body">
+      <p><b>Forældrekommunikation — det mest vigtige skridt:</b></p>
+      <ul>
+        <li><b>Validere:</b> smerterne er virkelige, vi har udelukket alvorlig sygdom, men der findes en mekanisme</li>
+        <li><b>Reframe:</b> "Det er en mavesmerte med en hjerne-tarm-tilgang, ikke en sygdom der ætser tarmen"</li>
+        <li>Forklar den positive diagnose — ikke "vi fandt ikke noget", men "vi ved hvad det er"</li>
+      </ul>
+      <p><b>Livsstil:</b></p>
+      <ul>
+        <li>Regelmæssig kost (varieret, IKKE restriktiv) — restriktive diæter forværrer ofte hos børn</li>
+        <li>Stop unødvendige eliminationsdiæter (Lauges familie's gluten- og mælkefri uden effekt → reintroducer)</li>
+        <li>Tilstrækkelig væske (vand, ikke saftevand)</li>
+        <li>Tilstrækkelig fiber + motion</li>
+        <li>Søvnhygiejne</li>
+      </ul>
+      <p><b>Psykosocialt:</b></p>
+      <ul>
+        <li>Skole-stress vurdering — Lauges sociale udfordringer + humørudsving + uro i klassen er relevante. Tilbyd skole-/psykolog-samtale.</li>
+        <li>CBT (kognitiv adfærdsterapi) ved væsentlig angst</li>
+        <li>Familieterapi hvis bekymrede forældre forværrer dynamikken</li>
+      </ul>
+      <p><b>Symptomatisk behandling:</b></p>
+      <ul>
+        <li>Paracetamol p.n. (sjældent nødvendigt)</li>
+        <li>Pebermynteolje-kapsler (svag evidens, kan prøves)</li>
+        <li>Probiotika (svag evidens)</li>
+      </ul>
+      <p><b>Opfølgning:</b></p>
+      <ul>
+        <li>Klinisk kontrol 2–3 måneder for genevaluering</li>
+        <li><b>Ikke</b> gentage blodprøver eller udvide udredning medmindre nye røde flag opstår</li>
+      </ul>
+      <div class="answer-warn">Studenten dumper, hvis hun: igangsætter omfattende organisk udredning (gastroskopi, koloskopi, CT, MR) på et barn uden røde flag; anbefaler restriktive diæter uden indikation; ikke validerer forældrenes bekymring empatisk; eller bagatelliserer smerterne som "psykosomatisk — din skyld".</div>
+    </div></div>
+  </div>
+
+  <div class="case-nav">
+    <button class="reveal-all-btn" onclick="revealAll('funk',6)">Afslør alle svar</button>
+    <button class="case-nav-btn primary" onclick="closeCase()">← Tilbage til oversigt</button>
+  </div>
+</div>
+
 <!-- === KOMPLICEREDE FØDSLER === -->
 <div id="case-kompfodsel" class="case-pane" style="display:none">
   <div class="case-header">
@@ -3536,7 +5351,7 @@ footer { text-align:center; padding:40px; font-size:12px; color:var(--text-3); b
 <footer>K8 OSCE Studieguide · Kvinde, Mor, Barn · SDU · Baseret på eksamenssæt F23–F25 + E23–E24</footer>
 
 <script>
-var totalSteps = { uvc:6, hsp:6, nef:6, pe:6, anti:5, blod:5, endo:5, uro:5, tidlig:4, canc:4, pid:3, rep:4, hrt:4, svang:4, prae:4, tvil:4, vaekst:4, gdm:4, pterm:4, bars:4, vir:3, asf:3, komp:2, norm:2 };
+var totalSteps = { uvc:6, hsp:6, nef:6, fb:6, msep:6, atop:6, dka:6, t1d:6, tumor:6, pubp:6, coel:6, bch:6, funk:6, pe:6, anti:5, blod:5, endo:5, uro:5, tidlig:4, canc:4, pid:3, rep:4, hrt:4, svang:4, prae:4, tvil:4, vaekst:4, gdm:4, pterm:4, bars:4, vir:3, asf:3, komp:2, norm:2 };
 var revealed = {};
 for (var k in totalSteps) revealed[k] = {};
 
